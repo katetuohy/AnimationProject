@@ -1,6 +1,8 @@
 package cs3500.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import cs3500.model.AnimationModel;
 
@@ -18,7 +20,14 @@ public class Controller {
   }
 
   public void playAnimation(AnimationModel model) {
-
+    if (model == null) {
+      throw new IllegalArgumentException("Model given is null");
+    }
+    Scanner scan = new Scanner(this.in);
+    ArrayList<Integer> nums = new ArrayList<Integer>();
+    while (scan.hasNext()) {
+      String s = scan.next();
+    }
   }
 
   @Override
