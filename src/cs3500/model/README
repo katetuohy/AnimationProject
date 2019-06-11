@@ -1,0 +1,54 @@
+AnimationModel Design
+
++----------------------------+
+|   AnimationModel Interface |
++----------------------------+
+               ^
+               |
+               |
+    +--------------------+
+    | AnimationModelImpl |                            +------------------+
+    +--------------------+                            |  Command Class   |
+                                                      +------------------+
+    +-------------------+
+    |   Shape Interface |
+    +-------------------+
+               ^
+               |
+               |
+    +-----------------------+
+    | AShape Abstract Class |<-------------------
+    +-----------------------+                   |
+                ^                               |
+                |                               |
+                |                               |
+    +-----------------------+       +-----------------------+
+    |       Oval Class      |       |      Polygon Class    |
+    +-----------------------+       +-----------------------+
+
+
+For our design, we started with an animation model interface and created an AnimationModelImpl
+class which implemented the AnimationModel Interface. From there, we created a Shape interface to
+represent the shapes of the animation. Then we abstracted the shape class as AShape
+which implemented the Shape interface. And we created the Oval and Polygon classes which extended
+AShape.
+
+For our Animation model, we store a LinkedHashMap<Command, AShape> of the commands
+to the shapes they act upon. The model also stores the current time tick of the animation.
+We included a moveShapes() function which uses the current time to update the shapes state if the
+command is during the given time. The exact calculations to update each shape's postition, color
+and size based on the current time are done in the AShape abstract class in the setPosition(),
+setColor() and setSize() classes. We chose not to check overlapping times in the model and instead
+we will address that in the controller.
+
+Lastly, we created our Command class which represents a command to change the state of a
+Shape in the model. The command class stores the states that shape starts in and the state that
+it goes to and the period of time that this transition occurs over.
+
+Our assumptions were that all shapes would be given a unique name so that we can identify all
+shapes by their name.
+
+For setAnimationMap, we are assuming that the commands are sent in through the array list already
+sorted by shape. While we may have lapses in time, our method for updating the shapes state keeps
+everything the same unless it finds a command to execute.
+
