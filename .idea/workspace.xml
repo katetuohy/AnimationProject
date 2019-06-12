@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed5d835d-794e-4dfa-a5dc-c702130ab946" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/Excellence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/Excellence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/SVGAnimationVIew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/SVGAnimationVIew.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/TextualAnimationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/TextualAnimationView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualAnimationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualAnimationView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/controller/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/controller/IController.java" beforeDir="false" />
-    </list>
+    <list default="true" id="ed5d835d-794e-4dfa-a5dc-c702130ab946" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualAnimationView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="240">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/IView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
@@ -130,12 +121,12 @@
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/TextualAnimationView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/SVGAnimationVIew.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/Excellence.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/view/VisualAnimationView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/animator/view/VisualAnimationView.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="1418" />
     <option name="width" value="1570" />
     <option name="height" value="1932" />
@@ -232,7 +223,7 @@
       <option name="presentableId" value="Default" />
       <updated>1560275327265</updated>
       <workItem from="1560275328629" duration="3985000" />
-      <workItem from="1560282026549" duration="4417000" />
+      <workItem from="1560282026549" duration="4672000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Excellence file">
       <created>1560283178558</created>
@@ -241,17 +232,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560283178559</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated the Excellence file">
+      <created>1560370214782</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560370214782</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8402000" />
+    <option name="totallyTimeSpent" value="8657000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1513" height="973" extended-state="7" />
+    <frame x="709" y="0" width="785" height="966" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19450171" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.04464286" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -477,16 +475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualAnimationView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/Excellence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -501,6 +489,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualAnimationView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
