@@ -40,7 +40,7 @@ public class VisualAnimationView extends JFrame implements IView {
 
   @Override
   public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
-
+  //so can commit
   }
 
   @Override
