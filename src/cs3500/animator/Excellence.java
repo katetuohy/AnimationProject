@@ -40,14 +40,15 @@ public final class Excellence {
     }
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
-    AnimationModel model = AnimationModelImpl.builder().build();
+    AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
       rn = new FileReader(in);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
-    AnimationReader.parseFile(rn,);
+    AnimationReader.parseFile(rn, builder);
+    AnimationModel model = builder.build();
     Controller controller = new Controller(model, v);
     v.setInput(in);
 
