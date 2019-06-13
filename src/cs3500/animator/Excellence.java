@@ -50,7 +50,6 @@ public final class Excellence {
     AnimationReader.parseFile(rn, builder);
     AnimationModel model = builder.build();
     Controller controller = new Controller(model, v);
-    v.setInput(in);
 
     if (Arrays.asList(args).contains("-out")) {
       int ind = Arrays.asList(args).indexOf("-out") + 1;

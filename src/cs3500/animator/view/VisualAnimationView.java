@@ -12,7 +12,6 @@ import cs3500.model.Command;
 public class VisualAnimationView extends JFrame implements IView {
   private JLabel display;
   private JButton exitButton;
-  private JTextField input;
   private int speed;
 
   public VisualAnimationView() {
@@ -23,8 +22,6 @@ public class VisualAnimationView extends JFrame implements IView {
     setMaximumSize(new Dimension(1000, 1000));
 
     this.setLayout(new FlowLayout());
-
-    this.input = new JTextField();
 
     display = new JLabel("To be displayed");
     this.add(display);
@@ -54,11 +51,6 @@ public class VisualAnimationView extends JFrame implements IView {
 
   public void setListener(ActionListener listener) {
     exitButton.addActionListener(listener);
-  }
-
-  @Override
-  public void setInput(String input) {
-    this.input.setText(input);
   }
 
   @Override

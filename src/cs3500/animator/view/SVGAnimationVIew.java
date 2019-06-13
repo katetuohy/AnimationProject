@@ -24,11 +24,6 @@ public class SVGAnimationVIew implements IView {
   }
 
   @Override
-  public void setInput(String input) {
-
-  }
-
-  @Override
   public void setOutput(String output) {
 
   }

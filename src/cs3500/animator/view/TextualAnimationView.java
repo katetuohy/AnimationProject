@@ -10,8 +10,6 @@ import cs3500.model.Command;
 
 public class TextualAnimationView implements IView {
 
-  private JTextField input;
-
   @Override
   public void render(List<AShape> Shapes) {
 
@@ -35,10 +33,5 @@ public class TextualAnimationView implements IView {
   @java.lang.Override
   public void setOutput(java.lang.String output) {
     //doesn't output
-  }
-
-  @java.lang.Override
-  public void setInput(java.lang.String input) {
-    this.input.setText(input);
   }
 }

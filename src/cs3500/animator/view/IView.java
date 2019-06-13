@@ -14,8 +14,6 @@ public interface IView {
 
   void setShapesAndMotions(List<AShape> shapes, List<Command> motions);
 
-  void setInput(String input);
-
   void setOutput(String output);
 
   void setSpeed(int num);
