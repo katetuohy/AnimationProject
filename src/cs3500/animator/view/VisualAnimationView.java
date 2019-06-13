@@ -42,18 +42,13 @@ public class VisualAnimationView extends JFrame implements IView {
 
   }
 
+  @Override
   public void display() {
     setVisible(true);
   }
 
-  @Override
   public void setListener(ActionListener listener) {
     exitButton.addActionListener(listener);
-  }
-
-  @Override
-  public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
-
   }
 
   @Override

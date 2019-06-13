@@ -10,6 +10,8 @@ public interface IView {
 
   void render(List<AShape> Shapes);
 
+  void display();
+
   void setShapesAndMotions(List<AShape> shapes, List<Command> motions);
 
   void setInput(String input);

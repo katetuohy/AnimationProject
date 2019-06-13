@@ -6,6 +6,9 @@ import java.util.Arrays;
 
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewFactory;
+import cs3500.controller.Controller;
+import cs3500.model.AnimationModel;
+import cs3500.model.AnimationModelImpl;
 
 public final class Excellence {
 
@@ -33,6 +36,8 @@ public final class Excellence {
     }
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
+    AnimationModel model = new AnimationModelImpl();
+    Controller controller = new Controller(model, v);
     v.setInput(in);
 
     if (Arrays.asList(args).contains("-out")) {
