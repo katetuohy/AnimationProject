@@ -11,7 +11,6 @@ import cs3500.model.Command;
 
 public class VisualAnimationView extends JFrame implements IView {
   private JLabel display;
-  private JButton exitButton;
   private int speed;
 
   public VisualAnimationView() {
@@ -25,11 +24,6 @@ public class VisualAnimationView extends JFrame implements IView {
 
     display = new JLabel("To be displayed");
     this.add(display);
-
-    //exit button
-    exitButton = new JButton("Exit");
-    exitButton.setActionCommand("Exit Button");
-    this.add(exitButton);
 
     pack();
   }
@@ -47,10 +41,6 @@ public class VisualAnimationView extends JFrame implements IView {
   @Override
   public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
 
-  }
-
-  public void setListener(ActionListener listener) {
-    exitButton.addActionListener(listener);
   }
 
   @Override
