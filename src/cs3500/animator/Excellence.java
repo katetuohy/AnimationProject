@@ -1,5 +1,6 @@
 package cs3500.animator;
 
+import java.io.FileReader;
 import java.io.StringReader;
 import java.util.Arrays;
 
@@ -37,9 +38,10 @@ public final class Excellence {
     }
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
-    AnimationModel model = AnimationModelImpl.builder().build();
+    AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = new StringReader(in);
-    AnimationReader.parseFile(rn,);
+    AnimationReader.parseFile(rn, builder);
+    AnimationModel model = builder.build();
     Controller controller = new Controller(model, v);
     v.setInput(in);
 
