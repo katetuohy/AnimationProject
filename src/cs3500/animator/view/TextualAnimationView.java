@@ -15,6 +15,11 @@ public class TextualAnimationView implements IView {
   }
 
   @Override
+  public void display() {
+
+  }
+
+  @Override
   public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
 
   }
