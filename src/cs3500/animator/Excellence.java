@@ -1,5 +1,7 @@
 package cs3500.animator;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.StringReader;
 import java.util.Arrays;
 
@@ -38,7 +40,12 @@ public final class Excellence {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
     AnimationModel model = AnimationModelImpl.builder().build();
-    Readable rn = new StringReader(in);
+    Readable rn = null;
+    try {
+      rn = new FileReader(in);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
     AnimationReader.parseFile(rn,);
     Controller controller = new Controller(model, v);
     v.setInput(in);
