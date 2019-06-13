@@ -172,6 +172,10 @@ public final class AnimationModelImpl implements AnimationModel {
     @Override
     public AnimationBuilder<AnimationModelImpl> setBounds(int x, int y, int width, int height) {
       return null;
+      /**
+       * Sets the bounds of the animation so need to figure out where that is done and link
+       * Or does it not do anything and return null?
+       */
     }
 
     @Override
@@ -188,6 +192,9 @@ public final class AnimationModelImpl implements AnimationModel {
       /**
        * TODO:
        * ^^^^ Is this right??
+       * Kate: I think so. I think the use of the factory is great and I think that yes, if we want
+       * to have the model sort through the shapes and motions to create the hashmap, which we
+       * probably should be doing, then having lists of both is best.
        */
     }
 
@@ -208,6 +215,9 @@ public final class AnimationModelImpl implements AnimationModel {
       /**
        * TODO:
        * ^^^^ Is this right??
+       * Kate: I dont think so because we need to go through the hashmap and insert the
+       * new command under the shape that it's supposed to be in. This is what I was having so
+       * much trouble doing with the empty commands for filling in the teleports
        */
     }
 
