@@ -8,7 +8,6 @@ public class Controller {
   private AnimationModel model;
   private IView view;
 
-
   public Controller(AnimationModel model, IView view) {
     this.model = model;
     this.view = view;

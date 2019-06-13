@@ -3,6 +3,10 @@ package cs3500.model;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import javax.print.Doc;
+
+import cs3500.animator.util.AnimationBuilder;
+
 /**
  * Represents the model for an animation.
  */
@@ -48,4 +52,5 @@ public interface AnimationModel {
    * Ensure that commands for a particular object are not overlapping in time frames.
    */
   void validateCommands();
+
 }

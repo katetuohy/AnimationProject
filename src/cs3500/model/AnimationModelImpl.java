@@ -156,6 +156,7 @@ public final class AnimationModelImpl implements AnimationModel {
     return ((c1.getStartTime() <= c2.getStartTime() && c1.getEndTime() >= c2.getStartTime())
             || (c2.getStartTime() <= c1.getStartTime() && c2.getEndTime() >= c1.getEndTime()));
   }
+
   public static Builder builder() {
     return new Builder();
   }
