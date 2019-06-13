@@ -1,9 +1,6 @@
 package cs3500.animator.view;
 
-import java.awt.event.ActionListener;
 import java.util.List;
-
-import javax.swing.*;
 
 import cs3500.model.AShape;
 import cs3500.model.Command;
