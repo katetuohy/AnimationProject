@@ -1,9 +1,16 @@
 package cs3500.model;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import cs3500.animator.util.AnimationBuilder;
+/**
+ * TODO:
+ * - Builder
+ *  - setBounds()
+ *  - addKeyFrame()
+ */
 
 /**
  * Represents the model for an animation. The animation saves the current time and map of commands
@@ -13,15 +20,18 @@ import cs3500.animator.util.AnimationBuilder;
 public final class AnimationModelImpl implements AnimationModel {
 
   int time;
-
-  private LinkedHashMap<Command, AShape> commands = new LinkedHashMap<Command,
-          AShape>();
+  private ArrayList<Command> motions;
+  private ArrayList<Shape> shapes;
+  private LinkedHashMap<Command, AShape> commands;
 
   /**
    * Construct an animation model at time = 0.
    */
   public AnimationModelImpl() {
     this.time = 0;
+    this.commands = new LinkedHashMap<Command, AShape>();
+    this.motions = new ArrayList<Command>();
+    this.shapes = new ArrayList<Shape>();
   }
 
   /**
@@ -64,6 +74,22 @@ public final class AnimationModelImpl implements AnimationModel {
   @Override
   public LinkedHashMap<Command, AShape> getMap() {
     return this.commands;
+  }
+
+  /**
+   * Get the list of motions for the animation.
+   * @return list of motions
+   */
+  public ArrayList<Command> getMotions() {
+    return this.motions;
+  }
+
+  /**
+   * Get the list of shapes for the animation.
+   * @return list of shapes
+   */
+  public ArrayList<Shape> getShapes() {
+    return this.shapes;
   }
 
   @Override
@@ -130,11 +156,17 @@ public final class AnimationModelImpl implements AnimationModel {
     return ((c1.getStartTime() <= c2.getStartTime() && c1.getEndTime() >= c2.getStartTime())
             || (c2.getStartTime() <= c1.getStartTime() && c2.getEndTime() >= c1.getEndTime()));
   }
+  public static Builder builder() {
+    return new Builder();
+  }
 
   public static final class Builder implements AnimationBuilder<AnimationModelImpl> {
+    AnimationModelImpl model;
+
     @Override
     public AnimationModelImpl build() {
-      return null;
+      this.model = new AnimationModelImpl();
+      return this.model;
     }
 
     @Override
@@ -144,7 +176,19 @@ public final class AnimationModelImpl implements AnimationModel {
 
     @Override
     public AnimationBuilder<AnimationModelImpl> declareShape(String name, String type) {
-      return null;
+      /**
+       * TODO:
+       * Should we create an list of shapes in our model? Seems like it might be a good idea
+       * since declareShape and addMotion are called separately.
+       * Or we could add motions to the hashmap with the shape as null.
+       *
+       */
+      model.getShapes().add(new ShapeFactory().getShape(name, type));
+      return this;
+      /**
+       * TODO:
+       * ^^^^ Is this right??
+       */
     }
 
     @Override
@@ -152,7 +196,19 @@ public final class AnimationModelImpl implements AnimationModel {
                                                           int w1, int h1, int r1, int g1, int b1,
                                                           int t2, int x2, int y2, int w2, int h2,
                                                           int r2, int g2, int b2) {
-      return null;
+      Shape shape = null;
+      for (Shape s : model.getShapes()) {
+        if (s.getName().equals(name)){
+          shape = s;
+        }
+      }
+      model.getMotions().add(new Command(shape, t1, new Position2D(x1, y1), w1, h1,
+              new Color(r1, g1, b1), t2,  new Position2D(x2, y2), w2, h2, new Color(r2, g2, b2)));
+      return this;
+      /**
+       * TODO:
+       * ^^^^ Is this right??
+       */
     }
 
     @Override
@@ -160,6 +216,5 @@ public final class AnimationModelImpl implements AnimationModel {
                                                             int h, int r, int g, int b) {
       return null;
     }
-    // FILL IN HERE
   }
 }

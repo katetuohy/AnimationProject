@@ -18,4 +18,19 @@ public class TextualAnimationView implements IView {
   public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
 
   }
+
+  @java.lang.Override
+  public void setSpeed(int num) {
+
+  }
+
+  @java.lang.Override
+  public void setOutput(java.lang.String output) {
+    // doesn't implement
+  }
+
+  @java.lang.Override
+  public void setInput(java.lang.String input) {
+
+  }
 }

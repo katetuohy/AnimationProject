@@ -7,51 +7,42 @@ import java.awt.Color;
  */
 public class Command {
 
-  private final AShape shape;
-  private final Color oldColor;
+  private final Shape shape;
   private final int startTime;
-  private final int endTime;
-  private final Position2D from;
   private final Position2D to;
   private final int oldWidth;
   private final int oldHeight;
+  private final Color oldColor;
+  private final int endTime;
+  private final Position2D from;
   private final int newWidth;
   private final int newHeight;
   private final Color color;
 
-  /**
-   * Constructor for everything.
-   * @param shape      The shape that the command applies to
-   * @param startTime  The start time tick for the command to begin
-   * @param endTime    the time tick for the command to end
-   * @param from       the position of where the shape is moving from
-   * @param to         the position of where the shape is moving to
-   * @param newWidth   the new width of the shape
-   * @param newHeight  the new height of the shape
-   * @param color      the new color that the shape should be
-   */
-  public Command(AShape shape, int startTime, int endTime,
-                 Position2D from, Position2D to, int newWidth, int newHeight, Color color) {
+
+  public Command(Shape shape, int startTime, Position2D to, int oldWidth, int oldHeight, Color oldColor, int endTime, Position2D from, int newWidth, int newHeight, Color color) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
-    if (startTime >= endTime || startTime < 0 || endTime < 1) {
-      throw new IllegalArgumentException(
-              "Start time must be strictly less than end time and positive");
+    if (startTime >= endTime) {
+      throw new IllegalArgumentException("Start time must be strictly less than end time.");
     }
-    if (newWidth <= 0 || newHeight <= 0) {
-      throw new IllegalArgumentException("Height and width must be greater than 0");
+    if (color == null) {
+      throw new IllegalArgumentException("Color should not be null.");
+    }
+    if(to == null || from == null) {
+      throw new IllegalArgumentException("Position should not be null.");
     }
     this.shape = shape;
-    this.oldColor = shape.getColor();
-    this.endTime = endTime;
     this.startTime = startTime;
-    this.from = from;
     this.to = to;
-    this.oldWidth = shape.getWidth();
-    this.oldHeight = shape.getHeight();
-    this.newHeight = newHeight;
+    this.oldWidth = oldWidth;
+    this.oldHeight = oldHeight;
+    this.oldColor = oldColor;
+    this.endTime = endTime;
+    this.from = from;
     this.newWidth = newWidth;
+    this.newHeight = newHeight;
     this.color = color;
   }
 
@@ -61,7 +52,7 @@ public class Command {
    * @param startTime the starting time for the command
    * @param endTime   when the command ends
    */
-  public Command(AShape shape, int startTime, int endTime) {
+  public Command(Shape shape, int startTime, int endTime) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
@@ -88,7 +79,7 @@ public class Command {
    * @param endTime   when the command ends
    * @param color     the new color for the shape
    */
-  public Command(AShape shape, int startTime, int endTime, Color color) {
+  public Command(Shape shape, int startTime, int endTime, Color color) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
@@ -118,7 +109,7 @@ public class Command {
    * @param endTime    the time tick when the command ends
    * @param pos        the new position for the shape
    */
-  public Command(AShape shape, int startTime, int endTime, Position2D pos) {
+  public Command(Shape shape, int startTime, int endTime, Position2D pos) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
@@ -149,7 +140,7 @@ public class Command {
    * @param width     the new width of the shape
    * @param height    the new height of the shape
    */
-  public Command(AShape shape, int startTime, int endTime, int width, int height) {
+  public Command(Shape shape, int startTime, int endTime, int width, int height) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
