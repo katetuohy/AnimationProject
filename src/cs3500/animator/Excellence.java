@@ -36,7 +36,7 @@ public final class Excellence {
     }
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
-    AnimationModel model = new AnimationModelImpl();
+    AnimationModel model = AnimationModelImpl.builder().build();
     Controller controller = new Controller(model, v);
     v.setInput(in);
 
