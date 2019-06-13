@@ -2,8 +2,6 @@ package cs3500.animator;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileReader;
-import java.io.StringReader;
 import java.util.Arrays;
 
 import cs3500.animator.util.AnimationBuilder;
