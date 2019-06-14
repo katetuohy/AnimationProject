@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.*;
 
 import cs3500.animator.view.IView;
-import cs3500.model.AShape;
+import cs3500.model.Shape;
 import cs3500.model.AnimationModel;
 
 public class Controller implements IController {

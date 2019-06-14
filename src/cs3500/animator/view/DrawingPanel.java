@@ -6,10 +6,10 @@ import java.util.List;
 
 import javax.swing.*;
 
-import cs3500.model.AShape;
+import cs3500.model.Shape;
 
 public class DrawingPanel extends JPanel implements IDrawingPanel {
-  List<AShape> shapes = null;
+  List<Shape> shapes = null;
 
   public DrawingPanel(){
     super();
@@ -20,7 +20,7 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
     super.paintComponent(g);
     if ( shapes != null ){
       g.setColor( Color.pink );
-      for ( AShape shape : shapes ){
+      for ( Shape shape : shapes ){
         g.fillRect((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
                 shape.getWidth(), shape.getHeight());
       }
@@ -28,7 +28,7 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
   }
 
   @Override
-  public void draw(List<AShape> shapes) {
+  public void draw(List<Shape> shapes) {
     this.shapes = shapes;
     repaint();
   }

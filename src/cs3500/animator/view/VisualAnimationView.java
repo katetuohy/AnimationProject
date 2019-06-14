@@ -1,13 +1,11 @@
 package cs3500.animator.view;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.*;
 
-import cs3500.model.AShape;
-import cs3500.model.Command;
+import cs3500.model.Shape;
 
 public class VisualAnimationView extends JFrame implements IView {
   private DrawingPanel panel;
@@ -34,7 +32,7 @@ public class VisualAnimationView extends JFrame implements IView {
   }
 
   @Override
-  public void render(List<AShape> shapes) {
+  public void display(List<Shape> shapes) {
     panel.draw(shapes);
   }
 

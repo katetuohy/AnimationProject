@@ -2,8 +2,8 @@ package cs3500.animator.view;
 
 import java.util.List;
 
-import cs3500.model.AShape;
+import cs3500.model.Shape;
 
 public interface IDrawingPanel {
-  void draw(List<AShape> shapes);
+  void draw(List<Shape> shapes);
 }
