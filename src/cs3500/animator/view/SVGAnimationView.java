@@ -45,8 +45,13 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
-  public void display(List<Shape> Shapes) {
-    throw new UnsupportedOperationException("display() method not supported for SVGAnimationView.");
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas) {
+    //do nothing
+  }
+
+  @Override
+  public void displayVisual(List<Shape> shapes) {
+    //do nothing
   }
 
   @Override
@@ -60,18 +65,8 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
-  public void setOutput(Appendable output) {
-    this.out = out;
-  }
-
-  @Override
   public void setSpeed(int num) {
-    this.speed = speed;
-  }
-
-  @Override
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands) {
-    throw new UnsupportedOperationException("displayTextualView() method not supported for SVGAnimationView.");
+    this.speed = num;
   }
 
   // Try to append s2 to Appendable s1
