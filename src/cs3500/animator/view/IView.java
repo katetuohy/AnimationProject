@@ -15,6 +15,9 @@ public interface IView {
 
   void setSpeed(int num);
 
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands);
+  void displayTextualView(LinkedHashMap<Command, Shape> commands);
+
+  void displaySVG(List<Command> motions);
+
 
 }

@@ -28,6 +28,11 @@ public class TextualAnimationView implements IView {
     }
   }
 
+  @Override
+  public void displaySVG(List<Command> motions) {
+    throw new UnsupportedOperationException("displaySVG() not available in the textual view.");
+  }
+
   private String printShapeCommands (Shape s, LinkedHashMap < Command, Shape > commands){
     String toReturn = "shape " + s.getName() + "\n";
     for (Command c : commands.keySet()) {

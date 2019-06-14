@@ -71,13 +71,24 @@ public class Polygon extends AShape {
 
   @Override
   public String getXML() {
-    String.format("<rect id=\"%s\" x=\"200\" y=\"200\" width=\"50\" height=\"100\" " +
-                    "fill=\"rgb(128,0,128)\" visibility=\"visible\" >\n"
-    , this.name, )
+    return "<rect id=\""+ name + "\" x=\"" + pos.getX() + "\" y=\"" + pos.getY()
+            + "\" width=\"" + width + "\" height=\"" + height + "\" "
+            + "fill=\"rgb(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue()
+            + ")\" visibility=\"visible\" >\n";
   }
 
   @Override
   public String getEndXML() {
-    return "</rect>";
+    return "</rect>\n";
+  }
+
+  @Override
+  public String animateWidthXML(int width1, int width2) {
+    return "";
+  }
+
+  @Override
+  public String animateHeightXML(int width1, int width2) {
+    return "";
   }
 }
