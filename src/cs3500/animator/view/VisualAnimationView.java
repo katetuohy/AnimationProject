@@ -1,20 +1,23 @@
 package cs3500.animator.view;
 
 import java.awt.*;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.swing.*;
 
+import cs3500.model.Command;
 import cs3500.model.Shape;
 
 public class VisualAnimationView extends JFrame implements IView {
   private DrawingPanel panel;
   JScrollPane scrollPane;
   private int speed;
-  Appendable out;
+  private Appendable out;
 
   public VisualAnimationView() {
     super();
+    this.out = System.out;
     panel = new DrawingPanel();
     panel.setMinimumSize( new Dimension(500,500));
     panel.setPreferredSize( new Dimension(2000,2000));
@@ -29,6 +32,7 @@ public class VisualAnimationView extends JFrame implements IView {
     add(scrollPane);
 
     setVisible(true);
+    this.speed = 1;
   }
 
   @Override
@@ -37,12 +41,17 @@ public class VisualAnimationView extends JFrame implements IView {
   }
 
   @Override
-  public void setOutput(String output) {
-
+  public void setOutput(Appendable output) {
+    this.out = output;
   }
 
   @Override
   public void setSpeed(int num) {
-    this.speed = speed;
+    this.speed = num;
+  }
+
+  @Override
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands) {
+    throw new IllegalArgumentException("Can't display text from visual view");
   }
 }

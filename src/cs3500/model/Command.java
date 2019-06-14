@@ -20,7 +20,9 @@ public class Command {
   private final Color color;
 
 
-  public Command(Shape shape, int startTime, Position2D to, int oldWidth, int oldHeight, Color oldColor, int endTime, Position2D from, int newWidth, int newHeight, Color color) {
+  public Command(Shape shape, int startTime, Position2D to, int oldWidth, int oldHeight,
+                 Color oldColor, int endTime, Position2D from, int newWidth, int newHeight,
+                 Color color) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }

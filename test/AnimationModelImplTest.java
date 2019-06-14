@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import model.AShape;
-import model.AnimationModel;
-import model.AnimationModelImpl;
-import model.Command;
-import model.Oval;
-import model.Polygon;
+import cs3500.model.AnimationModelImpl;
+import cs3500.model.Command;
+import cs3500.model.Oval;
+import cs3500.model.Polygon;
+import cs3500.model.Shape;
+import cs3500.model.AnimationModel;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,11 +18,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class AnimationModelImplTest {
 
-  AShape s1;
-  AShape s2;
-  AShape s3;
-  AShape s4;
-  ArrayList<AShape> shapes;
+  Shape s1;
+  Shape s2;
+  Shape s3;
+  Shape s4;
+  ArrayList<Shape> shapes;
   Command c1;
   Command c2;
   Command c3;
@@ -40,7 +40,7 @@ public class AnimationModelImplTest {
     s2 = new Polygon("s2", 5);
     s3 = new Polygon("s3", 6, 50, 100);
     s4 = new Oval("s4", Color.BLUE);
-    shapes = new ArrayList<AShape>(Arrays.asList(s1, s2, s3, s4));
+    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
 
     c1 = new Command(s1, 0, 10);
     c2 = new Command(s2, 0, 10);
@@ -114,7 +114,7 @@ public class AnimationModelImplTest {
     AnimationModel m = new AnimationModelImpl();
     m.setAnimationMap(cmds,shapes);
     ArrayList<Command> cmds1 = cmds;
-    ArrayList<AShape> shapes1 = shapes;
+    ArrayList<Shape> shapes1 = shapes;
     m.moveShapes();
     assertEquals(cmds, cmds1);
     assertEquals(shapes, shapes1);

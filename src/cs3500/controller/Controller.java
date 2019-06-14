@@ -31,7 +31,7 @@ public class Controller implements IController {
   }
 
   @Override
-  public void run() {
+  public void playAnimation() {
     timer.start();
   }
 }
