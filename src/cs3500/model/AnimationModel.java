@@ -22,6 +22,13 @@ public interface AnimationModel {
   void setAnimationMap(ArrayList<Command> cmds, ArrayList<Shape> s);
 
   /**
+   * Creates new Commands in between existing ones when there is a break in time.
+   * @param cmds the existing commands
+   * @return new list of commands
+   */
+  ArrayList<Command> fillIn(ArrayList<Command> cmds);
+
+  /**
    * Return the list of commands sorted by shape for the entire animation.
    *
    * @return The list of commands in string format.
@@ -39,6 +46,12 @@ public interface AnimationModel {
    * @return the current time.
    */
   int getTime();
+
+  /**
+   * gets the canvas size and location.
+   * @return the canvas string
+   */
+  String getCanvas();
 
   /**
    * Setter for the time field.

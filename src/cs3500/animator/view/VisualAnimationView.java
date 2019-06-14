@@ -1,6 +1,7 @@
 package cs3500.animator.view;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -31,13 +32,20 @@ public class VisualAnimationView extends JFrame implements IView {
 
     add(scrollPane);
 
+    this.out = System.out;
+
     setVisible(true);
     this.speed = 1;
   }
 
   @Override
-  public void display(List<Shape> shapes) {
+  public void displayVisual(List<Shape> shapes) {
     panel.draw(shapes);
+  }
+
+  @Override
+  public Appendable getOut() {
+    return this.out;
   }
 
   @Override
@@ -50,8 +58,11 @@ public class VisualAnimationView extends JFrame implements IView {
     this.speed = num;
   }
 
-  @Override
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands) {
-    throw new IllegalArgumentException("Can't display text from visual view");
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas) {
+    //do nothing
+  }
+
+  public void displaySVG(List<Command> motions) {
+    //do nothing
   }
 }

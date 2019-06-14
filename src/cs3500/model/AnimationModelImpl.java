@@ -1,6 +1,7 @@
 package cs3500.model;
 
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ public final class AnimationModelImpl implements AnimationModel {
   private ArrayList<Command> motions;
   private ArrayList<Shape> shapes;
   private LinkedHashMap<Command, Shape> commands;
+  private int[] canvas = new int[4];
 
   /**
    * Construct an animation model at time = 0.
@@ -33,6 +35,9 @@ public final class AnimationModelImpl implements AnimationModel {
     this.commands = new LinkedHashMap<Command, Shape>();
     this.motions = new ArrayList<Command>();
     this.shapes = new ArrayList<Shape>();
+    for (int i = 0; i < canvas.length; i++) {
+      canvas[i] = 0;
+    }
   }
 
   /**
@@ -44,6 +49,10 @@ public final class AnimationModelImpl implements AnimationModel {
    */
   @Override
   public void setAnimationMap(ArrayList<Command> cmds, ArrayList<Shape> s) {
+    cmds = this.sortCommands(cmds, s);
+    cmds = this.fillIn(cmds);
+    this.motions = cmds;
+    this.shapes = s;
     if (cmds != null && s != null) {
       LinkedHashMap<Command, Shape> map = new LinkedHashMap<Command, Shape>();
       for (int i = 0; i < cmds.size(); i++) {
@@ -59,6 +68,44 @@ public final class AnimationModelImpl implements AnimationModel {
     } else {
       throw new IllegalArgumentException("Inputs must not be null!");
     }
+  }
+
+  public ArrayList<Command> sortCommands(ArrayList<Command> cmds, ArrayList<Shape> s) {
+    ArrayList<Command> newCmd = new ArrayList<Command>();
+    for (Shape shape : s) {
+      for (Command c : cmds) {
+        if (c.getShapeName().equals(shape.getName())) {
+          newCmd.add(c);
+        }
+      }
+    }
+    return newCmd;
+  }
+
+  /**
+   * creates new commands when there are gaps in between times that do nothing.
+   * @param cmds
+   * @return
+   */
+  @Override
+  public ArrayList<Command> fillIn(ArrayList<Command> cmds) {
+    ArrayList<Command> newCmds = new ArrayList<Command>();
+    Command last = cmds.get(cmds.size() - 1);
+    for (int i = 0; i < cmds.size() - 1; i++) {
+      newCmds.add(cmds.get(i));
+      if (cmds.get(i).getShapeName().equals(cmds.get(i + 1).getShapeName())
+              && cmds.get(i).getEndTime() != cmds.get(i + 1).getStartTime()) {
+        newCmds.add(new Command(cmds.get(i).getShape(), cmds.get(i).getEndTime(),
+                cmds.get(i + 1).getStartTime()));
+      }
+    }
+    cmds.add(last);
+    return newCmds;
+  }
+
+  @Override
+  public String getCanvas() {
+    return "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2] + " " + canvas[3];
   }
 
   @Override
@@ -169,7 +216,8 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   /**
-   * Determines whether the times are overlapping for the two Commands.
+   * Determines whether the times are overlapping for the two Commands. They are not overlapping
+   * if the times are the same, it should be this way.
    * @param c1 The first command
    * @param c2 the second command
    * @return true if they are overlapping
@@ -179,8 +227,8 @@ public final class AnimationModelImpl implements AnimationModel {
     System.out.println(c2.getStartTime());
     System.out.println(c1.getEndTime());
     System.out.println(c2.getEndTime());
-    return ((c1.getStartTime() <= c2.getStartTime() && c1.getEndTime() >= c2.getStartTime())
-            || (c2.getStartTime() <= c1.getStartTime() && c2.getEndTime() >= c1.getEndTime()));
+    return ((c1.getStartTime() < c2.getStartTime() && c1.getEndTime() > c2.getStartTime())
+            || (c2.getStartTime() < c1.getStartTime() && c2.getEndTime() > c1.getEndTime()));
   }
 
   public static Builder builder() {
@@ -201,11 +249,10 @@ public final class AnimationModelImpl implements AnimationModel {
 
     @Override
     public AnimationBuilder<AnimationModelImpl> setBounds(int x, int y, int width, int height) {
-      /**
-       * TODO:
-       * need to decide what to do here. We can add fields to the model. I also added fields to the
-       * view since we'll probably need them. I'm guessing x and y are used for the Visual view.
-       */
+      model.canvas[0] = x;
+      model.canvas[0] = y;
+      model.canvas[0] = width;
+      model.canvas[0] = height;
       return this;
     }
 

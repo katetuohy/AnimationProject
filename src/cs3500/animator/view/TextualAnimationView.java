@@ -12,20 +12,38 @@ import cs3500.model.Shape;
 public class TextualAnimationView implements IView {
 
   private Appendable out;
+  private int speed;
 
 
   public TextualAnimationView() {
     this.out = System.out;
+    this.speed = 1;
   }
 
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands) {
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas) {
     ArrayList<Shape> usedShapes = new ArrayList<Shape>();
+    tryAppend(out, canvas + "\n");
     for (Shape s : commands.values()) {
       if (!usedShapes.contains(s)) {
         tryAppend(out, this.printShapeCommands(s, commands) + "\n");
         usedShapes.add(s);
       }
     }
+  }
+
+  @Override
+  public void displaySVG(List<Command> motions) {
+    //do nothing
+  }
+
+  @Override
+  public void displayVisual(List<Shape> shapes) {
+    //do nothing
+  }
+
+  @Override
+  public Appendable getOut() {
+    return this.out;
   }
 
   private String printShapeCommands (Shape s, LinkedHashMap < Command, Shape > commands){
@@ -39,13 +57,8 @@ public class TextualAnimationView implements IView {
   }
 
   @Override
-  public void setSpeed( int num) {
-
-  }
-
-  @Override
-  public void display(List<Shape> Shapes) {
-
+  public void setSpeed(int num) {
+    this.speed = num;
   }
 
   @Override

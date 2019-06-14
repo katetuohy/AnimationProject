@@ -10,13 +10,11 @@ public class SVGAnimationView implements IView {
   Appendable out;
   private int width;
   private int height;
-
-  public SVGAnimationView(Appendable out) {
-    this.out = out;
-  }
+  private int speed;
 
   public SVGAnimationView() {
     this.out = System.out;
+    this.speed = 1;
   }
 
   public void displaySVG(List<Command> motions) {
@@ -39,12 +37,27 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
-  public void setOutput(String output) {
+  public void displayVisual(List<Shape> shapes) {
 
   }
 
   @Override
+  public Appendable getOut() {
+    return this.out;
+  }
+
+  @Override
+  public void setOutput(Appendable output) {
+    this.out = out;
+  }
+
+  @Override
   public void setSpeed(int num) {
+    this.speed = num;
+  }
+
+  @Override
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas) {
 
   }
 

@@ -47,8 +47,7 @@ public final class Excellence {
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
-    AnimationReader.parseFile(rn, builder);
-    AnimationModel model = builder.build();
+    AnimationModel model = AnimationReader.parseFile(rn, builder);
     if (Arrays.asList(args).contains("-out")) {
       int ind = Arrays.asList(args).indexOf("-out") + 1;
       String out = Arrays.asList(args).get(ind++);
