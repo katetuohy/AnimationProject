@@ -22,14 +22,14 @@ public final class AnimationModelImpl implements AnimationModel {
   int time;
   private ArrayList<Command> motions;
   private ArrayList<Shape> shapes;
-  private LinkedHashMap<Command, AShape> commands;
+  private LinkedHashMap<Command, Shape> commands;
 
   /**
    * Construct an animation model at time = 0.
    */
   public AnimationModelImpl() {
     this.time = 0;
-    this.commands = new LinkedHashMap<Command, AShape>();
+    this.commands = new LinkedHashMap<Command, Shape>();
     this.motions = new ArrayList<Command>();
     this.shapes = new ArrayList<Shape>();
   }
@@ -42,10 +42,9 @@ public final class AnimationModelImpl implements AnimationModel {
    * @param s    The list of shapes in the animation.
    */
   @Override
-  public void setAnimationMap(ArrayList<Command> cmds, ArrayList<AShape> s) {
+  public void setAnimationMap(ArrayList<Command> cmds, ArrayList<Shape> s) {
     if (cmds != null && s != null) {
-      LinkedHashMap<Command, AShape> map = new LinkedHashMap<Command, AShape>();
-      // map.put(command, shape);
+      LinkedHashMap<Command, Shape> map = new LinkedHashMap<Command, Shape>();
       for (int i = 0; i < cmds.size(); i++) {
         String name = cmds.get(i).getShapeName();
         for (int j = 0; j < s.size(); j++) {
@@ -72,22 +71,14 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public LinkedHashMap<Command, AShape> getMap() {
+  public LinkedHashMap<Command, Shape> getMap() {
     return this.commands;
   }
 
-  /**
-   * Get the list of motions for the animation.
-   * @return list of motions
-   */
   public ArrayList<Command> getMotions() {
     return this.motions;
   }
 
-  /**
-   * Get the list of shapes for the animation.
-   * @return list of shapes
-   */
   public ArrayList<Shape> getShapes() {
     return this.shapes;
   }
@@ -95,8 +86,8 @@ public final class AnimationModelImpl implements AnimationModel {
   @Override
   public String printCommands() {
     String toReturn = "";
-    ArrayList<AShape> usedShapes = new ArrayList<AShape>();
-    for (AShape s : commands.values()) {
+    ArrayList<Shape> usedShapes = new ArrayList<Shape>();
+    for (Shape s : commands.values()) {
       if (!usedShapes.contains(s)) {
         toReturn += this.printShapeCommands(s) + "\n";
         usedShapes.add(s);
@@ -105,7 +96,7 @@ public final class AnimationModelImpl implements AnimationModel {
     return toReturn;
   }
 
-  private String printShapeCommands(AShape s) {
+  private String printShapeCommands(Shape s) {
     String toReturn = "shape " + s.getName() + "\n";
     for (Command c : commands.keySet()) {
       if (c.getShapeName().equals(s.getName())) {

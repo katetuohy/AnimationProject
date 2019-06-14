@@ -2,6 +2,8 @@ package cs3500.animator;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 import cs3500.animator.util.AnimationBuilder;
@@ -9,12 +11,13 @@ import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewFactory;
 import cs3500.controller.Controller;
+import cs3500.controller.IController;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 
 public final class Excellence {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     boolean hasI = false;
     boolean hasV = false;
     String in = "";
@@ -36,6 +39,7 @@ public final class Excellence {
     if (!(hasV && hasI)) {
       throw new IllegalArgumentException("Must input an in and a view type");
     }
+
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
@@ -43,16 +47,19 @@ public final class Excellence {
     try {
       rn = new FileReader(in);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      e.getMessage();
     }
     AnimationReader.parseFile(rn, builder);
     AnimationModel model = builder.build();
-    Controller controller = new Controller(model, v);
 
+    // Set the output.
     if (Arrays.asList(args).contains("-out")) {
       int ind = Arrays.asList(args).indexOf("-out") + 1;
       out = Arrays.asList(args).get(ind++);
-      v.setOutput(out);
+      FileWriter f = new FileWriter(out);
+      v.setOutput(f);
+    } else {
+      v.setOutput(System.out);
     }
 
     if (Arrays.asList(args).contains("-speed")) {
@@ -60,6 +67,9 @@ public final class Excellence {
       speed = Integer.parseInt(Arrays.asList(args).get(speedIndex++));
       v.setSpeed(speed);
     }
+
+    IController controller = new Controller(model, v);
+    controller.playAnimation();
   }
 }
 

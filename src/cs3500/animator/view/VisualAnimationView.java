@@ -2,12 +2,14 @@ package cs3500.animator.view;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.swing.*;
 
-import cs3500.model.AShape;
 import cs3500.model.Command;
+import cs3500.model.Shape;
 
 public class VisualAnimationView extends JFrame implements IView {
   private JLabel display;
@@ -29,22 +31,22 @@ public class VisualAnimationView extends JFrame implements IView {
   }
 
   @Override
-  public void render(List<AShape> Shapes) {
-
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands) {
+    throw new UnsupportedOperationException("Cannot display textual view.");
   }
 
   @Override
-  public void display() {
+  public void display(ArrayList<Shape> shapes) {
     setVisible(true);
   }
 
   @Override
-  public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
+  public void setShapesAndMotions(List<Shape> shapes, List<Command> motions) {
   //so can commit
   }
 
   @Override
-  public void setOutput(String output) {
+  public void setOutput(Appendable output) {
 
   }
 
