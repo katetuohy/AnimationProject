@@ -9,13 +9,17 @@ import cs3500.model.Command;
 
 public interface IView {
 
+  void display(List<Shape> Shapes);
+
   void setOutput(Appendable output);
 
   void setSpeed(int num);
 
-  void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas);
+  void displayTextualView(LinkedHashMap<Command, Shape> commands);
 
   void displaySVG(List<Command> motions);
+
+  void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas);
 
   void displayVisual(List<Shape> shapes);
 

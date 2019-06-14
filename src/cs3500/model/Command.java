@@ -276,8 +276,28 @@ public class Command {
 
   public String getXML() {
     return "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\" attributeName=\"x\" from=\"" + from
-            + "\" to=\"" + to + "\" fill=\"rgb(" + color.getRed() + "," + color.getGreen()
-            + "," + color.getBlue() + ")\" />";
+            + "ms\" dur=\"" + (endTime - startTime)
+            + "ms\" attributeName=\"cx\" from=\"" + from.getX() + "\" to=\"" + to.getX()
+            + "\"" + " />\n"
+
+            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + "attributeName=\"y\" from=\"" + from.getY() + "\" to=\" + to.getY()\"\n"
+
+            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + "attributeName=\"color-interpolation\" from=\""
+            + "rgb(" + oldColor.getRed() + "," + oldColor.getGreen() + "," + oldColor.getBlue()
+            + ")\""
+            + "\" to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
+            + ")\"" + " />\n"
+
+            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + this.shape.animateWidthXML(this.oldWidth, this.newWidth)
+
+            + "<animate attributeType=\"xml\" begin=\"" + startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + this.shape.animateHeightXML(this.oldHeight, this.newHeight);
   }
 }

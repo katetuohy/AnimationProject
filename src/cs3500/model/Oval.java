@@ -67,6 +67,24 @@ public class Oval extends AShape {
 
   @Override
   public String getXML() {
-    return null;
+    return "<ellipse id=\"" + name + "\" cx=\"" + pos.getX() + "\" cy=\"" + pos.getY() + "\" rx=\""
+            + xRadius + "\" ry=\"" + yRadius
+            + "\" fill=\"rgb(" + c.getRed() + "," + c.getGreen() + ","  + c.getBlue()
+            + ")\" visibility=\"visible\" >\n";
+  }
+
+  @Override
+  public String getEndXML() {
+    return "</ellipse>\n";
+  }
+
+  @Override
+  public String animateWidthXML(int width1, int width2) {
+    return "attributeName=\"rx\" from=\"" + width1 + "\" to=\"" + width2 + "\"\n";
+  }
+
+  @Override
+  public String animateHeightXML(int height1, int height2) {
+    return "attributeName=\"ry\" from=\"" + (height1 / 2)+ "\" to=\"" + (height2 / 2) + "\"\n";
   }
 }

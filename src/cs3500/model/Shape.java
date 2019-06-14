@@ -85,4 +85,15 @@ public interface Shape {
    * Return shape's end tag XML.
    */
   String getEndXML();
+
+  /**
+   * Return shape's width changing animate xml statement.
+   */
+  String animateWidthXML(int width1, int width2);
+
+  /**
+   * Return shape's height changing animate xml statement.
+   */
+  String animateHeightXML(int height1, int height2);
+
 }
