@@ -64,4 +64,9 @@ public class Oval extends AShape {
   private int getYRadius() {
     return this.yRadius;
   }
+
+  @Override
+  public String getXML() {
+    return null;
+  }
 }

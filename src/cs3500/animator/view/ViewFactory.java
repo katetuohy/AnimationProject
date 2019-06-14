@@ -13,7 +13,7 @@ public class ViewFactory {
       return new VisualAnimationView();
     }
     if (type.equalsIgnoreCase("svg")) {
-      return new SVGAnimationVIew();
+      return new SVGAnimationView();
     }
     return null;
   }

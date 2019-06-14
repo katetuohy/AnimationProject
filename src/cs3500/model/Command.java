@@ -264,4 +264,18 @@ public class Command {
     return this.color;
   }
 
+  /**
+   * Get the motion's shape.
+   * @return a Shape.
+   */
+  public Shape getShape() {
+    return this.shape;
+  }
+
+  public String getXML() {
+    return "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\" attributeName=\"x\" from=\"" + from
+            + "\" to=\"" + to + "\" fill=\"rgb(" + color.getRed() + "," + color.getGreen()
+            + "," + color.getBlue() + ")\" />";
+  }
 }

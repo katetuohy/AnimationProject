@@ -75,4 +75,14 @@ public interface Shape {
    * @param cmd       the command for the shape change.
    */
   void setSize(int currTime, int startTime, int endTime, Command cmd);
+
+  /**
+   * Return shape's XML.
+   */
+  String getXML();
+
+  /**
+   * Return shape's end tag XML.
+   */
+  String getEndXML();
 }

@@ -68,4 +68,16 @@ public class Polygon extends AShape {
   public int getNumSides() {
     return this.numSides;
   }
+
+  @Override
+  public String getXML() {
+    String.format("<rect id=\"%s\" x=\"200\" y=\"200\" width=\"50\" height=\"100\" " +
+                    "fill=\"rgb(128,0,128)\" visibility=\"visible\" >\n"
+    , this.name, )
+  }
+
+  @Override
+  public String getEndXML() {
+    return "</rect>";
+  }
 }

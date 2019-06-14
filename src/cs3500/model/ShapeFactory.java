@@ -8,10 +8,10 @@ public class ShapeFactory {
       if (type == null) { //maybe throw null exception here
         return null;
       }
-      if (type.equalsIgnoreCase("polygon")) {
-        return new Polygon(name);
+      if (type.equalsIgnoreCase("rectangle")) {
+        return new Polygon(name, 4);
       }
-      if (type.equalsIgnoreCase("oval")) {
+      if (type.equalsIgnoreCase("ellipse")) {
         return new Oval(name);
       }
       return null;
