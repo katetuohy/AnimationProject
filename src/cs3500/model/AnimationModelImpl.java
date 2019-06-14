@@ -133,6 +133,34 @@ public final class AnimationModelImpl implements AnimationModel {
     }
   }
 
+  @Override
+  public int getMaxWidth() {
+    int maxWidth = 0;
+    for (Command c: commands.keySet()) {
+      if (c.getFrom().getX() > maxWidth) {
+        maxWidth = (int)c.getFrom().getX() + c.getOldWidth();
+      }
+      if (c.getTo().getX() > maxWidth) {
+        maxWidth = (int)c.getTo().getX() + c.getNewWidth();
+      }
+    }
+    return maxWidth;
+  }
+
+  @Override
+  public int getMaxHeight() {
+    int maxHeight = 0;
+    for (Command c: commands.keySet()) {
+      if (c.getFrom().getY() > maxHeight) {
+        maxHeight = (int)c.getFrom().getY() + c.getOldHeight();
+      }
+      if (c.getTo().getY() > maxHeight) {
+        maxHeight = (int)c.getTo().getY() + c.getNewHeight();
+      }
+    }
+    return maxHeight;
+  }
+
   /**
    * Determines whether the times are overlapping for the two Commands.
    * @param c1 The first command
@@ -163,31 +191,19 @@ public final class AnimationModelImpl implements AnimationModel {
 
     @Override
     public AnimationBuilder<AnimationModelImpl> setBounds(int x, int y, int width, int height) {
-      return null;
       /**
-       * Sets the bounds of the animation so need to figure out where that is done and link
-       * Or does it not do anything and return null?
+       * TODO:
+       * need to decide what to do here. We can add fields to the model. I also added fields to the
+       * view since we'll probably need them. I'm guessing x and y are used for the Visual view.
        */
+      return this;
     }
 
     @Override
     public AnimationBuilder<AnimationModelImpl> declareShape(String name, String type) {
-      /**
-       * TODO:
-       * Should we create an list of shapes in our model? Seems like it might be a good idea
-       * since declareShape and addMotion are called separately.
-       * Or we could add motions to the hashmap with the shape as null.
-       *
-       */
+
       model.getShapes().add(new ShapeFactory().getShape(name, type));
       return this;
-      /**
-       * TODO:
-       * ^^^^ Is this right??
-       * Kate: I think so. I think the use of the factory is great and I think that yes, if we want
-       * to have the model sort through the shapes and motions to create the hashmap, which we
-       * probably should be doing, then having lists of both is best.
-       */
     }
 
     @Override
@@ -204,13 +220,6 @@ public final class AnimationModelImpl implements AnimationModel {
       model.getMotions().add(new Command(shape, t1, new Position2D(x1, y1), w1, h1,
               new Color(r1, g1, b1), t2,  new Position2D(x2, y2), w2, h2, new Color(r2, g2, b2)));
       return this;
-      /**
-       * TODO:
-       * ^^^^ Is this right??
-       * Kate: I dont think so because we need to go through the hashmap and insert the
-       * new command under the shape that it's supposed to be in. This is what I was having so
-       * much trouble doing with the empty commands for filling in the teleports
-       */
     }
 
     @Override

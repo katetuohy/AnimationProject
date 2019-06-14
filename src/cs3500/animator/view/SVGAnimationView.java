@@ -8,7 +8,9 @@ import cs3500.model.AShape;
 import cs3500.model.Command;
 import cs3500.model.Shape;
 
-public class SVGAnimationVIew implements IView {
+public class SVGAnimationView implements IView {
+  Appendable out;
+  int speed;
 
   @Override
   public void displayTextualView(LinkedHashMap<Command, Shape> commands) {
@@ -21,17 +23,17 @@ public class SVGAnimationVIew implements IView {
   }
 
   @Override
-  public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
+  public void setShapesAndMotions(List<Shape> shapes, List<Command> motions) {
 
   }
 
   @Override
   public void setOutput(Appendable output) {
-
+    this.out = output;
   }
 
   @Override
   public void setSpeed(int num) {
-
+    this.speed = speed;
   }
 }

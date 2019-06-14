@@ -72,4 +72,16 @@ public interface AnimationModel {
    */
   ArrayList<Command> getMotions();
 
+  /**
+   * Get the maximum width of the frame based on the shapes' positions.
+   * @return width of the frame.
+   */
+  int getMaxWidth();
+
+  /**
+   * Get the maximum height of the frame based on the shapes' positions and dimensions.
+   * @return height of the frame.
+   */
+  int getMaxHeight();
+
 }
