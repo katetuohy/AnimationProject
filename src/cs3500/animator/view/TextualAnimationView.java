@@ -7,18 +7,14 @@ import cs3500.model.Command;
 
 public class TextualAnimationView implements IView {
 
+  Appendable out;
+
   @Override
-  public void render(List<AShape> Shapes) {
+  public void display(List<AShape> Shapes) {
 
   }
 
-  @Override
   public void display() {
-
-  }
-
-  @Override
-  public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
 
   }
 
@@ -29,6 +25,5 @@ public class TextualAnimationView implements IView {
 
   @java.lang.Override
   public void setOutput(java.lang.String output) {
-    //doesn't output
   }
 }

@@ -10,37 +10,32 @@ import cs3500.model.AShape;
 import cs3500.model.Command;
 
 public class VisualAnimationView extends JFrame implements IView {
-  private JLabel display;
+  private DrawingPanel panel;
+  JScrollPane scrollPane;
   private int speed;
+  Appendable out;
 
   public VisualAnimationView() {
-    setSize(500, 300);
-    setLocation(200, 200);
+    super();
+    panel = new DrawingPanel();
+    panel.setMinimumSize( new Dimension(500,500));
+    panel.setPreferredSize( new Dimension(2000,2000));
+    panel.setBackground(Color.yellow);
+
+    scrollPane = new JScrollPane(panel); // DECORATOR WHOO WHOO.
+
+    setSize(800,800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setMinimumSize(new Dimension(300,300));
-    setMaximumSize(new Dimension(1000, 1000));
+    setLocation(200,200);
 
-    this.setLayout(new FlowLayout());
+    add(scrollPane);
 
-    display = new JLabel("To be displayed");
-    this.add(display);
-
-    pack();
-  }
-
-  @Override
-  public void render(List<AShape> Shapes) {
-
-  }
-
-  @Override
-  public void display() {
     setVisible(true);
   }
 
   @Override
-  public void setShapesAndMotions(List<AShape> shapes, List<Command> motions) {
-  //so can commit
+  public void render(List<AShape> shapes) {
+    panel.draw(shapes);
   }
 
   @Override

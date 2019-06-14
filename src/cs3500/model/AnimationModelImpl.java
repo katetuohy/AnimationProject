@@ -3,6 +3,7 @@ package cs3500.model;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import cs3500.animator.util.AnimationBuilder;
 /**
@@ -117,7 +118,8 @@ public final class AnimationModelImpl implements AnimationModel {
 
 
   @Override
-  public void moveShapes() {
+  public List<Shape> moveShapes() {
+    List<Shape> shapesToRender = new ArrayList<Shape>();
     for (Command c : commands.keySet()) {
       if (this.time >= c.getStartTime() && this.time <= c.getEndTime()) {
         int startTime = c.getStartTime();
@@ -125,9 +127,14 @@ public final class AnimationModelImpl implements AnimationModel {
         commands.get(c).setPosition(this.time, startTime, endTime, c);
         commands.get(c).setSize(this.time, startTime, endTime, c);
         commands.get(c).setColor(this.time, startTime, endTime, c);
-
+        for (Shape s : shapes) {
+          if (s.getName().equalsIgnoreCase(c.getShapeName())) {
+            shapesToRender.add(s);
+          }
+        }
       }
     }
+    return shapesToRender;
   }
 
   @Override
@@ -161,6 +168,9 @@ public final class AnimationModelImpl implements AnimationModel {
     return new Builder();
   }
 
+  /**
+   *
+   */
   public static final class Builder implements AnimationBuilder<AnimationModelImpl> {
     AnimationModelImpl model;
 

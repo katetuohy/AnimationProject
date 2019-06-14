@@ -8,11 +8,7 @@ import cs3500.model.Command;
 
 public interface IView {
 
-  void render(List<AShape> Shapes);
-
-  void display();
-
-  void setShapesAndMotions(List<AShape> shapes, List<Command> motions);
+  void display(List<AShape> Shapes);
 
   void setOutput(String output);
 

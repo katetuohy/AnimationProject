@@ -2,6 +2,7 @@ package cs3500.model;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import javax.print.Doc;
 
@@ -28,7 +29,7 @@ public interface AnimationModel {
   /**
    * Update the states of all the shapes in the animation.
    */
-  void moveShapes();
+  List<Shape> moveShapes();
 
   /**
    * Getter for the time field.

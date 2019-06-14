@@ -53,13 +53,19 @@ public final class Excellence {
       int ind = Arrays.asList(args).indexOf("-out") + 1;
       out = Arrays.asList(args).get(ind++);
       v.setOutput(out);
+    } else {
+      v.setOutput("System.out");
     }
 
     if (Arrays.asList(args).contains("-speed")) {
       int speedIndex = Arrays.asList(args).indexOf("-speed");
       speed = Integer.parseInt(Arrays.asList(args).get(speedIndex++));
       v.setSpeed(speed);
+    } else {
+      v.setSpeed(1);
     }
+
+
   }
 }
 
