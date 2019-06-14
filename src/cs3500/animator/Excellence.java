@@ -2,6 +2,8 @@ package cs3500.animator;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 import cs3500.animator.util.AnimationBuilder;
@@ -9,6 +11,7 @@ import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewFactory;
 import cs3500.controller.Controller;
+import cs3500.controller.IController;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 
@@ -19,8 +22,7 @@ public final class Excellence {
     boolean hasV = false;
     String in = "";
     String view = "";
-    String out = "System.out";
-    int speed = -1;
+    int speed = 1;
 
     if (Arrays.asList(args).contains("-view")) {
       int ind = Arrays.asList(args).indexOf("-view") + 1;
@@ -47,25 +49,25 @@ public final class Excellence {
     }
     AnimationReader.parseFile(rn, builder);
     AnimationModel model = builder.build();
-    Controller controller = new Controller(model, v);
-
     if (Arrays.asList(args).contains("-out")) {
       int ind = Arrays.asList(args).indexOf("-out") + 1;
-      out = Arrays.asList(args).get(ind++);
-      v.setOutput(out);
-    } else {
-      v.setOutput("System.out");
+      String out = Arrays.asList(args).get(ind++);
+      Appendable ap = null;
+      try {
+        ap = new FileWriter(out);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      v.setOutput(ap);
     }
 
     if (Arrays.asList(args).contains("-speed")) {
       int speedIndex = Arrays.asList(args).indexOf("-speed");
       speed = Integer.parseInt(Arrays.asList(args).get(speedIndex++));
-      v.setSpeed(speed);
-    } else {
-      v.setSpeed(1);
     }
-
-
+    v.setSpeed(speed);
+    IController controller = new Controller(model, v);
+    controller.playAnimation();
   }
 }
 
