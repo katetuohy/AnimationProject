@@ -1,60 +1,77 @@
 package cs3500.animator;
 
-import java.io.Reader;
-import java.io.StringReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
+import cs3500.animator.util.AnimationBuilder;
+import cs3500.animator.util.AnimationReader;
+import cs3500.animator.view.IView;
+import cs3500.animator.view.ViewFactory;
 import cs3500.controller.Controller;
+import cs3500.controller.IController;
+import cs3500.model.AnimationModel;
+import cs3500.model.AnimationModelImpl;
 
 public final class Excellence {
 
-  private static Controller controller;
-
   public static void main(String[] args) {
-    String bType = args[0];
-    int row = -1;
-    int col = -1;
-    boolean hasS = false;
-    boolean hasH = false;
-    StringBuffer out = new StringBuffer();
-    Reader in = new StringReader(bType);
-    controller = new Controller(in, out);
-    int boardSize = -1;
-
-    if (Arrays.asList(args).contains("-in")) {
-      int ind = Arrays.asList(args).indexOf("-size") + 1;
-      boardSize = Integer.parseInt(Arrays.asList(args).get(ind));
-      hasS = true;
-    }
-
-    if (Arrays.asList(args).contains("-out")) {
-      int ind = Arrays.asList(args).indexOf("-size") + 1;
-      boardSize = Integer.parseInt(Arrays.asList(args).get(ind));
-      hasS = true;
-    }
+    boolean hasI = false;
+    boolean hasV = false;
+    String in = "";
+    String view = "";
+    int speed = 1;
 
     if (Arrays.asList(args).contains("-view")) {
-      int ind = Arrays.asList(args).indexOf("-size") + 1;
-      boardSize = Integer.parseInt(Arrays.asList(args).get(ind));
-      hasS = true;
+      int ind = Arrays.asList(args).indexOf("-view") + 1;
+      view = Arrays.asList(args).get(ind++);
+      hasV = true;
+    }
+
+    if (Arrays.asList(args).contains("-in")) {
+      int ind = Arrays.asList(args).indexOf("-in") + 1;
+      in = Arrays.asList(args).get(ind++);
+      hasI = true;
+    }
+    if (!(hasV && hasI)) {
+      throw new IllegalArgumentException("Must input an in and a view type");
+    }
+
+    // Instantiate the correct view & set FileReader object
+    ViewFactory factory = new ViewFactory();
+    IView v = factory.getView(view);
+    AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
+    Readable rn = null;
+    try {
+      rn = new FileReader(in);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+
+    // Parse animation input file
+    AnimationReader.parseFile(rn, builder);
+    AnimationModel model = builder.build();
+    if (Arrays.asList(args).contains("-out")) {
+      int ind = Arrays.asList(args).indexOf("-out") + 1;
+      String out = Arrays.asList(args).get(ind++);
+      Appendable ap = null;
+      try {
+        ap = new FileWriter(out);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      v.setOutput(ap);
     }
 
     if (Arrays.asList(args).contains("-speed")) {
-      int holeIndex = Arrays.asList(args).indexOf("-hole");
-      row = Integer.parseInt(Arrays.asList(args).get(holeIndex++));
-      col = Integer.parseInt(Arrays.asList(args).get(holeIndex + 2));
-      hasH = true;
+      int speedIndex = Arrays.asList(args).indexOf("-speed");
+      speed = Integer.parseInt(Arrays.asList(args).get(speedIndex++));
     }
-
-    if (hasS && hasH) {
-      Excellence.runGameAllArgs(bType, boardSize, row, col);
-    } else if (hasS) {
-      Excellence.runGameSize(bType, boardSize);
-    } else if (hasH) {
-      Excellence.runGameHole(bType, row, col);
-    } else {
-      Excellence.runNoArgs(bType);
-    }
+    v.setSpeed(speed);
+    IController controller = new Controller(model, v);
+    controller.playAnimation();
   }
 }
 

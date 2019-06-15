@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Represents a polygon with n sides.
@@ -12,6 +12,11 @@ public class Polygon extends AShape {
   public Polygon(String name) {
     super(name, 100, 100);
     this.numSides = 4;
+  }
+
+  public void drawShape(Graphics g) {
+    g.fillRect((int) this.getPosition().getX(), (int) this.getPosition().getY(),
+            this.getWidth(), this.getHeight());
   }
 
   /**
@@ -67,5 +72,28 @@ public class Polygon extends AShape {
    */
   public int getNumSides() {
     return this.numSides;
+  }
+
+  @Override
+  public String getXML() {
+    return "<rect id=\""+ name + "\" x=\"" + pos.getX() + "\" y=\"" + pos.getY()
+            + "\" width=\"" + width + "\" height=\"" + height + "\" "
+            + "fill=\"rgb(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue()
+            + ")\" visibility=\"visible\" >\n";
+  }
+
+  @Override
+  public String getEndXML() {
+    return "</rect>\n";
+  }
+
+  @Override
+  public String animateWidthXML(int width1, int width2) {
+    return "";
+  }
+
+  @Override
+  public String animateHeightXML(int width1, int width2) {
+    return "";
   }
 }

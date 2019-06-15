@@ -7,53 +7,17 @@ import java.awt.Color;
  */
 public class Command {
 
-  private final AShape shape;
-  private final Color oldColor;
+  private final Shape shape;
   private final int startTime;
-  private final int endTime;
-  private final Position2D from;
   private final Position2D to;
   private final int oldWidth;
   private final int oldHeight;
+  private final Color oldColor;
+  private final int endTime;
+  private final Position2D from;
   private final int newWidth;
   private final int newHeight;
   private final Color color;
-
-  /**
-   * Constructor for everything.
-   * @param shape      The shape that the command applies to
-   * @param startTime  The start time tick for the command to begin
-   * @param endTime    the time tick for the command to end
-   * @param from       the position of where the shape is moving from
-   * @param to         the position of where the shape is moving to
-   * @param newWidth   the new width of the shape
-   * @param newHeight  the new height of the shape
-   * @param color      the new color that the shape should be
-   */
-  public Command(AShape shape, int startTime, int endTime,
-                 Position2D from, Position2D to, int newWidth, int newHeight, Color color) {
-    if (shape == null) {
-      throw new IllegalArgumentException("Shape cannot be null.");
-    }
-    if (startTime >= endTime || startTime < 0 || endTime < 1) {
-      throw new IllegalArgumentException(
-              "Start time must be strictly less than end time and positive");
-    }
-    if (newWidth <= 0 || newHeight <= 0) {
-      throw new IllegalArgumentException("Height and width must be greater than 0");
-    }
-    this.shape = shape;
-    this.oldColor = shape.getColor();
-    this.endTime = endTime;
-    this.startTime = startTime;
-    this.from = from;
-    this.to = to;
-    this.oldWidth = shape.getWidth();
-    this.oldHeight = shape.getHeight();
-    this.newHeight = newHeight;
-    this.newWidth = newWidth;
-    this.color = color;
-  }
 
   /**
    * The do nothing command, when nothing changes about the state of the shape.
@@ -61,7 +25,7 @@ public class Command {
    * @param startTime the starting time for the command
    * @param endTime   when the command ends
    */
-  public Command(AShape shape, int startTime, int endTime) {
+  public Command(Shape shape, int startTime, int endTime) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
@@ -82,13 +46,55 @@ public class Command {
   }
 
   /**
+   * Construct a command with all parameters.
+   * @param shape
+   * @param startTime
+   * @param to
+   * @param oldWidth
+   * @param oldHeight
+   * @param oldColor
+   * @param endTime
+   * @param from
+   * @param newWidth
+   * @param newHeight
+   * @param color
+   */
+  public Command(Shape shape, int startTime, Position2D to, int oldWidth, int oldHeight,
+                 Color oldColor, int endTime, Position2D from, int newWidth, int newHeight,
+                 Color color) {
+    if (shape == null) {
+      throw new IllegalArgumentException("Shape cannot be null.");
+    }
+    if (startTime >= endTime) {
+      throw new IllegalArgumentException("Start time must be strictly less than end time.");
+    }
+    if (color == null) {
+      throw new IllegalArgumentException("Color should not be null.");
+    }
+    if(to == null || from == null) {
+      throw new IllegalArgumentException("Position should not be null.");
+    }
+    this.shape = shape;
+    this.startTime = startTime;
+    this.to = to;
+    this.oldWidth = oldWidth;
+    this.oldHeight = oldHeight;
+    this.oldColor = oldColor;
+    this.endTime = endTime;
+    this.from = from;
+    this.newWidth = newWidth;
+    this.newHeight = newHeight;
+    this.color = color;
+  }
+
+  /**
    * The constructor to change the color of the shape if nothing else is to be changed.
    * @param shape     the shape to which the command applies to
    * @param startTime the start time for the command
    * @param endTime   when the command ends
    * @param color     the new color for the shape
    */
-  public Command(AShape shape, int startTime, int endTime, Color color) {
+  public Command(Shape shape, int startTime, int endTime, Color color) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
@@ -118,7 +124,7 @@ public class Command {
    * @param endTime    the time tick when the command ends
    * @param pos        the new position for the shape
    */
-  public Command(AShape shape, int startTime, int endTime, Position2D pos) {
+  public Command(Shape shape, int startTime, int endTime, Position2D pos) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
@@ -142,14 +148,14 @@ public class Command {
   }
 
   /**
-   * Constructor to change shape width and height.
+   * Constructor to change shape width and height if nothing else is to be changed.
    * @param shape     the shape of which the command applies to
    * @param startTime the time tick when the command begins
    * @param endTime   the time tick when the command ends
    * @param width     the new width of the shape
    * @param height    the new height of the shape
    */
-  public Command(AShape shape, int startTime, int endTime, int width, int height) {
+  public Command(Shape shape, int startTime, int endTime, int width, int height) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
@@ -273,4 +279,38 @@ public class Command {
     return this.color;
   }
 
+  /**
+   * Get the motion's shape.
+   * @return a Shape.
+   */
+  public Shape getShape() {
+    return this.shape;
+  }
+
+  public String getXML() {
+    return "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime)
+            + "ms\" attributeName=\"cx\" from=\"" + from.getX() + "\" to=\"" + to.getX()
+            + "\"" + " />\n"
+
+            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + "attributeName=\"y\" from=\"" + from.getY() + "\" to=\" + to.getY()\"\n"
+
+            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + "attributeName=\"color-interpolation\" from=\""
+            + "rgb(" + oldColor.getRed() + "," + oldColor.getGreen() + "," + oldColor.getBlue()
+            + ")\""
+            + "\" to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
+            + ")\"" + " />\n"
+
+            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + this.shape.animateWidthXML(this.oldWidth, this.newWidth)
+
+            + "<animate attributeType=\"xml\" begin=\"" + startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + this.shape.animateHeightXML(this.oldHeight, this.newHeight);
+  }
 }

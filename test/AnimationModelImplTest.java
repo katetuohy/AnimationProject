@@ -3,26 +3,33 @@ import org.junit.Test;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-import model.AShape;
-import model.AnimationModel;
-import model.AnimationModelImpl;
-import model.Command;
-import model.Oval;
-import model.Polygon;
+import cs3500.model.AnimationModelImpl;
+import cs3500.model.Command;
+import cs3500.model.Oval;
+import cs3500.model.Polygon;
+import cs3500.model.Shape;
+import cs3500.model.AnimationModel;
 
 import static org.junit.Assert.assertEquals;
+/**
+ * TODO:
+ * - Add test for empty animation
+ * - DONE: test for teleportation
+ * - DONE: test shapes are there once added
+ */
 
 /**
  * Test the {@link AnimationModel} class.
  */
 public class AnimationModelImplTest {
 
-  AShape s1;
-  AShape s2;
-  AShape s3;
-  AShape s4;
-  ArrayList<AShape> shapes;
+  Shape s1;
+  Shape s2;
+  Shape s3;
+  Shape s4;
+  ArrayList<Shape> shapes;
   Command c1;
   Command c2;
   Command c3;
@@ -31,6 +38,7 @@ public class AnimationModelImplTest {
   ArrayList<Command> cmds;
   ArrayList<Command> cmds2;
   ArrayList<Command> cmds3;
+  ArrayList<Command> cmdsAfterFill;
 
   /**
    * Initialize all test variables.
@@ -40,16 +48,46 @@ public class AnimationModelImplTest {
     s2 = new Polygon("s2", 5);
     s3 = new Polygon("s3", 6, 50, 100);
     s4 = new Oval("s4", Color.BLUE);
-    shapes = new ArrayList<AShape>(Arrays.asList(s1, s2, s3, s4));
+    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
 
     c1 = new Command(s1, 0, 10);
     c2 = new Command(s2, 0, 10);
     c3 = new Command(s3, 0, 10);
-    c4 = new Command(s4, 0, 10);
-    c5 = new Command(s4, 0, 10);
+    c4 = new Command(s4, 0, 5);
+    c5 = new Command(s4, 5, 10);
     cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4, c5));
-    cmds2 = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4));
-    cmds3 = new ArrayList<Command>(Arrays.asList(c4, c5));
+  }
+
+  public void initTestVariablesOverlappingCommands() {
+    s1 = new Polygon("s1");
+    s2 = new Polygon("s2", 5);
+    s3 = new Polygon("s3", 6, 50, 100);
+    s4 = new Oval("s4", Color.BLUE);
+    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
+
+    c1 = new Command(s1, 0, 10);
+    c2 = new Command(s1, 5, 15);
+
+    cmds = new ArrayList<Command>(Arrays.asList(c1, c2));
+  }
+
+  public void initTestVariablesTeleportation() {
+    s1 = new Polygon("s1");
+    s2 = new Polygon("s2", 5);
+    s3 = new Polygon("s3", 6, 50, 100);
+    s4 = new Oval("s4", Color.BLUE);
+    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
+
+    c1 = new Command(s1, 0, 5);
+    c2 = new Command(s1, 6, 10);
+    c3 = new Command(s2, 0, 2);
+    c4 = new Command(s2, 6, 30);
+
+    cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4));
+    cmdsAfterFill = new ArrayList<Command> (Arrays.asList(c1,
+            new Command(s1, 5, 6), c2,
+            new Command(s1, 10, 30), c3,
+            new Command(s2, 2, 6), c4));
   }
 
   /**
@@ -62,6 +100,10 @@ public class AnimationModelImplTest {
     assertEquals(m.getTime(), 0);
     m.setTime(10);
     assertEquals(m.getTime(), 10);
+    m.addShape(s1);
+    m.addMotion(c1);
+    assertEquals(s1, m.getShapes().get(0));
+    assertEquals(c1, m.getMotions().get(0));
   }
 
   /**
@@ -71,8 +113,44 @@ public class AnimationModelImplTest {
   public void testSetAnimationMap() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimationMap(this.cmds, this.shapes);
-    assertEquals(m.getMap().size(), 5);
+    m.addShape(s1);
+    m.addShape(s2);
+    m.addShape(s3);
+    m.addShape(s4);
+    m.addMotion(c1);
+    m.addMotion(c2);
+    m.addMotion(c3);
+    m.addMotion(c4);
+    assertEquals(4, m.getMotions().size());
+    assertEquals(4, m.getShapes().size());
+    m.setAnimationMap();
+    assertEquals(m.getMap().size(), 4);
+    assertEquals(m.getMap().get(c1), s1);
+  }
+
+  /**
+   * Test setAnimationMap function properly initializes the hashmap of commands and shapes.
+   */
+  @Test
+  public void testFillInTimeGapsTeleportation() {
+    initTestVariablesTeleportation();
+    AnimationModel m = new AnimationModelImpl();
+    m.addShape(s1);
+    m.addShape(s2);
+    m.addShape(s3);
+    m.addShape(s4);
+    m.addMotion(c1);
+    m.addMotion(c2);
+    m.addMotion(c3);
+    m.addMotion(c4);
+    assertEquals(4, m.getMotions().size());
+    assertEquals(4, m.getShapes().size());
+    m.fixRemainingTimeGaps(cmds);
+    assertEquals(cmdsAfterFill.size(), m.getMotions().size());
+    for (int i = 0; i < cmdsAfterFill.size(); i++) {
+      assertEquals(cmdsAfterFill.get(i), m.getMotions().get(i));
+    }
+    assertEquals(m.getMap().size(), 4);
     assertEquals(m.getMap().get(c1), s1);
   }
 
@@ -83,7 +161,7 @@ public class AnimationModelImplTest {
   public void testSetAnimationMapNullInputs() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimationMap(null, null);
+    m.setAnimationMap();
   }
 
   /**
@@ -93,7 +171,15 @@ public class AnimationModelImplTest {
   public void testPrintCommands() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimationMap(cmds, shapes);
+    m.addShape(s1);
+    m.addShape(s2);
+    m.addShape(s3);
+    m.addShape(s4);
+    m.addMotion(c1);
+    m.addMotion(c2);
+    m.addMotion(c3);
+    m.addMotion(c4);
+    m.setAnimationMap();
     assertEquals(m.printCommands(), "shape s1\n"
             + "motion s1 0 0.0 0.0 100 100 0 0 0       10 0.0 0.0 100 100 0 0 0\n"
             + "\n" + "shape s2\n"
@@ -112,12 +198,18 @@ public class AnimationModelImplTest {
   public void testMoveShapesTimeZero() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimationMap(cmds,shapes);
-    ArrayList<Command> cmds1 = cmds;
-    ArrayList<AShape> shapes1 = shapes;
+    m.addShape(s1);
+    m.addShape(s2);
+    m.addShape(s3);
+    m.addShape(s4);
+    m.addMotion(c1);
+    m.addMotion(c2);
+    m.addMotion(c3);
+    m.addMotion(c4);
+    m.setAnimationMap();
     m.moveShapes();
-    assertEquals(cmds, cmds1);
-    assertEquals(shapes, shapes1);
+    assertEquals(cmds, m.getMotions());
+    assertEquals(shapes, m.getShapes());
   }
 
   /**
@@ -128,8 +220,16 @@ public class AnimationModelImplTest {
   public void testValidateCommands() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimationMap(cmds2, shapes);
-    m.validateCommands();
+    m.addShape(s1);
+    m.addShape(s2);
+    m.addShape(s3);
+    m.addShape(s4);
+    m.addMotion(c1);
+    m.addMotion(c2);
+    m.addMotion(c3);
+    m.addMotion(c4);
+    // m.setAnimationMap();
+    m.validateMotionsNotOverlapping();
     assertEquals(m.printCommands(), "shape s1\n"
             + "motion s1 0 0.0 0.0 100 100 0 0 0       10 0.0 0.0 100 100 0 0 0\n"
             + "\n" + "shape s2\n"
@@ -142,9 +242,11 @@ public class AnimationModelImplTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testValidateCommands2() {
-    initTestVariables();
+    initTestVariablesOverlappingCommands();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimationMap(cmds3, shapes);
-    m.validateCommands();
+    m.addShape(s1);
+    m.addMotion(c1);
+    m.addMotion(c2);
+    m.setAnimationMap();
   }
 }

@@ -2,11 +2,11 @@ import org.junit.Test;
 
 import java.awt.Color;
 
-import model.AShape;
-import model.Command;
-import model.Oval;
-import model.Polygon;
-import model.Position2D;
+import cs3500.model.Command;
+import cs3500.model.Oval;
+import cs3500.model.Polygon;
+import cs3500.model.Position2D;
+import cs3500.model.Shape;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,20 +15,23 @@ import static org.junit.Assert.assertEquals;
  */
 public class CommandTest {
 
-  AShape s1 = new Polygon("s1");
-  AShape s2 = new Polygon("s2", 5);
-  AShape s3 = new Polygon("s3", 6, 50, 100);
-  AShape s4 = new Oval("s4", Color.BLUE);
+  Shape s1 = new Polygon("s1");
+  Shape s2 = new Polygon("s2", 5);
+  Shape s3 = new Polygon("s3", 6, 50, 100);
+  Shape s4 = new Oval("s4", Color.BLUE);
 
-  Command c1 = new Command(s1, 0, 10, new Position2D(0,0),
-          new Position2D(50, 100), 50, 50, Color.PINK);
-  Command c2 = new Command(s2, 5, 9, new Position2D(200,200),
-          new Position2D(20, 60), 50, 50, Color.ORANGE);
-  Command c3 = new Command(s3, 3, 34, new Position2D(-10,1),
-          new Position2D(5, 10), 80, 5, Color.CYAN);
-  Command c4 = new Command(s4, 8, 26, new Position2D(-10,1),
-          new Position2D(800, 800), 80, 5, Color.MAGENTA);
-
+  Command c1 = new Command(s1, 0, new Position2D(0,0), 100,
+          100, Color.BLACK, 10, new Position2D(50, 100),
+          50, 50, Color.PINK);
+  Command c2 = new Command(s2, 5, new Position2D(200,200), 100,
+          100, Color.BLACK, 9, new Position2D(20, 60),
+          50, 50, Color.ORANGE);
+  Command c3 = new Command(s3, 3, new Position2D(-10,1), 50, 100,
+          Color.BLACK, 34, new Position2D(5, 10),
+          80, 5, Color.CYAN);
+  Command c4 = new Command(s4, 8, new Position2D(-10,1), 100, 100,
+          Color.BLUE, 26, new Position2D(800, 800), 80,
+          5, Color.MAGENTA);
 
   @Test
   public void testFirstConstructor1() {
@@ -56,37 +59,43 @@ public class CommandTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void firstConstructorError1() {
-    Command c = new Command(null, 0, 10, new Position2D(0,0),
+    Command c = new Command(null, 0, new Position2D(0,0), 100,
+            100, Color.BLACK, 10,
             new Position2D(50, 100), 50, 50, Color.PINK);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void firstConstructorError2() {
-    Command c = new Command(s1, 4, 3, new Position2D(0,0),
+    Command c = new Command(s1, 4, new Position2D(0,0), 100,
+            100, Color.BLACK, 3,
             new Position2D(50, 100), 50, 50, Color.PINK);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void firstConstructorError3() {
-    Command c = new Command(s1, -3, 3, new Position2D(0,0),
+    Command c = new Command(s1, -3, new Position2D(0,0), 100,
+            100, Color.BLACK, 3,
             new Position2D(50, 100), 50, 50, Color.PINK);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void firstConstructorError4() {
-    Command c = new Command(s1, 0, 0, new Position2D(0,0),
-            new Position2D(50, 100), 50, 50, Color.PINK);
+    Command c = new Command(s1, 0, new Position2D(0,0), 100, 100,
+            Color.BLACK, 0, new Position2D(50, 100), 50,
+            50, Color.PINK);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void firstConstructorError5() {
-    Command c = new Command(s1, 0, 0, new Position2D(0,0),
+    Command c = new Command(s1, 0, new Position2D(0,0), 100, 100,
+            Color.BLACK, 8,
             new Position2D(50, 100), 0, 50, Color.PINK);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void firstConstructorError6() {
-    Command c = new Command(s1, 0, 0, new Position2D(0,0),
+    Command c = new Command(s1, 0, new Position2D(0,0), 100, 100,
+            Color.BLACK, 8,
             new Position2D(50, 100), 50, -50, Color.PINK);
   }
 

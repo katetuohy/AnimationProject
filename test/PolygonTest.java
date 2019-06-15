@@ -1,9 +1,9 @@
 import org.junit.Test;
 
-import model.AShape;
-import model.Command;
-import model.Polygon;
-import model.Position2D;
+import cs3500.model.AShape;
+import cs3500.model.Command;
+import cs3500.model.Polygon;
+import cs3500.model.Position2D;
 import java.awt.Color;
 
 import static org.junit.Assert.assertEquals;

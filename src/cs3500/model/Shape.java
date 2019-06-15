@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Represents a geometrical shape.
@@ -75,4 +75,27 @@ public interface Shape {
    * @param cmd       the command for the shape change.
    */
   void setSize(int currTime, int startTime, int endTime, Command cmd);
+
+  /**
+   * Return shape's XML.
+   */
+  String getXML();
+
+  /**
+   * Return shape's end tag XML.
+   */
+  String getEndXML();
+
+  /**
+   * Return shape's width changing animate xml statement.
+   */
+  String animateWidthXML(int width1, int width2);
+
+  /**
+   * Return shape's height changing animate xml statement.
+   */
+  String animateHeightXML(int height1, int height2);
+
+  void drawShape(Graphics g);
+
 }

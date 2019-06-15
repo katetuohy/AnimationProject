@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Represents an oval shape.
@@ -63,5 +63,33 @@ public class Oval extends AShape {
    */
   private int getYRadius() {
     return this.yRadius;
+  }
+
+  public void drawShape(Graphics g) {
+    g.fillOval((int) this.getPosition().getX(), (int) this.getPosition().getY(),
+            this.getWidth(), this.getHeight());
+  }
+
+  @Override
+  public String getXML() {
+    return "<ellipse id=\"" + name + "\" cx=\"" + pos.getX() + "\" cy=\"" + pos.getY() + "\" rx=\""
+            + xRadius + "\" ry=\"" + yRadius
+            + "\" fill=\"rgb(" + c.getRed() + "," + c.getGreen() + ","  + c.getBlue()
+            + ")\" visibility=\"visible\" >\n";
+  }
+
+  @Override
+  public String getEndXML() {
+    return "</ellipse>\n";
+  }
+
+  @Override
+  public String animateWidthXML(int width1, int width2) {
+    return "attributeName=\"rx\" from=\"" + width1 + "\" to=\"" + width2 + "\"\n";
+  }
+
+  @Override
+  public String animateHeightXML(int height1, int height2) {
+    return "attributeName=\"ry\" from=\"" + (height1 / 2)+ "\" to=\"" + (height2 / 2) + "\"\n";
   }
 }
