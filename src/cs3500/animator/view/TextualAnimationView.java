@@ -1,6 +1,7 @@
 package cs3500.animator.view;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,9 +21,10 @@ public class TextualAnimationView implements IView {
     this.speed = 1;
   }
 
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas) {
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas) {
     ArrayList<Shape> usedShapes = new ArrayList<Shape>();
-    tryAppend(out, canvas + "\n");
+    tryAppend(out, "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2]
+            + " " + canvas[3] + "\n");
     for (Shape s : commands.values()) {
       if (!usedShapes.contains(s)) {
         tryAppend(out, this.printShapeCommands(s, commands) + "\n");

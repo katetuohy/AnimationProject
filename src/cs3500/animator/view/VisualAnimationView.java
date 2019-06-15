@@ -2,6 +2,7 @@ package cs3500.animator.view;
 
 import java.awt.*;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -58,11 +59,11 @@ public class VisualAnimationView extends JFrame implements IView {
     this.speed = num;
   }
 
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas) {
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas) {
     //do nothing
   }
 
-  public void displaySVG(List<Command> motions) {
+  public void displaySVG(List<Command> motions, Array[] canvas) {
     //do nothing
   }
 }

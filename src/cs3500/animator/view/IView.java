@@ -1,6 +1,7 @@
 package cs3500.animator.view;
 
 
+import java.lang.reflect.Array;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -13,9 +14,9 @@ public interface IView {
 
   void setSpeed(int num);
 
-  void displaySVG(List<Command> motions);
+  void displaySVG(List<Command> motions, Array[] canvas);
 
-  void displayTextualView(LinkedHashMap<Command, Shape> commands, String canvas);
+  void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas);
 
   void displayVisual(List<Shape> shapes);
 
