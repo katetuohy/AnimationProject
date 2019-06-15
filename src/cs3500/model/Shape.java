@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Represents a geometrical shape.
@@ -95,5 +95,7 @@ public interface Shape {
    * Return shape's height changing animate xml statement.
    */
   String animateHeightXML(int height1, int height2);
+
+  void drawShape(Graphics g);
 
 }

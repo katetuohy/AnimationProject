@@ -6,17 +6,25 @@ import java.util.Objects;
  * This class represents a 2D position.
  */
 public final class Position2D {
-  private final double x;
 
+  private final double x;
+  private final double y;
+
+  /**
+   * Returns the x value of the position.
+   * @return x
+   */
   public double getX() {
     return x;
   }
 
+  /**
+   * Returns the  y value of the position.
+   * @return y
+   */
   public double getY() {
     return y;
   }
-
-  private final double y;
 
   /**
    * Initialize this object to the specified position.

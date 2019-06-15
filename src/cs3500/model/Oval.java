@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Represents an oval shape.
@@ -63,6 +63,11 @@ public class Oval extends AShape {
    */
   private int getYRadius() {
     return this.yRadius;
+  }
+
+  public void drawShape(Graphics g) {
+    g.fillOval((int) this.getPosition().getX(), (int) this.getPosition().getY(),
+            this.getWidth(), this.getHeight());
   }
 
   @Override
