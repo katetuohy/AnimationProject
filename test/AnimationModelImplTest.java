@@ -145,7 +145,7 @@ public class AnimationModelImplTest {
     m.addMotion(c4);
     assertEquals(4, m.getMotions().size());
     assertEquals(4, m.getShapes().size());
-    m.fillInTimeGaps(cmds);
+    m.fixRemainingTimeGaps(cmds);
     assertEquals(cmdsAfterFill.size(), m.getMotions().size());
     for (int i = 0; i < cmdsAfterFill.size(); i++) {
       assertEquals(cmdsAfterFill.get(i), m.getMotions().get(i));
