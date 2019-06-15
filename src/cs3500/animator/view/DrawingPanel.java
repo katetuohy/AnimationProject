@@ -11,7 +11,7 @@ import cs3500.model.Shape;
  * Represents a graphics window. Allows for drawing shapes onto it and
  */
 public class DrawingPanel extends JPanel implements IDrawingPanel {
-  List<Shape> shapes = null;
+  List<Shape> shapes = null; 
 
   public DrawingPanel() {
     super();

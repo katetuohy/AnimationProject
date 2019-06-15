@@ -133,7 +133,7 @@ public class AnimationModelImplTest {
   public void testSetAnimationMapWithTeleportation() {
     initTestVariablesTeleportation();
     AnimationModel m = new AnimationModelImpl();
-    m.addShape(s1);
+    m.addShape(s1); ////////////
     m.addShape(s2);
     m.addShape(s3);
     m.addShape(s4);
