@@ -10,7 +10,6 @@ import cs3500.animator.util.AnimationBuilder;
  * TODO:
  * - Builder
  *  - setBounds()
- *  - addKeyFrame()
  */
 
 /**
@@ -168,6 +167,16 @@ public final class AnimationModelImpl implements AnimationModel {
     return maxHeight;
   }
 
+  @Override
+  public void addShape(Shape s) {
+    this.shapes.add(s);
+  }
+
+  @Override
+  public void addMotion(Command c) {
+    this.motions.add(c);
+  }
+
   /**
    * Determines whether the times are overlapping for the two Commands.
    * @param c1 The first command
@@ -183,12 +192,18 @@ public final class AnimationModelImpl implements AnimationModel {
             || (c2.getStartTime() <= c1.getStartTime() && c2.getEndTime() >= c1.getEndTime()));
   }
 
+  /**
+   * Builder for Animation Model.
+   * @return Builder object.
+   */
   public static Builder builder() {
     return new Builder();
   }
 
   /**
-   *
+   * Represents a builder pattern for an animation model. Animation model can be constructed by
+   * adding shapes, motions, bounds.
+   * Keyframes not supported in this implementation.
    */
   public static final class Builder implements AnimationBuilder<AnimationModelImpl> {
     AnimationModelImpl model;
@@ -212,7 +227,7 @@ public final class AnimationModelImpl implements AnimationModel {
     @Override
     public AnimationBuilder<AnimationModelImpl> declareShape(String name, String type) {
 
-      model.getShapes().add(new ShapeFactory().getShape(name, type));
+      model.addShape(new ShapeFactory().getShape(name, type));
       return this;
     }
 
@@ -227,15 +242,18 @@ public final class AnimationModelImpl implements AnimationModel {
           shape = s;
         }
       }
-      model.getMotions().add(new Command(shape, t1, new Position2D(x1, y1), w1, h1,
+      model.addMotion(new Command(shape, t1, new Position2D(x1, y1), w1, h1,
               new Color(r1, g1, b1), t2,  new Position2D(x2, y2), w2, h2, new Color(r2, g2, b2)));
       return this;
     }
 
     @Override
+    /**
+     * Not supported in this model implementation.
+     */
     public AnimationBuilder<AnimationModelImpl> addKeyframe(String name, int t, int x, int y, int w,
                                                             int h, int r, int g, int b) {
-      return null;
+      throw new UnsupportedOperationException("addKeyframe() method not supported in this model.");
     }
   }
 }

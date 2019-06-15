@@ -85,4 +85,13 @@ public interface AnimationModel {
    */
   int getMaxHeight();
 
+  /**
+   * Add Shape to the list of shapes.
+   */
+  void addShape(Shape s);
+
+  /**
+   * Add Command to the list of commands.
+   */
+  void addMotion(Command c);
 }

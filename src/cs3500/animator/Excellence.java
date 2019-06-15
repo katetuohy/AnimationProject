@@ -38,6 +38,8 @@ public final class Excellence {
     if (!(hasV && hasI)) {
       throw new IllegalArgumentException("Must input an in and a view type");
     }
+
+    // Instantiate the correct view & set FileReader object
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
@@ -47,6 +49,8 @@ public final class Excellence {
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
+
+    // Parse animation input file
     AnimationReader.parseFile(rn, builder);
     AnimationModel model = builder.build();
     if (Arrays.asList(args).contains("-out")) {
