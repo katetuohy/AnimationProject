@@ -20,7 +20,11 @@ public class Controller implements IController {
     this.model = model;
     this.view = view;
     view.displayTextualView(model.getMap(), model.getCanvas());
-    view.displaySVG(model.getMotions());
+    view.displaySVG(model.getMotions(), model.getCanvas());
+    /**
+     * TODO:
+     * how to make this so that it only runs when we know its a visual view.
+     */
     timer = new Timer(1500, new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {

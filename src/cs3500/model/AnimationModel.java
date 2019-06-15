@@ -48,7 +48,7 @@ public interface AnimationModel {
    * gets the canvas size and location.
    * @return the canvas string
    */
-  String getCanvas();
+  int[] getCanvas();
 
   /**
    * Setter for the time field.

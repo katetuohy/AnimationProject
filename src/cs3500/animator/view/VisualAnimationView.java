@@ -59,11 +59,19 @@ public class VisualAnimationView extends JFrame implements IView {
     this.speed = num;
   }
 
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas) {
-    //do nothing
+  @Override
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
+    /**
+     * TODO:
+     * throw new UnsupportedOperationException()?
+     */
   }
 
-  public void displaySVG(List<Command> motions, Array[] canvas) {
-    //do nothing
+  @Override
+  public void displaySVG(List<Command> motions, int[] canvas) {
+    /**
+     * TODO:
+     * throw new UnsupportedOperationException()?
+     */
   }
 }

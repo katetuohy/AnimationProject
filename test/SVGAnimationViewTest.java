@@ -1,12 +1,8 @@
-import com.sun.xml.internal.ws.dump.LoggingDumpTube;
-
 import org.junit.Test;
 
 import cs3500.animator.view.SVGAnimationView;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
-
-import org.junit.Test;
 
 import java.awt.*;
 import java.io.FileNotFoundException;

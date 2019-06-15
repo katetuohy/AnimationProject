@@ -1,8 +1,6 @@
 package cs3500.animator.view;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -66,7 +64,7 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas) {
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
     //do nothing
   }
 

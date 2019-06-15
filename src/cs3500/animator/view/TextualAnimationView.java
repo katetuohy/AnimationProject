@@ -20,7 +20,7 @@ public class TextualAnimationView implements IView {
     this.speed = 1;
   }
 
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas) {
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
     ArrayList<Shape> usedShapes = new ArrayList<Shape>();
     tryAppend(out, "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2]
             + " " + canvas[3] + "\n");
