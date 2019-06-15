@@ -18,7 +18,7 @@ public class SVGAnimationView implements IView {
     this.speed = 1;
   }
 
-  public void displaySVG(List<Command> motions, Array[] canvas) {
+  public void displaySVG(List<Command> motions, int[] canvas) {
     String setWidthAndHeightXML = String.format("<!--the overall svg width is %d and height is %d."
             + " By default anything\n"
             + "drawn between (0,0) and (width,height) will be visible -->\n"

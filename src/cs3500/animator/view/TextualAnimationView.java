@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import cs3500.model.AShape;
 import cs3500.model.Command;
 import cs3500.model.Shape;
 
@@ -34,13 +33,20 @@ public class TextualAnimationView implements IView {
   }
 
   @Override
-  public void displaySVG(List<Command> motions) {
-    //do nothing
+  public void displaySVG(List<Command> motions, int[] canvas) {
+    /**
+     * TODO:
+     * Do nothing here?
+     */
+
   }
 
   @Override
   public void displayVisual(List<Shape> shapes) {
-    //do nothing
+    /**
+     * TODO:
+     * Do nothing here?
+     */
   }
 
   @Override

@@ -14,7 +14,7 @@ public interface IView {
 
   void setSpeed(int num);
 
-  void displaySVG(List<Command> motions, Array[] canvas);
+  void displaySVG(List<Command> motions, int[] canvas);
 
   void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas);
 

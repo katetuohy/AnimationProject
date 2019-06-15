@@ -15,18 +15,15 @@ public interface AnimationModel {
 
   /**
    * Initialize the commands HashMap.
-   *
-   * @param cmds The commands for the animation.
-   * @param s    The list of shapes in the animation.
    */
-  void setAnimationMap(ArrayList<Command> cmds, ArrayList<Shape> s);
+  void setAnimationMap();
 
   /**
    * Creates new Commands in between existing ones when there is a break in time.
    * @param cmds the existing commands
    * @return new list of commands
    */
-  ArrayList<Command> fillIn(ArrayList<Command> cmds);
+  List<Command> fillInTimeGaps(List<Command> cmds);
 
   /**
    * Return the list of commands sorted by shape for the entire animation.
@@ -68,23 +65,23 @@ public interface AnimationModel {
   LinkedHashMap<Command, Shape> getMap();
 
   /**
-   * Ensure that commands for a particular object are not overlapping in time frames.
+   * Ensure that motions for a particular object are not overlapping in time frames.
    */
-  void validateCommands();
+  void validateMotionsNotOverlapping();
 
   /**
    * Get the list of shapes for the animation.
    *
    * @return list of shapes
    */
-  ArrayList<Shape> getShapes();
+  List<Shape> getShapes();
 
   /**
    * Get the list of motions for the animation.
    *
    * @return list of motions
    */
-  ArrayList<Command> getMotions();
+  List<Command> getMotions();
 
   /**
    * Get the maximum width of the frame based on the shapes' positions.
@@ -107,4 +104,13 @@ public interface AnimationModel {
    * Add Command to the list of commands.
    */
   void addMotion(Command c);
+
+  /**
+   * Set the canvas dimensions of the model.
+   * @param x
+   * @param y
+   * @param width
+   * @param height
+   */
+  void setCanvas(int x, int y, int width, int height);
 }

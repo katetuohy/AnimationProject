@@ -11,6 +11,7 @@ import cs3500.animator.util.AnimationBuilder;
  * TODO:
  * - Builder
  *  - setBounds()
+ *  - Can we decide if we're going to use List<> or ArrayList for everything?
  */
 
 /**
@@ -24,7 +25,7 @@ public final class AnimationModelImpl implements AnimationModel {
   private ArrayList<Command> motions;
   private ArrayList<Shape> shapes;
   private LinkedHashMap<Command, Shape> commands;
-  private int[] canvas = new int[4];
+  private int[] canvas;
 
   /**
    * Construct an animation model at time = 0.
@@ -34,6 +35,7 @@ public final class AnimationModelImpl implements AnimationModel {
     this.commands = new LinkedHashMap<Command, Shape>();
     this.motions = new ArrayList<Command>();
     this.shapes = new ArrayList<Shape>();
+    this.canvas = new int[4];
     for (int i = 0; i < canvas.length; i++) {
       canvas[i] = 0;
     }
@@ -41,65 +43,78 @@ public final class AnimationModelImpl implements AnimationModel {
 
   /**
    * Generates the LinkedHashMap of all the commands mapped to the shapes they act upon. Throws an
-   * IllegalArgumentException when null arguments are passed.
-   *
-   * @param cmds The commands for the animation.
-   * @param s    The list of shapes in the animation.
+   * IllegalStateException when the motions or shapes lists are null.
    */
   @Override
-  public void setAnimationMap(ArrayList<Command> cmds, ArrayList<Shape> s) {
-    cmds = this.sortCommands(cmds, s);
-    cmds = this.fillIn(cmds);
-    this.motions = cmds;
-    this.shapes = s;
-    if (cmds != null && s != null) {
+  public void setAnimationMap() {
+    // Make sure motions have no overlapping time intervals.
+    this.validateMotionsNotOverlapping();
+    // Fill in time gaps in motions.
+    this.fillInTimeGaps(motions);
+    // Sort the motions
+    this.sortMotions(motions, shapes);
+
+    this.shapes = shapes;
+    if (motions != null && shapes != null) {
       LinkedHashMap<Command, Shape> map = new LinkedHashMap<Command, Shape>();
-      for (int i = 0; i < cmds.size(); i++) {
-        String name = cmds.get(i).getShapeName();
-        for (int j = 0; j < s.size(); j++) {
-          if (s.get(j).getName().equals(name)) {
-            map.put(cmds.get(i), s.get(j));
+      for (int i = 0; i < motions.size(); i++) {
+        String name = motions.get(i).getShapeName();
+        for (int j = 0; j < shapes.size(); j++) {
+          if (shapes.get(j).getName().equals(name)) {
+            map.put(motions.get(i), shapes.get(j));
           }
         }
       }
       this.commands = map;
-      this.validateCommands();
     } else {
-      throw new IllegalArgumentException("Inputs must not be null!");
+      throw new IllegalStateException("Motions or commands must not be null!");
     }
   }
 
-  public ArrayList<Command> sortCommands(ArrayList<Command> cmds, ArrayList<Shape> s) {
-    ArrayList<Command> newCmd = new ArrayList<Command>();
-    for (Shape shape : s) {
+  // Sorts list of commands in same order of the given list of shapes.
+  private ArrayList<Command> sortMotions(ArrayList<Command> cmds, ArrayList<Shape> shapes) {
+    ArrayList<Command> sorted = new ArrayList<Command>();
+    for (Shape shape : shapes) {
       for (Command c : cmds) {
         if (c.getShapeName().equals(shape.getName())) {
-          newCmd.add(c);
+          sorted.add(c);
         }
       }
     }
-    return newCmd;
+    return sorted;
   }
 
-  /**
-   * creates new commands when there are gaps in between times that do nothing.
-   * @param cmds
-   * @return
-   */
   @Override
-  public ArrayList<Command> fillIn(ArrayList<Command> cmds) {
-    ArrayList<Command> newCmds = new ArrayList<Command>();
+  public List<Command> fillInTimeGaps(List<Command> cmds) {
+    ArrayList<Command> result = new ArrayList<Command>();
     Command last = cmds.get(cmds.size() - 1);
     for (int i = 0; i < cmds.size() - 1; i++) {
-      newCmds.add(cmds.get(i));
-      if (cmds.get(i).getShapeName().equals(cmds.get(i + 1).getShapeName())
-              && cmds.get(i).getEndTime() != cmds.get(i + 1).getStartTime()) {
-        newCmds.add(new Command(cmds.get(i).getShape(), cmds.get(i).getEndTime(),
-                cmds.get(i + 1).getStartTime()));
+      Command current = cmds.get(i);
+      Command next = cmds.get(i + 1);
+      result.add(current);
+      if (current.getShapeName().equals(next.getShapeName())
+              && current.getEndTime() != next.getStartTime()) {
+        result.add(new Command(current.getShape(), current.getEndTime(),
+                next.getStartTime()));
       }
     }
-    cmds.add(last);
-    return newCmds;
+    // TODO:
+    // cmds.add(last);
+    // hey did you mean:
+    result.add(last);
+    return result;
+  }
+
+  @Override
+  public void validateMotionsNotOverlapping() {
+    for (Command c1 : motions) {
+      for (Command c2 : motions) {
+        if (!c1.equals(c2) && c1.getShapeName().equals(c2.getShapeName()) && overlapping(c1, c2)) {
+          throw new IllegalArgumentException("Command times for "
+                  + c1.getShapeName() + " are overlapping!");
+        }
+      }
+    }
   }
 
   @Override
@@ -122,11 +137,13 @@ public final class AnimationModelImpl implements AnimationModel {
     return this.commands;
   }
 
-  public ArrayList<Command> getMotions() {
+  @Override
+  public List<Command> getMotions() {
     return this.motions;
   }
 
-  public ArrayList<Shape> getShapes() {
+  @Override
+  public List<Shape> getShapes() {
     return this.shapes;
   }
 
@@ -175,18 +192,6 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public void validateCommands() {
-    for (Command c1 : commands.keySet()) {
-      for (Command c2 : commands.keySet()) {
-        if (!c1.equals(c2) && c1.getShapeName().equals(c2.getShapeName()) && overlapping(c1, c2)) {
-          throw new IllegalArgumentException("Command times for "
-                  + c1.getShapeName() + " are overlapping!");
-        }
-      }
-    }
-  }
-
-  @Override
   public int getMaxWidth() {
     int maxWidth = 0;
     for (Command c: commands.keySet()) {
@@ -222,6 +227,14 @@ public final class AnimationModelImpl implements AnimationModel {
   @Override
   public void addMotion(Command c) {
     this.motions.add(c);
+  }
+
+  @Override
+  public void setCanvas(int x, int y, int width, int height) {
+    this.canvas[0] = x;
+    this.canvas[1] = y;
+    this.canvas[2] = width;
+    this.canvas[3] = height;
   }
 
   /**
@@ -264,10 +277,7 @@ public final class AnimationModelImpl implements AnimationModel {
 
     @Override
     public AnimationBuilder<AnimationModelImpl> setBounds(int x, int y, int width, int height) {
-      model.canvas[0] = x;
-      model.canvas[0] = y;
-      model.canvas[0] = width;
-      model.canvas[0] = height;
+      model.setCanvas(x, y, width, height);
       return this;
     }
 

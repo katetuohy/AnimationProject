@@ -19,7 +19,46 @@ public class Command {
   private final int newHeight;
   private final Color color;
 
+  /**
+   * The do nothing command, when nothing changes about the state of the shape.
+   * @param shape     the shape to which this command applies to
+   * @param startTime the starting time for the command
+   * @param endTime   when the command ends
+   */
+  public Command(Shape shape, int startTime, int endTime) {
+    if (shape == null) {
+      throw new IllegalArgumentException("Shape cannot be null.");
+    }
+    if (startTime >= endTime) {
+      throw new IllegalArgumentException("Start time must be strictly less than end time.");
+    }
+    this.shape = shape;
+    this.oldColor = shape.getColor();
+    this.endTime = endTime;
+    this.startTime = startTime;
+    this.from = new Position2D(0, 0);
+    this.to = new Position2D(0, 0);
+    this.oldWidth = shape.getWidth();
+    this.oldHeight = shape.getHeight();
+    this.newHeight = shape.getHeight();
+    this.newWidth = shape.getWidth();
+    this.color = shape.getColor();
+  }
 
+  /**
+   * Construct a command with all parameters.
+   * @param shape
+   * @param startTime
+   * @param to
+   * @param oldWidth
+   * @param oldHeight
+   * @param oldColor
+   * @param endTime
+   * @param from
+   * @param newWidth
+   * @param newHeight
+   * @param color
+   */
   public Command(Shape shape, int startTime, Position2D to, int oldWidth, int oldHeight,
                  Color oldColor, int endTime, Position2D from, int newWidth, int newHeight,
                  Color color) {
@@ -46,32 +85,6 @@ public class Command {
     this.newWidth = newWidth;
     this.newHeight = newHeight;
     this.color = color;
-  }
-
-  /**
-   * The do nothing command, when nothing changes about the state of the shape.
-   * @param shape     the shape to which this command applies to
-   * @param startTime the starting time for the command
-   * @param endTime   when the command ends
-   */
-  public Command(Shape shape, int startTime, int endTime) {
-    if (shape == null) {
-      throw new IllegalArgumentException("Shape cannot be null.");
-    }
-    if (startTime >= endTime) {
-      throw new IllegalArgumentException("Start time must be strictly less than end time.");
-    }
-    this.shape = shape;
-    this.oldColor = shape.getColor();
-    this.endTime = endTime;
-    this.startTime = startTime;
-    this.from = new Position2D(0, 0);
-    this.to = new Position2D(0, 0);
-    this.oldWidth = shape.getWidth();
-    this.oldHeight = shape.getHeight();
-    this.newHeight = shape.getHeight();
-    this.newWidth = shape.getWidth();
-    this.color = shape.getColor();
   }
 
   /**
@@ -135,7 +148,7 @@ public class Command {
   }
 
   /**
-   * Constructor to change shape width and height.
+   * Constructor to change shape width and height if nothing else is to be changed.
    * @param shape     the shape of which the command applies to
    * @param startTime the time tick when the command begins
    * @param endTime   the time tick when the command ends
