@@ -34,19 +34,12 @@ public class TextualAnimationView implements IView {
 
   @Override
   public void displaySVG(List<Command> motions, int[] canvas) {
-    /**
-     * TODO:
-     * Do nothing here?
-     */
-
+    throw new UnsupportedOperationException("displaySVG() not supported for Textual View");
   }
 
   @Override
   public void displayVisual(List<Shape> shapes) {
-    /**
-     * TODO:
-     * Do nothing here?
-     */
+    throw new UnsupportedOperationException("displayVisual() not supported for Textual View");
   }
 
   @Override

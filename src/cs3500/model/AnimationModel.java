@@ -45,10 +45,16 @@ public interface AnimationModel {
   int getTime();
 
   /**
-   * gets the canvas size and location.
-   * @return the canvas string
+   * gets the canvas size and start point as an int[].
+   * @return the canvas array.
    */
   int[] getCanvas();
+
+  /**
+   * gets the canvas size and start point as a string.
+   * @return the canvas string
+   */
+  String getCanvasString();
 
   /**
    * Fills in the time gaps between the commands.

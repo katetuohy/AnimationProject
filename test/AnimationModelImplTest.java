@@ -121,6 +121,8 @@ public class AnimationModelImplTest {
     m.addMotion(c2);
     m.addMotion(c3);
     m.addMotion(c4);
+    assertEquals(4, m.getMotions().size());
+    assertEquals(4, m.getShapes().size());
     m.setAnimationMap();
     assertEquals(m.getMap().size(), 4);
     assertEquals(m.getMap().get(c1), s1);
@@ -130,7 +132,7 @@ public class AnimationModelImplTest {
    * Test setAnimationMap function properly initializes the hashmap of commands and shapes.
    */
   @Test
-  public void testSetAnimationMapWithTeleportation() {
+  public void testFillInTimeGapsTeleportation() {
     initTestVariablesTeleportation();
     AnimationModel m = new AnimationModelImpl();
     m.addShape(s1); ////////////
@@ -141,8 +143,13 @@ public class AnimationModelImplTest {
     m.addMotion(c2);
     m.addMotion(c3);
     m.addMotion(c4);
-    m.setAnimationMap();
-    assertEquals(cmdsAfterFill, m.getMotions()); // expect commands to have time gaps filled.
+    assertEquals(4, m.getMotions().size());
+    assertEquals(4, m.getShapes().size());
+    m.fixRemainingTimeGaps(cmds);
+    assertEquals(cmdsAfterFill.size(), m.getMotions().size());
+    for (int i = 0; i < cmdsAfterFill.size(); i++) {
+      assertEquals(cmdsAfterFill.get(i), m.getMotions().get(i));
+    }
     assertEquals(m.getMap().size(), 4);
     assertEquals(m.getMap().get(c1), s1);
   }

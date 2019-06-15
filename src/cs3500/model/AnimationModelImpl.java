@@ -152,6 +152,11 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
+  public String getCanvasString() {
+    return "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2] + " " + canvas[3];
+  }
+
+  @Override
   public int[] getCanvas() {
     return this.canvas;
   }
