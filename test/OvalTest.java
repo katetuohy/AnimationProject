@@ -2,11 +2,11 @@ import org.junit.Test;
 
 import java.awt.Color;
 
-import model.AShape;
-import model.Command;
-import model.Oval;
-import model.Polygon;
-import model.Position2D;
+import cs3500.model.AShape;
+import cs3500.model.Command;
+import cs3500.model.Oval;
+import cs3500.model.Polygon;
+import cs3500.model.Position2D;
 
 import static org.junit.Assert.assertEquals;
 

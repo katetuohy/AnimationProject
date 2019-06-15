@@ -21,15 +21,15 @@ public class VisualAnimationView extends JFrame implements IView {
     super();
     this.out = System.out;
     panel = new DrawingPanel();
-    panel.setMinimumSize( new Dimension(500,500));
-    panel.setPreferredSize( new Dimension(2000,2000));
+    panel.setMinimumSize(new Dimension(500, 500));
+    panel.setPreferredSize(new Dimension(2000, 2000));
     panel.setBackground(Color.yellow);
 
     scrollPane = new JScrollPane(panel); // DECORATOR WHOO WHOO.
 
-    setSize(800,800);
+    setSize(800, 800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setLocation(200,200);
+    setLocation(200, 200);
 
     add(scrollPane);
 
@@ -61,17 +61,11 @@ public class VisualAnimationView extends JFrame implements IView {
 
   @Override
   public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
-    /**
-     * TODO:
-     * throw new UnsupportedOperationException()?
-     */
+    throw new UnsupportedOperationException("displayTextualView() not supported for Visual View");
   }
 
   @Override
   public void displaySVG(List<Command> motions, int[] canvas) {
-    /**
-     * TODO:
-     * throw new UnsupportedOperationException()?
-     */
+    throw new UnsupportedOperationException("displaySVG() not supported for Visual View");
   }
 }

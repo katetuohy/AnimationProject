@@ -65,11 +65,11 @@ public class SVGAnimationView implements IView {
 
   @Override
   public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
-    //do nothing
+    throw new UnsupportedOperationException("displayTextualView() not supported for SVG View");
   }
 
   @Override
   public void displayVisual(List<Shape> shapes) {
-    //do nothing
+    throw new UnsupportedOperationException("displayVisual() not supported for SVG View");
   }
 }
