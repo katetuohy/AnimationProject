@@ -2,11 +2,11 @@ import org.junit.Test;
 
 import java.awt.Color;
 
-import cs3500.model.AShape;
 import cs3500.model.Command;
 import cs3500.model.Oval;
 import cs3500.model.Polygon;
 import cs3500.model.Position2D;
+import cs3500.model.Shape;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +17,7 @@ public class OvalTest {
 
   @Test
   public void testSetColorBlackToBlueEndTime() {
-    AShape o = new Oval("oval");
+    Shape o = new Oval("oval");
     Command c = new Command(o, 0, 5, Color.BLUE);
     assertEquals(Color.BLACK, o.getColor());
     o.setColor(5, 0, 5, c);
@@ -26,7 +26,7 @@ public class OvalTest {
 
   @Test
   public void testSetColorBlackToCyanEndTime() {
-    AShape o = new Polygon("oval");
+    Shape o = new Polygon("oval");
     Command c = new Command(o, 0, 5, Color.CYAN);
     assertEquals(Color.BLACK, o.getColor());
     o.setColor(5, 0, 5, c);
@@ -35,7 +35,7 @@ public class OvalTest {
 
   @Test
   public void testSetColorMidTime() {
-    AShape o = new Oval("oval");
+    Shape o = new Oval("oval");
     Command c = new Command(o, 0, 5, Color.BLUE);
     assertEquals(Color.BLACK, o.getColor());
     o.setColor(1, 0, 5, c);
@@ -48,7 +48,7 @@ public class OvalTest {
 
   @Test
   public void testSetColorMidTime2() {
-    AShape o = new Oval("oval");
+    Shape o = new Oval("oval");
     Command c = new Command(o, 0, 5, Color.YELLOW);
     assertEquals(Color.BLACK, o.getColor());
     o.setColor(2, 0, 5, c);
@@ -57,7 +57,7 @@ public class OvalTest {
 
   @Test
   public void testSetPosition() {
-    AShape o = new Oval("oval");
+    Shape o = new Oval("oval");
     Command c = new Command(o, 0, 5, new Position2D(100, 100));
     assertEquals(new Position2D(0,0), o.getPosition());
     o.setPosition(1, 0, 5, c);
@@ -66,7 +66,7 @@ public class OvalTest {
 
   @Test
   public void testSetSize() {
-    AShape o = new Oval("oval");
+    Shape o = new Oval("oval");
     Command c = new Command(o, 0, 5, 50, 50);
     assertEquals(100, o.getWidth());
     assertEquals(100, o.getHeight());

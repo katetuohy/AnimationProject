@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Represents a polygon with n sides.
@@ -12,6 +12,11 @@ public class Polygon extends AShape {
   public Polygon(String name) {
     super(name, 100, 100);
     this.numSides = 4;
+  }
+
+  public void drawShape(Graphics g) {
+    g.fillRect((int) this.getPosition().getX(), (int) this.getPosition().getY(),
+            this.getWidth(), this.getHeight());
   }
 
   /**

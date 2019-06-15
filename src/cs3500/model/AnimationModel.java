@@ -23,7 +23,7 @@ public interface AnimationModel {
    * @param cmds the existing commands
    * @return new list of commands
    */
-  List<Command> fillInTimeGaps(List<Command> cmds);
+ // List<Command> fillInTimeGaps(List<Command> cmds);
 
   /**
    * Return the list of commands sorted by shape for the entire animation.
@@ -55,6 +55,13 @@ public interface AnimationModel {
    * @return the canvas string
    */
   String getCanvasString();
+
+  /**
+   * Fills in the time gaps between the commands.
+   * @param cmds
+   * @return
+   */
+  public List<Command> fixRemainingTimeGaps(List<Command> cmds);
 
   /**
    * Setter for the time field.

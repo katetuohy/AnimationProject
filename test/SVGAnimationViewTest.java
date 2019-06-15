@@ -7,8 +7,6 @@ import cs3500.model.AnimationModelImpl;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,8 +14,6 @@ import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewFactory;
-import cs3500.model.AnimationModel;
-import cs3500.model.AnimationModelImpl;
 import cs3500.model.Command;
 import cs3500.model.Polygon;
 import cs3500.model.Position2D;
@@ -56,11 +52,10 @@ public class SVGAnimationViewTest {
     cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4, c5, c6));
 
     canvas = new int[4];
-    canvas[0] = 0;
-    canvas[1] = 0;
-    canvas[2] = 100;
-    canvas[3] = 100;
-
+    canvas[0] = 200;
+    canvas[1] = 70;
+    canvas[2] = 360;
+    canvas[3] = 360;
   }
 
   @Test
@@ -68,14 +63,23 @@ public class SVGAnimationViewTest {
     IView v = new ViewFactory().getView("svg");
     v.setOutput(System.out);
     v.setSpeed(4);
+    assertEquals(v.getOut(), System.out);
   }
 
-  @Test
-  public void testBasicXMLNoShapes() {
+  @Test(expected = IndexOutOfBoundsException.class)
+  public void testBasicXMLNoShapesError() {
     initializeTestVariables();
     IView v = new ViewFactory().getView("svg");
     v.displaySVG(new ArrayList<Command>(), canvas);
+  }
 
+  @Test
+  public void testBasicXMLOneShape() {
+    initializeTestVariables();
+    IView v = new ViewFactory().getView("svg");
+    ArrayList<Command> cmds = new ArrayList<Command>();
+    cmds.add(c1);
+    v.displaySVG(cmds, canvas);
   }
 
   /**
@@ -85,8 +89,6 @@ public class SVGAnimationViewTest {
   public void testBasicXMLTwoBasicShape() {
     initializeTestVariables();
     IView v = new SVGAnimationView();
-
-
     v.setOutput(new StringBuilder());
     v.displaySVG(new ArrayList<Command>(Arrays.asList(c1, c2)), canvas);
     assertEquals("", v.getOut());
@@ -100,14 +102,15 @@ public class SVGAnimationViewTest {
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
-      rn = new FileReader("smalldemo.txt");
+      rn = new FileReader("C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\smalldemo.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     v.setOutput(new StringBuilder());
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    int[] canvas = {0, 0, 100, 100};
-    v.displaySVG(model.getMotions(), canvas);
+    int[] can = model.getCanvas();
+    assertEquals(can.length, 4);
+    v.displaySVG(model.getMotions(), can);
     assertEquals("", v.getOut());
   }
 }

@@ -13,7 +13,7 @@ import cs3500.model.Shape;
 public class DrawingPanel extends JPanel implements IDrawingPanel {
   List<Shape> shapes = null;
 
-  public DrawingPanel(){
+  public DrawingPanel() {
     super();
   }
 
@@ -23,14 +23,10 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
     if ( shapes != null ){
       //g.setColor( Color.pink );
       for ( Shape shape : shapes ){
-        g.setColor( shape.getColor() );
+        g.setColor(shape.getColor());
         g.fillRect((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
                 shape.getWidth(), shape.getHeight());
-        /* TODO:
-        do we need to branch between rect and oval?
-        g.fillOval((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
-                shape.getWidth(), shape.getHeight());
-         */
+        shape.drawShape(g);
       }
     }
   }

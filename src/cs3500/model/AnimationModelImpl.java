@@ -1,7 +1,6 @@
 package cs3500.model;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -50,7 +49,7 @@ public final class AnimationModelImpl implements AnimationModel {
     // Make sure motions have no overlapping time intervals.
     this.validateMotionsNotOverlapping();
     // Fill in time gaps in motions.
-    this.fillInTimeGaps(motions);
+    this.fixRemainingTimeGaps(motions);
     // Sort the motions
     this.sortMotions(motions, shapes);
 
@@ -84,7 +83,7 @@ public final class AnimationModelImpl implements AnimationModel {
     return sorted;
   }
 
-  @Override
+/*  @Override
   public List<Command> fillInTimeGaps(List<Command> cmds) {
     ArrayList<Command> result = new ArrayList<Command>();
     Command last = cmds.get(cmds.size() - 1);
@@ -98,11 +97,46 @@ public final class AnimationModelImpl implements AnimationModel {
                 next.getStartTime()));
       }
     }
-    // TODO:
-    // cmds.add(last);
-    // hey did you mean:
     result.add(last);
     return result;
+  }*/
+
+  @Override
+  public List<Command> fixRemainingTimeGaps(List<Command> cmds) {
+    int longestTime = 0;
+    for (Command c : cmds) {
+      if (c.getEndTime() > longestTime) {
+        longestTime = c.getEndTime();
+      }
+    }
+    ArrayList<Command> newCmds = new ArrayList<Command>();
+    if(cmds.get(0).getStartTime() != 0) {
+      newCmds.add(new Command(cmds.get(0).getShape(), 0,
+              cmds.get(0).getStartTime()));
+    }
+    for (int i = 1; i < cmds.size(); i++) {
+      Command current = cmds.get(i);
+      Command last = cmds.get(i - 1);
+      if(!current.getShapeName().equalsIgnoreCase(last.getShapeName())) {
+        if (current.getStartTime() != 0) {
+          newCmds.add(new Command(current.getShape(), 0,
+                  current.getStartTime()));
+        }
+      }
+      if (cmds.get(i).getShapeName().equalsIgnoreCase(cmds.get(i - 1).getShapeName())
+              && cmds.get(i - 1).getEndTime() != cmds.get(i).getStartTime()) {
+        newCmds.add(new Command(current.getShape(), last.getEndTime(),
+                current.getStartTime()));
+      }
+      if(!cmds.get(i).getShapeName().equalsIgnoreCase(cmds.get(i + 1).getShapeName())) {
+        if (cmds.get(i).getEndTime() != longestTime) {
+          newCmds.add(new Command(current.getShape(), current.getEndTime(),
+                  longestTime));
+        }
+      }
+
+    }
+    return newCmds;
   }
 
   @Override
