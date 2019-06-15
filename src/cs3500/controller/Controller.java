@@ -12,7 +12,6 @@ import cs3500.model.AnimationModel;
 
 public class Controller implements IController {
   Timer timer;
-  int counter;
   private int tick = 1;
   AnimationModel model;
   IView view;
@@ -20,12 +19,14 @@ public class Controller implements IController {
   public Controller(AnimationModel model, IView view){
     this.model = model;
     this.view = view;
+    view.displayTextualView(model.getMap(), model.getCanvas());
+    view.displaySVG(model.getMotions());
     timer = new Timer(1500, new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         model.setTime(tick++);
         List<Shape> shapesToRender = model.moveShapes();
-        view.display(shapesToRender);
+        view.displayVisual(shapesToRender);
       }
     });
   }

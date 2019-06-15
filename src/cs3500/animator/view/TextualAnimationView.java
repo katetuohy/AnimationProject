@@ -1,6 +1,7 @@
 package cs3500.animator.view;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,14 +13,18 @@ import cs3500.model.Shape;
 public class TextualAnimationView implements IView {
 
   private Appendable out;
+  private int speed;
 
 
   public TextualAnimationView() {
     this.out = System.out;
+    this.speed = 1;
   }
 
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands) {
+  public void displayTextualView(LinkedHashMap<Command, Shape> commands, Array[] canvas) {
     ArrayList<Shape> usedShapes = new ArrayList<Shape>();
+    tryAppend(out, "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2]
+            + " " + canvas[3] + "\n");
     for (Shape s : commands.values()) {
       if (!usedShapes.contains(s)) {
         tryAppend(out, this.printShapeCommands(s, commands) + "\n");
@@ -30,7 +35,17 @@ public class TextualAnimationView implements IView {
 
   @Override
   public void displaySVG(List<Command> motions) {
-    throw new UnsupportedOperationException("displaySVG() not available in the textual view.");
+    //do nothing
+  }
+
+  @Override
+  public void displayVisual(List<Shape> shapes) {
+    //do nothing
+  }
+
+  @Override
+  public Appendable getOut() {
+    return this.out;
   }
 
   private String printShapeCommands (Shape s, LinkedHashMap < Command, Shape > commands){
@@ -44,13 +59,8 @@ public class TextualAnimationView implements IView {
   }
 
   @Override
-  public void setSpeed( int num) {
-
-  }
-
-  @Override
-  public void display(List<Shape> Shapes) {
-
+  public void setSpeed(int num) {
+    this.speed = num;
   }
 
   @Override
