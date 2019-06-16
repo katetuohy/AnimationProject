@@ -4,13 +4,16 @@ import cs3500.animator.view.SVGAnimationView;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
@@ -23,7 +26,11 @@ import cs3500.model.Shape;
 
 import static junit.framework.TestCase.assertEquals;
 
+/**
+ * Tests the SVG Animation View.
+ */
 public class SVGAnimationViewTest {
+
   Shape s1;
   Shape s2;
   Shape s3;
@@ -121,6 +128,29 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    String result = "";
+    File f = new File("testBasicXMLOneShapeOneCommand.svg");
+    Scanner sc = null;
+    try {
+      sc = new Scanner(f);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    while (sc.hasNextLine()) {
+      result += (sc.nextLine());
+    }
+    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything"
+            + "drawn between (200,70) and (width,height) will be visible --><svg width=\"560\" "
+            + "height=\"430\" version=\"1.1\"     xmlns=\"http://www.w3.org/2000/svg\"><rect id"
+            + "=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\" visibi"
+            + "lity=\"visible\" ><animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attri"
+            + "buteName=\"x\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" begin=\"0"
+            + "ms\" dur=\"5000ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><animate attribu"
+            + "teType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"fill\" from=\"rgb(0,0,"
+            + "0)\" to=\"rgb(0,0,0)\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000m"
+            + "s\" attributeName=\"width\" from=\"100\" to=\"100\" /><animate attributeType=\"xm"
+            + "l\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"height\" from=\"100\" to=\"100\" /"
+            + "></rect></svg>", result);
   }
 
   /**
@@ -144,9 +174,53 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    String result = "";
+    File f = new File("FourCommandsTwoShapes.svg");
+    Scanner sc = null;
+    try {
+      sc = new Scanner(f);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    while (sc.hasNextLine()) {
+      result += (sc.nextLine());
+    }
+    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything"
+            + "drawn between (200,70) and (width,height) will be visible --><svg width=\"560\" he"
+            + "ight=\"430\" version=\"1.1\"     xmlns=\"http://www.w3.org/2000/svg\"><rect id=\"s"
+            + "1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\" visibility"
+            + "=\"visible\" ><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attribute"
+            + "Name=\"x\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" begin=\"0ms\" d"
+            + "ur=\"1250ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><animate attributeType"
+            + "=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"fill\" from=\"rgb(0,0,0)\" to"
+            + "=\"rgb(0,0,0)\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attri"
+            + "buteName=\"width\" from=\"100\" to=\"100\" /><animate attributeType=\"xml\" begi"
+            + "n=\"0ms\" dur=\"1250ms\" attributeName=\"height\" from=\"100\" to=\"100\" /><anima"
+            + "te attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attributeName=\"x\" from"
+            + "=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" begin=\"1250ms\" dur=\"1250m"
+            + "s\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" be"
+            + "gin=\"1250ms\" dur=\"1250ms\" attributeName=\"fill\" from=\"rgb(0,0,0)\" to=\"rgb("
+            + "0,0,0)\" /><animate attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attribut"
+            + "eName=\"width\" from=\"100\" to=\"100\" /><animate attributeType=\"xml\" begin=\"1"
+            + "250ms\" dur=\"1250ms\" attributeName=\"height\" from=\"100\" to=\"100\" /></rect><"
+            + "rect id=\"s2\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,"
+            + "0)\" visibility=\"visible\" ><animate attributeType=\"xml\" begin=\"0ms\" dur=\"125"
+            + "0ms\" attributeName=\"x\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xm"
+            + "l\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><a"
+            + "nimate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"fill\" f"
+            + "rom=\"rgb(0,0,0)\" to=\"rgb(255,0,0)\" /><animate attributeType=\"xml\" begin=\"0m"
+            + "s\" dur=\"1250ms\" attributeName=\"width\" from=\"100\" to=\"100\" /><animate attri"
+            + "buteType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"height\" from=\"10"
+            + "0\" to=\"100\" /><animate attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" a"
+            + "ttributeName=\"x\" from=\"0.0\" to=\"50.0\" /><animate attributeType=\"xml\" begi"
+            + "n=\"1250ms\" dur=\"1250ms\" attributeName=\"y\" from=\"0.0\" to=\"50.0\" /><anima"
+            + "te attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attributeName=\"fill\" fr"
+            + "om=\"rgb(0,0,0)\" to=\"rgb(0,0,0)\" /><animate attributeType=\"xml\" begin=\"1250m"
+            + "s\" dur=\"1250ms\" attributeName=\"width\" from=\"100\" to=\"100\" /><animate attr"
+            + "ibuteType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attributeName=\"height\" from=\"1"
+            + "00\" to=\"100\" /></rect></svg>", result);
   }
 
-  @Test
   public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -177,7 +251,6 @@ public class SVGAnimationViewTest {
     //assertEquals("", v.getOut());
   }
 
-  @Test
   public void testSVGBuilding() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -207,7 +280,6 @@ public class SVGAnimationViewTest {
     }
   }
 
-  @Test
   public void testSVGToh8() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");

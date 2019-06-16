@@ -1,6 +1,7 @@
 package cs3500.model;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
 /**
  * Represents a geometrical shape for the animation.

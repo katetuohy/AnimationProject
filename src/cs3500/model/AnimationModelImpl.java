@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -89,7 +89,7 @@ public final class AnimationModelImpl implements AnimationModel {
     }
     ArrayList<Command> newCmds = new ArrayList<Command>();
     // Add command to beginning of shape's motion if there is none.
-    if(motions.get(0).getStartTime() != 0) {
+    if (motions.get(0).getStartTime() != 0) {
       newCmds.add(new Command(motions.get(0).getShape(), 0,
               motions.get(0).getStartTime()));
     }
@@ -98,7 +98,7 @@ public final class AnimationModelImpl implements AnimationModel {
       Command current = motions.get(i);
       Command last = motions.get(i - 1);
       // If its a new shape, and doesn't start at zero.
-      if(!current.getShapeName().equalsIgnoreCase(last.getShapeName())) {
+      if (!current.getShapeName().equalsIgnoreCase(last.getShapeName())) {
         if (current.getStartTime() != 0) {
           newCmds.add(new Command(current.getShape(), 0,
                   current.getStartTime()));
@@ -112,16 +112,16 @@ public final class AnimationModelImpl implements AnimationModel {
       }
       newCmds.add(motions.get(i));
       // If it's a different shape and
-      if(!current.getShapeName().equalsIgnoreCase(motions.get(i + 1).getShapeName())) {
+      if (!current.getShapeName().equalsIgnoreCase(motions.get(i + 1).getShapeName())) {
         if (current.getEndTime() != longestTime) {
           newCmds.add(new Command(current.getShape(), current.getEndTime(),
                   longestTime));
         }
       }
     }
-    if(motions.size() > 1
-            && !motions.get(motions.size() - 1).getShapeName().
-            equals(motions.get(motions.size() - 2).getShapeName())
+    if (motions.size() > 1
+            && !motions.get(motions.size() - 1).getShapeName()
+            .equals(motions.get(motions.size() - 2).getShapeName())
             && motions.get(motions.size() - 1).getStartTime() != 0) {
       newCmds.add(new Command(motions.get(motions.size() - 1).getShape(), 0,
               motions.get(0).getStartTime()));
@@ -131,19 +131,18 @@ public final class AnimationModelImpl implements AnimationModel {
     if (motions.size() > 1 &&
             motions.get(motions.size() - 1).getShapeName().equalsIgnoreCase(motions.
                     get(motions.size() - 2).getShapeName())
-            && motions.get(motions.size() - 2).getEndTime() != motions.get(motions.size() - 1).
-            getStartTime()) {
+            && motions.get(motions.size() - 2).getEndTime() != motions.get(motions.size() - 1)
+            .getStartTime()) {
       newCmds.add(new Command(motions.get(motions.size() - 1).getShape(),
               motions.get(motions.size() - 2).getEndTime(),
               motions.get(motions.size() - 1).getStartTime()));
     }
 
     newCmds.add(motions.get(motions.size() - 1));
-    if(motions.get(motions.size() - 1).getEndTime() != longestTime) {
+    if (motions.get(motions.size() - 1).getEndTime() != longestTime) {
       newCmds.add(new Command(motions.get(motions.size() - 1).getShape(),
               motions.get(motions.size() - 1).getEndTime(), longestTime));
     }
-
     motions =  newCmds;
   }
 
@@ -316,7 +315,7 @@ public final class AnimationModelImpl implements AnimationModel {
                                                           int r2, int g2, int b2) {
       Shape shape = null;
       for (Shape s : shapes) {
-        if (s.getName().equals(name)){
+        if (s.getName().equals(name)) {
           shape = s;
         }
       }

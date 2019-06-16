@@ -47,17 +47,17 @@ public class Command {
 
   /**
    * Construct a command with all parameters.
-   * @param shape
-   * @param startTime
-   * @param to
-   * @param oldWidth
-   * @param oldHeight
-   * @param oldColor
-   * @param endTime
-   * @param from
-   * @param newWidth
-   * @param newHeight
-   * @param color
+   * @param shape      The Shape to which the command applies to
+   * @param startTime  The time when the command begins
+   * @param from       The position from which the shape is moving
+   * @param oldWidth   The old width of the shape before the command
+   * @param oldHeight  The height of the shape before the command
+   * @param oldColor   The color of the shape before the command
+   * @param endTime    The time when the command ends
+   * @param to         The position to which the shape is moving
+   * @param newWidth   The width of the shape when the command ends
+   * @param newHeight  The height of the shape when the command ends
+   * @param color      The color of the shape when the command ends
    */
   public Command(Shape shape, int startTime, Position2D from, int oldWidth, int oldHeight,
                  Color oldColor, int endTime, Position2D to, int newWidth, int newHeight,
@@ -71,7 +71,7 @@ public class Command {
     if (color == null) {
       throw new IllegalArgumentException("Color should not be null.");
     }
-    if(to == null || from == null) {
+    if (to == null || from == null) {
       throw new IllegalArgumentException("Position should not be null.");
     }
     this.shape = shape;
@@ -298,23 +298,19 @@ public class Command {
   public String getXML(int speed) {
       int newStartTime = this.startTime * (1000 / speed);
       int newEndTime = this.endTime * (1000 / speed);
-      return
-              this.shape.getPositionXML(newStartTime, newEndTime, from, to)
-
-            + "<animate attributeType=\"xml\" begin=\""+ newStartTime
-            + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
-            + "attributeName=\"fill\" from=\""
-            + "rgb(" + oldColor.getRed() + "," + oldColor.getGreen() + "," + oldColor.getBlue()
-            + ")\""
-            + " to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
-            + ")\"" + " />\n"
-
-            + "<animate attributeType=\"xml\" begin=\""+ newStartTime
-            + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
-            + this.shape.animateWidthXML(this.oldWidth, this.newWidth) + " />\n"
-
-            + "<animate attributeType=\"xml\" begin=\"" + newStartTime
-            + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
-            + this.shape.animateHeightXML(this.oldHeight, this.newHeight) + " />\n";
+      return this.shape.getPositionXML(newStartTime, newEndTime, from, to)
+              + "<animate attributeType=\"xml\" begin=\""+ newStartTime
+              + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
+              + "attributeName=\"fill\" from=\""
+              + "rgb(" + oldColor.getRed() + "," + oldColor.getGreen() + "," + oldColor.getBlue()
+              + ")\""
+              + " to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
+              + ")\"" + " />\n"
+              + "<animate attributeType=\"xml\" begin=\""+ newStartTime
+              + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
+              + this.shape.animateWidthXML(this.oldWidth, this.newWidth) + " />\n"
+              + "<animate attributeType=\"xml\" begin=\"" + newStartTime
+              + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
+              + this.shape.animateHeightXML(this.oldHeight, this.newHeight) + " />\n";
   }
 }

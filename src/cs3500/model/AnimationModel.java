@@ -45,7 +45,6 @@ public interface AnimationModel {
 
   /**
    * Setter for the time field.
-   *
    * @param currTime the current time.
    */
   void setTime(int currTime);

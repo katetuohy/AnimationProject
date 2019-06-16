@@ -13,10 +13,6 @@ import cs3500.model.Shape;
 import cs3500.model.AnimationModel;
 
 import static org.junit.Assert.assertEquals;
-/**
- * TODO: - Add test for empty animation - DONE: test for teleportation - ADD tests for
- * FixRemaining... - DONE: test shapes are there once added
- */
 
 /**
  * Test the {@link AnimationModel} class.
