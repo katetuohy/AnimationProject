@@ -1,13 +1,27 @@
 package cs3500.model;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
+/**
+ * Represents a polygon geometrical shape.
+ */
 public class Polygon extends AShape {
 
   private final int numSides;
 
   public Polygon(String name) {
     super(name, 100, 100);
+    this.numSides = 4;
+  }
+
+  /**
+   * Creates a new Polygon with the given name and color.
+   * @param name  polygon name
+   * @param color polygon color
+   */
+  public Polygon(String name, Color color) {
+    super(name, color,100, 100, new Position2D(0, 0), true);
     this.numSides = 4;
   }
 
@@ -66,11 +80,11 @@ public class Polygon extends AShape {
 
   @Override
   public String getPositionXML(int startTime, int endTime, Position2D from, Position2D to) {
-    return "<animate attributeType=\"xml\" begin=\""+ startTime
+    return "<animate attributeType=\"xml\" begin=\"" + startTime
             + "ms\" dur=\"" + (endTime - startTime)
             + "ms\" attributeName=\"x\" from=\"" + from.getX() + "\" to=\"" + to.getX()
             + "\"" + " />\n"
-            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "<animate attributeType=\"xml\" begin=\"" + startTime
             + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
             + "attributeName=\"y\" from=\"" + from.getY() + "\" to=\"" + to.getY() + "\" />\n";
   }
@@ -85,7 +99,7 @@ public class Polygon extends AShape {
 
   @Override
   public String getXML() {
-    return "<rect id=\""+ name + "\" x=\"" + pos.getX() + "\" y=\"" + pos.getY()
+    return "<rect id=\"" + name + "\" x=\"" + pos.getX() + "\" y=\"" + pos.getY()
             + "\" width=\"" + width + "\" height=\"" + height + "\" "
             + "fill=\"rgb(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue()
             + ")\" visibility=\"visible\" >\n";

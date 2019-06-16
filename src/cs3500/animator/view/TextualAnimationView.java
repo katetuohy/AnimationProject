@@ -8,6 +8,10 @@ import java.util.List;
 import cs3500.model.Command;
 import cs3500.model.Shape;
 
+/**
+ * Represents a textual view for the animation for the shapes. All of the shapes and their commands
+ * are displayed at once in a way where user can scroll through.
+ */
 public class TextualAnimationView implements IView {
 
   private Appendable out;
@@ -16,6 +20,11 @@ public class TextualAnimationView implements IView {
     this.out = System.out;
   }
 
+  /**
+   * Displays the text view by appending all of the shapes and their commands to the output.
+   * @param commands list of motions.
+   * @param canvas four bounds on the animation frame.
+   */
   public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
     ArrayList<Shape> usedShapes = new ArrayList<Shape>();
     tryAppend(out, "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2]
@@ -48,11 +57,12 @@ public class TextualAnimationView implements IView {
     return 1000;
   }
 
-  @Override
-  public void setSpeed(int num) {
-    // Do nothing.
-  }
-
+  /**
+   * Returns the commands in string form for the shape.
+   * @param s         the shape for which the commands should be printed
+   * @param commands  all of the commands in the animation
+   * @return the next srting representing the commands for the given shape
+   */
   private String printShapeCommands(Shape s, LinkedHashMap<Command, Shape> commands) {
     String toReturn = "shape " + s.getName() + "\n";
     for (Command c : commands.keySet()) {
@@ -64,11 +74,20 @@ public class TextualAnimationView implements IView {
   }
 
   @Override
+  public void setSpeed(int num) {
+    // Do nothing.
+  }
+
+  @Override
   public void setOutput(Appendable output) {
     this.out = output;
   }
 
-  // Try to append s2 to readable s1
+  /**
+   * Try to append the String to the appendable.
+   * @param s1 the Appendable
+   * @param s2 the string
+   */
   private void tryAppend(Appendable s1, String s2) {
     try {
       s1.append(s2);

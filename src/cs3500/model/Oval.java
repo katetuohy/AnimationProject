@@ -1,7 +1,11 @@
 package cs3500.model;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
+/**
+ * Represents an oval/ellipse shape.
+ */
 public class Oval extends AShape {
 
   private int xRadius = this.width / 2;
@@ -70,11 +74,11 @@ public class Oval extends AShape {
 
   @Override
   public String getPositionXML(int startTime, int endTime, Position2D from, Position2D to) {
-    return "<animate attributeType=\"xml\" begin=\""+ startTime
+    return "<animate attributeType=\"xml\" begin=\"" + startTime
             + "ms\" dur=\"" + (endTime - startTime)
             + "ms\" attributeName=\"cx\" from=\"" + from.getX() + "\" to=\"" + to.getX()
             + "\"" + " />\n"
-            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "<animate attributeType=\"xml\" begin=\"" + startTime
             + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
             + "attributeName=\"cy\" from=\"" + from.getY() + "\" to=\"" + to.getY() + "\" />\n";
   }
@@ -99,6 +103,6 @@ public class Oval extends AShape {
 
   @Override
   public String animateHeightXML(int height1, int height2) {
-    return "attributeName=\"ry\" from=\"" + (height1 / 2)+ "\" to=\"" + (height2 / 2) + "\"\n";
+    return "attributeName=\"ry\" from=\"" + (height1 / 2) + "\" to=\"" + (height2 / 2) + "\"\n";
   }
 }

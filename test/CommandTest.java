@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 
 import cs3500.model.Command;
 import cs3500.model.Oval;

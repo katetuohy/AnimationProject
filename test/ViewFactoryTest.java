@@ -8,6 +8,9 @@ import cs3500.animator.view.VisualAnimationView;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Tests the view factory for the animation.
+ */
 public class ViewFactoryTest {
 
   @Test

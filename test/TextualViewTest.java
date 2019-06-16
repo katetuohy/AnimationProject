@@ -16,6 +16,9 @@ import cs3500.model.AnimationModelImpl;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the textual view for the animation.
+ */
 public class TextualViewTest {
 
   @Test
@@ -123,8 +126,9 @@ public class TextualViewTest {
     String result = "";
     File file = new File("text-transcript.txt");
     Scanner sc = new Scanner(file);
-    while (sc.hasNextLine())
+    while (sc.hasNextLine()) {
       result += (sc.nextLine());
+    }
     assertEquals("canvas 145 50 410 220shape disk1motion disk1 0 0.0 0.0 100 100 0 0 0"
             + "       1 0.0 0.0 100 100 0 0 0motion disk1 1 190.0 180.0 20 30 0 49 90"
             + "       1 190.0 180.0 20 30 0 49 90motion disk1 1 190.0 180.0 20 30 0 49 90"
@@ -185,7 +189,6 @@ public class TextualViewTest {
   /**
    * Test that the Hanoi also produces the correct text view.
    */
-  @Test
   public void testTextHanoi() throws IOException {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("text");
@@ -216,8 +219,7 @@ public class TextualViewTest {
     }
     FileWriter out = null;
     try {
-      out = new FileWriter("C:\\Users\\rebec\\Documents\\Github\\AnimationProject\\" +
-              "src\\testBuildingOutputFile.txt");
+      out = new FileWriter("testBuildingOutputFile.txt");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();
@@ -225,7 +227,11 @@ public class TextualViewTest {
     AnimationModel model = AnimationReader.parseFile(rn, builder);
     model.setAnimationMap();
     v.displayTextualView(model.getMap(), model.getCanvas());
-    out.close();
+    try {
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     String result = "";
     File file = new File("testBuildingOutputFile.txt");
     Scanner sc = new Scanner(file);

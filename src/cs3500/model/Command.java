@@ -21,6 +21,7 @@ public class Command {
 
   /**
    * The do nothing command, when nothing changes about the state of the shape.
+   *
    * @param shape     the shape to which this command applies to
    * @param startTime the starting time for the command
    * @param endTime   when the command ends
@@ -47,17 +48,18 @@ public class Command {
 
   /**
    * Construct a command with all parameters.
-   * @param shape
-   * @param startTime
-   * @param to
-   * @param oldWidth
-   * @param oldHeight
-   * @param oldColor
-   * @param endTime
-   * @param from
-   * @param newWidth
-   * @param newHeight
-   * @param color
+   *
+   * @param shape     The Shape to which the command applies to
+   * @param startTime The time when the command begins
+   * @param from      The position from which the shape is moving
+   * @param oldWidth  The old width of the shape before the command
+   * @param oldHeight The height of the shape before the command
+   * @param oldColor  The color of the shape before the command
+   * @param endTime   The time when the command ends
+   * @param to        The position to which the shape is moving
+   * @param newWidth  The width of the shape when the command ends
+   * @param newHeight The height of the shape when the command ends
+   * @param color     The color of the shape when the command ends
    */
   public Command(Shape shape, int startTime, Position2D from, int oldWidth, int oldHeight,
                  Color oldColor, int endTime, Position2D to, int newWidth, int newHeight,
@@ -71,7 +73,7 @@ public class Command {
     if (color == null) {
       throw new IllegalArgumentException("Color should not be null.");
     }
-    if(to == null || from == null) {
+    if (to == null || from == null) {
       throw new IllegalArgumentException("Position should not be null.");
     }
     this.shape = shape;
@@ -89,6 +91,7 @@ public class Command {
 
   /**
    * The constructor to change the color of the shape if nothing else is to be changed.
+   *
    * @param shape     the shape to which the command applies to
    * @param startTime the start time for the command
    * @param endTime   when the command ends
@@ -119,10 +122,11 @@ public class Command {
 
   /**
    * The Command constructor to set a new position if nothing else is to be changed.
-   * @param shape      the shape to which the command applies to
-   * @param startTime  the time tick when the command begins
-   * @param endTime    the time tick when the command ends
-   * @param pos        the new position for the shape
+   *
+   * @param shape     the shape to which the command applies to
+   * @param startTime the time tick when the command begins
+   * @param endTime   the time tick when the command ends
+   * @param pos       the new position for the shape
    */
   public Command(Shape shape, int startTime, int endTime, Position2D pos) {
     if (shape == null) {
@@ -149,6 +153,7 @@ public class Command {
 
   /**
    * Constructor to change shape width and height if nothing else is to be changed.
+   *
    * @param shape     the shape of which the command applies to
    * @param startTime the time tick when the command begins
    * @param endTime   the time tick when the command ends
@@ -180,6 +185,7 @@ public class Command {
 
   /**
    * Prints out the values for the command.
+   *
    * @return the string of values
    */
   public String printCommand() {
@@ -197,6 +203,7 @@ public class Command {
 
   /**
    * Returns the Position of which the shape is moving from.
+   *
    * @return start position
    */
   public Position2D getFrom() {
@@ -205,6 +212,7 @@ public class Command {
 
   /**
    * Returns the Position of which the shape is moving to.
+   *
    * @return end position.
    */
   public Position2D getTo() {
@@ -213,6 +221,7 @@ public class Command {
 
   /**
    * Returns the name of the shape.
+   *
    * @return the name
    */
   public String getShapeName() {
@@ -221,6 +230,7 @@ public class Command {
 
   /**
    * Returns the time at which the command began.
+   *
    * @return the start time
    */
   public int getStartTime() {
@@ -229,6 +239,7 @@ public class Command {
 
   /**
    * Returns the time at which the command will end.
+   *
    * @return the end time
    */
   public int getEndTime() {
@@ -237,6 +248,7 @@ public class Command {
 
   /**
    * Return the starting width of the shape.
+   *
    * @return the old width
    */
   public int getOldWidth() {
@@ -245,6 +257,7 @@ public class Command {
 
   /**
    * Returns the starting height of the shape.
+   *
    * @return the old height
    */
   public int getOldHeight() {
@@ -253,6 +266,7 @@ public class Command {
 
   /**
    * Returns the end width of the shape.
+   *
    * @return the new width
    */
   public int getNewWidth() {
@@ -261,6 +275,7 @@ public class Command {
 
   /**
    * Returns the end height of the shape.
+   *
    * @return the new height
    */
   public int getNewHeight() {
@@ -269,6 +284,7 @@ public class Command {
 
   /**
    * Returns the starting color of the shape.
+   *
    * @return the old color
    */
   public Color getOldColor() {
@@ -277,6 +293,7 @@ public class Command {
 
   /**
    * Returns the end color of the shape.
+   *
    * @return the new color
    */
   public Color getNewColor() {
@@ -285,6 +302,7 @@ public class Command {
 
   /**
    * Get the motion's shape.
+   *
    * @return a Shape.
    */
   public Shape getShape() {
@@ -293,26 +311,23 @@ public class Command {
 
   /**
    * Returns the Command in XML format.
+   *
    * @return the command
    */
   public String getXML(int speed) {
-      int newStartTime = this.startTime * (1000 / speed);
-      int newEndTime = this.endTime * (1000 / speed);
-      return
-              this.shape.getPositionXML(newStartTime, newEndTime, from, to)
-
-            + "<animate attributeType=\"xml\" begin=\""+ newStartTime
+    int newStartTime = this.startTime * (1000 / speed);
+    int newEndTime = this.endTime * (1000 / speed);
+    return this.shape.getPositionXML(newStartTime, newEndTime, from, to)
+            + "<animate attributeType=\"xml\" begin=\"" + newStartTime
             + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
             + "attributeName=\"fill\" from=\""
             + "rgb(" + oldColor.getRed() + "," + oldColor.getGreen() + "," + oldColor.getBlue()
             + ")\""
             + " to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
             + ")\"" + " />\n"
-
-            + "<animate attributeType=\"xml\" begin=\""+ newStartTime
+            + "<animate attributeType=\"xml\" begin=\"" + newStartTime
             + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
             + this.shape.animateWidthXML(this.oldWidth, this.newWidth) + " />\n"
-
             + "<animate attributeType=\"xml\" begin=\"" + newStartTime
             + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
             + this.shape.animateHeightXML(this.oldHeight, this.newHeight) + " />\n";

@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,10 +13,6 @@ import cs3500.model.Polygon;
 import cs3500.model.Shape;
 
 import static org.junit.Assert.assertEquals;
-/**
- * TODO: - Add test for empty animation - DONE: test for teleportation - ADD tests for
- * FixRemaining... - DONE: test shapes are there once added
- */
 
 /**
  * Test the {@link AnimationModel} class.
@@ -54,6 +50,9 @@ public class AnimationModelImplTest {
     cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4, c5));
   }
 
+  /**
+   * Creates a list of commands that will through errors due to overlapping times.
+   */
   public void initTestVariablesOverlappingCommands() {
     s1 = new Polygon("s1");
     s2 = new Polygon("s2", 5);
@@ -67,6 +66,9 @@ public class AnimationModelImplTest {
     cmds = new ArrayList<Command>(Arrays.asList(c1, c2));
   }
 
+  /**
+   * Creates a list of shapes and commands that will need to be editted due to gaps in time.
+   */
   public void initTestVariablesTeleportation() {
     s1 = new Polygon("s1");
     s2 = new Polygon("s2", 5);

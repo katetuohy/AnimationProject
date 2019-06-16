@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 
 import cs3500.model.AShape;
 import cs3500.model.Command;

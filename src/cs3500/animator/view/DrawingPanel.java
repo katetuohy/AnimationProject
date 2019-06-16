@@ -20,10 +20,10 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
   }
 
   @Override
-  public void paintComponent(Graphics g){
+  public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    if ( shapes != null ){
-      for (Shape shape : shapes ){
+    if (shapes != null ) {
+      for (Shape shape : shapes) {
         g.setColor(shape.getColor());
         shape.drawShape(g);
       }

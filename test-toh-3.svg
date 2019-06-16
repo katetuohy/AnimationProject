@@ -3,13 +3,6 @@ drawn between (145,50) and (width,height) will be visible -->
 <svg width="555" height="270" version="1.1"
      xmlns="http://www.w3.org/2000/svg">
 <rect id="disk1" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
-<animate attributeType="xml" begin="0ms" dur="250ms" attributeName="x" from="0.0" to="0.0" />
-<animate attributeType="xml" begin="0ms" dur="250ms" attributeName="y" from="0.0" to="0.0" />
-<animate attributeType="xml" begin="0ms" dur="250ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(0,0,0)" />
-<animate attributeType="xml" begin="0ms" dur="250ms" attributeName="width" from="100" to="100"
- />
-<animate attributeType="xml" begin="0ms" dur="250ms" attributeName="height" from="100" to="100"
- />
 <animate attributeType="xml" begin="250ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="250ms" dur="0ms" attributeName="y" from="180.0" to="180.0" />
 <animate attributeType="xml" begin="250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
