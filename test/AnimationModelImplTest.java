@@ -3,7 +3,6 @@ import org.junit.Test;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.model.AnimationModelImpl;
@@ -18,6 +17,7 @@ import static org.junit.Assert.assertEquals;
  * TODO:
  * - Add test for empty animation
  * - DONE: test for teleportation
+ * - ADD tests for FixRemaining...
  * - DONE: test shapes are there once added
  */
 
@@ -137,7 +137,7 @@ public class AnimationModelImplTest {
   public void testFillInTimeGapsTeleportation() {
     initTestVariablesTeleportation();
     AnimationModel m = new AnimationModelImpl();
-    m.addShape(s1);
+    m.addShape(s1); ////////////
     m.addShape(s2);
     m.addShape(s3);
     m.addShape(s4);
