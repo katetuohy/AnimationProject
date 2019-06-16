@@ -5,22 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cs3500.animator.util.AnimationBuilder;
 import cs3500.model.AnimationModelImpl;
 import cs3500.model.Command;
 import cs3500.model.Oval;
 import cs3500.model.Polygon;
-import cs3500.model.Position2D;
 import cs3500.model.Shape;
 import cs3500.model.AnimationModel;
 
 import static org.junit.Assert.assertEquals;
 /**
- * TODO:
- * - Add test for empty animation
- * - DONE: test for teleportation
- * - ADD tests for FixRemaining...
- * - DONE: test shapes are there once added
+ * TODO: - Add test for empty animation - DONE: test for teleportation - ADD tests for
+ * FixRemaining... - DONE: test shapes are there once added
  */
 
 /**
@@ -85,7 +80,7 @@ public class AnimationModelImplTest {
     c4 = new Command(s2, 6, 30);
 
     cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4));
-    cmdsAfterFill = new ArrayList<Command> (Arrays.asList(c1,
+    cmdsAfterFill = new ArrayList<Command>(Arrays.asList(c1,
             new Command(s1, 5, 6), c2,
             new Command(s1, 10, 30), c3,
             new Command(s2, 2, 6), c4));
@@ -210,7 +205,7 @@ public class AnimationModelImplTest {
     m.addMotion(c4);
     m.setAnimationMap();
     m.moveShapes();
-    for(int i = 0; i < cmds.size(); i++) {
+    for (int i = 0; i < cmds.size(); i++) {
       assertEquals(cmds.get(i).getShapeName(), m.getMotions().get(i).getShapeName());
       assertEquals(cmds.get(i).getStartTime(), m.getMotions().get(i).getStartTime());
       assertEquals(cmds.get(i).getEndTime(), m.getMotions().get(i).getEndTime());
@@ -264,7 +259,7 @@ public class AnimationModelImplTest {
     initTestVariables();
     int[] canvas = {1, 2, 3, 4};
     AnimationModel m = new AnimationModelImpl();
-    m.setCanvas(1, 2 ,3 ,4 );
+    m.setCanvas(1, 2, 3, 4);
     assertEquals(canvas[0], m.getCanvas()[0]);
     assertEquals(canvas[3], m.getCanvas()[3]);
   }
@@ -286,6 +281,4 @@ public class AnimationModelImplTest {
     assertEquals(shapes.get(1).getWidth(), 60);
     assertEquals(shapes.get(1).getHeight(), 80);
   }
-
-
 }

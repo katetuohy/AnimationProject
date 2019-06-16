@@ -39,14 +39,7 @@ public interface AnimationModel {
   int[] getCanvas();
 
   /**
-   * gets the canvas size and start point as a string.
-   * @return the canvas string
-   */
-  String getCanvasString();
-
-  /**
    * Fills in the time gaps between the commands.
-   * @param cmds
    */
   public void fixRemainingTimeGaps();
 
@@ -82,18 +75,6 @@ public interface AnimationModel {
    * @return list of motions
    */
   List<Command> getMotions();
-
-  /**
-   * Get the maximum width of the frame based on the shapes' positions.
-   * @return width of the frame.
-   */
-  int getMaxWidth();
-
-  /**
-   * Get the maximum height of the frame based on the shapes' positions and dimensions.
-   * @return height of the frame.
-   */
-  int getMaxHeight();
 
   /**
    * Add Shape to the list of shapes.
