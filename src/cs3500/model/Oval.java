@@ -2,11 +2,6 @@ package cs3500.model;
 
 import java.awt.*;
 
-/**
- * TODO:
- * Fix animate width and animate height methods
- * Represents an oval shape.
- */
 public class Oval extends AShape {
 
   private int xRadius = this.width / 2;

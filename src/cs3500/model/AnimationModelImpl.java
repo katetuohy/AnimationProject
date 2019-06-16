@@ -6,17 +6,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import cs3500.animator.util.AnimationBuilder;
-/**
- * TODO:
- * - Builder
- *  - setBounds()
- *  - Can we decide if we're going to use List<> or ArrayList for everything?
- */
 
 /**
  * Represents the model for an animation. The animation saves the current time and map of commands
  * to the shapes they act on. A method is used to update all of the animation shapes for a given
- * time.
+ * time. Motions are also sorted as well as time gaps are filled with new commands. Commands must
+ * not overlap otherwise an exception is thrown. There must always be a list of shapes given to the
+ * model as well.
  */
 public final class AnimationModelImpl implements AnimationModel {
 
@@ -164,11 +160,6 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public String getCanvasString() {
-    return "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2] + " " + canvas[3];
-  }
-
-  @Override
   public int[] getCanvas() {
     return this.canvas;
   }
@@ -241,34 +232,6 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public int getMaxWidth() {
-    int maxWidth = 0;
-    for (Command c: commands.keySet()) {
-      if (c.getFrom().getX() > maxWidth) {
-        maxWidth = (int)c.getFrom().getX() + c.getOldWidth();
-      }
-      if (c.getTo().getX() > maxWidth) {
-        maxWidth = (int)c.getTo().getX() + c.getNewWidth();
-      }
-    }
-    return maxWidth;
-  }
-
-  @Override
-  public int getMaxHeight() {
-    int maxHeight = 0;
-    for (Command c: commands.keySet()) {
-      if (c.getFrom().getY() > maxHeight) {
-        maxHeight = (int)c.getFrom().getY() + c.getOldHeight();
-      }
-      if (c.getTo().getY() > maxHeight) {
-        maxHeight = (int)c.getTo().getY() + c.getNewHeight();
-      }
-    }
-    return maxHeight;
-  }
-
-  @Override
   public void addShape(Shape s) {
     this.shapes.add(s);
   }
@@ -308,7 +271,7 @@ public final class AnimationModelImpl implements AnimationModel {
 
   /**
    * Represents a builder pattern for an animation model. Animation model can be constructed by
-   * adding shapes, motions, bounds.
+   * adding shapes, motions, canvas.
    * Keyframes not supported in this implementation.
    */
   public static final class Builder implements AnimationBuilder<AnimationModelImpl> {
@@ -362,10 +325,10 @@ public final class AnimationModelImpl implements AnimationModel {
       return this;
     }
 
-    @Override
     /**
-     * Not supported in this model implementation.
+     * Keyframes not supported in this model implementation.
      */
+    @Override
     public AnimationBuilder<AnimationModelImpl> addKeyframe(String name, int t, int x, int y, int w,
                                                             int h, int r, int g, int b) {
       throw new UnsupportedOperationException("addKeyframe() method not supported in this model.");

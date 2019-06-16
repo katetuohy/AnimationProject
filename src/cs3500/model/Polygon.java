@@ -2,11 +2,6 @@ package cs3500.model;
 
 import java.awt.*;
 
-/**
- * TODO:
- * Fix animate width and height methods
- * Represents a polygon with n sides.
- */
 public class Polygon extends AShape {
 
   private final int numSides;
