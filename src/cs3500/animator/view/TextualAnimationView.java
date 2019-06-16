@@ -12,12 +12,9 @@ import cs3500.model.Shape;
 public class TextualAnimationView implements IView {
 
   private Appendable out;
-  private int speed;
-
 
   public TextualAnimationView() {
     this.out = System.out;
-    this.speed = 1;
   }
 
   public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
@@ -59,7 +56,7 @@ public class TextualAnimationView implements IView {
 
   @Override
   public void setSpeed(int num) {
-    this.speed = num;
+    // Do nothing.
   }
 
   @Override

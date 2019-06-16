@@ -3,7 +3,7 @@ package cs3500.model;
 import java.awt.*;
 
 /**
- * Represents a geometrical shape.
+ * Represents a geometrical shape for the animation.
  */
 public interface Shape {
 
@@ -96,6 +96,10 @@ public interface Shape {
    */
   String animateHeightXML(int height1, int height2);
 
+  /**
+   * Draws the shape in the given Graphics.
+   * @param g the Graphics.
+   */
   void drawShape(Graphics g);
 
 }

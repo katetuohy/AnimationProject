@@ -1,15 +1,10 @@
 package cs3500.model;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import javax.print.Doc;
-
-import cs3500.animator.util.AnimationBuilder;
-
 /**
- * Represents the model for an animation.
+ * The interface that represents the model for an animation.
  */
 public interface AnimationModel {
 
@@ -52,9 +47,8 @@ public interface AnimationModel {
   /**
    * Fills in the time gaps between the commands.
    * @param cmds
-   * @return
    */
-  public List<Command> fixRemainingTimeGaps(List<Command> cmds);
+  public void fixRemainingTimeGaps();
 
   /**
    * Setter for the time field.
@@ -107,16 +101,16 @@ public interface AnimationModel {
   void addShape(Shape s);
 
   /**
-   * Add Command to the list of commands.
+   * Add the Command to the list of commands.
    */
   void addMotion(Command c);
 
   /**
    * Set the canvas dimensions of the model.
-   * @param x
-   * @param y
-   * @param width
-   * @param height
+   * @param x      The X position for the center of the canvas
+   * @param y      The Y position for the center of the canvas
+   * @param width  The Width of the canvas
+   * @param height The Height of the canvas
    */
   void setCanvas(int x, int y, int width, int height);
 }

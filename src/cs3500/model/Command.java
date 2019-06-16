@@ -29,7 +29,7 @@ public class Command {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
-    if (startTime >= endTime) {
+    if (startTime > endTime) {
       throw new IllegalArgumentException("Start time must be strictly less than end time.");
     }
     this.shape = shape;
@@ -65,7 +65,7 @@ public class Command {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
-    if (startTime >= endTime) {
+    if (startTime > endTime) {
       throw new IllegalArgumentException("Start time must be strictly less than end time.");
     }
     if (color == null) {
@@ -98,7 +98,7 @@ public class Command {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
-    if (startTime >= endTime) {
+    if (startTime > endTime) {
       throw new IllegalArgumentException("Start time must be strictly less than end time.");
     }
     if (color == null) {
@@ -128,7 +128,7 @@ public class Command {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
-    if (startTime >= endTime) {
+    if (startTime > endTime) {
       throw new IllegalArgumentException("Start time must be strictly less than end time.");
     }
     if (pos == null) {
@@ -159,7 +159,7 @@ public class Command {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
-    if (startTime >= endTime) {
+    if (startTime > endTime) {
       throw new IllegalArgumentException("Start time must be strictly less than end time.");
     }
     if (width <= 0 || height <= 0) {
@@ -287,6 +287,10 @@ public class Command {
     return this.shape;
   }
 
+  /**
+   * Returns the Command in XML format.
+   * @return the command
+   */
   public String getXML() {
     return "<animate attributeType=\"xml\" begin=\""+ startTime
             + "ms\" dur=\"" + (endTime - startTime)

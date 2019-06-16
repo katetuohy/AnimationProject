@@ -1,7 +1,15 @@
 package cs3500.animator.view;
 
+/**
+ * Determines what view to return given the string type.
+ */
 public class ViewFactory {
 
+  /**
+   * Returns a new view corresponding to the given type.
+   * @param type the view type
+   * @return a view instance
+   */
   public IView getView(String type) {
     if (type == null) {
       // TODO:

@@ -8,10 +8,15 @@ import javax.swing.*;
 
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGAnimationView;
+import cs3500.animator.view.TextualAnimationView;
 import cs3500.animator.view.VisualAnimationView;
 import cs3500.model.Shape;
 import cs3500.model.AnimationModel;
 
+/**
+ * The controller for the animation, acting in between the model and the view to control the
+ * animation.
+ */
 public class Controller implements IController {
   Timer timer;
   int speed;
@@ -22,8 +27,14 @@ public class Controller implements IController {
   public Controller(AnimationModel model, IView view){
     this.model = model;
     this.view = view;
-    view.displayTextualView(model.getMap(), model.getCanvas());
-    view.displaySVG(model.getMotions(), model.getCanvas());
+
+    if (view instanceof TextualAnimationView) {
+      view.displayTextualView(model.getMap(), model.getCanvas());
+    }
+
+    if (view instanceof SVGAnimationView) {
+      view.displaySVG(model.getMotions(), model.getCanvas());
+    }
 
     // Visual animation.
     if(view instanceof VisualAnimationView) {

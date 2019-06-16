@@ -1,13 +1,14 @@
 package cs3500.animator.view;
 
-
-import java.lang.reflect.Array;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import cs3500.model.Shape;
 import cs3500.model.Command;
 
+/**
+ * Interface for the possible views for the animation.
+ */
 public interface IView {
 
   /**
