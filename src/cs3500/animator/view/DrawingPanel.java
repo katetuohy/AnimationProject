@@ -1,9 +1,10 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.util.List;
 
-import javax.swing.*;
+
+import javax.swing.JPanel;
 
 import cs3500.model.Shape;
 

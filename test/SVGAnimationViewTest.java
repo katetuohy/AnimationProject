@@ -83,8 +83,8 @@ public class SVGAnimationViewTest {
     ArrayList<Command> cmds = new ArrayList<Command>();
     cmds.add(c1);
     v.displaySVG(cmds, canvas);
-    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything\n" +
-            "drawn between (200,70) and (width,height) will be visible -->\n" +
+    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything\n"
+                    + "drawn between (200,70) and (width,height) will be visible -->\n" +
             "<svg width=\"560\" height=\"430\" version=\"1.1\"\n" +
             "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
             "<rect id=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\""
@@ -108,7 +108,7 @@ public class SVGAnimationViewTest {
     IView v = new ViewFactory().getView("svg");
     FileWriter file = null;
     try {
-      file = new FileWriter("testBasicXMLOneShapeOneCommand.xml");
+      file = new FileWriter("testBasicXMLOneShapeOneCommand.svg");
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -133,7 +133,7 @@ public class SVGAnimationViewTest {
     v.setSpeed(4);
     FileWriter out = null;
     try {
-      out = new FileWriter("FourCommandsTwoShapes.xml");
+      out = new FileWriter("FourCommandsTwoShapes.svg");
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -150,7 +150,7 @@ public class SVGAnimationViewTest {
   public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
-    v.setSpeed(20);
+    v.setSpeed(4);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
@@ -162,7 +162,7 @@ public class SVGAnimationViewTest {
     model.setAnimationMap();
     FileWriter out = null;
     try {
-      out = new FileWriter("toh-at-20.svg");
+      out = new FileWriter("test-toh-3.svg");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();
@@ -193,7 +193,7 @@ public class SVGAnimationViewTest {
     model.setAnimationMap();
     FileWriter out = null;
     try {
-      out = new FileWriter("testSVGBuildings.xml");
+      out = new FileWriter("testSVGBuildings.svg");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();
@@ -207,16 +207,16 @@ public class SVGAnimationViewTest {
     }
   }
 
-/*  @Test
-  public void testSVGBigBangCrunch() {
+  @Test
+  public void testSVGToh8() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
-    v.setSpeed(100);
+    v.setSpeed(20);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
       rn = new FileReader(
-              "C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\big-bang-big-crunch.txt");
+              "C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\toh-8.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
@@ -224,7 +224,7 @@ public class SVGAnimationViewTest {
     model.setAnimationMap();
     FileWriter out = null;
     try {
-      out = new FileWriter("testSVGBigBangCrunch.xml");
+      out = new FileWriter("toh-at-20.svg");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();
@@ -236,5 +236,5 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }*/
+  }
 }
