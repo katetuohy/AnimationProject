@@ -1,10 +1,11 @@
 import org.junit.Test;
 
+import java.awt.*;
+
 import cs3500.model.AShape;
 import cs3500.model.Command;
 import cs3500.model.Polygon;
 import cs3500.model.Position2D;
-import java.awt.Color;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,8 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class PolygonTest {
 
   /**
-   * Test the constructors initialize variables properly and getters
-   * return expected values.
+   * Test the constructors initialize variables properly and getters return expected values.
    */
   @Test
   public void testFirstConstructor1() {
@@ -152,7 +152,7 @@ public class PolygonTest {
   public void testSetPosition() {
     AShape p = new Polygon("poly");
     Command c = new Command(p, 0, 5, new Position2D(100, 100));
-    assertEquals(new Position2D(0,0), p.getPosition());
+    assertEquals(new Position2D(0, 0), p.getPosition());
     p.setPosition(1, 0, 5, c);
     assertEquals(new Position2D(20, 20), p.getPosition());
   }

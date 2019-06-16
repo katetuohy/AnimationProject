@@ -67,6 +67,10 @@ public class SVGAnimationViewTest {
     canvas[3] = 360;
   }
 
+  /**
+   * Test the view constructors are initialized properly. Check changing speed, adding shapes,
+   * .
+   */
   @Test
   public void testSVGConstructor() {
     IView v = new ViewFactory().getView("svg");
@@ -248,7 +252,6 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    //assertEquals("", v.getOut());
   }
 
   public void testSVGBuilding() {

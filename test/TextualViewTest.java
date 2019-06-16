@@ -89,11 +89,13 @@ public class TextualViewTest {
             "motion disk3 0 0.0 0.0 100 100 0 0 0       1 0.0 0.0 100 100 0 0 0\n" +
             "motion disk3 1 145.0 240.0 110 30 11 45 175       1 145.0 240.0 110 30 11 45 175\n" +
             "motion disk3 1 145.0 240.0 110 30 11 45 175       121 145.0 240.0 110 30 11 45 175\n" +
-            "motion disk3 121 145.0 240.0 110 30 11 45 175       131 145.0 50.0 110 30 11 45 175\n" +
+            "motion disk3 121 145.0 240.0 110 30 11 45 175       131 145.0 50.0 110 30 11 45 175\n"
+            +
             "motion disk3 131 145.0 50.0 110 30 11 45 175       132 145.0 50.0 110 30 11 45 175\n" +
             "motion disk3 132 145.0 50.0 110 30 11 45 175       142 445.0 50.0 110 30 11 45 175\n" +
             "motion disk3 142 445.0 50.0 110 30 11 45 175       143 445.0 50.0 110 30 11 45 175\n" +
-            "motion disk3 143 445.0 50.0 110 30 11 45 175       153 445.0 240.0 110 30 11 45 175\n" +
+            "motion disk3 143 445.0 50.0 110 30 11 45 175       153 445.0 240.0 110 30 11 45 175\n"
+            +
             "motion disk3 153 445.0 240.0 110 30 11 45 175       161 445.0 240.0 110 30 0 255 0\n" +
             "motion disk3 161 445.0 240.0 110 30 0 255 0       302 445.0 240.0 110 30 0 255 0\n" +
             "\n", v.getOut().toString());
@@ -210,13 +212,15 @@ public class TextualViewTest {
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
-      rn = new FileReader("C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\buildings.txt");
+      rn = new FileReader("C:\\Users\\kr2e1\\GitHub" +
+              "\\AnimationProject\\src\\buildings.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     FileWriter out = null;
     try {
-      out = new FileWriter("testBuildingOutputFile.txt");
+      out = new FileWriter("C:\\Users\\rebec\\Documents\\Github\\AnimationProject\\" +
+              "src\\testBuildingOutputFile.txt");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();

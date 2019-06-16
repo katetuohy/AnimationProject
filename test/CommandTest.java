@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.Color;
+import java.awt.*;
 
 import cs3500.model.Command;
 import cs3500.model.Oval;
@@ -299,4 +299,5 @@ public class CommandTest {
     assertEquals(c3.getNewColor(), Color.CYAN);
     assertEquals(c4.getNewColor(), Color.MAGENTA);
   }
+
 }
