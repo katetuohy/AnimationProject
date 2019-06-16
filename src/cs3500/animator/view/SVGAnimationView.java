@@ -26,7 +26,8 @@ public class SVGAnimationView implements IView {
                     + "drawn between (%d,%d) and (width,height) will be visible -->\n"
                     + "<svg width=\"%d\" height=\"%d\" version=\"1.1\"\n"
                     + "     xmlns=\"http://www.w3.org/2000/svg\">\n",
-            canvas[0], canvas[1], canvas[2], canvas[3], canvas[2], canvas[3]);
+            canvas[2], canvas[3], canvas[0], canvas[1], canvas[0] + canvas[2],
+            canvas[1] + canvas[3]);
     Shape currentShape = motions.get(0).getShape();
     Command currentMotion;
     String shapeXML = "";
