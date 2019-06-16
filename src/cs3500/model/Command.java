@@ -296,8 +296,8 @@ public class Command {
    * @return the command
    */
   public String getXML(int speed) {
-      int newStartTime = this.startTime * speed;
-      int newEndTime = this.endTime * speed;
+      int newStartTime = this.startTime * (1000 / speed);
+      int newEndTime = this.endTime * (1000 / speed);
       return
               this.shape.getPositionXML(newStartTime, newEndTime, from, to)
 

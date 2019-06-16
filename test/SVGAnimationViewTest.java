@@ -125,7 +125,7 @@ public class SVGAnimationViewTest {
   public void testBasicXMLFourCommandsTwoShapes() {
     initializeTestVariables();
     IView v = new SVGAnimationView();
-    v.setSpeed(100);
+    v.setSpeed(4);
     FileWriter out = null;
     try {
       out = new FileWriter("FourCommandsTwoShapes.xml");
@@ -145,7 +145,7 @@ public class SVGAnimationViewTest {
   public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
-    v.setSpeed(100);
+    v.setSpeed(4);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
@@ -177,7 +177,7 @@ public class SVGAnimationViewTest {
   public void testSVGBuilding() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
-    v.setSpeed(100);
+    v.setSpeed(2);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
