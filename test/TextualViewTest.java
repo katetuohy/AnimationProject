@@ -109,7 +109,7 @@ public class TextualViewTest {
     }
     FileWriter out = null;
     try {
-      out = new FileWriter("testTextOutputFile.txt");
+      out = new FileWriter("text-transcript.txt");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();
@@ -119,7 +119,7 @@ public class TextualViewTest {
     v.displayTextualView(model.getMap(), model.getCanvas());
     out.close();
     String result = "";
-    File file = new File("testTextOutputFile.txt");
+    File file = new File("text-transcript.txt");
     Scanner sc = new Scanner(file);
     while (sc.hasNextLine())
       result += (sc.nextLine());

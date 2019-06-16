@@ -1,0 +1,52 @@
+For this assignment, we created an Interface first for our views. From there, we created 3 different
+view classes to implement the IView interface. These were the SVGAnimationView, TextualAnimationView,
+and the VisualAnimationView.
+
+We created a main class named Excellence that took in the expected input, parsed it to understand
+what was given, and created a new animation from it. It did this by creating a new builder for the
+model and then parsing through the input file to make it comprehendable to the model that we had
+previously created. From there, we contructed a view given the type (using a Factory design pattern).
+Finally, we called our controller for the animation and gave it the model and view to act as the
+designator between the two so that there was no mishandling of information.
+
+We choose to use a controller because we wanted to keep our model as similar to our original as
+possible and thought that this would be the easiest way to deal with the different speeds for the
+visual animation view.
+
+We also created the Drawing Panel and IDrawingPanel to help draw the shapes for the animation (taken
+from Vido's code) and changed to work with our shapes.
+
+We decided to stick with our original design of a hashmap for the commands and their shapes but
+added new methods to help fix our issues with sorting and teleportation. We also added initial
+lists of commands and shapes because we hadn't done that before, instead creating the hashmap by
+passing in the list of commands and shapes from an outside source.
+
+
+
+
+                                +---------------------+
+                                |        IView        |
+                                +---------------------+
+                                          |
+               +--------------------------+----------------------------+
+               |                          |                            |
+   +----------------------+     +---------------------+     +---------------------+
+   | TextualAnimationView |     |   SVGAnimationView  |     | VisualAnimationView |
+   +----------------------+     +---------------------+     +---------------------+
+
+
+   +----------------------+              +----------------------+
+   |     IDrawingPanel    |              |      Excellence      |
+   +----------------------+              +----------------------+
+              |
+   +----------------------+
+   |     DrawingPanel     |
+   +----------------------+
+
+      +----------------------+
+      |   AnimationBuilder   |
+      +----------------------+
+                 |
+      +----------------------+
+      |    AnimationReader   |
+      +----------------------+

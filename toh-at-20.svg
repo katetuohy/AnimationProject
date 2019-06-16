@@ -1,0 +1,389 @@
+<!--the overall svg width is 410 and height is 220. By default anything
+drawn between (145,50) and (width,height) will be visible -->
+<svg width="555" height="270" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+<rect id="disk1" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="x" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="y" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(0,0,0)" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="width" from="100" to="100"
+ />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="height" from="100" to="100"
+ />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="y" from="180.0" to="180.0" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="50ms" dur="1200ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="50ms" dur="1200ms" attributeName="y" from="180.0" to="180.0" />
+<animate attributeType="xml" begin="50ms" dur="1200ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="50ms" dur="1200ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="50ms" dur="1200ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="1250ms" dur="500ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="1250ms" dur="500ms" attributeName="y" from="180.0" to="50.0" />
+<animate attributeType="xml" begin="1250ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="1250ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="1250ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="1750ms" dur="50ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="1750ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="1750ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="1750ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="1750ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="1800ms" dur="500ms" attributeName="x" from="190.0" to="490.0" />
+<animate attributeType="xml" begin="1800ms" dur="500ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="1800ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="1800ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="1800ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="2300ms" dur="50ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="2300ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="2300ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="2300ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="2300ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="2350ms" dur="500ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="2350ms" dur="500ms" attributeName="y" from="50.0" to="240.0" />
+<animate attributeType="xml" begin="2350ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="2350ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="2350ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="2850ms" dur="1600ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="2850ms" dur="1600ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="2850ms" dur="1600ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="2850ms" dur="1600ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="2850ms" dur="1600ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="4450ms" dur="500ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="4450ms" dur="500ms" attributeName="y" from="240.0" to="50.0" />
+<animate attributeType="xml" begin="4450ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="4450ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="4450ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="4950ms" dur="50ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="4950ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="4950ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="4950ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="4950ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="5000ms" dur="500ms" attributeName="x" from="490.0" to="340.0" />
+<animate attributeType="xml" begin="5000ms" dur="500ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="5000ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="5000ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="5000ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="5500ms" dur="50ms" attributeName="x" from="340.0" to="340.0" />
+<animate attributeType="xml" begin="5500ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="5500ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="5500ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="5500ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="5550ms" dur="500ms" attributeName="x" from="340.0" to="340.0" />
+<animate attributeType="xml" begin="5550ms" dur="500ms" attributeName="y" from="50.0" to="210.0" />
+<animate attributeType="xml" begin="5550ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="5550ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="5550ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="6050ms" dur="1600ms" attributeName="x" from="340.0" to="340.0" />
+<animate attributeType="xml" begin="6050ms" dur="1600ms" attributeName="y" from="210.0" to="210.0" />
+<animate attributeType="xml" begin="6050ms" dur="1600ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="6050ms" dur="1600ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="6050ms" dur="1600ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="7650ms" dur="500ms" attributeName="x" from="340.0" to="340.0" />
+<animate attributeType="xml" begin="7650ms" dur="500ms" attributeName="y" from="210.0" to="50.0" />
+<animate attributeType="xml" begin="7650ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="7650ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="7650ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="8150ms" dur="50ms" attributeName="x" from="340.0" to="340.0" />
+<animate attributeType="xml" begin="8150ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="8150ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="8150ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="8150ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="8200ms" dur="500ms" attributeName="x" from="340.0" to="190.0" />
+<animate attributeType="xml" begin="8200ms" dur="500ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="8200ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="8200ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="8200ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="8700ms" dur="50ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="8700ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="8700ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="8700ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="8700ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="8750ms" dur="500ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="8750ms" dur="500ms" attributeName="y" from="50.0" to="240.0" />
+<animate attributeType="xml" begin="8750ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="8750ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="8750ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="9250ms" dur="1600ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="9250ms" dur="1600ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="9250ms" dur="1600ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="9250ms" dur="1600ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="9250ms" dur="1600ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="10850ms" dur="500ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="10850ms" dur="500ms" attributeName="y" from="240.0" to="50.0" />
+<animate attributeType="xml" begin="10850ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="10850ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="10850ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="11350ms" dur="50ms" attributeName="x" from="190.0" to="190.0" />
+<animate attributeType="xml" begin="11350ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="11350ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="11350ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="11350ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="11400ms" dur="500ms" attributeName="x" from="190.0" to="490.0" />
+<animate attributeType="xml" begin="11400ms" dur="500ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="11400ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="11400ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="11400ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="11900ms" dur="50ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="11900ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="11900ms" dur="50ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="11900ms" dur="50ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="11900ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="11950ms" dur="500ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="11950ms" dur="500ms" attributeName="y" from="50.0" to="180.0" />
+<animate attributeType="xml" begin="11950ms" dur="500ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
+<animate attributeType="xml" begin="11950ms" dur="500ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="11950ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="12450ms" dur="400ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="12450ms" dur="400ms" attributeName="y" from="180.0" to="180.0" />
+<animate attributeType="xml" begin="12450ms" dur="400ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="12450ms" dur="400ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="12450ms" dur="400ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="12850ms" dur="2250ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="12850ms" dur="2250ms" attributeName="y" from="180.0" to="180.0" />
+<animate attributeType="xml" begin="12850ms" dur="2250ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="12850ms" dur="2250ms" attributeName="width" from="20" to="20"
+ />
+<animate attributeType="xml" begin="12850ms" dur="2250ms" attributeName="height" from="30" to="30"
+ />
+</rect>
+<rect id="disk2" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="x" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="y" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(0,0,0)" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="width" from="100" to="100"
+ />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="height" from="100" to="100"
+ />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="x" from="167.0" to="167.0" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="50ms" dur="2800ms" attributeName="x" from="167.0" to="167.0" />
+<animate attributeType="xml" begin="50ms" dur="2800ms" attributeName="y" from="210.0" to="210.0" />
+<animate attributeType="xml" begin="50ms" dur="2800ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="50ms" dur="2800ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="50ms" dur="2800ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="2850ms" dur="500ms" attributeName="x" from="167.0" to="167.0" />
+<animate attributeType="xml" begin="2850ms" dur="500ms" attributeName="y" from="210.0" to="50.0" />
+<animate attributeType="xml" begin="2850ms" dur="500ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="2850ms" dur="500ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="2850ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="3350ms" dur="50ms" attributeName="x" from="167.0" to="167.0" />
+<animate attributeType="xml" begin="3350ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="3350ms" dur="50ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="3350ms" dur="50ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="3350ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="3400ms" dur="500ms" attributeName="x" from="167.0" to="317.0" />
+<animate attributeType="xml" begin="3400ms" dur="500ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="3400ms" dur="500ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="3400ms" dur="500ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="3400ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="3900ms" dur="50ms" attributeName="x" from="317.0" to="317.0" />
+<animate attributeType="xml" begin="3900ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="3900ms" dur="50ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="3900ms" dur="50ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="3900ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="3950ms" dur="500ms" attributeName="x" from="317.0" to="317.0" />
+<animate attributeType="xml" begin="3950ms" dur="500ms" attributeName="y" from="50.0" to="240.0" />
+<animate attributeType="xml" begin="3950ms" dur="500ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="3950ms" dur="500ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="3950ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="4450ms" dur="4800ms" attributeName="x" from="317.0" to="317.0" />
+<animate attributeType="xml" begin="4450ms" dur="4800ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="4450ms" dur="4800ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="4450ms" dur="4800ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="4450ms" dur="4800ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="9250ms" dur="500ms" attributeName="x" from="317.0" to="317.0" />
+<animate attributeType="xml" begin="9250ms" dur="500ms" attributeName="y" from="240.0" to="50.0" />
+<animate attributeType="xml" begin="9250ms" dur="500ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="9250ms" dur="500ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="9250ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="9750ms" dur="50ms" attributeName="x" from="317.0" to="317.0" />
+<animate attributeType="xml" begin="9750ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="9750ms" dur="50ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="9750ms" dur="50ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="9750ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="9800ms" dur="500ms" attributeName="x" from="317.0" to="467.0" />
+<animate attributeType="xml" begin="9800ms" dur="500ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="9800ms" dur="500ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="9800ms" dur="500ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="9800ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="10300ms" dur="50ms" attributeName="x" from="467.0" to="467.0" />
+<animate attributeType="xml" begin="10300ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="10300ms" dur="50ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="10300ms" dur="50ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="10300ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="10350ms" dur="500ms" attributeName="x" from="467.0" to="467.0" />
+<animate attributeType="xml" begin="10350ms" dur="500ms" attributeName="y" from="50.0" to="210.0" />
+<animate attributeType="xml" begin="10350ms" dur="500ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
+<animate attributeType="xml" begin="10350ms" dur="500ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="10350ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="10850ms" dur="400ms" attributeName="x" from="467.0" to="467.0" />
+<animate attributeType="xml" begin="10850ms" dur="400ms" attributeName="y" from="210.0" to="210.0" />
+<animate attributeType="xml" begin="10850ms" dur="400ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="10850ms" dur="400ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="10850ms" dur="400ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="11250ms" dur="3850ms" attributeName="x" from="467.0" to="467.0" />
+<animate attributeType="xml" begin="11250ms" dur="3850ms" attributeName="y" from="210.0" to="210.0" />
+<animate attributeType="xml" begin="11250ms" dur="3850ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="11250ms" dur="3850ms" attributeName="width" from="65" to="65"
+ />
+<animate attributeType="xml" begin="11250ms" dur="3850ms" attributeName="height" from="30" to="30"
+ />
+</rect>
+<rect id="disk3" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="x" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="y" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(0,0,0)" />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="width" from="100" to="100"
+ />
+<animate attributeType="xml" begin="0ms" dur="50ms" attributeName="height" from="100" to="100"
+ />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="x" from="145.0" to="145.0" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="50ms" dur="0ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="50ms" dur="6000ms" attributeName="x" from="145.0" to="145.0" />
+<animate attributeType="xml" begin="50ms" dur="6000ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="50ms" dur="6000ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
+<animate attributeType="xml" begin="50ms" dur="6000ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="50ms" dur="6000ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="6050ms" dur="500ms" attributeName="x" from="145.0" to="145.0" />
+<animate attributeType="xml" begin="6050ms" dur="500ms" attributeName="y" from="240.0" to="50.0" />
+<animate attributeType="xml" begin="6050ms" dur="500ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
+<animate attributeType="xml" begin="6050ms" dur="500ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="6050ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="6550ms" dur="50ms" attributeName="x" from="145.0" to="145.0" />
+<animate attributeType="xml" begin="6550ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="6550ms" dur="50ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
+<animate attributeType="xml" begin="6550ms" dur="50ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="6550ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="6600ms" dur="500ms" attributeName="x" from="145.0" to="445.0" />
+<animate attributeType="xml" begin="6600ms" dur="500ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="6600ms" dur="500ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
+<animate attributeType="xml" begin="6600ms" dur="500ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="6600ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="7100ms" dur="50ms" attributeName="x" from="445.0" to="445.0" />
+<animate attributeType="xml" begin="7100ms" dur="50ms" attributeName="y" from="50.0" to="50.0" />
+<animate attributeType="xml" begin="7100ms" dur="50ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
+<animate attributeType="xml" begin="7100ms" dur="50ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="7100ms" dur="50ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="7150ms" dur="500ms" attributeName="x" from="445.0" to="445.0" />
+<animate attributeType="xml" begin="7150ms" dur="500ms" attributeName="y" from="50.0" to="240.0" />
+<animate attributeType="xml" begin="7150ms" dur="500ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
+<animate attributeType="xml" begin="7150ms" dur="500ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="7150ms" dur="500ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="7650ms" dur="400ms" attributeName="x" from="445.0" to="445.0" />
+<animate attributeType="xml" begin="7650ms" dur="400ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="7650ms" dur="400ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="7650ms" dur="400ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="7650ms" dur="400ms" attributeName="height" from="30" to="30"
+ />
+<animate attributeType="xml" begin="8050ms" dur="7050ms" attributeName="x" from="445.0" to="445.0" />
+<animate attributeType="xml" begin="8050ms" dur="7050ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="8050ms" dur="7050ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="8050ms" dur="7050ms" attributeName="width" from="110" to="110"
+ />
+<animate attributeType="xml" begin="8050ms" dur="7050ms" attributeName="height" from="30" to="30"
+ />
+</rect>
+</svg>

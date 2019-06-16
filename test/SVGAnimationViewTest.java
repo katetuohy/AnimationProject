@@ -83,18 +83,23 @@ public class SVGAnimationViewTest {
     ArrayList<Command> cmds = new ArrayList<Command>();
     cmds.add(c1);
     v.displaySVG(cmds, canvas);
-    assertEquals("<!--the overall svg width is 200 and height is 70. By default anything\n" +
-            "drawn between (360,360) and (width,height) will be visible -->\n" +
-            "<svg width=\"360\" height=\"360\" version=\"1.1\"\n" +
+    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything\n" +
+            "drawn between (200,70) and (width,height) will be visible -->\n" +
+            "<svg width=\"560\" height=\"430\" version=\"1.1\"\n" +
             "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
-            "<rect id=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\" visibility=\"visible\" >\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\" attributeName=\"cx\" from=\"0.0\" to=\"0.0\" />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\" attributeName=\"color-interpolation\" from=\"rgb(0,0,0)\" to=\"rgb(0,0,0)\" />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\"  />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\"  />\n" +
-            "</rect>\n" +
-            "</svg>", v.getOut().toString());
+            "<rect id=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\""
+            + " visibility=\"visible\" >\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"x\" "
+            + "from=\"0.0\" to=\"0.0\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"y\" "
+            + "from=\"0.0\" to=\"0.0\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"fill\" "
+            + "from=\"rgb(0,0,0)\" to=\"rgb(0,0,0)\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"width\" "
+            + "from=\"100\" to=\"100\"\n" + " />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"height\" "
+            + "from=\"100\" to=\"100\"\n" + " />\n" + "</rect>\n" + "</svg>",
+            v.getOut().toString());
   }
 
   @Test
@@ -145,12 +150,11 @@ public class SVGAnimationViewTest {
   public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
-    v.setSpeed(4);
+    v.setSpeed(20);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
-      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github" +
-              "\\AnimationProject\\src\\toh-3.txt");
+      rn = new FileReader("C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\toh-3.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
@@ -158,7 +162,7 @@ public class SVGAnimationViewTest {
     model.setAnimationMap();
     FileWriter out = null;
     try {
-      out = new FileWriter("testSVGToh3.xml");
+      out = new FileWriter("toh-at-20.svg");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();
@@ -181,8 +185,7 @@ public class SVGAnimationViewTest {
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
-      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github" +
-              "\\AnimationProject\\src\\buildings.txt");
+      rn = new FileReader("C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\buildings.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
@@ -204,7 +207,7 @@ public class SVGAnimationViewTest {
     }
   }
 
-  @Test
+/*  @Test
   public void testSVGBigBangCrunch() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -212,8 +215,8 @@ public class SVGAnimationViewTest {
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
-      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github\\AnimationProject" +
-              "\\src\\big-bang-big-crunch.txt");
+      rn = new FileReader(
+              "C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\big-bang-big-crunch.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
@@ -233,5 +236,5 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
+  }*/
 }
