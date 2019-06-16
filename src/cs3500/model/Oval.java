@@ -3,6 +3,8 @@ package cs3500.model;
 import java.awt.*;
 
 /**
+ * TODO:
+ * Fix animate width and animate height methods
  * Represents an oval shape.
  */
 public class Oval extends AShape {
@@ -65,6 +67,7 @@ public class Oval extends AShape {
     return this.yRadius;
   }
 
+  @Override
   public void drawShape(Graphics g) {
     g.fillOval((int) this.getPosition().getX(), (int) this.getPosition().getY(),
             this.getWidth(), this.getHeight());

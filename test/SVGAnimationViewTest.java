@@ -96,21 +96,18 @@ public class SVGAnimationViewTest {
 
   @Test
   public void testSVGSimple() {
-    initializeTestVariables();
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
-      rn = new FileReader("C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\smalldemo.txt");
+      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github\\AnimationProject\\src\\toh-3.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
-    v.setOutput(new StringBuilder());
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    int[] can = model.getCanvas();
-    assertEquals(can.length, 4);
-    v.displaySVG(model.getMotions(), can);
+    model.setAnimationMap();
+    v.displaySVG(model.getMotions(), model.getCanvas());
     assertEquals("", v.getOut());
   }
 }

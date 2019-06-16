@@ -1,8 +1,6 @@
 package cs3500.animator.view;
 
 import java.awt.*;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -10,7 +8,10 @@ import javax.swing.*;
 
 import cs3500.model.Command;
 import cs3500.model.Shape;
-
+/////////////////////////////////////CHECK THIS DESCRIPTION//////////////////////////////////
+/**
+ * Represents the animation in a visual manner, returning a on screen movement.
+ */
 public class VisualAnimationView extends JFrame implements IView {
   private DrawingPanel panel;
   JScrollPane scrollPane;

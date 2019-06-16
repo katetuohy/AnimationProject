@@ -7,6 +7,9 @@ import java.util.List;
 import cs3500.model.Command;
 import cs3500.model.Shape;
 
+/**
+ * The view that outputs the animation in SVG form.
+ */
 public class SVGAnimationView implements IView {
   private Appendable out;
   private int speed;
@@ -16,6 +19,7 @@ public class SVGAnimationView implements IView {
     this.speed = 1;
   }
 
+  @Override
   public void displaySVG(List<Command> motions, int[] canvas) {
     String setWidthAndHeightXML = String.format("<!--the overall svg width is %d and height is %d."
             + " By default anything\n"
@@ -54,7 +58,11 @@ public class SVGAnimationView implements IView {
     this.speed = num;
   }
 
-  // Try to append s2 to Appendable s1
+  /**
+   * Try to append s2 to Appendable s1.
+   * @param s1 The Appendable to attach the string to
+   * @param s2 The string to attach to the appendable
+   */
   private void tryAppend(Appendable s1, String s2) {
     try {
       s1.append(s2);

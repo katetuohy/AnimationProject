@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cs3500.animator.util.AnimationBuilder;
 import cs3500.model.AnimationModelImpl;
 import cs3500.model.Command;
 import cs3500.model.Oval;
@@ -121,10 +122,11 @@ public class AnimationModelImplTest {
     m.addMotion(c2);
     m.addMotion(c3);
     m.addMotion(c4);
-    assertEquals(4, m.getMotions().size());
+    m.addMotion(c5);
+    assertEquals(5, m.getMotions().size());
     assertEquals(4, m.getShapes().size());
     m.setAnimationMap();
-    assertEquals(m.getMap().size(), 4);
+    assertEquals(m.getMap().size(), 5);
     assertEquals(m.getMap().get(c1), s1);
   }
 
@@ -145,19 +147,19 @@ public class AnimationModelImplTest {
     m.addMotion(c4);
     assertEquals(4, m.getMotions().size());
     assertEquals(4, m.getShapes().size());
-    m.fixRemainingTimeGaps(cmds);
-    assertEquals(cmdsAfterFill.size(), m.getMotions().size());
+    m.fixRemainingTimeGaps();
+
     for (int i = 0; i < cmdsAfterFill.size(); i++) {
-      assertEquals(cmdsAfterFill.get(i), m.getMotions().get(i));
+      assertEquals(cmdsAfterFill.get(i).getShapeName(), m.getMotions().get(i).getShapeName());
+      assertEquals(cmdsAfterFill.get(i).getStartTime(), m.getMotions().get(i).getStartTime());
+      assertEquals(cmdsAfterFill.get(i).getEndTime(), m.getMotions().get(i).getEndTime());
     }
-    assertEquals(m.getMap().size(), 4);
-    assertEquals(m.getMap().get(c1), s1);
   }
 
   /**
-   * Test setAnimationMap function throws illegalArgumentException when passed null inputs.
+   * Test setAnimationMap function throws illegalStateException when passed null inputs.
    */
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = IllegalStateException.class)
   public void testSetAnimationMapNullInputs() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
@@ -187,8 +189,8 @@ public class AnimationModelImplTest {
             + "\n" + "shape s3\n"
             + "motion s3 0 0.0 0.0 50 100 0 0 0       10 0.0 0.0 50 100 0 0 0\n"
             + "\n" + "shape s4\n"
-            + "motion s4 0 0.0 0.0 100 100 0 0 255       10 0.0 0.0 100 100 0 0 255\n"
-            + "motion s4 0 0.0 0.0 100 100 0 0 255       10 0.0 0.0 100 100 0 0 255\n\n");
+            + "motion s4 0 0.0 0.0 100 100 0 0 255       5 0.0 0.0 100 100 0 0 255\n"
+            + "motion s4 5 0.0 0.0 100 100 0 0 255       10 0.0 0.0 100 100 0 0 255\n\n");
   }
 
   /**
@@ -208,8 +210,12 @@ public class AnimationModelImplTest {
     m.addMotion(c4);
     m.setAnimationMap();
     m.moveShapes();
-    assertEquals(cmds, m.getMotions());
-    assertEquals(shapes, m.getShapes());
+    for(int i = 0; i < cmds.size(); i++) {
+      assertEquals(cmds.get(i).getShapeName(), m.getMotions().get(i).getShapeName());
+      assertEquals(cmds.get(i).getStartTime(), m.getMotions().get(i).getStartTime());
+      assertEquals(cmds.get(i).getEndTime(), m.getMotions().get(i).getEndTime());
+    }
+
   }
 
   /**
@@ -228,8 +234,8 @@ public class AnimationModelImplTest {
     m.addMotion(c2);
     m.addMotion(c3);
     m.addMotion(c4);
-    // m.setAnimationMap();
-    m.validateMotionsNotOverlapping();
+    m.addMotion(c5);
+    m.setAnimationMap();
     assertEquals(m.printCommands(), "shape s1\n"
             + "motion s1 0 0.0 0.0 100 100 0 0 0       10 0.0 0.0 100 100 0 0 0\n"
             + "\n" + "shape s2\n"
@@ -237,7 +243,10 @@ public class AnimationModelImplTest {
             + "\n" + "shape s3\n"
             + "motion s3 0 0.0 0.0 50 100 0 0 0       10 0.0 0.0 50 100 0 0 0\n"
             + "\n" + "shape s4\n"
-            + "motion s4 0 0.0 0.0 100 100 0 0 255       10 0.0 0.0 100 100 0 0 255\n\n");
+            + "motion s4 0 0.0 0.0 100 100 0 0 255       5 0.0 0.0 100 100 0 0 255\n"
+            + "motion s4 5 0.0 0.0 100 100 0 0 255       10 0.0 0.0 100 100 0 0 255\n"
+            + "\n"
+    );
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -248,5 +257,15 @@ public class AnimationModelImplTest {
     m.addMotion(c1);
     m.addMotion(c2);
     m.setAnimationMap();
+  }
+
+  @Test
+  public void testCanvas() {
+    initTestVariables();
+    int[] canvas = {1, 2, 3, 4};
+    AnimationModel m = new AnimationModelImpl();
+    m.setCanvas(1, 2 ,3 ,4 );
+    assertEquals(canvas[0], m.getCanvas()[0]);
+    assertEquals(canvas[3], m.getCanvas()[3]);
   }
 }

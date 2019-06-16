@@ -46,15 +46,14 @@ public final class AnimationModelImpl implements AnimationModel {
    */
   @Override
   public void setAnimationMap() {
-    // Make sure motions have no overlapping time intervals.
-    this.validateMotionsNotOverlapping();
-    // Fill in time gaps in motions.
-    this.fixRemainingTimeGaps(motions);
-    // Sort the motions
-    this.sortMotions(motions, shapes);
+    if (motions != null && shapes != null && motions.size() > 0 && shapes.size() > 0) {
+      // Sort the motions
+      this.sortMotions();
+      // Make sure motions have no overlapping time intervals.
+      this.validateMotionsNotOverlapping();
+      // Fill in time gaps in motions.
+      this.fixRemainingTimeGaps();
 
-    this.shapes = shapes;
-    if (motions != null && shapes != null) {
       LinkedHashMap<Command, Shape> map = new LinkedHashMap<Command, Shape>();
       for (int i = 0; i < motions.size(); i++) {
         String name = motions.get(i).getShapeName();
@@ -66,77 +65,86 @@ public final class AnimationModelImpl implements AnimationModel {
       }
       this.commands = map;
     } else {
-      throw new IllegalStateException("Motions or commands must not be null!");
+      throw new IllegalStateException("Motions or commands must not be null or empty!");
     }
   }
 
   // Sorts list of commands in same order of the given list of shapes.
-  private ArrayList<Command> sortMotions(ArrayList<Command> cmds, ArrayList<Shape> shapes) {
+  private void sortMotions() {
     ArrayList<Command> sorted = new ArrayList<Command>();
     for (Shape shape : shapes) {
-      for (Command c : cmds) {
+      for (Command c : motions) {
         if (c.getShapeName().equals(shape.getName())) {
           sorted.add(c);
         }
       }
     }
-    return sorted;
+    this.motions = sorted;
   }
 
-/*  @Override
-  public List<Command> fillInTimeGaps(List<Command> cmds) {
-    ArrayList<Command> result = new ArrayList<Command>();
-    Command last = cmds.get(cmds.size() - 1);
-    for (int i = 0; i < cmds.size() - 1; i++) {
-      Command current = cmds.get(i);
-      Command next = cmds.get(i + 1);
-      result.add(current);
-      if (current.getShapeName().equals(next.getShapeName())
-              && current.getEndTime() != next.getStartTime()) {
-        result.add(new Command(current.getShape(), current.getEndTime(),
-                next.getStartTime()));
-      }
-    }
-    result.add(last);
-    return result;
-  }*/
-
   @Override
-  public List<Command> fixRemainingTimeGaps(List<Command> cmds) {
+  public void fixRemainingTimeGaps() {
     int longestTime = 0;
-    for (Command c : cmds) {
+    //Get end time of animation.
+    for (Command c : motions) {
       if (c.getEndTime() > longestTime) {
         longestTime = c.getEndTime();
       }
     }
     ArrayList<Command> newCmds = new ArrayList<Command>();
-    if(cmds.get(0).getStartTime() != 0) {
-      newCmds.add(new Command(cmds.get(0).getShape(), 0,
-              cmds.get(0).getStartTime()));
+    // Add command to beginning of shape's motion if there is none.
+    if(motions.get(0).getStartTime() != 0) {
+      newCmds.add(new Command(motions.get(0).getShape(), 0,
+              motions.get(0).getStartTime()));
     }
-    for (int i = 1; i < cmds.size(); i++) {
-      Command current = cmds.get(i);
-      Command last = cmds.get(i - 1);
+    newCmds.add(motions.get(0));
+    for (int i = 1; i < motions.size() - 1; i++) {
+      Command current = motions.get(i);
+      Command last = motions.get(i - 1);
+      // If its a new shape, and doesn't start at zero.
       if(!current.getShapeName().equalsIgnoreCase(last.getShapeName())) {
         if (current.getStartTime() != 0) {
           newCmds.add(new Command(current.getShape(), 0,
                   current.getStartTime()));
         }
       }
-      if (cmds.get(i).getShapeName().equalsIgnoreCase(cmds.get(i - 1).getShapeName())
-              && cmds.get(i - 1).getEndTime() != cmds.get(i).getStartTime()) {
+      // If it's same shape, but there's a break in time.
+      if (current.getShapeName().equalsIgnoreCase(last.getShapeName())
+              && last.getEndTime() != current.getStartTime()) {
         newCmds.add(new Command(current.getShape(), last.getEndTime(),
                 current.getStartTime()));
       }
-      if(!cmds.get(i).getShapeName().equalsIgnoreCase(cmds.get(i + 1).getShapeName())) {
-        if (cmds.get(i).getEndTime() != longestTime) {
+      newCmds.add(motions.get(i));
+      // If it's a different shape and
+      if(!current.getShapeName().equalsIgnoreCase(motions.get(i + 1).getShapeName())) {
+        if (current.getEndTime() != longestTime) {
           newCmds.add(new Command(current.getShape(), current.getEndTime(),
                   longestTime));
         }
       }
-
     }
-    return newCmds;
+    if(motions.size() > 1
+            && !motions.get(motions.size() - 1).getShapeName().equals(motions.get(motions.size() - 2).
+            getShapeName()) && motions.get(motions.size() - 1).getStartTime() != 0) {
+      newCmds.add(new Command(motions.get(motions.size() - 1).getShape(), 0,
+              motions.get(0).getStartTime()));
+    }
+
+    // If it's same shape, but there's a break in time.
+    if (motions.size() > 1 &&
+            motions.get(motions.size() - 1).getShapeName().equalsIgnoreCase(motions.get(motions.size() - 2).getShapeName())
+            && motions.get(motions.size() - 2).getEndTime() != motions.get(motions.size() - 1).getStartTime()) {
+      newCmds.add(new Command(motions.get(motions.size() - 1).getShape(), motions.get(motions.size() - 2).getEndTime(),
+              motions.get(motions.size() - 1).getStartTime()));
+    }
+
+    newCmds.add(motions.get(motions.size() - 1));
+    if(motions.get(motions.size() - 1).getEndTime() != longestTime) {
+      newCmds.add(new Command(motions.get(motions.size() - 1).getShape(),
+              motions.get(motions.size() - 1).getEndTime(), longestTime));
+    }
+
+    motions =  newCmds;
   }
 
   @Override
@@ -284,10 +292,6 @@ public final class AnimationModelImpl implements AnimationModel {
    * @return true if they are overlapping
    */
   private boolean overlapping(Command c1, Command c2) {
-    System.out.println(c1.getStartTime());
-    System.out.println(c2.getStartTime());
-    System.out.println(c1.getEndTime());
-    System.out.println(c2.getEndTime());
     return ((c1.getStartTime() < c2.getStartTime() && c1.getEndTime() > c2.getStartTime())
             || (c2.getStartTime() < c1.getStartTime() && c2.getEndTime() > c1.getEndTime()));
   }
@@ -307,23 +311,35 @@ public final class AnimationModelImpl implements AnimationModel {
    */
   public static final class Builder implements AnimationBuilder<AnimationModelImpl> {
     AnimationModelImpl model;
+    int[] canvas = {0, 0, 0, 0};
+    ArrayList<Shape> shapes = new ArrayList<Shape>();
+    ArrayList<Command> motions = new ArrayList<Command>();
 
     @Override
     public AnimationModelImpl build() {
       this.model = new AnimationModelImpl();
+      model.setCanvas(canvas[0], canvas[1], canvas[2], canvas[3]);
+      for (int i = 0; i < shapes.size(); i++) {
+        model.addShape(shapes.get(i));
+      }
+      for (int i = 0; i < motions.size(); i++) {
+        model.addMotion(motions.get(i));
+      }
       return this.model;
     }
 
     @Override
     public AnimationBuilder<AnimationModelImpl> setBounds(int x, int y, int width, int height) {
-      model.setCanvas(x, y, width, height);
+      canvas[0] = x;
+      canvas[1] = y;
+      canvas[2] = width;
+      canvas[3] = height;
       return this;
     }
 
     @Override
     public AnimationBuilder<AnimationModelImpl> declareShape(String name, String type) {
-
-      model.addShape(new ShapeFactory().getShape(name, type));
+      shapes.add(new ShapeFactory().getShape(name, type));
       return this;
     }
 
@@ -333,12 +349,12 @@ public final class AnimationModelImpl implements AnimationModel {
                                                           int t2, int x2, int y2, int w2, int h2,
                                                           int r2, int g2, int b2) {
       Shape shape = null;
-      for (Shape s : model.getShapes()) {
+      for (Shape s : shapes) {
         if (s.getName().equals(name)){
           shape = s;
         }
       }
-      model.addMotion(new Command(shape, t1, new Position2D(x1, y1), w1, h1,
+      motions.add(new Command(shape, t1, new Position2D(x1, y1), w1, h1,
               new Color(r1, g1, b1), t2,  new Position2D(x2, y2), w2, h2, new Color(r2, g2, b2)));
       return this;
     }
