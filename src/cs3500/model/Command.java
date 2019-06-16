@@ -295,30 +295,26 @@ public class Command {
    * Returns the Command in XML format.
    * @return the command
    */
-  public String getXML() {
-    return "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime)
-            + "ms\" attributeName=\"cx\" from=\"" + from.getX() + "\" to=\"" + to.getX()
-            + "\"" + " />\n"
+  public String getXML(int speed) {
+      int newStartTime = this.startTime * (1000 / speed);
+      int newEndTime = this.endTime * (1000 / speed);
+      return
+              this.shape.getPositionXML(newStartTime, newEndTime, from, to)
 
-            + "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
-            + "attributeName=\"y\" from=\"" + from.getY() + "\" to=\"" + to.getY() + "\" />\n"
-
-            + "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
-            + "attributeName=\"color-interpolation\" from=\""
+            + "<animate attributeType=\"xml\" begin=\""+ newStartTime
+            + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
+            + "attributeName=\"fill\" from=\""
             + "rgb(" + oldColor.getRed() + "," + oldColor.getGreen() + "," + oldColor.getBlue()
             + ")\""
             + " to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
             + ")\"" + " />\n"
 
-            + "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
+            + "<animate attributeType=\"xml\" begin=\""+ newStartTime
+            + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
             + this.shape.animateWidthXML(this.oldWidth, this.newWidth) + " />\n"
 
-            + "<animate attributeType=\"xml\" begin=\"" + startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
+            + "<animate attributeType=\"xml\" begin=\"" + newStartTime
+            + "ms\" dur=\"" + (newEndTime - newStartTime) + "ms\" "
             + this.shape.animateHeightXML(this.oldHeight, this.newHeight) + " />\n";
   }
 }

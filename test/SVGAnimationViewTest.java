@@ -116,7 +116,6 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    //assertEquals("", v.getOut().toString());
   }
 
   /**
@@ -126,15 +125,27 @@ public class SVGAnimationViewTest {
   public void testBasicXMLFourCommandsTwoShapes() {
     initializeTestVariables();
     IView v = new SVGAnimationView();
-    v.setOutput(new StringBuilder());
+    v.setSpeed(4);
+    FileWriter out = null;
+    try {
+      out = new FileWriter("FourCommandsTwoShapes.xml");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+      v.setOutput(out);
     v.displaySVG(new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4)), canvas);
-    assertEquals("", v.getOut().toString());
+    try {
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @Test
   public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
+    v.setSpeed(4);
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
@@ -160,5 +171,67 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     //assertEquals("", v.getOut());
+  }
+
+  @Test
+  public void testSVGBuilding() {
+    ViewFactory factory = new ViewFactory();
+    IView v = factory.getView("svg");
+    v.setSpeed(2);
+    AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
+    Readable rn = null;
+    try {
+      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github" +
+              "\\AnimationProject\\src\\buildings.txt");
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    AnimationModel model = AnimationReader.parseFile(rn, builder);
+    model.setAnimationMap();
+    FileWriter out = null;
+    try {
+      out = new FileWriter("testSVGBuildings.xml");
+      v.setOutput(out);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    v.displaySVG(model.getMotions(), model.getCanvas());
+    try {
+      out.flush();
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  public void testSVGBigBangCrunch() {
+    ViewFactory factory = new ViewFactory();
+    IView v = factory.getView("svg");
+    v.setSpeed(100);
+    AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
+    Readable rn = null;
+    try {
+      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github\\AnimationProject" +
+              "\\src\\big-bang-big-crunch.txt");
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    AnimationModel model = AnimationReader.parseFile(rn, builder);
+    model.setAnimationMap();
+    FileWriter out = null;
+    try {
+      out = new FileWriter("testSVGBigBangCrunch.xml");
+      v.setOutput(out);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    v.displaySVG(model.getMotions(), model.getCanvas());
+    try {
+      out.flush();
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

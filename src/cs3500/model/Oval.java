@@ -74,6 +74,17 @@ public class Oval extends AShape {
   }
 
   @Override
+  public String getPositionXML(int startTime, int endTime, Position2D from, Position2D to) {
+    return "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime)
+            + "ms\" attributeName=\"cx\" from=\"" + from.getX() + "\" to=\"" + to.getX()
+            + "\"" + " />\n"
+            + "<animate attributeType=\"xml\" begin=\""+ startTime
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
+            + "attributeName=\"cy\" from=\"" + from.getY() + "\" to=\"" + to.getY() + "\" />\n";
+  }
+
+  @Override
   public String getXML() {
     return "<ellipse id=\"" + name + "\" cx=\"" + pos.getX() + "\" cy=\"" + pos.getY() + "\" rx=\""
             + xRadius + "\" ry=\"" + yRadius

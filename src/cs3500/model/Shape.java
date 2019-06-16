@@ -102,4 +102,5 @@ public interface Shape {
    */
   void drawShape(Graphics g);
 
+  String getPositionXML(int startTime, int endTime, Position2D from, Position2D to);
 }
