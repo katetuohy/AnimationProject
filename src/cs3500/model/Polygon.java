@@ -92,11 +92,11 @@ public class Polygon extends AShape {
 
   @Override
   public String animateWidthXML(int width1, int width2) {
-    return "";
+    return "attributeName=\"width\" from=\"" + width1 + "\" to=\"" + width2 + "\"\n";
   }
 
   @Override
-  public String animateHeightXML(int width1, int width2) {
-    return "";
+  public String animateHeightXML(int height1, int height2) {
+    return "attributeName=\"height\" from=\"" + height1 + "\" to=\"" + height2 + "\"\n";
   }
 }

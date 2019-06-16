@@ -298,23 +298,23 @@ public class Command {
             + "\"" + " />\n"
 
             + "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
-            + "attributeName=\"y\" from=\"" + from.getY() + "\" to=\" + to.getY()\"\n"
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
+            + "attributeName=\"y\" from=\"" + from.getY() + "\" to=\"" + to.getY() + "\" />\n"
 
             + "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
             + "attributeName=\"color-interpolation\" from=\""
             + "rgb(" + oldColor.getRed() + "," + oldColor.getGreen() + "," + oldColor.getBlue()
             + ")\""
-            + "\" to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
+            + " to=\"" + "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue()
             + ")\"" + " />\n"
 
             + "<animate attributeType=\"xml\" begin=\""+ startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
-            + this.shape.animateWidthXML(this.oldWidth, this.newWidth)
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
+            + this.shape.animateWidthXML(this.oldWidth, this.newWidth) + " />\n"
 
             + "<animate attributeType=\"xml\" begin=\"" + startTime
-            + "ms\" dur=\"" + (endTime - startTime) + "ms\""
-            + this.shape.animateHeightXML(this.oldHeight, this.newHeight);
+            + "ms\" dur=\"" + (endTime - startTime) + "ms\" "
+            + this.shape.animateHeightXML(this.oldHeight, this.newHeight) + " />\n";
   }
 }

@@ -88,7 +88,7 @@ public class Oval extends AShape {
 
   @Override
   public String animateWidthXML(int width1, int width2) {
-    return "attributeName=\"rx\" from=\"" + width1 + "\" to=\"" + width2 + "\"\n";
+    return "attributeName=\"rx\" from=\"" + (width1 / 2) + "\" to=\"" + (width2 / 2) + "\"\n";
   }
 
   @Override

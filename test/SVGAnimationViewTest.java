@@ -7,6 +7,8 @@ import cs3500.model.AnimationModelImpl;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -37,7 +39,7 @@ public class SVGAnimationViewTest {
   int[] canvas;
 
   private void initializeTestVariables() {
-    s1 = new Polygon("s1",4);
+    s1 = new Polygon("s1", 4);
     s2 = new Polygon("s2", 4);
     s3 = new Polygon("s3", 4);
     s4 = new Polygon("s4", 4);
@@ -74,40 +76,89 @@ public class SVGAnimationViewTest {
   }
 
   @Test
-  public void testBasicXMLOneShape() {
+  public void testBasicXMLOneShapeOneCommand() {
     initializeTestVariables();
     IView v = new ViewFactory().getView("svg");
+    v.setOutput(new StringBuilder());
     ArrayList<Command> cmds = new ArrayList<Command>();
     cmds.add(c1);
     v.displaySVG(cmds, canvas);
+    assertEquals("<!--the overall svg width is 200 and height is 70. By default anything\n" +
+            "drawn between (360,360) and (width,height) will be visible -->\n" +
+            "<svg width=\"360\" height=\"360\" version=\"1.1\"\n" +
+            "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
+            "<rect id=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\" visibility=\"visible\" >\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\" attributeName=\"cx\" from=\"0.0\" to=\"0.0\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\" attributeName=\"color-interpolation\" from=\"rgb(0,0,0)\" to=\"rgb(0,0,0)\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\"  />\n" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5ms\"  />\n" +
+            "</rect>\n" +
+            "</svg>", v.getOut().toString());
+  }
+
+  @Test
+  public void testBasicXMLOneShapeOneCommand_OutputFile() {
+    initializeTestVariables();
+    IView v = new ViewFactory().getView("svg");
+    FileWriter file = null;
+    try {
+      file = new FileWriter("testBasicXMLOneShapeOneCommand.xml");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    v.setOutput(file);
+    ArrayList<Command> cmds = new ArrayList<Command>();
+    cmds.add(c1);
+    v.displaySVG(cmds, canvas);
+    try {
+      file.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    //assertEquals("", v.getOut().toString());
   }
 
   /**
    * Test two basic shapes with default (do nothing) commands.
    */
   @Test
-  public void testBasicXMLTwoBasicShape() {
+  public void testBasicXMLFourCommandsTwoShapes() {
     initializeTestVariables();
     IView v = new SVGAnimationView();
     v.setOutput(new StringBuilder());
-    v.displaySVG(new ArrayList<Command>(Arrays.asList(c1, c2)), canvas);
-    assertEquals("", v.getOut());
+    v.displaySVG(new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4)), canvas);
+    assertEquals("", v.getOut().toString());
   }
 
   @Test
-  public void testSVGSimple() {
+  public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {
-      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github\\AnimationProject\\src\\toh-3.txt");
+      rn = new FileReader("C:\\Users\\rebec\\Documents\\Github" +
+              "\\AnimationProject\\src\\toh-3.txt");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
     model.setAnimationMap();
+    FileWriter out = null;
+    try {
+      out = new FileWriter("testSVGToh3.xml");
+      v.setOutput(out);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     v.displaySVG(model.getMotions(), model.getCanvas());
-    assertEquals("", v.getOut());
+    try {
+      out.flush();
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    //assertEquals("", v.getOut());
   }
 }
