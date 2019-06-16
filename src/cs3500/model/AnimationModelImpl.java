@@ -1,6 +1,7 @@
 package cs3500.model;
 
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -83,26 +84,8 @@ public final class AnimationModelImpl implements AnimationModel {
     return sorted;
   }
 
-/*  @Override
-  public List<Command> fillInTimeGaps(List<Command> cmds) {
-    ArrayList<Command> result = new ArrayList<Command>();
-    Command last = cmds.get(cmds.size() - 1);
-    for (int i = 0; i < cmds.size() - 1; i++) {
-      Command current = cmds.get(i);
-      Command next = cmds.get(i + 1);
-      result.add(current);
-      if (current.getShapeName().equals(next.getShapeName())
-              && current.getEndTime() != next.getStartTime()) {
-        result.add(new Command(current.getShape(), current.getEndTime(),
-                next.getStartTime()));
-      }
-    }
-    result.add(last);
-    return result;
-  }*/
-
   @Override
-  public List<Command> fixRemainingTimeGaps(List<Command> cmds) {
+  public List<Command> fixRemainingTimeGaps(ArrayList<Command> cmds) {
     int longestTime = 0;
     for (Command c : cmds) {
       if (c.getEndTime() > longestTime) {

@@ -19,13 +19,6 @@ public interface AnimationModel {
   void setAnimationMap();
 
   /**
-   * Creates new Commands in between existing ones when there is a break in time.
-   * @param cmds the existing commands
-   * @return new list of commands
-   */
- // List<Command> fillInTimeGaps(List<Command> cmds);
-
-  /**
    * Return the list of commands sorted by shape for the entire animation.
    *
    * @return The list of commands in string format.
