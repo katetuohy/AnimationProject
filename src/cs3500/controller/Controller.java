@@ -43,7 +43,6 @@ public class Controller implements IController {
         @Override
         public void actionPerformed(ActionEvent e) {
           model.setTime(tick++);
-          System.out.println(tick); //////////////////Remove this later
           List<Shape> shapesToRender = model.moveShapes();
           view.displayVisual(shapesToRender);
         }

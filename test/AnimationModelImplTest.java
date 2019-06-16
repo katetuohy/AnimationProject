@@ -39,8 +39,6 @@ public class AnimationModelImplTest {
   Command c4;
   Command c5;
   ArrayList<Command> cmds;
-  ArrayList<Command> cmds2;
-  ArrayList<Command> cmds3;
   ArrayList<Command> cmdsAfterFill;
 
   /**
