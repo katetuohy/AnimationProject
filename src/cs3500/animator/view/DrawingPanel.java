@@ -21,11 +21,8 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     if ( shapes != null ){
-      //g.setColor( Color.pink );
-      for ( Shape shape : shapes ){
+      for (Shape shape : shapes ){
         g.setColor(shape.getColor());
-        g.fillRect((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
-                shape.getWidth(), shape.getHeight());
         shape.drawShape(g);
       }
     }

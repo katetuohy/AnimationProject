@@ -3,12 +3,14 @@ import org.junit.Test;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.model.AnimationModelImpl;
 import cs3500.model.Command;
 import cs3500.model.Oval;
 import cs3500.model.Polygon;
+import cs3500.model.Position2D;
 import cs3500.model.Shape;
 import cs3500.model.AnimationModel;
 
@@ -268,4 +270,24 @@ public class AnimationModelImplTest {
     assertEquals(canvas[0], m.getCanvas()[0]);
     assertEquals(canvas[3], m.getCanvas()[3]);
   }
+
+  @Test
+  public void testMoveShapes() {
+    initTestVariables();
+    initTestVariables();
+    AnimationModel m = new AnimationModelImpl();
+    m.addShape(new Polygon("rect1", 4, 50, 25));
+    m.addShape(new Oval("ellipse", 20, 60));
+    m.addMotion(new Command(m.getShapes().get(0), 0, 10, 100, 75));
+    m.addMotion(new Command(m.getShapes().get(1), 0, 10, 100, 100));
+    m.setAnimationMap();
+    m.setTime(5);
+    List<Shape> shapes = m.moveShapes();
+    assertEquals(shapes.get(0).getWidth(), 75);
+    assertEquals(shapes.get(0).getHeight(), 50);
+    assertEquals(shapes.get(1).getWidth(), 60);
+    assertEquals(shapes.get(1).getHeight(), 80);
+  }
+
+
 }

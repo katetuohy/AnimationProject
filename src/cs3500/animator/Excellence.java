@@ -66,8 +66,8 @@ public final class Excellence {
     }
 
     if (Arrays.asList(args).contains("-speed")) {
-      int speedIndex = Arrays.asList(args).indexOf("-speed");
-      speed = Integer.parseInt(Arrays.asList(args).get(speedIndex++));
+      int speedIndex = Arrays.asList(args).indexOf("-speed") + 1;
+      speed = Integer.parseInt(Arrays.asList(args).get(speedIndex));
     }
     v.setSpeed(speed);
     IController controller = new Controller(model, v);

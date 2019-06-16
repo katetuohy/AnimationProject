@@ -124,17 +124,21 @@ public final class AnimationModelImpl implements AnimationModel {
       }
     }
     if(motions.size() > 1
-            && !motions.get(motions.size() - 1).getShapeName().equals(motions.get(motions.size() - 2).
-            getShapeName()) && motions.get(motions.size() - 1).getStartTime() != 0) {
+            && !motions.get(motions.size() - 1).getShapeName().
+            equals(motions.get(motions.size() - 2).getShapeName())
+            && motions.get(motions.size() - 1).getStartTime() != 0) {
       newCmds.add(new Command(motions.get(motions.size() - 1).getShape(), 0,
               motions.get(0).getStartTime()));
     }
 
     // If it's same shape, but there's a break in time.
     if (motions.size() > 1 &&
-            motions.get(motions.size() - 1).getShapeName().equalsIgnoreCase(motions.get(motions.size() - 2).getShapeName())
-            && motions.get(motions.size() - 2).getEndTime() != motions.get(motions.size() - 1).getStartTime()) {
-      newCmds.add(new Command(motions.get(motions.size() - 1).getShape(), motions.get(motions.size() - 2).getEndTime(),
+            motions.get(motions.size() - 1).getShapeName().equalsIgnoreCase(motions.
+                    get(motions.size() - 2).getShapeName())
+            && motions.get(motions.size() - 2).getEndTime() != motions.get(motions.size() - 1).
+            getStartTime()) {
+      newCmds.add(new Command(motions.get(motions.size() - 1).getShape(),
+              motions.get(motions.size() - 2).getEndTime(),
               motions.get(motions.size() - 1).getStartTime()));
     }
 
@@ -225,14 +229,12 @@ public final class AnimationModelImpl implements AnimationModel {
       if (this.time >= c.getStartTime() && this.time <= c.getEndTime()) {
         int startTime = c.getStartTime();
         int endTime = c.getEndTime();
-        commands.get(c).setPosition(this.time, startTime, endTime, c);
-        commands.get(c).setSize(this.time, startTime, endTime, c);
-        commands.get(c).setColor(this.time, startTime, endTime, c);
-        for (Shape s : shapes) {
-          if (s.getName().equalsIgnoreCase(c.getShapeName())) {
-            shapesToRender.add(s);
-          }
-        }
+        Shape shape = commands.get(c);
+        shape.setPosition(this.time, startTime, endTime, c);
+        shape.setSize(this.time, startTime, endTime, c);
+        shape.setColor(this.time, startTime, endTime, c);
+        c.setShape(shape);
+        shapesToRender.add(shape);
       }
     }
     return shapesToRender;
@@ -292,10 +294,6 @@ public final class AnimationModelImpl implements AnimationModel {
    * @return true if they are overlapping
    */
   private boolean overlapping(Command c1, Command c2) {
-    System.out.println(c1.getStartTime());
-    System.out.println(c2.getStartTime());
-    System.out.println(c1.getEndTime());
-    System.out.println(c2.getEndTime());
     return ((c1.getStartTime() < c2.getStartTime() && c1.getEndTime() > c2.getStartTime())
             || (c2.getStartTime() < c1.getStartTime() && c2.getEndTime() > c1.getEndTime()));
   }
@@ -329,6 +327,7 @@ public final class AnimationModelImpl implements AnimationModel {
       for (int i = 0; i < motions.size(); i++) {
         model.addMotion(motions.get(i));
       }
+      model.setAnimationMap();
       return this.model;
     }
 

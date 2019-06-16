@@ -49,4 +49,10 @@ public interface IView {
    */
   Appendable getOut();
 
+  /**
+   * Gives the speed for the visual view.
+   * @return the speed
+   */
+  int getSpeed();
+
 }

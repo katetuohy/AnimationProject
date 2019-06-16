@@ -54,6 +54,11 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
+  public int getSpeed() {
+    return 1000;
+  }
+
+  @Override
   public void setSpeed(int num) {
     this.speed = num;
   }

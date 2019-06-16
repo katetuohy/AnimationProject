@@ -132,8 +132,9 @@ public abstract class AShape implements Shape {
   public void setPosition(int currTime, int startTime, int endTime, Command cmd) {
     Position2D from = cmd.getFrom();
     Position2D to = cmd.getTo();
-    double x_dist = (to.getX() - from.getX()) / (endTime - startTime);
-    double y_dist = (to.getY() - from.getY()) / (endTime - startTime);
+    int difference = Math.max(endTime - startTime, 1);
+    double x_dist = (to.getX() - from.getX()) / difference;
+    double y_dist = (to.getY() - from.getY()) / difference;
     double x_new = from.getX() + (x_dist * (currTime - startTime));
     double y_new = from.getY() + (y_dist * (currTime - startTime));
     this.pos = new Position2D(x_new, y_new);
@@ -143,12 +144,13 @@ public abstract class AShape implements Shape {
   public void setColor(int currTime, int startTime, int endTime, Command cmd) {
     Color original = cmd.getOldColor();
     Color color = cmd.getNewColor();
-    int red_inc = (color.getRed() - original.getRed()) / (endTime - startTime);
-    int blue_inc = (color.getBlue() - original.getBlue()) / (endTime - startTime);
-    int green_inc = (color.getGreen() - original.getGreen()) / (endTime - startTime);
+    int difference = Math.max(endTime - startTime, 1);
+    int red_inc = (color.getRed() - original.getRed()) / difference;
+    int blue_inc = (color.getBlue() - original.getBlue()) / difference;
+    int green_inc = (color.getGreen() - original.getGreen()) / difference;
     int red_new = original.getRed() + (red_inc * (currTime - startTime));
-    int blue_new = original.getBlue() + (blue_inc *  (currTime - startTime));
-    int green_new = original.getGreen() + (green_inc *  (currTime - startTime));
+    int blue_new = original.getBlue() + (blue_inc * (currTime - startTime));
+    int green_new = original.getGreen() + (green_inc * (currTime - startTime));
     this.c = new Color(red_new, green_new, blue_new);
   }
 
@@ -158,8 +160,9 @@ public abstract class AShape implements Shape {
     int startHeight = cmd.getOldHeight();
     int endWidth = cmd.getNewWidth();
     int endHeight = cmd.getNewHeight();
-    int width_inc = (endWidth - startWidth) / (endTime - startTime);
-    int height_inc = (endHeight - startHeight) / (endTime - startTime);
+    int difference = Math.max(endTime - startTime, 1);
+    int width_inc = (endWidth - startWidth) / difference;
+    int height_inc = (endHeight - startHeight) / difference;
     int width_new = startWidth + (width_inc * (currTime - startTime));
     int height_new = startHeight + (height_inc * (currTime - startTime));
     this.height = height_new;
