@@ -1,0 +1,37 @@
+<!--the overall svg width is 360 and height is 360. By default anything
+drawn between (200,70) and (width,height) will be visible -->
+<svg width="560" height="430" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+<rect id="s1" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="x" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="y" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(0,0,0)" />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="width" from="100" to="100"
+ />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="height" from="100" to="100"
+ />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="x" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="y" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(0,0,0)" />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="width" from="100" to="100"
+ />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="height" from="100" to="100"
+ />
+</rect>
+<rect id="s2" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="x" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="y" from="0.0" to="0.0" />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(255,0,0)" />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="width" from="100" to="100"
+ />
+<animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="height" from="100" to="100"
+ />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="x" from="0.0" to="50.0" />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="y" from="0.0" to="50.0" />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="fill" from="rgb(0,0,0)" to="rgb(0,0,0)" />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="width" from="100" to="100"
+ />
+<animate attributeType="xml" begin="1250ms" dur="1250ms" attributeName="height" from="100" to="100"
+ />
+</rect>
+</svg>

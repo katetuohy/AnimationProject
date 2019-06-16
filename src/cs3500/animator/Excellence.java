@@ -10,13 +10,23 @@ import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewFactory;
+import cs3500.animator.view.VisualAnimationView;
 import cs3500.controller.Controller;
 import cs3500.controller.IController;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 
+/**
+ * The main class for the animation. Takes in the arguments that run the animation, which are
+ * type of animation, the input file, the type of output, and the speed of the animation.
+ */
 public final class Excellence {
 
+  /**
+   * The main method for the animation that runs it.
+   * @param args the arguments for the animation. Must include view type and input file name, can
+   *             also include the speed of the animation and the output source.
+   */
   public static void main(String[] args) {
     boolean hasI = false;
     boolean hasV = false;
@@ -71,7 +81,16 @@ public final class Excellence {
     }
     v.setSpeed(speed);
     IController controller = new Controller(model, v);
-    controller.playAnimation();
+    if (v instanceof VisualAnimationView) {
+      controller.playAnimation();
+    }
+    if (v.getOut() instanceof FileWriter) {
+      try {
+        ((FileWriter) v.getOut()).close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
   }
 }
 

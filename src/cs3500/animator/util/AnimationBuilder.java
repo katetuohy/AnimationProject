@@ -1,5 +1,9 @@
 package cs3500.animator.util;
 
+/**
+ * Builds the animation for model type.
+ * @param <Doc> the type of model for the animation.
+ */
 public interface AnimationBuilder<Doc> {
   /**
    * Constructs a final document.
