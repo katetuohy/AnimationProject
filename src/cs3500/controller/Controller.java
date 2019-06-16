@@ -20,13 +20,14 @@ import cs3500.model.AnimationModel;
 public class Controller implements IController {
   Timer timer;
   int speed;
-  private int tick = 1;
+  private int tick = -1;
   AnimationModel model;
   IView view;
 
   public Controller(AnimationModel model, IView view){
     this.model = model;
     this.view = view;
+    this.speed = view.getSpeed();
 
     if (view instanceof TextualAnimationView) {
       view.displayTextualView(model.getMap(), model.getCanvas());
@@ -38,10 +39,11 @@ public class Controller implements IController {
 
     // Visual animation.
     if(view instanceof VisualAnimationView) {
-      timer = new Timer(speed, new ActionListener() {
+      timer = new Timer(500, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
           model.setTime(tick++);
+          System.out.println(tick); //////////////////Remove this later
           List<Shape> shapesToRender = model.moveShapes();
           view.displayVisual(shapesToRender);
         }

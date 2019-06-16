@@ -44,6 +44,11 @@ public class TextualAnimationView implements IView {
     return this.out;
   }
 
+  @Override
+  public int getSpeed() {
+    return 1000;
+  }
+
   private String printShapeCommands (Shape s, LinkedHashMap < Command, Shape > commands){
     String toReturn = "shape " + s.getName() + "\n";
     for (Command c : commands.keySet()) {

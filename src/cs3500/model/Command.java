@@ -7,7 +7,7 @@ import java.awt.Color;
  */
 public class Command {
 
-  private final Shape shape;
+  private Shape shape;
   private final int startTime;
   private final Position2D to;
   private final int oldWidth;
@@ -59,8 +59,8 @@ public class Command {
    * @param newHeight
    * @param color
    */
-  public Command(Shape shape, int startTime, Position2D to, int oldWidth, int oldHeight,
-                 Color oldColor, int endTime, Position2D from, int newWidth, int newHeight,
+  public Command(Shape shape, int startTime, Position2D from, int oldWidth, int oldHeight,
+                 Color oldColor, int endTime, Position2D to, int newWidth, int newHeight,
                  Color color) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
@@ -144,7 +144,7 @@ public class Command {
     this.oldHeight = shape.getHeight();
     this.newHeight = shape.getHeight();
     this.newWidth = shape.getWidth();
-    this.color = Color.BLACK;
+    this.color = shape.getColor();
   }
 
   /**
@@ -175,7 +175,7 @@ public class Command {
     this.oldHeight = shape.getHeight();
     this.newHeight = height;
     this.newWidth = width;
-    this.color = Color.BLACK;
+    this.color = shape.getColor();
   }
 
   /**
@@ -189,6 +189,10 @@ public class Command {
             + "       " + this.endTime + " " + this.to.getX() + " " + this.to.getY()
             + " " + this.newWidth + " " + this.newHeight + " " + this.color.getRed() + " "
             + this.color.getGreen() + " " + this.color.getBlue();
+  }
+
+  public void setShape(Shape s) {
+    this.shape = s;
   }
 
   /**

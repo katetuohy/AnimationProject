@@ -24,7 +24,7 @@ public class VisualAnimationView extends JFrame implements IView {
     panel = new DrawingPanel();
     panel.setMinimumSize(new Dimension(500, 500));
     panel.setPreferredSize(new Dimension(2000, 2000));
-    panel.setBackground(Color.yellow);
+    panel.setBackground(Color.WHITE);
 
     scrollPane = new JScrollPane(panel); // DECORATOR WHOO WHOO.
 
@@ -37,7 +37,7 @@ public class VisualAnimationView extends JFrame implements IView {
     this.out = System.out;
 
     setVisible(true);
-    this.speed = 1;
+    this.speed = 1000;
   }
 
   @Override
@@ -57,7 +57,7 @@ public class VisualAnimationView extends JFrame implements IView {
 
   @Override
   public void setSpeed(int num) {
-    this.speed = num;
+    this.speed = 1000 / num;
   }
 
   @Override
@@ -68,5 +68,10 @@ public class VisualAnimationView extends JFrame implements IView {
   @Override
   public void displaySVG(List<Command> motions, int[] canvas) {
     throw new UnsupportedOperationException("displaySVG() not supported for Visual View");
+  }
+
+  @Override
+  public int getSpeed() {
+    return this.speed;
   }
 }
