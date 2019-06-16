@@ -1,7 +1,6 @@
 package cs3500.animator.view;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -49,7 +48,12 @@ public class TextualAnimationView implements IView {
     return 1000;
   }
 
-  private String printShapeCommands (Shape s, LinkedHashMap < Command, Shape > commands){
+  @Override
+  public void setSpeed(int num) {
+    // Do nothing.
+  }
+
+  private String printShapeCommands(Shape s, LinkedHashMap<Command, Shape> commands) {
     String toReturn = "shape " + s.getName() + "\n";
     for (Command c : commands.keySet()) {
       if (c.getShapeName().equals(s.getName())) {
@@ -57,11 +61,6 @@ public class TextualAnimationView implements IView {
       }
     }
     return toReturn;
-  }
-
-  @Override
-  public void setSpeed(int num) {
-    // Do nothing.
   }
 
   @Override

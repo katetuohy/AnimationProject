@@ -4,7 +4,7 @@ import cs3500.animator.view.SVGAnimationView;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 
-import java.awt.*;
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -60,6 +60,10 @@ public class SVGAnimationViewTest {
     canvas[3] = 360;
   }
 
+  /**
+   * Test the view constructors are initialized properly. Check changing speed, adding shapes,
+   * .
+   */
   @Test
   public void testSVGConstructor() {
     IView v = new ViewFactory().getView("svg");
@@ -174,7 +178,6 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    //assertEquals("", v.getOut());
   }
 
   @Test

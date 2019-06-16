@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.Color;
+import java.awt.*;
 
 import cs3500.model.Command;
 import cs3500.model.Oval;
@@ -59,7 +59,7 @@ public class OvalTest {
   public void testSetPosition() {
     Shape o = new Oval("oval");
     Command c = new Command(o, 0, 5, new Position2D(100, 100));
-    assertEquals(new Position2D(0,0), o.getPosition());
+    assertEquals(new Position2D(0, 0), o.getPosition());
     o.setPosition(1, 0, 5, c);
     assertEquals(new Position2D(20, 20), o.getPosition());
   }

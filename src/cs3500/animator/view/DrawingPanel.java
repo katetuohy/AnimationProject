@@ -8,7 +8,8 @@ import javax.swing.*;
 import cs3500.model.Shape;
 
 /**
- * Represents a graphics window. Allows for drawing shapes onto it and
+ * Represents a graphics window. Allows for drawing shapes onto it and delegates specific shape
+ * drawing to the Shape objects.
  */
 public class DrawingPanel extends JPanel implements IDrawingPanel {
   List<Shape> shapes = null;
@@ -28,6 +29,10 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
     }
   }
 
+  /**
+   * Updates the Shape objects to draw on a given tick.
+   * @param shapes the shapes to draw
+   */
   @Override
   public void draw(List<Shape> shapes) {
     this.shapes = shapes;

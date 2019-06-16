@@ -8,7 +8,10 @@ import cs3500.model.Command;
 import cs3500.model.Shape;
 
 /**
- * The view that outputs the animation in SVG form.
+ * Represents an Animation View that provides the view as a svg file in xml format.
+ * This view does not support:
+ *  - displayVisual()
+ *  - displayTextualView()
  */
 public class SVGAnimationView implements IView {
   private Appendable out;
@@ -21,7 +24,8 @@ public class SVGAnimationView implements IView {
 
   @Override
   public void displaySVG(List<Command> motions, int[] canvas) {
-    String setWidthAndHeightXML = String.format("<!--the overall svg width is %d and height is %d."
+    String setWidthAndHeightXML =
+            String.format("<!--the overall svg width is %d and height is %d."
                     + " By default anything\n"
                     + "drawn between (%d,%d) and (width,height) will be visible -->\n"
                     + "<svg width=\"%d\" height=\"%d\" version=\"1.1\"\n"
@@ -75,8 +79,7 @@ public class SVGAnimationView implements IView {
   }
 
   /**
-   * Try to append s2 to Appendable s1.
-   *
+   * Try to append s2 to Appendable s1 or catch an IOException.
    * @param s1 The Appendable to attach the string to
    * @param s2 The string to attach to the appendable
    */

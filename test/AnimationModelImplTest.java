@@ -1,16 +1,16 @@
 import org.junit.Test;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 import cs3500.model.Command;
 import cs3500.model.Oval;
 import cs3500.model.Polygon;
 import cs3500.model.Shape;
-import cs3500.model.AnimationModel;
 
 import static org.junit.Assert.assertEquals;
 /**
@@ -216,7 +216,6 @@ public class AnimationModelImplTest {
   /**
    * Test validateCommands class checks for overlapping commands.
    */
-
   @Test
   public void testValidateCommands() {
     initTestVariables();

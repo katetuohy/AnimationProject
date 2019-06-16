@@ -1,24 +1,14 @@
-import org.junit.Test;
-import org.junit.runners.model.TestTimedOutException;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import cs3500.animator.view.IView;
-import cs3500.animator.view.SVGAnimationView;
-import cs3500.animator.view.TextualAnimationView;
-import cs3500.animator.view.VisualAnimationView;
 import cs3500.controller.Controller;
-import cs3500.controller.IController;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 import cs3500.model.Command;
 import cs3500.model.Oval;
 import cs3500.model.Polygon;
 import cs3500.model.Shape;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Test the {@link Controller} Class.
