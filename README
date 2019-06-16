@@ -1,25 +1,38 @@
-For this assignment, we created an Interface first for our views. From there, we created 3 different
-view classes to implement the IView interface. These were the SVGAnimationView, TextualAnimationView,
-and the VisualAnimationView.
+For this assignment, we created an Interface first for our views. From there, we created
+3 different view classes to implement the IView interface. These were the SVGAnimationView,
+TextualAnimationView, and the VisualAnimationView. The view interface provides three display
+functions for the three different types of view and each implementation supports only one of them.
+The ones they don't support, they throw an unsupported operation exception. The views also have
+setSpeed() and setOutput() functions to set their Appendable output and animation speed.
 
-We created a main class named Excellence that took in the expected input, parsed it to understand
-what was given, and created a new animation from it. It did this by creating a new builder for the
-model and then parsing through the input file to make it comprehendable to the model that we had
-previously created. From there, we contructed a view given the type (using a Factory design pattern).
-Finally, we called our controller for the animation and gave it the model and view to act as the
-designator between the two so that there was no mishandling of information.
 
-We choose to use a controller because we wanted to keep our model as similar to our original as
-possible and thought that this would be the easiest way to deal with the different speeds for the
-visual animation view.
+We created a main class named Excellence that took in a list of command line arguments,
+parsed it to respond to the modifiers which specified output files, input files, animation speed,
+and the view type. Excellence built the animation model by using the builder pattern
+with AnimationBuilder, then used AnimationReader to parse the input file
+and declare the shapes and motions for the animation. From there, we constructed a view
+(using a Factory design pattern)given the type which was passed to excellence as a string.
+Finally, we instantiated our controller and passed it the model and the view. We also used
+instanceof
+in Excellence to make sure we were only calling .close() on FileWriter objects and only executing
+playAnimation() on visual views.
 
-We also created the Drawing Panel and IDrawingPanel to help draw the shapes for the animation (taken
-from Vido's code) and changed to work with our shapes.
+We choose to use a controller because we wanted to reduce coupling between the model and the view
+as well as not have to worry about the view mutating the model. Our controller calls the display
+methods for each view. We chose to use instanceof to solve the problem of needing to call the
+display methods on the correct view.
+
+We also created the Drawing Panel and IDrawingPanel to handle drawing the
+panels for the animation as well as the shapes on them.
+(taken from Vido's code) and changed to work with our shapes.
 
 We decided to stick with our original design of a hashmap for the commands and their shapes but
-added new methods to help fix our issues with sorting and teleportation. We also added initial
-lists of commands and shapes because we hadn't done that before, instead creating the hashmap by
-passing in the list of commands and shapes from an outside source.
+added new fields List<Shape> shapes and List<Command> commands.
+We added methods to add single shapes and single commands to the shapes and commands lists.
+We also added new void methods fillRemainingTimeGaps() and sortCommands()
+ to help fix our issues with sorting and teleportation. We changed the commands
+ hashmap to be initialized in setAnimationMap() using the fields themselves. It is in
+ setAnimationMap() where the sorting and gap filling and overlap checking is done.
 
 
 
@@ -50,3 +63,11 @@ passing in the list of commands and shapes from an outside source.
       +----------------------+
       |    AnimationReader   |
       +----------------------+
+
+            +----------------------+
+            |   IController        |
+            +----------------------+
+                       |
+            +----------------------+
+            |    Controller        |
+            +----------------------+
