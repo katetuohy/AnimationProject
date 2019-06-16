@@ -11,13 +11,6 @@ public class ViewFactory {
    * @return a view instance
    */
   public IView getView(String type) {
-    if (type == null) {
-      // TODO:
-      // maybe throw null exception here
-      // Maybe change to switch- case
-      // Need to check for illegal strings and do illegal state exception
-      return null;
-    }
     if (type.equalsIgnoreCase("text")) {
       return new TextualAnimationView();
     }
