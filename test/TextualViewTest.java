@@ -219,8 +219,7 @@ public class TextualViewTest {
     }
     FileWriter out = null;
     try {
-      out = new FileWriter("C:\\Users\\rebec\\Documents\\Github\\AnimationProject\\" +
-              "src\\testBuildingOutputFile.txt");
+      out = new FileWriter("testBuildingOutputFile.txt");
       v.setOutput(out);
     } catch (IOException e) {
       e.printStackTrace();
@@ -228,7 +227,11 @@ public class TextualViewTest {
     AnimationModel model = AnimationReader.parseFile(rn, builder);
     model.setAnimationMap();
     v.displayTextualView(model.getMap(), model.getCanvas());
-    out.close();
+    try {
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     String result = "";
     File file = new File("testBuildingOutputFile.txt");
     Scanner sc = new Scanner(file);

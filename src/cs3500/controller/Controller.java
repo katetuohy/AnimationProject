@@ -44,7 +44,7 @@ public class Controller implements IController {
     }
 
     // Visual animation.
-    if(view instanceof VisualAnimationView) {
+    if (view instanceof VisualAnimationView) {
       timer = new Timer(500, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {

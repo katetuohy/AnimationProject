@@ -26,7 +26,7 @@ public final class AnimationModelImpl implements AnimationModel {
    * Construct an animation model at time = 0.
    */
   public AnimationModelImpl() {
-    this.time = 0;
+    this.time = 1;
     this.commands = new LinkedHashMap<Command, Shape>();
     this.motions = new ArrayList<Command>();
     this.shapes = new ArrayList<Shape>();
@@ -89,10 +89,11 @@ public final class AnimationModelImpl implements AnimationModel {
     }
     ArrayList<Command> newCmds = new ArrayList<Command>();
     // Add command to beginning of shape's motion if there is none.
-    if (motions.get(0).getStartTime() != 0) {
-      newCmds.add(new Command(motions.get(0).getShape(), 0,
+/*    if (motions.get(0).getStartTime() != 0) {
+      //motions.get(0).getShape()
+      newCmds.add(new Command (motions.get(0).getShape(), 0,
               motions.get(0).getStartTime()));
-    }
+    }*/
     newCmds.add(motions.get(0));
     for (int i = 1; i < motions.size() - 1; i++) {
       Command current = motions.get(i);

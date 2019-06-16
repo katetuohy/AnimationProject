@@ -5,7 +5,6 @@ import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -171,7 +170,7 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-      v.setOutput(out);
+    v.setOutput(out);
     v.displaySVG(new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4)), canvas);
     try {
       out.close();
@@ -225,6 +224,10 @@ public class SVGAnimationViewTest {
             + "00\" to=\"100\" /></rect></svg>", result);
   }
 
+  /**
+   * Tests to ensure that the toh-3 file is read in correctly and is correctly formatted to the
+   * new file, then closes properly.
+   */
   public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -252,8 +255,22 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    String result = "";
+    File f = new File("test-toh-3.svg");
+    Scanner sc = null;
+    try {
+      sc = new Scanner(f);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    while (sc.hasNextLine()) {
+      result += (sc.nextLine());
+    }
   }
 
+  /**
+   * Tests to make sure that the same as above is done but with a different input file.
+   */
   public void testSVGBuilding() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -283,6 +300,9 @@ public class SVGAnimationViewTest {
     }
   }
 
+  /**
+   * Tests that the toh-8 is handled correctly by the svg view and outputed properly to the file.
+   */
   public void testSVGToh8() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");

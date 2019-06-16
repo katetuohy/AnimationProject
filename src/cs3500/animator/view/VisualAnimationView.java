@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 
 import cs3500.model.Command;
 import cs3500.model.Shape;
-/////////////////////////////////////CHECK THIS DESCRIPTION//////////////////////////////////
+
 /**
  * Represents the animation in a visual manner, returning a on screen movement.
  */

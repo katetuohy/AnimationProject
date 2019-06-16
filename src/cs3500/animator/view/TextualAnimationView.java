@@ -63,7 +63,7 @@ public class TextualAnimationView implements IView {
    * @param commands  all of the commands in the animation
    * @return the next srting representing the commands for the given shape
    */
-  private String printShapeCommands (Shape s, LinkedHashMap < Command, Shape > commands){
+  private String printShapeCommands(Shape s, LinkedHashMap<Command, Shape> commands) {
     String toReturn = "shape " + s.getName() + "\n";
     for (Command c : commands.keySet()) {
       if (c.getShapeName().equals(s.getName())) {

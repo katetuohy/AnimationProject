@@ -3,7 +3,9 @@ package cs3500.model;
 import java.awt.Color;
 import java.awt.Graphics;
 
-
+/**
+ * Represents an oval/ellipse shape.
+ */
 public class Oval extends AShape {
 
   private int xRadius = this.width / 2;
