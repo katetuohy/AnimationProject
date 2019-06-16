@@ -40,7 +40,7 @@ public class SVGAnimationView implements IView {
       }
       // If the current motion is for the current shape, add the <animate> tag.
       if (currentMotion.getShapeName().equals(currentShape.getName())) {
-        shapeXML += currentMotion.getXML();
+        shapeXML += currentMotion.getXML(this.speed);
       }
       // If i = last index OR if the current motion is the LAST
       // for the current shape, add the end tag XML.
