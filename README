@@ -64,10 +64,10 @@ We also added new void methods fillRemainingTimeGaps() and sortCommands()
       |    AnimationReader   |
       +----------------------+
 
-            +----------------------+
-            |   IController        |
-            +----------------------+
-                       |
-            +----------------------+
-            |    Controller        |
-            +----------------------+
+       +----------------------+
+       |   IController        |
+       +----------------------+
+                  |
+       +----------------------+
+       |    Controller        |
+       +----------------------+

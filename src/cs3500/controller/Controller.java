@@ -34,15 +34,14 @@ public class Controller implements IController {
     this.model = model;
     this.view = view;
     this.speed = view.getSpeed();
-
-    if (view instanceof TextualAnimationView)
-
+    if (view instanceof TextualAnimationView) {
+      view.displayTextualView(model.getMap(), model.getCanvas());
+    }
     if (view instanceof SVGAnimationView) {
       view.displaySVG(model.getMotions(), model.getCanvas());
     }
-
     // Visual animation.
-    if(view instanceof VisualAnimationView) {
+    if (view instanceof VisualAnimationView) {
       timer = new Timer(speed, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
