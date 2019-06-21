@@ -97,7 +97,6 @@ public class AnimationModelImplTest {
     m.addFrame(k7);
     assertEquals(7, m.getFrames().size());
     assertEquals(3, m.getShapes().size());
-    m.setAnimation();
     assertEquals(m.getFrames().get(0), k1);
     assertEquals(m.getShapes().get(2), s3);
   }
@@ -106,10 +105,9 @@ public class AnimationModelImplTest {
    * Test setAnimationMap function throws illegalStateException when passed null inputs.
    */
   @Test(expected = IllegalStateException.class)
-  public void testSetAnimationMapNullInputs() {
+  public void testSetAnimationNullInputs() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimation();
   }
 
   /**
@@ -129,8 +127,10 @@ public class AnimationModelImplTest {
     m.addFrame(k5);
     m.addFrame(k6);
     m.addFrame(k7);
-    m.setAnimation();
     m.moveShapes();
+    for (KeyFrame f : m.getFrames()) {
+      System.out.println(f.getName());
+    }
     for (int i = 0; i < motions.size(); i++) {
       assertEquals(motions.get(i).getName(), m.getFrames().get(i).getName());
       assertEquals(motions.get(i).getTime(), m.getFrames().get(i).getTime());
@@ -149,7 +149,6 @@ public class AnimationModelImplTest {
   public void testValidateCommands2() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimation();
   }
 
   @Test
@@ -177,7 +176,6 @@ public class AnimationModelImplTest {
             250));
     m.addFrame(new KeyFrame("ellipse", 10, 0, 100, 75, 50, 0,
             0,250));
-    m.setAnimation();
     m.setTime(5);
     List<Shape> shapes = m.moveShapes();
     assertEquals(shapes.get(0).getPosition(), new Position2D(50, 50));

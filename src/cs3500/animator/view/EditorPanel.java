@@ -272,6 +272,10 @@ public class EditorPanel extends JPanel implements ActionListener {
     addShapeButton.addActionListener(listener);
     replayButton.setActionCommand("Replay");
     replayButton.addActionListener(listener);
+    incrementSpeed.setActionCommand("Increase Speed");
+    incrementSpeed.addActionListener(listener);
+    decrementSpeed.setActionCommand("Decrease Speed");
+    decrementSpeed.addActionListener(listener);
   }
 
   private boolean isValidFieldsList(String[] fields) {

@@ -8,11 +8,6 @@ import java.util.List;
 public interface AnimationModel {
 
   /**
-   * Initializes the Frames and ensures everything's in order
-   */
-  void setAnimation();
-
-  /**
    * Update the states of all the shapes in the animation.
    */
   List<Shape> moveShapes();
@@ -37,11 +32,6 @@ public interface AnimationModel {
    * @param currTime the current time.
    */
   void setTime(int currTime);
-
-  /**
-   * Ensure that motions for a particular object are not overlapping in time frames.
-   */
-  void validateMotionsNotOverlapping();
 
   /**
    * Get the list of shapes for the animation.

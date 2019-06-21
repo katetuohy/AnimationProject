@@ -237,7 +237,6 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimation();
     FileWriter out = null;
     try {
       out = new FileWriter("test-toh-3.svg");
@@ -280,7 +279,6 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimation();
     FileWriter out = null;
     try {
       out = new FileWriter("testSVGBuildings.svg");
@@ -313,7 +311,6 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimation();
     FileWriter out = null;
     try {
       out = new FileWriter("toh-at-20.svg");
