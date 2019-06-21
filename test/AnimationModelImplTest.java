@@ -7,7 +7,7 @@ import java.util.List;
 
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
-import cs3500.model.Command;
+import cs3500.model.KeyFrame;
 import cs3500.model.Oval;
 import cs3500.model.Polygon;
 import cs3500.model.Shape;
@@ -22,70 +22,40 @@ public class AnimationModelImplTest {
   Shape s1;
   Shape s2;
   Shape s3;
-  Shape s4;
   ArrayList<Shape> shapes;
-  Command c1;
-  Command c2;
-  Command c3;
-  Command c4;
-  Command c5;
-  ArrayList<Command> cmds;
-  ArrayList<Command> cmdsAfterFill;
+  KeyFrame k1;
+  KeyFrame k2;
+  KeyFrame k3;
+  KeyFrame k4;
+  KeyFrame k5;
+  KeyFrame k6;
+  KeyFrame k7;
+  int[] canvas;
+  ArrayList<KeyFrame> motions;
 
   /**
    * Initialize all test variables.
    */
-  public void initTestVariables() {
-    s1 = new Polygon("s1");
-    s2 = new Polygon("s2", 5);
-    s3 = new Polygon("s3", 6, 50, 100);
-    s4 = new Oval("s4", Color.BLUE);
-    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
+  private void initTestVariables() {
+    s1 = new Polygon("s1", 4);
+    s2 = new Polygon("s2", 4);
+    s3 = new Polygon("s3", 4);
+    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3));
 
-    c1 = new Command(s1, 0, 10);
-    c2 = new Command(s2, 0, 10);
-    c3 = new Command(s3, 0, 10);
-    c4 = new Command(s4, 0, 5);
-    c5 = new Command(s4, 5, 10);
-    cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4, c5));
-  }
+    k1 = new KeyFrame("s1", 0, 5, 5, 10, 10, 255, 0, 0);
+    k2 = new KeyFrame("s1", 5, 55, 55, 10, 10, 0, 255, 255);
+    k3 = new KeyFrame("s2", 0, 50, 30, 15, 10, 255, 255, 0);
+    k4 = new KeyFrame("s2", 5, 10, 80, 15, 15, 255, 255, 0);
+    k5 = new KeyFrame("s3", 1, 10, 30, 30, 20, 0, 0, 255);
+    k6 = new KeyFrame("s3", 6, 10, 30, 30, 20, 0, 255, 255);
+    k7 = new KeyFrame("s3", 10, 50, 50, 10, 20, 255, 0, 255);
+    motions = new ArrayList<KeyFrame>(Arrays.asList(k1, k2, k3, k4, k5, k6, k7));
 
-  /**
-   * Creates a list of commands that will through errors due to overlapping times.
-   */
-  public void initTestVariablesOverlappingCommands() {
-    s1 = new Polygon("s1");
-    s2 = new Polygon("s2", 5);
-    s3 = new Polygon("s3", 6, 50, 100);
-    s4 = new Oval("s4", Color.BLUE);
-    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
-
-    c1 = new Command(s1, 0, 10);
-    c2 = new Command(s1, 5, 15);
-
-    cmds = new ArrayList<Command>(Arrays.asList(c1, c2));
-  }
-
-  /**
-   * Creates a list of shapes and commands that will need to be editted due to gaps in time.
-   */
-  public void initTestVariablesTeleportation() {
-    s1 = new Polygon("s1");
-    s2 = new Polygon("s2", 5);
-    s3 = new Polygon("s3", 6, 50, 100);
-    s4 = new Oval("s4", Color.BLUE);
-    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
-
-    c1 = new Command(s1, 0, 5);
-    c2 = new Command(s1, 6, 10);
-    c3 = new Command(s2, 0, 2);
-    c4 = new Command(s2, 6, 30);
-
-    cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4));
-    cmdsAfterFill = new ArrayList<Command>(Arrays.asList(c1,
-            new Command(s1, 5, 6), c2,
-            new Command(s1, 10, 30), c3,
-            new Command(s2, 2, 6), c4));
+    canvas = new int[4];
+    canvas[0] = 200;
+    canvas[1] = 70;
+    canvas[2] = 360;
+    canvas[3] = 360;
   }
 
   /**
@@ -99,58 +69,34 @@ public class AnimationModelImplTest {
     m.setTime(10);
     assertEquals(m.getTime(), 10);
     m.addShape(s1);
-    m.addMotion(c1);
+    m.addFrame(k1);
+    m.addFrame(k2);
     assertEquals(s1, m.getShapes().get(0));
-    assertEquals(c1, m.getMotions().get(0));
+    assertEquals(k1, m.getFrames().get(0));
   }
 
   /**
    * Test setAnimationMap function properly initializes the hashmap of commands and shapes.
    */
   @Test
-  public void testSetAnimationMap() {
+  public void testAddFramesAndAddShapes() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
     m.addShape(s1);
     m.addShape(s2);
     m.addShape(s3);
-    m.addShape(s4);
-    m.addMotion(c1);
-    m.addMotion(c2);
-    m.addMotion(c3);
-    m.addMotion(c4);
-    m.addMotion(c5);
-    assertEquals(5, m.getMotions().size());
-    assertEquals(4, m.getShapes().size());
-    m.setAnimationMap();
-    assertEquals(m.getMap().size(), 5);
-    assertEquals(m.getMap().get(c1), s1);
-  }
-
-  /**
-   * Test setAnimationMap function properly initializes the hashmap of commands and shapes.
-   */
-  @Test
-  public void testFillInTimeGapsTeleportation() {
-    initTestVariablesTeleportation();
-    AnimationModel m = new AnimationModelImpl();
-    m.addShape(s1); ////////////
-    m.addShape(s2);
-    m.addShape(s3);
-    m.addShape(s4);
-    m.addMotion(c1);
-    m.addMotion(c2);
-    m.addMotion(c3);
-    m.addMotion(c4);
-    assertEquals(4, m.getMotions().size());
-    assertEquals(4, m.getShapes().size());
-    m.fixRemainingTimeGaps();
-
-    for (int i = 0; i < cmdsAfterFill.size(); i++) {
-      assertEquals(cmdsAfterFill.get(i).getShapeName(), m.getMotions().get(i).getShapeName());
-      assertEquals(cmdsAfterFill.get(i).getStartTime(), m.getMotions().get(i).getStartTime());
-      assertEquals(cmdsAfterFill.get(i).getEndTime(), m.getMotions().get(i).getEndTime());
-    }
+    m.addFrame(k1);
+    m.addFrame(k2);
+    m.addFrame(k3);
+    m.addFrame(k4);
+    m.addFrame(k5);
+    m.addFrame(k6);
+    m.addFrame(k7);
+    assertEquals(7, m.getFrames().size());
+    assertEquals(3, m.getShapes().size());
+    m.setAnimation();
+    assertEquals(m.getFrames().get(1), k2);
+    assertEquals(m.getShapes().get(6), k7);
   }
 
   /**
@@ -160,34 +106,7 @@ public class AnimationModelImplTest {
   public void testSetAnimationMapNullInputs() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.setAnimationMap();
-  }
-
-  /**
-   * Test that printCommands method works as expected.
-   */
-  @Test
-  public void testPrintCommands() {
-    initTestVariables();
-    AnimationModel m = new AnimationModelImpl();
-    m.addShape(s1);
-    m.addShape(s2);
-    m.addShape(s3);
-    m.addShape(s4);
-    m.addMotion(c1);
-    m.addMotion(c2);
-    m.addMotion(c3);
-    m.addMotion(c4);
-    m.setAnimationMap();
-    assertEquals(m.printCommands(), "shape s1\n"
-            + "motion s1 0 0.0 0.0 100 100 0 0 0       10 0.0 0.0 100 100 0 0 0\n"
-            + "\n" + "shape s2\n"
-            + "motion s2 0 0.0 0.0 100 100 0 0 0       10 0.0 0.0 100 100 0 0 0\n"
-            + "\n" + "shape s3\n"
-            + "motion s3 0 0.0 0.0 50 100 0 0 0       10 0.0 0.0 50 100 0 0 0\n"
-            + "\n" + "shape s4\n"
-            + "motion s4 0 0.0 0.0 100 100 0 0 255       5 0.0 0.0 100 100 0 0 255\n"
-            + "motion s4 5 0.0 0.0 100 100 0 0 255       10 0.0 0.0 100 100 0 0 255\n\n");
+    m.setAnimation();
   }
 
   /**
@@ -200,17 +119,25 @@ public class AnimationModelImplTest {
     m.addShape(s1);
     m.addShape(s2);
     m.addShape(s3);
-    m.addShape(s4);
-    m.addMotion(c1);
-    m.addMotion(c2);
-    m.addMotion(c3);
-    m.addMotion(c4);
-    m.setAnimationMap();
+    m.addFrame(k1);
+    m.addFrame(k2);
+    m.addFrame(k3);
+    m.addFrame(k4);
+    m.addFrame(k5);
+    m.addFrame(k6);
+    m.addFrame(k7);
+    m.setAnimation();
     m.moveShapes();
-    for (int i = 0; i < cmds.size(); i++) {
-      assertEquals(cmds.get(i).getShapeName(), m.getMotions().get(i).getShapeName());
-      assertEquals(cmds.get(i).getStartTime(), m.getMotions().get(i).getStartTime());
-      assertEquals(cmds.get(i).getEndTime(), m.getMotions().get(i).getEndTime());
+    for (int i = 0; i < motions.size(); i++) {
+      assertEquals(motions.get(i).getName(), m.getFrames().get(i).getName());
+      assertEquals(motions.get(i).getTime(), m.getFrames().get(i).getTime());
+      assertEquals(motions.get(i).getX(), m.getFrames().get(i).getX());
+      assertEquals(motions.get(i).getY(), m.getFrames().get(i).getY());
+      assertEquals(motions.get(i).getW(), m.getFrames().get(i).getW());
+      assertEquals(motions.get(i).getH(), m.getFrames().get(i).getH());
+      assertEquals(motions.get(i).getR(), m.getFrames().get(i).getR());
+      assertEquals(motions.get(i).getG(), m.getFrames().get(i).getG());
+      assertEquals(motions.get(i).getB(), m.getFrames().get(i).getB());
     }
 
   }

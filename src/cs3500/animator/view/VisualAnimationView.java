@@ -3,13 +3,13 @@ package cs3500.animator.view;
 import java.awt.Dimension;
 import java.awt.Color;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import cs3500.model.Command;
+import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
 
 /**
@@ -67,13 +67,15 @@ public class VisualAnimationView extends JFrame implements IView {
     this.speed = 1000 / num;
   }
 
+
   @Override
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
+  public void displayTextualView(List<KeyFrame> frames, List<Shape> shapes,
+                                 int[] canvas) {
     throw new UnsupportedOperationException("displayTextualView() not supported for Visual View");
   }
 
   @Override
-  public void displaySVG(List<Command> motions, int[] canvas) {
+  public void displaySVG(List<KeyFrame> frames, List<Shape> shapes, int[] canvas) {
     throw new UnsupportedOperationException("displaySVG() not supported for Visual View");
   }
 

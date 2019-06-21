@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.Timer;
 
 import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IView;
@@ -43,6 +43,12 @@ public class Controller implements IController, ActionListener {
         view.displaySVG(model.getMotions(), model.getCanvas());
       }
 
+    if (view instanceof TextualAnimationView) {
+      view.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
+    }
+    if (view instanceof SVGAnimationView) {
+      view.displaySVG(model.getFrames(), model.getShapes(), model.getCanvas());
+    }
     // Visual animation.
     if (view instanceof VisualAnimationView) {
       timer = new Timer(speed, new ActionListener() {

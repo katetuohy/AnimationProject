@@ -1,6 +1,7 @@
 package cs3500.model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  * Represents a geometrical shape.
@@ -129,9 +130,10 @@ public abstract class AShape implements Shape {
   }
 
   @Override
-  public void setPosition(int currTime, int startTime, int endTime, Command cmd) {
-    Position2D from = cmd.getFrom();
-    Position2D to = cmd.getTo();
+  public void setPosition(int currTime, int startTime, int endTime, KeyFrame first,
+                          KeyFrame second) {
+    Position2D from = new Position2D(first.getX(), first.getY());
+    Position2D to = new Position2D(second.getX(), second.getY());
     int difference = Math.max(endTime - startTime, 1);
     double x_dist = (to.getX() - from.getX()) / difference;
     double y_dist = (to.getY() - from.getY()) / difference;
@@ -141,9 +143,10 @@ public abstract class AShape implements Shape {
   }
 
   @Override
-  public void setColor(int currTime, int startTime, int endTime, Command cmd) {
-    Color original = cmd.getOldColor();
-    Color color = cmd.getNewColor();
+  public void setColor(int currTime, int startTime, int endTime, KeyFrame first,
+                       KeyFrame second) {
+    Color original = first.getColor();
+    Color color = second.getColor();
     int difference = Math.max(endTime - startTime, 1);
     int red_inc = (color.getRed() - original.getRed()) / difference;
     int blue_inc = (color.getBlue() - original.getBlue()) / difference;
@@ -155,11 +158,12 @@ public abstract class AShape implements Shape {
   }
 
   @Override
-  public void setSize(int currTime, int startTime, int endTime, Command cmd) {
-    int startWidth = cmd.getOldWidth();
-    int startHeight = cmd.getOldHeight();
-    int endWidth = cmd.getNewWidth();
-    int endHeight = cmd.getNewHeight();
+  public void setSize(int currTime, int startTime, int endTime, KeyFrame first,
+                      KeyFrame second) {
+    int startWidth = first.getW();
+    int startHeight = first.getH();
+    int endWidth = second.getW();
+    int endHeight = second.getH();
     int difference = Math.max(endTime - startTime, 1);
     int width_inc = (endWidth - startWidth) / difference;
     int height_inc = (endHeight - startHeight) / difference;

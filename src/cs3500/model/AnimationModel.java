@@ -1,6 +1,5 @@
 package cs3500.model;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -9,16 +8,9 @@ import java.util.List;
 public interface AnimationModel {
 
   /**
-   * Initialize the commands HashMap.
+   * Initializes the Frames and ensures everything's in order
    */
-  void setAnimationMap();
-
-  /**
-   * Return the list of commands sorted by shape for the entire animation.
-   *
-   * @return The list of commands in string format.
-   */
-  String printCommands();
+  void setAnimation();
 
   /**
    * Update the states of all the shapes in the animation.
@@ -39,22 +31,10 @@ public interface AnimationModel {
   int[] getCanvas();
 
   /**
-   * Fills in the time gaps between the commands.
-   */
-  public void fixRemainingTimeGaps();
-
-  /**
    * Setter for the time field.
    * @param currTime the current time.
    */
   void setTime(int currTime);
-
-  /**
-   * Getter for the HashMap commands field.
-   *
-   * @return the commands HashMap.
-   */
-  LinkedHashMap<Command, Shape> getMap();
 
   /**
    * Ensure that motions for a particular object are not overlapping in time frames.
@@ -69,21 +49,22 @@ public interface AnimationModel {
   List<Shape> getShapes();
 
   /**
-   * Get the list of motions for the animation.
-   *
-   * @return list of motions
+   * Gives the list of frames for the animation.
+   * @return the frames.
    */
-  List<Command> getMotions();
+  List<KeyFrame> getFrames();
 
   /**
    * Add Shape to the list of shapes.
+   * @param s the shape to add
    */
   void addShape(Shape s);
 
   /**
-   * Add the Command to the list of commands.
+   * Adds the KeyFrame to the list of Key Frames.
+   * @param k the Key frame to add
    */
-  void addMotion(Command c);
+  void addFrame(KeyFrame k);
 
   /**
    * Set the canvas dimensions of the model.
@@ -93,4 +74,16 @@ public interface AnimationModel {
    * @param height The Height of the canvas
    */
   void setCanvas(int x, int y, int width, int height);
+
+  /**
+   * Inserts the given key into the list of frames at the appropriate location.
+   * @param key the frame to insert.
+   */
+  void insertFrame(KeyFrame key);
+
+  /**
+   * Removes the given frame from the list of frames.
+   * @param key the frame to remove
+   */
+  void removeFrame(KeyFrame key);
 }
