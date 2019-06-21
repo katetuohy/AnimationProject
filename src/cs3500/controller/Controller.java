@@ -60,7 +60,9 @@ public class Controller implements IController, ActionListener {
     }
     // Editor visual animation.
     if (view instanceof EditorView) {
+      ((EditorView) view).setListener(this);
       timer = new Timer(speed, this);
+      timer.setActionCommand("timer listener");
     }
   }
 
@@ -76,9 +78,6 @@ public class Controller implements IController, ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    model.setTime(tick++);
-    List<Shape> shapesToRender = model.moveShapes();
-    view.displayVisual(shapesToRender);
     switch (e.getActionCommand()) {
       case "Delete KeyFrame":
         String[] deleteKeyFrameFields = view.getDeleteKeyFrameFields();
@@ -112,6 +111,17 @@ public class Controller implements IController, ActionListener {
         break;
       case "Replay":
         replay();
+        break;
+      case "Increase Speed":
+        view.setSpeed(this.speed);
+        break;
+      case "Decrease Speed":
+        break;
+      case "timer listener":
+        model.setTime(tick++);
+        System.out.println(tick);
+        List<Shape> shapesToRender = model.moveShapes();
+        view.displayVisual(shapesToRender);
         break;
       default:
     }

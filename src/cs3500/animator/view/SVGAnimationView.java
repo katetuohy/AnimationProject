@@ -25,7 +25,7 @@ public class SVGAnimationView implements IView {
   public void displaySVG(List<KeyFrame> frames, List<Shape> shapes, int[] canvas) {
     String setWidthAndHeightXML =
             String.format("<!--the overall svg width is %d and height is %d."
-                    + " By default anything\n"
+                    + " By default anything \n"
                     + "drawn between (%d,%d) and (width,height) will be visible -->\n"
                     + "<svg width=\"%d\" height=\"%d\" version=\"1.1\"\n"
                     + "     xmlns=\"http://www.w3.org/2000/svg\">\n",

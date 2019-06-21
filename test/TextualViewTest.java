@@ -33,7 +33,6 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimation();
     v.setOutput(new StringBuilder());
     v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     assertEquals("canvas 145 50 410 220\n" +
@@ -120,7 +119,6 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimation();
     v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     out.close();
     String result = "";
@@ -200,7 +198,6 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimation();
     v.setOutput(new FileWriter("testTextHanoi.txt"));
     v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
   }
@@ -225,7 +222,6 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimation();
     v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     try {
       out.close();

@@ -74,47 +74,6 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public void setAnimation() {
-    if (frames != null && shapes != null && frames.size() > 0 && shapes.size() > 0) {
-      // Sort the frames by shape
-      this.sortMotions();
-      // Make sure motions have no overlapping time intervals.
-      this.validateMotionsNotOverlapping();
-      // Fill in time gaps in motions.
-     // this.fixRemainingTimeGaps();
-    } else {
-      throw new IllegalStateException("Motions or commands must not be null or empty!");
-    }
-  }
-
-  // Sorts list of frames in same order of the given list of shapes.
-  //This does not take into account the times
-  private void sortMotions() {
-    ArrayList<KeyFrame> sorted = new ArrayList<KeyFrame>();
-    for (Shape shape : shapes) {
-      for (KeyFrame k : frames) {
-        if (k.getName().equals(shape.getName())) {
-          sorted.add(k);
-        }
-      }
-    }
-    this.frames = sorted;
-  }
-
-
-  @Override
-  public void validateMotionsNotOverlapping() {
-    for (int i = 0; i < frames.size() - 1; i++) {
-      KeyFrame first = frames.get(i);
-      KeyFrame second = frames.get(i + 1);
-      if (first.getTime() > second.getTime()) {
-        frames.set(i, second);
-        frames.set(i + 1, first);
-      }
-    }
-  }
-
-  @Override
   public int[] getCanvas() {
     return this.canvas;
   }
@@ -210,6 +169,7 @@ public final class AnimationModelImpl implements AnimationModel {
 
     @Override
     public AnimationModelImpl build() {
+      this.setAnimation();
       this.model = new AnimationModelImpl();
       model.setCanvas(canvas[0], canvas[1], canvas[2], canvas[3]);
       for (int i = 0; i < shapes.size(); i++) {
@@ -218,8 +178,57 @@ public final class AnimationModelImpl implements AnimationModel {
       for (KeyFrame k : frames) {
         model.addFrame(k);
       }
-      model.setAnimation();
       return this.model;
+    }
+
+    public void setAnimation() {
+      if (frames != null && shapes != null && frames.size() > 0 && shapes.size() > 0) {
+        //Removes duplicate frames added when parsing file
+        this.removeDuplicates();
+        // Sort the frames by shape
+        this.sortMotions();
+        // Make sure motions have no overlapping time intervals.
+        this.validateMotionsNotOverlapping();
+        // Fill in time gaps in motions.
+        // this.fixRemainingTimeGaps();
+      } else {
+        throw new IllegalStateException("Motions or commands must not be null or empty!");
+      }
+    }
+
+    private void removeDuplicates() {
+      ArrayList<KeyFrame> newList = new ArrayList<KeyFrame>();
+      for (KeyFrame frame : frames) {
+        if(!newList.contains(frame)) {
+          newList.add(frame);
+        }
+      }
+      this.frames = newList;
+    }
+
+    // Sorts list of frames in same order of the given list of shapes.
+    //This does not take into account the times
+    private void sortMotions() {
+      ArrayList<KeyFrame> sorted = new ArrayList<KeyFrame>();
+      for (Shape shape : shapes) {
+        for (KeyFrame k : frames) {
+          if (k.getName().equals(shape.getName())) {
+            sorted.add(k);
+          }
+        }
+      }
+      this.frames = sorted;
+    }
+
+    private void validateMotionsNotOverlapping() {
+      for (int i = 0; i < frames.size() - 1; i++) {
+        KeyFrame first = frames.get(i);
+        KeyFrame second = frames.get(i + 1);
+        if (first.getTime() > second.getTime()) {
+          frames.set(i, second);
+          frames.set(i + 1, first);
+        }
+      }
     }
 
     @Override
