@@ -35,10 +35,10 @@ public class Controller implements IController {
     this.view = view;
     this.speed = view.getSpeed();
     if (view instanceof TextualAnimationView) {
-      view.displayTextualView(model.getMap(), model.getCanvas());
+      view.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     }
     if (view instanceof SVGAnimationView) {
-      view.displaySVG(model.getMotions(), model.getCanvas());
+      view.displaySVG(model.getFrames(), model.getShapes(), model.getCanvas());
     }
     // Visual animation.
     if (view instanceof VisualAnimationView) {

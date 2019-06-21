@@ -1,10 +1,11 @@
 package cs3500.animator.view;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
-import cs3500.model.Command;
 
 /**
  * Represents a view for an animation. Supports setting the output of the animation view eg. a text
@@ -26,17 +27,18 @@ public interface IView {
 
   /**
    * Set the SVG for the animation in the XML format.
-   * @param motions list of motions.
+   * @param frames list of keyframes.
    * @param canvas four bounds on the animation frame.
    */
-  void displaySVG(List<Command> motions, int[] canvas);
+  void displaySVG(List<KeyFrame> frames, List<Shape> shapes, int[] canvas);
 
   /**
    * Set the textual representation of the animation.
-   * @param commands list of motions.
+   * @param frames list of frames.
+   * @param shapes list of shapes
    * @param canvas four bounds on the animation frame.
    */
-  void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas);
+  void displayTextualView(List<KeyFrame> frames, List<Shape> shapes, int[] canvas);
 
   /**
    * Visually display the animation using Swing library.

@@ -2,10 +2,9 @@ package cs3500.animator.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
-import cs3500.model.Command;
+import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
 
 /**
@@ -22,23 +21,25 @@ public class TextualAnimationView implements IView {
 
   /**
    * Displays the text view by appending all of the shapes and their commands to the output.
-   * @param commands list of motions.
+   * @param frames list of frames.
+   * @param shapes list of shapes.
    * @param canvas four bounds on the animation frame.
    */
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
+  public void displayTextualView(List<KeyFrame> frames, List<Shape> shapes,
+                                 int[] canvas) {
     ArrayList<Shape> usedShapes = new ArrayList<Shape>();
     tryAppend(out, "canvas " + canvas[0] + " " + canvas[1] + " " + canvas[2]
             + " " + canvas[3] + "\n");
-    for (Shape s : commands.values()) {
+    for (Shape s : shapes) {
       if (!usedShapes.contains(s)) {
-        tryAppend(out, this.printShapeCommands(s, commands) + "\n");
+        tryAppend(out, this.printShapeCommands(s, frames) + "\n");
         usedShapes.add(s);
       }
     }
   }
 
   @Override
-  public void displaySVG(List<Command> motions, int[] canvas) {
+  public void displaySVG(List<KeyFrame> frames, List<Shape> shapes, int[] canvas) {
     throw new UnsupportedOperationException("displaySVG() not supported for Textual View");
   }
 
@@ -58,19 +59,28 @@ public class TextualAnimationView implements IView {
   }
 
   /**
-   * Returns the commands in string form for the shape.
-   * @param s         the shape for which the commands should be printed
-   * @param commands  all of the commands in the animation
-   * @return the next srting representing the commands for the given shape
+   * Returns the motions in string form for the shape.
+   * @param s      the shape for which the commands should be printed
+   * @param frames the list of frames
+   * @return the next string representing the commands for the given shape
    */
-  private String printShapeCommands(Shape s, LinkedHashMap<Command, Shape> commands) {
+  private String printShapeCommands(Shape s, List<KeyFrame> frames) {
     String toReturn = "shape " + s.getName() + "\n";
-    for (Command c : commands.keySet()) {
-      if (c.getShapeName().equals(s.getName())) {
-        toReturn += c.printCommand() + "\n";
+    for (int i = 0; i < frames.size() - 1; i++) {
+      if (frames.get(i).getName().equals(s.getName())
+              && frames.get(i + 1).getName().equals(s.getName())) {
+        toReturn += printSingleMotion(frames.get(i), frames.get(i + 1)) + "\n";
       }
     }
     return toReturn;
+  }
+
+  public String printSingleMotion(KeyFrame first, KeyFrame second) {
+    return "motion " + first.getName() + " " + first.getTime() + " " + first.getX()
+            + " " + first.getY() + " " + first.getW() + " " + first.getH() + " "
+            + first.getR() + " " + first.getG() + " " + first.getB() + "       " + second.getTime()
+            + " " + second.getX() + " " + second.getY() + " " + second.getW() + " " + second.getH()
+            + " " + second.getR() + " " + second.getG() + " " + second.getB();
   }
 
   @Override

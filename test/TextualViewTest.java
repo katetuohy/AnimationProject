@@ -33,9 +33,9 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimationMap();
+    model.setAnimation();
     v.setOutput(new StringBuilder());
-    v.displayTextualView(model.getMap(), model.getCanvas());
+    v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     assertEquals("canvas 145 50 410 220\n" +
             "shape disk1\n" +
             "motion disk1 0 0.0 0.0 100 100 0 0 0       1 0.0 0.0 100 100 0 0 0\n" +
@@ -120,8 +120,8 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimationMap();
-    v.displayTextualView(model.getMap(), model.getCanvas());
+    model.setAnimation();
+    v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     out.close();
     String result = "";
     File file = new File("text-transcript.txt");
@@ -200,9 +200,9 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimationMap();
+    model.setAnimation();
     v.setOutput(new FileWriter("testTextHanoi.txt"));
-    v.displayTextualView(model.getMap(), model.getCanvas());
+    v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
   }
 
   @Test
@@ -225,8 +225,8 @@ public class TextualViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimationMap();
-    v.displayTextualView(model.getMap(), model.getCanvas());
+    model.setAnimation();
+    v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     try {
       out.close();
     } catch (IOException e) {

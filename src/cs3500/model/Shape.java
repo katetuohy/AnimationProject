@@ -2,6 +2,7 @@ package cs3500.model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 /**
  * Represents a geometrical shape for the animation.
@@ -55,27 +56,30 @@ public interface Shape {
    * @param currTime  Current time of the program.
    * @param startTime The start time for the given command.
    * @param endTime   the end time for the given command
-   * @param cmd       the command for the shape change.
+   * @param first     the Keyframe for the beginning of the motion
+   * @param second    the keyframe for the end of the motion
    */
-  void setPosition(int currTime, int startTime, int endTime, Command cmd);
+  void setPosition(int currTime, int startTime, int endTime, KeyFrame first, KeyFrame second);
 
   /**
    * Updates the shape to reflect the given command and current time for its color.
    * @param currTime  Current time of the program.
    * @param startTime The start time for the given command.
    * @param endTime   the end time for the given command
-   * @param cmd       the command for the shape change.
+   * @param first     the Keyframe for the beginning of the motion
+   * @param second    the keyframe for the end of the motion
    */
-  void setColor(int currTime, int startTime, int endTime, Command cmd);
+  void setColor(int currTime, int startTime, int endTime, KeyFrame first, KeyFrame second);
 
   /**
    * Updates the shape to reflect the given command and current time for its size.
    * @param currTime  Current time of the program.
    * @param startTime The start time for the given command.
    * @param endTime   the end time for the given command
-   * @param cmd       the command for the shape change.
+   * @param first     the Keyframe for the beginning of the motion
+   * @param second    the keyframe for the end of the motion
    */
-  void setSize(int currTime, int startTime, int endTime, Command cmd);
+  void setSize(int currTime, int startTime, int endTime, KeyFrame first, KeyFrame second);
 
   /**
    * Return shape's XML.
@@ -103,5 +107,13 @@ public interface Shape {
    */
   void drawShape(Graphics g);
 
+  /**
+   *
+   * @param startTime
+   * @param endTime
+   * @param from
+   * @param to
+   * @return
+   */
   String getPositionXML(int startTime, int endTime, Position2D from, Position2D to);
 }

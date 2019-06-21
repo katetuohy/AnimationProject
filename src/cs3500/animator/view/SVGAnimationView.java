@@ -1,10 +1,10 @@
 package cs3500.animator.view;
 
 import java.io.IOException;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.model.Command;
+import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
 
 /**
@@ -23,7 +23,7 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
-  public void displaySVG(List<Command> motions, int[] canvas) {
+  public void displaySVG(List<KeyFrame> frames, List<Shape> shapes, int[] canvas) {
     String setWidthAndHeightXML =
             String.format("<!--the overall svg width is %d and height is %d."
                     + " By default anything\n"
@@ -32,27 +32,38 @@ public class SVGAnimationView implements IView {
                     + "     xmlns=\"http://www.w3.org/2000/svg\">\n",
             canvas[2], canvas[3], canvas[0], canvas[1], canvas[0] + canvas[2],
             canvas[1] + canvas[3]);
-    Shape currentShape = motions.get(0).getShape();
-    Command currentMotion;
+    Shape currentShape = shapes.get(0);
+    KeyFrame first;
+    KeyFrame second;
     String shapeXML = "";
-    for (int i = 0; i < motions.size(); i++) {
-      currentMotion = motions.get(i);
+    for (int i = 0; i < frames.size() - 1; i++) {
+      first = frames.get(i);
+      second = frames.get(i + 1);
+      // If the current motion is for the current shape, add the <animate> tag.
       // if i = 0 or if the current motion is the first for the current
       // shape, add the header XML:
-      if (i == 0 || !currentMotion.getShapeName().equals(motions.get(i - 1).getShapeName())) {
-        currentShape = currentMotion.getShape();
+      if ((i == 0 || !first.getName().equals(frames.get(i - 1).getName()))
+              && first.getName().equals(second.getName())) {
+        for (Shape s : shapes) {
+          if (first.getName().equals(s.getName())) {
+            currentShape = s;
+          }
+        }
         shapeXML += currentShape.getXML();
       }
-      // If the current motion is for the current shape, add the <animate> tag.
-      if (currentMotion.getShapeName().equals(currentShape.getName())) {
-        shapeXML += currentMotion.getXML(this.speed);
+      if (first.getName().equals(currentShape.getName())
+              && second.getName().equals(currentShape.getName())) {
+        shapeXML += first.getXML(currentShape, this.speed, second);
       }
       // If i = last index OR if the current motion is the LAST
       // for the current shape, add the end tag XML.
-      if (i == motions.size() - 1 || !currentMotion.getShapeName()
-              .equals(motions.get(i + 1).getShapeName())) {
-        shapeXML += currentMotion.getShape().getEndXML();
-        currentShape = currentMotion.getShape();
+      if (!first.getName().equals(second.getName())) {
+        for (Shape s : shapes) {
+          if (first.getName().equals(s.getName())) {
+            currentShape = s;
+          }
+        }
+        shapeXML += currentShape.getEndXML();
       }
     }
     tryAppend(out, setWidthAndHeightXML + shapeXML + "</svg>");
@@ -92,7 +103,7 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
+  public void displayTextualView(List<KeyFrame> frames, List<Shape> shape, int[] canvas) {
     throw new UnsupportedOperationException("displayTextualView() not supported for SVG View");
   }
 

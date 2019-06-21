@@ -4,7 +4,6 @@ import cs3500.animator.view.SVGAnimationView;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,9 +17,8 @@ import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewFactory;
-import cs3500.model.Command;
+import cs3500.model.KeyFrame;
 import cs3500.model.Polygon;
-import cs3500.model.Position2D;
 import cs3500.model.Shape;
 
 import static junit.framework.TestCase.assertEquals;
@@ -33,31 +31,31 @@ public class SVGAnimationViewTest {
   Shape s1;
   Shape s2;
   Shape s3;
-  Shape s4;
   ArrayList<Shape> shapes;
-  Command c1;
-  Command c2;
-  Command c3;
-  Command c4;
-  Command c5;
-  Command c6;
-  ArrayList<Command> cmds;
+  KeyFrame k1;
+  KeyFrame k2;
+  KeyFrame k3;
+  KeyFrame k4;
+  KeyFrame k5;
+  KeyFrame k6;
+  KeyFrame k7;
+  ArrayList<KeyFrame> frames;
   int[] canvas;
 
   private void initializeTestVariables() {
     s1 = new Polygon("s1", 4);
     s2 = new Polygon("s2", 4);
     s3 = new Polygon("s3", 4);
-    s4 = new Polygon("s4", 4);
-    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3, s4));
+    shapes = new ArrayList<Shape>(Arrays.asList(s1, s2, s3));
 
-    c1 = new Command(s1, 0, 5);
-    c2 = new Command(s1, 5, 10);
-    c3 = new Command(s2, 0, 5, new Color(255, 0, 0));
-    c4 = new Command(s2, 5, 10, new Position2D(50, 50));
-    c5 = new Command(s3, 0, 10, 30, 30);
-    c6 = new Command(s4, 0, 10);
-    cmds = new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4, c5, c6));
+    k1 = new KeyFrame("s1", 0, 5, 5, 10, 10, 255, 0, 0);
+    k2 = new KeyFrame("s1", 5, 55, 55, 10, 10, 0, 255, 255);
+    k3 = new KeyFrame("s2", 0, 50, 30, 15, 10, 255, 255, 0);
+    k4 = new KeyFrame("s2", 5, 10, 80, 15, 15, 255, 255, 0);
+    k5 = new KeyFrame("s3", 1, 10, 30, 30, 20, 0, 0, 255);
+    k6 = new KeyFrame("s3", 6, 10, 30, 30, 20, 0, 255, 255);
+    k7 = new KeyFrame("s3", 10, 50, 50, 10, 20, 255, 0, 255);
+    frames = new ArrayList<KeyFrame>(Arrays.asList(k1, k2, k3, k4, k5, k6, k7));
 
     canvas = new int[4];
     canvas[0] = 200;
@@ -82,7 +80,7 @@ public class SVGAnimationViewTest {
   public void testBasicXMLNoShapesError() {
     initializeTestVariables();
     IView v = new ViewFactory().getView("svg");
-    v.displaySVG(new ArrayList<Command>(), canvas);
+    v.displaySVG(new ArrayList<KeyFrame>(),new ArrayList<Shape>(), canvas);
   }
 
   @Test
@@ -90,9 +88,8 @@ public class SVGAnimationViewTest {
     initializeTestVariables();
     IView v = new ViewFactory().getView("svg");
     v.setOutput(new StringBuilder());
-    ArrayList<Command> cmds = new ArrayList<Command>();
-    cmds.add(c1);
-    v.displaySVG(cmds, canvas);
+    ArrayList<KeyFrame> frames = new ArrayList<KeyFrame>(Arrays.asList(k1, k2));
+    v.displaySVG(frames, new ArrayList<Shape>(Arrays.asList(s1)), canvas);
     assertEquals("<!--the overall svg width is 360 and height is 360. By default anything\n"
                     + "drawn between (200,70) and (width,height) will be visible -->\n" +
             "<svg width=\"560\" height=\"430\" version=\"1.1\"\n" +
@@ -123,9 +120,8 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     v.setOutput(file);
-    ArrayList<Command> cmds = new ArrayList<Command>();
-    cmds.add(c1);
-    v.displaySVG(cmds, canvas);
+    ArrayList<KeyFrame> frames = new ArrayList<KeyFrame>(Arrays.asList(k1, k2));
+    v.displaySVG(frames, new ArrayList<Shape>(Arrays.asList(s1)), canvas);
     try {
       file.close();
     } catch (IOException e) {
@@ -171,7 +167,8 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     v.setOutput(out);
-    v.displaySVG(new ArrayList<Command>(Arrays.asList(c1, c2, c3, c4)), canvas);
+    v.displaySVG(new ArrayList<KeyFrame>(Arrays.asList(k1, k2, k3, k4)),
+            new ArrayList<Shape>(Arrays.asList(s1, s2)), canvas);
     try {
       out.close();
     } catch (IOException e) {
@@ -240,7 +237,7 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimationMap();
+    model.setAnimation();
     FileWriter out = null;
     try {
       out = new FileWriter("test-toh-3.svg");
@@ -248,7 +245,7 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    v.displaySVG(model.getMotions(), model.getCanvas());
+    v.displaySVG(model.getFrames(), model.getShapes(), model.getCanvas());
     try {
       out.flush();
       out.close();
@@ -283,7 +280,7 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimationMap();
+    model.setAnimation();
     FileWriter out = null;
     try {
       out = new FileWriter("testSVGBuildings.svg");
@@ -291,7 +288,7 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    v.displaySVG(model.getMotions(), model.getCanvas());
+    v.displaySVG(model.getFrames(), model.getShapes(), model.getCanvas());
     try {
       out.flush();
       out.close();
@@ -316,7 +313,7 @@ public class SVGAnimationViewTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
-    model.setAnimationMap();
+    model.setAnimation();
     FileWriter out = null;
     try {
       out = new FileWriter("toh-at-20.svg");
@@ -324,7 +321,7 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    v.displaySVG(model.getMotions(), model.getCanvas());
+    v.displaySVG(model.getFrames(), model.getShapes(), model.getCanvas());
     try {
       out.flush();
       out.close();
