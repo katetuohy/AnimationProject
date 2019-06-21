@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
+import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewFactory;
 import cs3500.animator.view.VisualAnimationView;
@@ -81,7 +82,7 @@ public final class Excellence {
     }
     v.setSpeed(speed);
     IController controller = new Controller(model, v);
-    if (v instanceof VisualAnimationView) {
+    if (v instanceof VisualAnimationView || v instanceof EditorView) {
       controller.playAnimation();
     }
     if (v.getOut() instanceof FileWriter) {

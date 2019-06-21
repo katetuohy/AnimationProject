@@ -74,6 +74,26 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
+  public String[] getAddShapeFields() {
+    throw new UnsupportedOperationException("Can't add shape in SVG view.");
+  }
+
+  @Override
+  public String[] getAddKeyFrameFields() {
+    throw new UnsupportedOperationException("Can't add keyframe fields in SVG view.");
+  }
+
+  @Override
+  public String getDeleteShapeField() {
+    throw new UnsupportedOperationException("Can't delete shape in SVG view.");
+  }
+
+  @Override
+  public String[] getDeleteKeyFrameFields() {
+    throw new UnsupportedOperationException("Can't edit keyframe in SVG view.");
+  }
+
+  @Override
   public void setSpeed(int num) {
     this.speed = num;
   }

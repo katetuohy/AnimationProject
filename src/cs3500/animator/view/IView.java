@@ -56,4 +56,28 @@ public interface IView {
    */
   int getSpeed();
 
+  /**
+   * Get the fields descibing the shape to add.
+   * @return a list of fields.
+   */
+  String[] getAddShapeFields();
+
+  /**
+   * Get the fields descibing the keyframe to add.
+   * @return a list of fields.
+   */
+  String[] getAddKeyFrameFields();
+
+  /**
+   * Get the name of the shape to delete.
+   * @return the name of the shape.
+   */
+  String getDeleteShapeField();
+
+  /**
+   * Get the shape name and the time of the keyframe to delete.
+   * @return a list of the shape name and time.
+   */
+  String[] getDeleteKeyFrameFields();
+
 }

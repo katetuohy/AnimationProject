@@ -57,6 +57,29 @@ public class TextualAnimationView implements IView {
     return 1000;
   }
 
+  @Override
+  public String[] getAddShapeFields() {
+    throw new UnsupportedOperationException("Can't add shape in textual view.");
+  }
+
+  @Override
+  public String[] getAddKeyFrameFields() {
+    throw new UnsupportedOperationException("Can't add keyframe in textual view.");
+
+  }
+
+  @Override
+  public String getDeleteShapeField() {
+    throw new UnsupportedOperationException("Can't delete shape in textual view.");
+
+  }
+
+  @Override
+  public String[] getDeleteKeyFrameFields() {
+    throw new UnsupportedOperationException("Can't delete keyframe in textual view.");
+
+  }
+
   /**
    * Returns the commands in string form for the shape.
    * @param s         the shape for which the commands should be printed
