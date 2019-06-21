@@ -23,7 +23,7 @@ public final class AnimationModelImpl implements AnimationModel {
    * Construct an animation model at time = 0.
    */
   public AnimationModelImpl() {
-    this.time = 1;
+    this.time = 0;
     //this.commands = new LinkedHashMap<Command, Shape>();
     //this.motions = new ArrayList<Command>();
     this.shapes = new ArrayList<Shape>();
@@ -50,9 +50,9 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public void removeFrame(KeyFrame key) {
+  public void removeFrame(String name, int time) {
     for (int i = 0; i < frames.size(); i++) {
-      if (key.equals(frames.get(i))) {
+      if (name.equals(frames.get(i).getName()) && frames.get(i).getTime() == time) {
         frames.remove(i);
         return;
       }
@@ -60,9 +60,23 @@ public final class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
+  public void removeShape(String shapeName) {
+    for (Shape s : shapes) {
+      if (shapeName.equals(s.getName())) {
+        shapes.remove(s);
+      }
+    }
+    for (KeyFrame frame : frames) {
+      if (frame.getName().equals(shapeName)) {
+        frames.remove(frame);
+      }
+    }
+  }
+
+  @Override
   public void setAnimation() {
     if (frames != null && shapes != null && frames.size() > 0 && shapes.size() > 0) {
-      // Sort the motions by shape
+      // Sort the frames by shape
       this.sortMotions();
       // Make sure motions have no overlapping time intervals.
       this.validateMotionsNotOverlapping();

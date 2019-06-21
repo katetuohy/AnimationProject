@@ -53,6 +53,7 @@ public final class Excellence {
     // Instantiate the correct view & set FileReader object
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView(view);
+
     AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
     Readable rn = null;
     try {

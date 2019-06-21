@@ -2,12 +2,14 @@ package cs3500.animator.view;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.LinkedHashMap;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.BoxLayout;
 
-import cs3500.model.Command;
+import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
 
 /**
@@ -60,13 +62,13 @@ public class EditorView extends JFrame implements IView {
   }
 
   @Override
-  public void displaySVG(List<Command> motions, int[] canvas) {
+  public void displaySVG(List<KeyFrame> frames, List<Shape> shapes, int[] canvas) {
     throw new UnsupportedOperationException("displaySVG() method" +
             " not supported for Editor View.");
   }
 
   @Override
-  public void displayTextualView(LinkedHashMap<Command, Shape> commands, int[] canvas) {
+  public void displayTextualView(List<KeyFrame> frames, List<Shape> shapes, int[] canvas) {
     throw new UnsupportedOperationException("displayTextualView() method" +
             " not supported for Editor View.");
   }

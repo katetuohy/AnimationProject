@@ -1,18 +1,22 @@
 package cs3500.controller;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.Timer;
+import javax.swing.*;
 
 import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGAnimationView;
 import cs3500.animator.view.TextualAnimationView;
 import cs3500.animator.view.VisualAnimationView;
-import cs3500.model.Shape;
 import cs3500.model.AnimationModel;
+import cs3500.model.KeyFrame;
+import cs3500.model.Position2D;
+import cs3500.model.Shape;
+import cs3500.model.ShapeFactory;
 
 /**
  * The controller for the animation, acting in between the model and the view to control the
@@ -21,9 +25,9 @@ import cs3500.model.AnimationModel;
 public class Controller implements IController, ActionListener {
   Timer timer;
   int speed;
-  private int tick = -1;
   AnimationModel model;
   IView view;
+  private int tick = -1;
 
   /**
    * Constructs the controller and calls the display methods on the different views given the model
@@ -36,12 +40,6 @@ public class Controller implements IController, ActionListener {
     this.model = model;
     this.view = view;
     this.speed = view.getSpeed();
-
-    if (view instanceof TextualAnimationView)
-
-      if (view instanceof SVGAnimationView) {
-        view.displaySVG(model.getMotions(), model.getCanvas());
-      }
 
     if (view instanceof TextualAnimationView) {
       view.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
@@ -60,42 +58,57 @@ public class Controller implements IController, ActionListener {
         }
       });
     }
-
     // Editor visual animation.
     if (view instanceof EditorView) {
       timer = new Timer(speed, this);
     }
   }
-    @Override
-    public void playAnimation() {
-      timer.start();
-    }
 
-    public void replay() {
-      timer.restart();
-    }
+  @Override
+  public void playAnimation() {
+    timer.start();
+  }
+
+  @Override
+  public void replay() {
+    timer.restart();
+  }
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    switch(e.getActionCommand()) {
-      model.setTime(tick++);
-      List<Shape> shapesToRender = model.moveShapes();
-      view.displayVisual(shapesToRender);
+    model.setTime(tick++);
+    List<Shape> shapesToRender = model.moveShapes();
+    view.displayVisual(shapesToRender);
+    switch (e.getActionCommand()) {
       case "Delete KeyFrame":
         String[] deleteKeyFrameFields = view.getDeleteKeyFrameFields();
-        model.deleteKeyFrame();
+        model.removeFrame(deleteKeyFrameFields[0], Integer.parseInt(deleteKeyFrameFields[1]));
         break;
       case "Add KeyFrame":
         String[] addKeyFrameFields = view.getAddKeyFrameFields();
-        model.insertKeyFrame();
+        model.insertFrame(new KeyFrame(addKeyFrameFields[0],
+                Integer.parseInt(addKeyFrameFields[1]),
+                Integer.parseInt(addKeyFrameFields[2]),
+                Integer.parseInt(addKeyFrameFields[3]),
+                Integer.parseInt(addKeyFrameFields[4]),
+                Integer.parseInt(addKeyFrameFields[5]),
+                Integer.parseInt(addKeyFrameFields[6]),
+                Integer.parseInt(addKeyFrameFields[7]),
+                Integer.parseInt(addKeyFrameFields[8])));
         break;
       case "Delete Shape":
         String deleteShapeFields = view.getDeleteShapeField();
-        model.deleteShape();
+        model.removeShape(deleteShapeFields);
         break;
       case "Add Shape":
         String[] addShapeFields = view.getAddShapeFields();
-        model.addShape(addShapeFields[0]);
+        model.addShape(new ShapeFactory()
+                .getShapeFull(addShapeFields[0], addShapeFields[1],
+                Integer.parseInt(addShapeFields[2]), Integer.parseInt(addShapeFields[3]),
+                new Position2D(Double.parseDouble(addShapeFields[4]),
+                        Double.parseDouble(addShapeFields[5])),
+                new Color(Integer.parseInt(addShapeFields[6]), Integer.parseInt(addShapeFields[7]),
+                        Integer.parseInt(addShapeFields[8]))));
         break;
       case "Replay":
         replay();

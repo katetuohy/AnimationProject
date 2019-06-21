@@ -83,4 +83,24 @@ public class VisualAnimationView extends JFrame implements IView {
   public int getSpeed() {
     return this.speed;
   }
+
+  @Override
+  public String[] getAddShapeFields() {
+    throw new UnsupportedOperationException("Can't add shape for Visual View");
+  }
+
+  @Override
+  public String[] getAddKeyFrameFields() {
+    throw new UnsupportedOperationException("Can't add KeyFrame for Visual View");
+  }
+
+  @Override
+  public String getDeleteShapeField() {
+    throw new UnsupportedOperationException("Can't delete shape for Visual View");
+  }
+
+  @Override
+  public String[] getDeleteKeyFrameFields() {
+    throw new UnsupportedOperationException("Can't delete KeyFrame for Visual View");
+  }
 }

@@ -8,8 +8,8 @@ import javax.swing.*;
 /**
  * A panel containing the components for an animation editor.
  * Create or delete shapes. Create, delete, or modify keyframes of existing shapes.
- * Can add a keyframe before the first or after the last existing keyframe and add the very first
- * keyframe to a shape that has none.
+ * Can add a keyframe before the first or after the last existing keyframe
+ * and add the very first keyframe to a shape that has none.
  */
 public class EditorPanel extends JPanel implements ActionListener {
 
@@ -19,7 +19,9 @@ public class EditorPanel extends JPanel implements ActionListener {
   private final JLabel shapeHeightLabel;
   private final JLabel shapePosXLabel;
   private final JLabel shapePosYLabel;
-  private final JLabel shapeColorLabel;
+  private final JLabel shapeRedLabel;
+  private final JLabel shapeGreenLabel;
+  private final JLabel shapeBlueLabel;
 
   private final JLabel deleteShapeNameLabel;
 
@@ -37,6 +39,8 @@ public class EditorPanel extends JPanel implements ActionListener {
   private final JButton deleteShapeButton;
   private final JButton addShapeButton;
   private final JButton replayButton;
+  private final JButton incrementSpeed;
+  private final JButton decrementSpeed;
 
   private final JTextField addShapeTypeField;
   private final JTextField addShapeNameField;
@@ -44,15 +48,21 @@ public class EditorPanel extends JPanel implements ActionListener {
   private final JTextField addShapeHeightField;
   private final JTextField addShapePosXField;
   private final JTextField addShapePosYField;
-  private final JTextField addShapeColorField;
+  private final JTextField addShapeRedField;
+  private final JTextField addShapeGreenField;
+  private final JTextField addShapeBlueField;
 
   private final JTextField deleteShapeNameField;
 
   private final JTextField addKeyFrameShapeNameField;
   private final JTextField addKeyFrameTimeField;
-  private final JTextField addKeyFrameColorField;
   private final JTextField addKeyFramePosXField;
   private final JTextField addKeyFramePosYField;
+  private final JTextField addKeyFrameWidthField;
+  private final JTextField addKeyFrameHeightField;
+  private final JTextField addKeyFrameRedField;
+  private final JTextField addKeyFrameGreenField;
+  private final JTextField addKeyFrameBlueField;
 
   private final JTextField deleteKeyFrameShapeNameField;
   private final JTextField deleteKeyFrameTimeField;
@@ -60,43 +70,56 @@ public class EditorPanel extends JPanel implements ActionListener {
   private JTextArea message;
 
   /**
-   * Default constructor. Initializes all buttons and text fields.
+   * Default constructor. Initializes all components.
    */
   public EditorPanel() {
     super();
 
+    /* BUTTONS */
     this.deleteKeyFrameButton = new JButton("Delete KeyFrame");
     this.addKeyFrameButton = new JButton("Add KeyFrame");
     this.deleteShapeButton = new JButton("Delete Shape");
     this.addShapeButton = new JButton("Add Shape");
     this.replayButton = new JButton("Replay Animation");
+    this.incrementSpeed = new JButton("+ Speed");
+    this.decrementSpeed = new JButton("- Speed");
 
+    /* TEXT FIELDS */
     addShapeTypeField = new JTextField();
     addShapeNameField = new JTextField();
     addShapeWidthField = new JTextField();
     addShapeHeightField = new JTextField();
     addShapePosXField = new JTextField();
     addShapePosYField = new JTextField();
-    addShapeColorField = new JTextField();
+    addShapeRedField = new JTextField();
+    addShapeGreenField = new JTextField();
+    addShapeBlueField = new JTextField();
 
     deleteShapeNameField = new JTextField();
 
     addKeyFrameShapeNameField = new JTextField();
     addKeyFrameTimeField = new JTextField();
-    addKeyFrameColorField = new JTextField();
     addKeyFramePosXField = new JTextField();
     addKeyFramePosYField = new JTextField();
+    addKeyFrameWidthField = new JTextField();
+    addKeyFrameHeightField = new JTextField();
+    addKeyFrameRedField = new JTextField();
+    addKeyFrameGreenField = new JTextField();
+    addKeyFrameBlueField = new JTextField();
 
     deleteKeyFrameShapeNameField = new JTextField();
     deleteKeyFrameTimeField = new JTextField();
 
+    /* LABELS */
     shapeTypeLabel = new JLabel("Shape Type:");
     shapeNameLabel = new JLabel("Shape Name:");
     shapeWidthLabel = new JLabel("Shape Width");
     shapeHeightLabel = new JLabel("Shape Height");
     shapePosXLabel = new JLabel("X Position:");
     shapePosYLabel = new JLabel("Y Position:");
-    shapeColorLabel = new JLabel("Shape Color:");
+    shapeRedLabel = new JLabel("Shape Color:");
+    shapeGreenLabel = new JLabel("Shape Color:");
+    shapeBlueLabel = new JLabel("Shape Color:");
 
     deleteShapeNameLabel = new JLabel("Shape Name:");
 
@@ -109,13 +132,17 @@ public class EditorPanel extends JPanel implements ActionListener {
     deleteKeyFrameNameLabel = new JLabel("Shape Name:");
     deleteKeyFrameTimeLabel = new JLabel("Time:");
 
+    /* MESSAGE BOX */
     message = new JTextArea(5, 20);
 
+    /* Add the components to the panel. */
     this.add(deleteKeyFrameButton);
     this.add(addKeyFrameButton);
     this.add(deleteShapeButton);
     this.add(addShapeButton);
     this.add(replayButton);
+    this.add(incrementSpeed);
+    this.add(decrementSpeed);
 
     this.add(addShapeTypeField);
     this.add(addShapeNameField);
@@ -123,15 +150,21 @@ public class EditorPanel extends JPanel implements ActionListener {
     this.add(addShapeHeightField);
     this.add(addShapePosXField);
     this.add(addShapePosYField);
-    this.add(addShapeColorField);
+    this.add(addShapeRedField);
+    this.add(addShapeGreenField);
+    this.add(addShapeBlueField);
 
     this.add(deleteShapeNameField);
 
     this.add(addKeyFrameShapeNameField);
     this.add(addKeyFrameTimeField);
-    this.add(addKeyFrameColorField);
     this.add(addKeyFramePosXField);
     this.add(addKeyFramePosYField);
+    this.add(addKeyFrameWidthField);
+    this.add(addKeyFrameHeightField);
+    this.add(addKeyFrameRedField);
+    this.add(addKeyFrameGreenField);
+    this.add(addKeyFrameBlueField);
 
     this.add(deleteKeyFrameShapeNameField);
     this.add(deleteKeyFrameTimeField);
@@ -142,7 +175,9 @@ public class EditorPanel extends JPanel implements ActionListener {
     this.add(shapeHeightLabel);
     this.add(shapePosXLabel);
     this.add(shapePosYLabel);
-    this.add(shapeColorLabel);
+    this.add(shapeRedLabel);
+    this.add(shapeGreenLabel);
+    this.add(shapeBlueLabel);
 
     this.add(deleteShapeNameLabel);
 
@@ -164,7 +199,9 @@ public class EditorPanel extends JPanel implements ActionListener {
     result[3] = addShapeHeightField.getText();
     result[4] = addShapePosXField.getText();
     result[5] = addShapePosYField.getText();
-    result[6] = addShapeColorField.getText();
+    result[6] = addShapeRedField.getText();
+    result[7] = addShapeGreenField.getText();
+    result[8] = addShapeBlueField.getText();
     if (isValidFieldsList(result)) {
       return result;
     } else {
@@ -174,12 +211,16 @@ public class EditorPanel extends JPanel implements ActionListener {
   }
 
   public String[] getAddKeyFrameFields() {
-    String[] result = new String[7];
+    String[] result = new String[9];
     result[0] = addKeyFrameShapeNameField.getText();
     result[1] = addKeyFrameTimeField.getText();
-    result[2] = addKeyFrameColorField.getText();
-    result[3] = addKeyFramePosXField.getText();
-    result[4] = addKeyFramePosYField.getText();
+    result[2] = addKeyFramePosXField.getText();
+    result[3] = addKeyFramePosYField.getText();
+    result[4] = addKeyFrameWidthField.getText();
+    result[5] = addKeyFrameHeightField.getText();
+    result[6] = addKeyFrameRedField.getText();
+    result[7] = addKeyFrameGreenField.getText();
+    result[8] = addKeyFrameBlueField.getText();
     if (isValidFieldsList(result)) {
       return result;
     } else {
@@ -248,5 +289,4 @@ public class EditorPanel extends JPanel implements ActionListener {
   public void setMessage(String message) {
     this.message.setText(message);
   }
-
 }

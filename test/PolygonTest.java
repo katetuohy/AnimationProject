@@ -3,6 +3,7 @@ import org.junit.Test;
 import java.awt.Color;
 
 import cs3500.model.AShape;
+import cs3500.model.KeyFrame;
 import cs3500.model.Polygon;
 import cs3500.model.Position2D;
 
@@ -110,27 +111,36 @@ public class PolygonTest {
   @Test
   public void testSetColorBlackToBlueEndTime() {
     AShape p = new Polygon("poly");
-    Command c = new Command(p, 0, 5, Color.BLUE);
+    KeyFrame k1 = new KeyFrame("poly", 0, 100, 100, 20, 20, 0,
+            0, 0);
+    KeyFrame k2 = new KeyFrame("poly", 5, 50, 50, 50, 50, 0,
+            0, 255);
     assertEquals(Color.BLACK, p.getColor());
-    p.setColor(5, 0, 5, c);
+    p.setColor(5, 0, 5, k1, k2);
     assertEquals(p.getColor(), Color.BLUE);
   }
 
   @Test
   public void testSetColorBlackToCyanEndTime() {
     AShape p = new Polygon("poly");
-    Command c = new Command(p, 0, 5, Color.CYAN);
+    KeyFrame k1 = new KeyFrame("poly", 0, 100, 100, 20, 20, 0,
+            0, 0);
+    KeyFrame k2 = new KeyFrame("poly", 5, 50, 50, 50, 50, 0,
+            255, 255);
     assertEquals(Color.BLACK, p.getColor());
-    p.setColor(5, 0, 5, c);
+    p.setColor(5, 0, 5, k1, k2);
     assertEquals(p.getColor(), Color.CYAN);
   }
 
   @Test
   public void testSetColorMidTime() {
     AShape p = new Polygon("poly");
-    Command c = new Command(p, 0, 5, Color.BLUE);
+    KeyFrame k1 = new KeyFrame("poly", 0, 100, 100, 20, 20, 0,
+            0, 0);
+    KeyFrame k2 = new KeyFrame("poly", 5, 50, 50, 50, 50, 0,
+            0, 255);
     assertEquals(Color.BLACK, p.getColor());
-    p.setColor(1, 0, 5, c);
+    p.setColor(1, 0, 5, k1, k2);
     assertEquals(p.getColor(), new Color(0, 0, 51));
   }
 
@@ -141,28 +151,37 @@ public class PolygonTest {
   @Test
   public void testSetColorMidTime2() {
     AShape p = new Polygon("poly");
-    Command c = new Command(p, 0, 5, Color.YELLOW);
+    KeyFrame k1 = new KeyFrame("poly", 0, 100, 100, 20, 20, 0,
+            0, 0);
+    KeyFrame k2 = new KeyFrame("poly", 5, 50, 50, 50, 50, 0,
+            0, 255);
     assertEquals(Color.BLACK, p.getColor());
-    p.setColor(2, 0, 5, c);
+    p.setColor(2, 0, 5, k1, k2);
     assertEquals(p.getColor(), new Color(102, 102, 0));
   }
 
   @Test
   public void testSetPosition() {
     AShape p = new Polygon("poly");
-    Command c = new Command(p, 0, 5, new Position2D(100, 100));
+    KeyFrame k1 = new KeyFrame("poly", 0, 0, 0, 20, 20, 0,
+            0, 0);
+    KeyFrame k2 = new KeyFrame("poly", 5, 100, 100, 50, 50, 0,
+            0, 255);
     assertEquals(new Position2D(0, 0), p.getPosition());
-    p.setPosition(1, 0, 5, c);
+    p.setPosition(1, 0, 5, k1, k2);
     assertEquals(new Position2D(20, 20), p.getPosition());
   }
 
   @Test
   public void testSetSize() {
     AShape p = new Polygon("poly");
-    Command c = new Command(p, 0, 5, 50, 50);
+    KeyFrame k1 = new KeyFrame("poly", 0, 100, 100, 100, 100, 0,
+            0, 0);
+    KeyFrame k2 = new KeyFrame("poly", 5, 50, 50, 50, 50, 0,
+            255, 255);
     assertEquals(100, p.getWidth());
     assertEquals(100, p.getHeight());
-    p.setSize(1, 0, 5, c);
+    p.setSize(1, 0, 5, k1, k2);
     assertEquals(90, p.getWidth());
     assertEquals(90, p.getHeight());
   }

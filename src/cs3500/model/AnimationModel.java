@@ -26,12 +26,14 @@ public interface AnimationModel {
 
   /**
    * gets the canvas size and start point as an int[].
+   *
    * @return the canvas array.
    */
   int[] getCanvas();
 
   /**
    * Setter for the time field.
+   *
    * @param currTime the current time.
    */
   void setTime(int currTime);
@@ -50,30 +52,24 @@ public interface AnimationModel {
 
   /**
    * Gives the list of frames for the animation.
+   *
    * @return the frames.
    */
   List<KeyFrame> getFrames();
 
   /**
    * Add Shape to the list of shapes.
+   *
    * @param s the shape to add
    */
   void addShape(Shape s);
 
   /**
-   * Adds the KeyFrame to the list of Key Frames.
+   * Adds the KeyFrame to the end of the list of Key Frames.
+   *
    * @param k the Key frame to add
    */
   void addFrame(KeyFrame k);
-
-  /**
-   * Set the canvas dimensions of the model.
-   * @param x      The X position for the center of the canvas
-   * @param y      The Y position for the center of the canvas
-   * @param width  The Width of the canvas
-   * @param height The Height of the canvas
-   */
-  void setCanvas(int x, int y, int width, int height);
 
   /**
    * Inserts the given key into the list of frames at the appropriate location.
@@ -83,7 +79,24 @@ public interface AnimationModel {
 
   /**
    * Removes the given frame from the list of frames.
-   * @param key the frame to remove
+   * @param name the frame to remove
+   * @param time the frame to remove
    */
-  void removeFrame(KeyFrame key);
+  void removeFrame(String name, int time);
+
+  /**
+   * Removes the given shape from the list of shapes for the animation.
+   * @param shapeName the shape to remove
+   */
+  void removeShape(String shapeName);
+
+  /**
+   * Set the canvas dimensions of the model.
+   *
+   * @param x      The X position for the center of the canvas
+   * @param y      The Y position for the center of the canvas
+   * @param width  The Width of the canvas
+   * @param height The Height of the canvas
+   */
+  void setCanvas(int x, int y, int width, int height);
 }

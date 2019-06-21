@@ -20,6 +20,9 @@ public class ViewFactory {
     if (type.equalsIgnoreCase("svg")) {
       return new SVGAnimationView();
     }
+    if (type.equalsIgnoreCase("editor")) {
+      return new EditorView();
+    }
     return null;
   }
 }

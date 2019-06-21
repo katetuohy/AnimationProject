@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +10,15 @@ import cs3500.model.AnimationModelImpl;
 import cs3500.model.KeyFrame;
 import cs3500.model.Oval;
 import cs3500.model.Polygon;
+import cs3500.model.Position2D;
 import cs3500.model.Shape;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * Test the {@link AnimationModel} class.
+ * Todo:
+ * Create tests for deleteFrames(), removeShape(), and insertFrames()
  */
 public class AnimationModelImplTest {
 
@@ -95,8 +98,8 @@ public class AnimationModelImplTest {
     assertEquals(7, m.getFrames().size());
     assertEquals(3, m.getShapes().size());
     m.setAnimation();
-    assertEquals(m.getFrames().get(1), k2);
-    assertEquals(m.getShapes().get(6), k7);
+    assertEquals(m.getFrames().get(0), k1);
+    assertEquals(m.getShapes().get(2), s3);
   }
 
   /**
@@ -142,44 +145,11 @@ public class AnimationModelImplTest {
 
   }
 
-  /**
-   * Test validateCommands class checks for overlapping commands.
-   */
-  @Test
-  public void testValidateCommands() {
+  @Test(expected = IllegalStateException.class)
+  public void testValidateCommands2() {
     initTestVariables();
     AnimationModel m = new AnimationModelImpl();
-    m.addShape(s1);
-    m.addShape(s2);
-    m.addShape(s3);
-    m.addShape(s4);
-    m.addMotion(c1);
-    m.addMotion(c2);
-    m.addMotion(c3);
-    m.addMotion(c4);
-    m.addMotion(c5);
-    m.setAnimationMap();
-    assertEquals(m.printCommands(), "shape s1\n"
-            + "motion s1 0 0.0 0.0 100 100 0 0 0       10 0.0 0.0 100 100 0 0 0\n"
-            + "\n" + "shape s2\n"
-            + "motion s2 0 0.0 0.0 100 100 0 0 0       10 0.0 0.0 100 100 0 0 0\n"
-            + "\n" + "shape s3\n"
-            + "motion s3 0 0.0 0.0 50 100 0 0 0       10 0.0 0.0 50 100 0 0 0\n"
-            + "\n" + "shape s4\n"
-            + "motion s4 0 0.0 0.0 100 100 0 0 255       5 0.0 0.0 100 100 0 0 255\n"
-            + "motion s4 5 0.0 0.0 100 100 0 0 255       10 0.0 0.0 100 100 0 0 255\n"
-            + "\n"
-    );
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testValidateCommands2() {
-    initTestVariablesOverlappingCommands();
-    AnimationModel m = new AnimationModelImpl();
-    m.addShape(s1);
-    m.addMotion(c1);
-    m.addMotion(c2);
-    m.setAnimationMap();
+    m.setAnimation();
   }
 
   @Test
@@ -199,14 +169,24 @@ public class AnimationModelImplTest {
     AnimationModel m = new AnimationModelImpl();
     m.addShape(new Polygon("rect1", 4, 50, 25));
     m.addShape(new Oval("ellipse", 20, 60));
-    m.addMotion(new Command(m.getShapes().get(0), 0, 10, 100, 75));
-    m.addMotion(new Command(m.getShapes().get(1), 0, 10, 100, 100));
-    m.setAnimationMap();
+    m.addFrame(new KeyFrame("rect1", 0, 0, 0, 50, 25, 0, 0,
+            0));
+    m.addFrame(new KeyFrame("rect1", 10, 100, 100, 100, 25, 250,
+            0,0));
+    m.addFrame(new KeyFrame("ellipse", 0, 50, 0, 25, 100, 0, 250,
+            250));
+    m.addFrame(new KeyFrame("ellipse", 10, 0, 100, 75, 50, 0,
+            0,250));
+    m.setAnimation();
     m.setTime(5);
     List<Shape> shapes = m.moveShapes();
+    assertEquals(shapes.get(0).getPosition(), new Position2D(50, 50));
+    assertEquals(shapes.get(1).getPosition(), new Position2D(25, 50));
     assertEquals(shapes.get(0).getWidth(), 75);
-    assertEquals(shapes.get(0).getHeight(), 50);
-    assertEquals(shapes.get(1).getWidth(), 60);
-    assertEquals(shapes.get(1).getHeight(), 80);
+    assertEquals(shapes.get(0).getHeight(), 25);
+    assertEquals(shapes.get(1).getWidth(), 50);
+    assertEquals(shapes.get(1).getHeight(), 75);
+    assertEquals(shapes.get(0).getColor(), new Color(125, 0, 0));
+    assertEquals(shapes.get(1).getColor(), new Color(0, 125, 250));
   }
 }
