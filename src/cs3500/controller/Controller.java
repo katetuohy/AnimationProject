@@ -39,7 +39,7 @@ public class Controller implements IController, ActionListener {
   public Controller(AnimationModel model, IView view) {
     this.model = model;
     this.view = view;
-    this.speed = view.getSpeed();
+    this.speed = 1000 / view.getSpeed();
 
     if (view instanceof TextualAnimationView) {
       view.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());

@@ -19,7 +19,7 @@ import cs3500.model.Shape;
  */
 public class EditorView extends JFrame implements IView {
   private final JPanel mainPanel;
-  private final DrawingPanel animationPanel;
+  private DrawingPanel animationPanel;
   private final EditorPanel editorPanel;
   private final JScrollPane scrollAnimationPane;
   private Appendable out;
@@ -28,25 +28,25 @@ public class EditorView extends JFrame implements IView {
   public EditorView() {
     super();
     this.out = System.out;
-    this.speed = 1000;
+    this.speed = 1;
 
     setSize(800, 800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocation(200, 200);
 
     mainPanel = new JPanel();
-    mainPanel.setMinimumSize(new Dimension(500, 500));
-    mainPanel.setPreferredSize(new Dimension(2000, 2000));
+    mainPanel.setMinimumSize(new Dimension(1500, 1500));
+    mainPanel.setPreferredSize(new Dimension(4000, 2000));
     mainPanel.setLayout(new FlowLayout());
 
     editorPanel = new EditorPanel();
-    editorPanel.setMinimumSize(new Dimension(10, 10));
-    editorPanel.setPreferredSize(new Dimension(700, 1000));
+    editorPanel.setMinimumSize(new Dimension(500, 500));
+    editorPanel.setPreferredSize(new Dimension(1000, 1000));
     editorPanel.setBackground(Color.WHITE);
 
     animationPanel = new DrawingPanel();
     animationPanel.setMinimumSize(new Dimension(500, 500));
-    animationPanel.setPreferredSize(new Dimension(500, 1000));
+    animationPanel.setPreferredSize(new Dimension(800, 800));
     animationPanel.setBackground(Color.WHITE);
 
     scrollAnimationPane = new JScrollPane(animationPanel);

@@ -1,7 +1,6 @@
 package cs3500.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import cs3500.animator.util.AnimationBuilder;
@@ -15,10 +14,11 @@ import cs3500.animator.util.AnimationBuilder;
  */
 public final class AnimationModelImpl implements AnimationModel {
 
-  int time;
+  private int time;
   private ArrayList<Shape> shapes;
   private int[] canvas;
   private ArrayList<KeyFrame> frames;
+  private int longestTime;
 
   /**
    * Construct an animation model at time = 0.
@@ -33,6 +33,15 @@ public final class AnimationModelImpl implements AnimationModel {
       canvas[i] = 0;
     }
     this.frames = new ArrayList<KeyFrame>();
+    this.longestTime = 0;
+  }
+
+  public void setLongestTime(int t) {
+    this.longestTime = t;
+  }
+
+  public int getLongestTime() {
+    return this.longestTime;
   }
 
   @Override
@@ -121,7 +130,6 @@ public final class AnimationModelImpl implements AnimationModel {
             index++;
           }
         }
-        // Tweening
         shape.setPosition(this.time, startTime, endTime, first, second);
         shape.setSize(this.time, startTime, endTime, first, second);
         shape.setColor(this.time, startTime, endTime, first, second);
@@ -132,6 +140,7 @@ public final class AnimationModelImpl implements AnimationModel {
     return shapesToRender;
   }
 
+
   @Override
   public void addShape(Shape s) {
     this.shapes.add(s);
@@ -140,6 +149,9 @@ public final class AnimationModelImpl implements AnimationModel {
   @Override
   public void addFrame(KeyFrame k) {
     this.frames.add(k);
+    if (k.getTime() > longestTime) {
+      longestTime = k.getTime();
+    }
   }
 
   @Override
@@ -169,6 +181,7 @@ public final class AnimationModelImpl implements AnimationModel {
     int[] canvas = {0, 0, 0, 0};
     ArrayList<Shape> shapes = new ArrayList<Shape>();
     ArrayList<KeyFrame> frames = new ArrayList<KeyFrame>();
+   int longestTime;
 
     @Override
     public AnimationModelImpl build() {
@@ -181,6 +194,7 @@ public final class AnimationModelImpl implements AnimationModel {
       for (KeyFrame k : frames) {
         model.addFrame(k);
       }
+      model.setLongestTime(longestTime);
       return this.model;
     }
 
@@ -189,14 +203,49 @@ public final class AnimationModelImpl implements AnimationModel {
         //Removes duplicate frames added when parsing file
         this.removeDuplicates();
         // Sort the frames by shape
-        this.sortMotions();
-        // Make sure motions have no overlapping time intervals.
+        this.sortFrames();
+        // Make sure frames have no overlapping time intervals.
         this.validateMotionsNotOverlapping();
         // Fill in time gaps in motions.
-        // this.fixRemainingTimeGaps();
+        this.fixRemainingTimeGaps();
       } else {
         throw new IllegalStateException("Motions or commands must not be null or empty!");
       }
+    }
+
+    public void fixRemainingTimeGaps() {
+      int longestTime = 0;
+      //Get end time of animation.
+      for (KeyFrame k : frames) {
+        if (k.getTime() > longestTime) {
+          longestTime = k.getTime();
+        }
+      }
+      this.longestTime = longestTime;
+      ArrayList<KeyFrame> newFrames = new ArrayList<KeyFrame>();
+      newFrames.add(frames.get(0));
+      for (int i = 1; i < frames.size() - 1; i++) {
+        KeyFrame current = frames.get(i);
+        newFrames.add(current);
+        // If the next is a different shape and this doesn't extend until the end
+        if (!current.getName().equalsIgnoreCase(frames.get(i + 1).getName())) {
+          if (current.getTime() != longestTime) {
+            newFrames.add(new KeyFrame(current.getName(), longestTime,
+                    current.getX(), current.getY(), current.getW(),
+                    current.getH(), current.getR(), current.getG(),
+                    current.getB()));
+          }
+        }
+      }
+      KeyFrame current = frames.get(frames.size() - 1);
+      newFrames.add(current);
+      if (frames.get(frames.size() - 1).getTime() != longestTime) {
+        newFrames.add(new KeyFrame(current.getName(), longestTime,
+                current.getX(), current.getY(), current.getW(),
+                current.getH(), current.getR(), current.getG(),
+                current.getB()));
+      }
+      frames =  newFrames;
     }
 
     private void removeDuplicates() {
@@ -211,7 +260,7 @@ public final class AnimationModelImpl implements AnimationModel {
 
     // Sorts list of frames in same order of the given list of shapes.
     //This does not take into account the times
-    private void sortMotions() {
+    private void sortFrames() {
       ArrayList<KeyFrame> sorted = new ArrayList<KeyFrame>();
       for (Shape shape : shapes) {
         for (KeyFrame k : frames) {

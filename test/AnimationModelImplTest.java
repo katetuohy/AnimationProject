@@ -1,10 +1,16 @@
 import org.junit.Test;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cs3500.animator.util.AnimationBuilder;
+import cs3500.animator.util.AnimationReader;
 import cs3500.model.AnimationModel;
 import cs3500.model.AnimationModelImpl;
 import cs3500.model.KeyFrame;
@@ -102,15 +108,6 @@ public class AnimationModelImplTest {
   }
 
   /**
-   * Test setAnimationMap function throws illegalStateException when passed null inputs.
-   */
-  @Test(expected = IllegalStateException.class)
-  public void testSetAnimationNullInputs() {
-    initTestVariables();
-    AnimationModel m = new AnimationModelImpl();
-  }
-
-  /**
    * Test that moveShapes function will not change the shapes when time = 0.
    */
   @Test
@@ -128,9 +125,6 @@ public class AnimationModelImplTest {
     m.addFrame(k6);
     m.addFrame(k7);
     m.moveShapes();
-    for (KeyFrame f : m.getFrames()) {
-      System.out.println(f.getName());
-    }
     for (int i = 0; i < motions.size(); i++) {
       assertEquals(motions.get(i).getName(), m.getFrames().get(i).getName());
       assertEquals(motions.get(i).getTime(), m.getFrames().get(i).getTime());
@@ -142,13 +136,18 @@ public class AnimationModelImplTest {
       assertEquals(motions.get(i).getG(), m.getFrames().get(i).getG());
       assertEquals(motions.get(i).getB(), m.getFrames().get(i).getB());
     }
-
   }
 
-  @Test(expected = IllegalStateException.class)
-  public void testValidateCommands2() {
-    initTestVariables();
-    AnimationModel m = new AnimationModelImpl();
+  @Test
+  public void testBuilder() {
+    AnimationBuilder<AnimationModelImpl> builder = AnimationModelImpl.builder();
+    Readable rn = null;
+    try {
+      rn = new FileReader("C:\\Users\\kr2e1\\GitHub\\AnimationProject\\src\\toh-3.txt");
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    AnimationModel model = AnimationReader.parseFile(rn, builder);
   }
 
   @Test

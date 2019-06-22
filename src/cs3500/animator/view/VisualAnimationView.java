@@ -44,7 +44,7 @@ public class VisualAnimationView extends JFrame implements IView {
     this.out = System.out;
 
     setVisible(true);
-    this.speed = 1000;
+    this.speed = 1;
   }
 
   @Override
@@ -64,7 +64,7 @@ public class VisualAnimationView extends JFrame implements IView {
 
   @Override
   public void setSpeed(int num) {
-    this.speed = 1000 / num;
+    this.speed = num;
   }
 
 

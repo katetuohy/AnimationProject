@@ -90,22 +90,23 @@ public class SVGAnimationViewTest {
     v.setOutput(new StringBuilder());
     ArrayList<KeyFrame> frames = new ArrayList<KeyFrame>(Arrays.asList(k1, k2));
     v.displaySVG(frames, new ArrayList<Shape>(Arrays.asList(s1)), canvas);
-    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything\n"
-                    + "drawn between (200,70) and (width,height) will be visible -->\n" +
-            "<svg width=\"560\" height=\"430\" version=\"1.1\"\n" +
-            "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
-            "<rect id=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\""
-            + " visibility=\"visible\" >\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"x\" "
-            + "from=\"0.0\" to=\"0.0\" />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"y\" "
-            + "from=\"0.0\" to=\"0.0\" />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"fill\" "
-            + "from=\"rgb(0,0,0)\" to=\"rgb(0,0,0)\" />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"width\" "
-            + "from=\"100\" to=\"100\"\n" + " />\n" +
-            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"height\" "
-            + "from=\"100\" to=\"100\"\n" + " />\n" + "</rect>\n" + "</svg>",
+    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything "
+                    + "\ndrawn between (200,70) and (width,height) will be visible -->\n" +
+                    "<svg width=\"560\" height=\"430\" version=\"1.1\"\n" +
+                    "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
+                    "<rect id=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb"
+                    + "(0,0,0)\" visibility=\"visible\" >\n" +
+                    "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName"
+                    + "=\"x\" from=\"5.0\" to=\"55.0\" />\n" +
+                    "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName"
+                    + "=\"y\" from=\"5.0\" to=\"55.0\" />\n" +
+                    "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"f"
+                    + "ill\" from=\"rgb(255,0,0)\" to=\"rgb(0,255,255)\" />\n" +
+                    "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"w"
+                    + "idth\" from=\"10\" to=\"10\"\n" +
+                    " />\n" + "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attri"
+                    + "buteName=\"height\" from=\"10\" to=\"10\"\n />\n" +
+                    "</svg>",
             v.getOut().toString());
   }
 
@@ -138,18 +139,18 @@ public class SVGAnimationViewTest {
     while (sc.hasNextLine()) {
       result += (sc.nextLine());
     }
-    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything"
-            + "drawn between (200,70) and (width,height) will be visible --><svg width=\"560\" "
-            + "height=\"430\" version=\"1.1\"     xmlns=\"http://www.w3.org/2000/svg\"><rect id"
+    assertEquals("<!--the overall svg width is 360 and height is 360. By default anythin"
+            + "g drawn between (200,70) and (width,height) will be visible --><svg width=\"560\" h"
+            + "eight=\"430\" version=\"1.1\"     xmlns=\"http://www.w3.org/2000/svg\"><rect id"
             + "=\"s1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\" visibi"
             + "lity=\"visible\" ><animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attri"
-            + "buteName=\"x\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" begin=\"0"
-            + "ms\" dur=\"5000ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><animate attribu"
-            + "teType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"fill\" from=\"rgb(0,0,"
-            + "0)\" to=\"rgb(0,0,0)\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000m"
-            + "s\" attributeName=\"width\" from=\"100\" to=\"100\" /><animate attributeType=\"xm"
-            + "l\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"height\" from=\"100\" to=\"100\" /"
-            + "></rect></svg>", result);
+            + "buteName=\"x\" from=\"5.0\" to=\"55.0\" /><animate attributeType=\"xml\" begin=\"0m"
+            + "s\" dur=\"5000ms\" attributeName=\"y\" from=\"5.0\" to=\"55.0\" /><animate attribu"
+            + "teType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"fill\" from=\"rgb(255,"
+            + "0,0)\" to=\"rgb(0,255,255)\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"5"
+            + "000ms\" attributeName=\"width\" from=\"10\" to=\"10\" /><animate attributeType=\"x"
+            + "ml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"height\" from=\"10\" to=\"10\" /"
+            + "></svg>", result);
   }
 
   /**
@@ -185,46 +186,33 @@ public class SVGAnimationViewTest {
     while (sc.hasNextLine()) {
       result += (sc.nextLine());
     }
-    assertEquals("<!--the overall svg width is 360 and height is 360. By default anything"
-            + "drawn between (200,70) and (width,height) will be visible --><svg width=\"560\" he"
-            + "ight=\"430\" version=\"1.1\"     xmlns=\"http://www.w3.org/2000/svg\"><rect id=\"s"
+    assertEquals("<!--the overall svg width is 360 and height is 360. By default anythin"
+            + "g drawn between (200,70) and (width,height) will be visible --><svg width=\"560\" h"
+            + "eight=\"430\" version=\"1.1\"     xmlns=\"http://www.w3.org/2000/svg\"><rect id=\"s"
             + "1\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,0)\" visibility"
             + "=\"visible\" ><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attribute"
-            + "Name=\"x\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" begin=\"0ms\" d"
-            + "ur=\"1250ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><animate attributeType"
-            + "=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"fill\" from=\"rgb(0,0,0)\" to"
-            + "=\"rgb(0,0,0)\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attri"
-            + "buteName=\"width\" from=\"100\" to=\"100\" /><animate attributeType=\"xml\" begi"
-            + "n=\"0ms\" dur=\"1250ms\" attributeName=\"height\" from=\"100\" to=\"100\" /><anima"
-            + "te attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attributeName=\"x\" from"
-            + "=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" begin=\"1250ms\" dur=\"1250m"
-            + "s\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xml\" be"
-            + "gin=\"1250ms\" dur=\"1250ms\" attributeName=\"fill\" from=\"rgb(0,0,0)\" to=\"rgb("
-            + "0,0,0)\" /><animate attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attribut"
-            + "eName=\"width\" from=\"100\" to=\"100\" /><animate attributeType=\"xml\" begin=\"1"
-            + "250ms\" dur=\"1250ms\" attributeName=\"height\" from=\"100\" to=\"100\" /></rect><"
-            + "rect id=\"s2\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"rgb(0,0,"
-            + "0)\" visibility=\"visible\" ><animate attributeType=\"xml\" begin=\"0ms\" dur=\"125"
-            + "0ms\" attributeName=\"x\" from=\"0.0\" to=\"0.0\" /><animate attributeType=\"xm"
-            + "l\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"y\" from=\"0.0\" to=\"0.0\" /><a"
-            + "nimate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"fill\" f"
-            + "rom=\"rgb(0,0,0)\" to=\"rgb(255,0,0)\" /><animate attributeType=\"xml\" begin=\"0m"
-            + "s\" dur=\"1250ms\" attributeName=\"width\" from=\"100\" to=\"100\" /><animate attri"
-            + "buteType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"height\" from=\"10"
-            + "0\" to=\"100\" /><animate attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" a"
-            + "ttributeName=\"x\" from=\"0.0\" to=\"50.0\" /><animate attributeType=\"xml\" begi"
-            + "n=\"1250ms\" dur=\"1250ms\" attributeName=\"y\" from=\"0.0\" to=\"50.0\" /><anima"
-            + "te attributeType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attributeName=\"fill\" fr"
-            + "om=\"rgb(0,0,0)\" to=\"rgb(0,0,0)\" /><animate attributeType=\"xml\" begin=\"1250m"
-            + "s\" dur=\"1250ms\" attributeName=\"width\" from=\"100\" to=\"100\" /><animate attr"
-            + "ibuteType=\"xml\" begin=\"1250ms\" dur=\"1250ms\" attributeName=\"height\" from=\"1"
-            + "00\" to=\"100\" /></rect></svg>", result);
+            + "Name=\"x\" from=\"5.0\" to=\"55.0\" /><animate attributeType=\"xml\" begin=\"0m"
+            + "s\" dur=\"1250ms\" attributeName=\"y\" from=\"5.0\" to=\"55.0\" /><animate attribu"
+            + "teType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"fill\" from=\"rgb(255,"
+            + "0,0)\" to=\"rgb(0,255,255)\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1"
+            + "250ms\" attributeName=\"width\" from=\"10\" to=\"10\" /><animate attributeType=\"x"
+            + "ml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"height\" from=\"10\" to=\"10\" /"
+            + "></rect><rect id=\"s2\" x=\"0.0\" y=\"0.0\" width=\"100\" height=\"100\" fill=\"r"
+            + "gb(0,0,0)\" visibility=\"visible\" ><animate attributeType=\"xml\" begin=\"0ms\" d"
+            + "ur=\"1250ms\" attributeName=\"x\" from=\"50.0\" to=\"10.0\" /><animate attributeTy"
+            + "pe=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"y\" from=\"30.0\" to=\"80"
+            + ".0\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName"
+            + "=\"fill\" from=\"rgb(255,255,0)\" to=\"rgb(255,255,0)\" /><animate attributeType"
+            + "=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"width\" from=\"15\" to=\"1"
+            + "5\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName"
+            + "=\"height\" from=\"10\" to=\"15\" /></svg>", result);
   }
 
   /**
    * Tests to ensure that the toh-3 file is read in correctly and is correctly formatted to the
    * new file, then closes properly.
    */
+  @Test
   public void testSVGToh3() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -262,11 +250,13 @@ public class SVGAnimationViewTest {
     while (sc.hasNextLine()) {
       result += (sc.nextLine());
     }
+    assertEquals(v.getSpeed(), 4);
   }
 
   /**
    * Tests to make sure that the same as above is done but with a different input file.
    */
+  @Test
   public void testSVGBuilding() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -293,11 +283,13 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    assertEquals(v.getSpeed(), 2);
   }
 
   /**
    * Tests that the toh-8 is handled correctly by the svg view and outputed properly to the file.
    */
+  @Test
   public void testSVGToh8() {
     ViewFactory factory = new ViewFactory();
     IView v = factory.getView("svg");
@@ -325,5 +317,6 @@ public class SVGAnimationViewTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    assertEquals(v.getSpeed(), 20);
   }
 }

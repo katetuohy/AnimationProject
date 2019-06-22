@@ -1,6 +1,7 @@
 package cs3500.model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class KeyFrame {
 
