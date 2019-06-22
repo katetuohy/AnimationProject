@@ -81,6 +81,11 @@ public class TextualAnimationView implements IView {
 
   }
 
+  @Override
+  public void setMessage(String message) {
+    throw new UnsupportedOperationException();
+  }
+
   /**
    * Returns the motions in string form for the shape.
    * @param s      the shape for which the commands should be printed

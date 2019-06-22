@@ -21,6 +21,9 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
 
   @Override
   public void paintComponent(Graphics g) {
+    /**
+     * ToDO: should this go after the if statement? >>
+     */
     super.paintComponent(g);
     if (shapes != null ) {
       for (Shape shape : shapes) {

@@ -23,10 +23,10 @@ import cs3500.model.ShapeFactory;
  * animation.
  */
 public class Controller implements IController, ActionListener {
-  Timer timer;
-  int speed;
-  AnimationModel model;
-  IView view;
+  private Timer timer;
+  private int speed;
+  private AnimationModel model;
+  private IView view;
   private int tick = -1;
 
   /**
@@ -73,6 +73,7 @@ public class Controller implements IController, ActionListener {
 
   @Override
   public void replay() {
+    tick = 0;
     timer.restart();
   }
 
@@ -113,13 +114,24 @@ public class Controller implements IController, ActionListener {
         replay();
         break;
       case "Increase Speed":
+        speed++;
         view.setSpeed(this.speed);
+        view.setMessage("Speed set to: " + speed);
+
         break;
       case "Decrease Speed":
+        if (speed > 1) {
+          speed--;
+          view.setSpeed(this.speed);
+          view.setMessage("Speed set to: " + speed);
+        } else {
+          view.setMessage("Speed cannot be lowered past 1 tick per second");
+        }
+
         break;
       case "timer listener":
         model.setTime(tick++);
-        System.out.println(tick);
+        System.out.println(model.getTime());
         List<Shape> shapesToRender = model.moveShapes();
         view.displayVisual(shapesToRender);
         break;

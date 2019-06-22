@@ -104,6 +104,11 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
+  public void setMessage(String message) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
   public void setSpeed(int num) {
     this.speed = num;
   }

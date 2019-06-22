@@ -1,6 +1,7 @@
 package cs3500.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cs3500.animator.util.AnimationBuilder;
@@ -114,11 +115,13 @@ public final class AnimationModelImpl implements AnimationModel {
         for (Shape s : shapes) {
           if (s.getName().equals(name)) {
             shape = s;
-            shapes.remove(index);
+            //shapes.remove(index);
+            break;
           } else {
             index++;
           }
         }
+        // Tweening
         shape.setPosition(this.time, startTime, endTime, first, second);
         shape.setSize(this.time, startTime, endTime, first, second);
         shape.setColor(this.time, startTime, endTime, first, second);

@@ -35,17 +35,18 @@ public class EditorView extends JFrame implements IView {
     setLocation(200, 200);
 
     mainPanel = new JPanel();
-    mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+    mainPanel.setMinimumSize(new Dimension(500, 500));
+    mainPanel.setPreferredSize(new Dimension(2000, 2000));
+    mainPanel.setLayout(new FlowLayout());
 
     editorPanel = new EditorPanel();
-    editorPanel.setMinimumSize(new Dimension(500, 1000));
-    editorPanel.setPreferredSize(new Dimension(500, 1000));
+    editorPanel.setMinimumSize(new Dimension(10, 10));
+    editorPanel.setPreferredSize(new Dimension(700, 1000));
     editorPanel.setBackground(Color.WHITE);
-    editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.PAGE_AXIS));
 
     animationPanel = new DrawingPanel();
     animationPanel.setMinimumSize(new Dimension(500, 500));
-    animationPanel.setPreferredSize(new Dimension(1000, 1000));
+    animationPanel.setPreferredSize(new Dimension(500, 1000));
     animationPanel.setBackground(Color.WHITE);
 
     scrollAnimationPane = new JScrollPane(animationPanel);
@@ -53,7 +54,8 @@ public class EditorView extends JFrame implements IView {
     mainPanel.add(scrollAnimationPane);
     mainPanel.add(editorPanel);
 
-    setVisible(true);
+    this.add(mainPanel);
+    this.setVisible(true);
   }
 
   @Override
@@ -78,6 +80,7 @@ public class EditorView extends JFrame implements IView {
     /** TODO: finish this
      **/
     animationPanel.draw(shapes);
+    repaint();
   }
 
   @Override
@@ -118,5 +121,10 @@ public class EditorView extends JFrame implements IView {
 
   public String[] getDeleteKeyFrameFields() {
     return editorPanel.getDeleteKeyFrameFields();
+  }
+
+  @Override
+  public void setMessage(String message) {
+    editorPanel.setMessage(message);
   }
 }

@@ -80,4 +80,9 @@ public interface IView {
    */
   String[] getDeleteKeyFrameFields();
 
+  /**
+   * Set the message to output to the user. For the Visual view only.
+   * @param message message to show user.
+   */
+  void setMessage(String message);
 }

@@ -33,7 +33,7 @@ public class VisualAnimationView extends JFrame implements IView {
     panel.setPreferredSize(new Dimension(2000, 2000));
     panel.setBackground(Color.WHITE);
 
-    scrollPane = new JScrollPane(panel); // DECORATOR WHOO WHOO.
+    scrollPane = new JScrollPane(panel);
 
     setSize(800, 800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,5 +102,10 @@ public class VisualAnimationView extends JFrame implements IView {
   @Override
   public String[] getDeleteKeyFrameFields() {
     throw new UnsupportedOperationException("Can't delete KeyFrame for Visual View");
+  }
+
+  @Override
+  public void setMessage(String message) {
+    throw new UnsupportedOperationException();
   }
 }
