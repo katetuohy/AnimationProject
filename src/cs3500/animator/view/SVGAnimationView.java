@@ -7,14 +7,9 @@ import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
 
 /**
- * Represents an Animation View that provides the view as a svg file in xml format.
- * This view does not support:
- *  - displayVisual()
- *  - displayTextualView()
- *  - getAddShapeFields()
- *  - getDeleteShapeField()
- *  - getDeleteKeyFrameFields()
- *  - getAddKeyFrameFields()
+ * Represents an Animation View that provides the view as a svg file in xml format. This view does
+ * not support: - displayVisual() - displayTextualView() - getAddShapeFields() -
+ * getDeleteShapeField() - getDeleteKeyFrameFields() - getAddKeyFrameFields()
  */
 public class SVGAnimationView implements IView {
   private Appendable out;
@@ -29,12 +24,12 @@ public class SVGAnimationView implements IView {
   public void displaySVG(List<KeyFrame> frames, List<Shape> shapes, int[] canvas) {
     String setWidthAndHeightXML =
             String.format("<!--the overall svg width is %d and height is %d."
-                    + " By default anything \n"
-                    + "drawn between (%d,%d) and (width,height) will be visible -->\n"
-                    + "<svg width=\"%d\" height=\"%d\" version=\"1.1\"\n"
-                    + "     xmlns=\"http://www.w3.org/2000/svg\">\n",
-            canvas[2], canvas[3], canvas[0], canvas[1], canvas[0] + canvas[2],
-            canvas[1] + canvas[3]);
+                            + " By default anything \n"
+                            + "drawn between (%d,%d) and (width,height) will be visible -->\n"
+                            + "<svg width=\"%d\" height=\"%d\" version=\"1.1\"\n"
+                            + "     xmlns=\"http://www.w3.org/2000/svg\">\n",
+                    canvas[2], canvas[3], canvas[0], canvas[1], canvas[0] + canvas[2],
+                    canvas[1] + canvas[3]);
     Shape currentShape = shapes.get(0);
     KeyFrame first;
     KeyFrame second;
@@ -88,6 +83,11 @@ public class SVGAnimationView implements IView {
   }
 
   @Override
+  public void setSpeed(int num) {
+    this.speed = num;
+  }
+
+  @Override
   public String[] getAddShapeFields() {
     throw new UnsupportedOperationException("Can't add shape in SVG view.");
   }
@@ -112,13 +112,9 @@ public class SVGAnimationView implements IView {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public void setSpeed(int num) {
-    this.speed = num;
-  }
-
   /**
    * Try to append s2 to Appendable s1 or catch an IOException.
+   *
    * @param s1 The Appendable to attach the string to
    * @param s2 The string to attach to the appendable
    */

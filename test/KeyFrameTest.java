@@ -53,9 +53,9 @@ public class KeyFrameTest {
             255, 255);
     KeyFrame key5 = new KeyFrame("rect2", 0, 50, 50, 20, 30, 255,
             100, 30);
-    assertTrue(key1.equals(key4));
-    assertTrue(key5.equals(key2));
-    assertFalse(key1.equals(key2));
+    assertTrue(key1.sameKeyframe(key4));
+    assertTrue(key5.sameKeyframe(key2));
+    assertFalse(key1.sameKeyframe(key2));
   }
 
   @Test

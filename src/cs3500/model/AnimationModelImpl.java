@@ -228,6 +228,9 @@ public final class AnimationModelImpl implements AnimationModel {
       return this.model;
     }
 
+    /**
+     * Sort the frames of the animation, make sure shapes and frames not null or empty.
+     */
     public void setAnimation() {
       if (frames != null && shapes != null && frames.size() > 0 && shapes.size() > 0) {
         // Sort the frames by shape
@@ -237,6 +240,9 @@ public final class AnimationModelImpl implements AnimationModel {
       }
     }
 
+    /**
+     * Remove duplicate keyframes from the list of keyframes.
+     */
     private void removeDuplicates() {
       ArrayList<KeyFrame> newList = new ArrayList<KeyFrame>();
       boolean dup = false;
@@ -295,7 +301,7 @@ public final class AnimationModelImpl implements AnimationModel {
     }
 
     /**
-     *Adds the Key Frame to the accumulating list that will be added to the model.
+     * Adds the Key Frame to the accumulating list that will be added to the model.
      */
     @Override
     public AnimationBuilder<AnimationModelImpl> addKeyframe(String name, int t, int x, int y, int w,

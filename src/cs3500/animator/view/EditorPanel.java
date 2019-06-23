@@ -1,10 +1,16 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.BoxLayout;
+
 
 /**
  * A panel containing the components for an animation editor. Create or delete shapes. Create,
@@ -12,32 +18,6 @@ import javax.swing.*;
  * last existing keyframe and add the very first keyframe to a shape that has none.
  */
 public class EditorPanel extends JPanel implements ActionListener {
-
-  private final JLabel shapeTypeLabel;
-  private final JLabel shapeNameLabel;
-  private final JLabel shapeWidthLabel;
-  private final JLabel shapeHeightLabel;
-  private final JLabel shapePosXLabel;
-  private final JLabel shapePosYLabel;
-  private final JLabel shapeRedLabel;
-  private final JLabel shapeGreenLabel;
-  private final JLabel shapeBlueLabel;
-
-  private final JLabel deleteShapeNameLabel;
-
-  private final JLabel addKeyFrameShapeNameLabel;
-  private final JLabel addKeyFrameTimeLabel;
-  private final JLabel addKeyFrameWidthLabel;
-  private final JLabel addKeyFrameHeightLabel;
-  private final JLabel addKeyFramePosXLabel;
-  private final JLabel addKeyFramePosYLabel;
-  private final JLabel addKeyFrameRedLabel;
-  private final JLabel addKeyFrameGreenLabel;
-  private final JLabel addKeyFrameBlueLabel;
-
-  private final JLabel deleteKeyFrameNameLabel;
-  private final JLabel deleteKeyFrameTimeLabel;
-
   private final JButton deleteKeyFrameButton;
   private final JButton addKeyFrameButton;
   private final JButton deleteShapeButton;
@@ -120,30 +100,30 @@ public class EditorPanel extends JPanel implements ActionListener {
 
 
     /* LABELS */
-    shapeTypeLabel = new JLabel("Shape Type:");
-    shapeNameLabel = new JLabel("Shape Name:");
-    shapeWidthLabel = new JLabel("Shape Width");
-    shapeHeightLabel = new JLabel("Shape Height");
-    shapePosXLabel = new JLabel("X Position:");
-    shapePosYLabel = new JLabel("Y Position:");
-    shapeRedLabel = new JLabel("Red:");
-    shapeGreenLabel = new JLabel("Green:");
-    shapeBlueLabel = new JLabel("Blue:");
+    JLabel shapeTypeLabel = new JLabel("Shape Type:");
+    JLabel shapeNameLabel = new JLabel("Shape Name:");
+    JLabel shapeWidthLabel = new JLabel("Shape Width");
+    JLabel shapeHeightLabel = new JLabel("Shape Height");
+    JLabel shapePosXLabel = new JLabel("X Position:");
+    JLabel shapePosYLabel = new JLabel("Y Position:");
+    JLabel shapeRedLabel = new JLabel("Red:");
+    JLabel shapeGreenLabel = new JLabel("Green:");
+    JLabel shapeBlueLabel = new JLabel("Blue:");
 
-    deleteShapeNameLabel = new JLabel("Shape Name:");
+    JLabel deleteShapeNameLabel = new JLabel("Shape Name:");
 
-    addKeyFrameShapeNameLabel = new JLabel("Shape Name:");
-    addKeyFrameTimeLabel = new JLabel("Time:");
-    addKeyFramePosXLabel = new JLabel("X Position:");
-    addKeyFramePosYLabel = new JLabel("Y Position:");
-    addKeyFrameWidthLabel = new JLabel("Width:");
-    addKeyFrameHeightLabel = new JLabel("Height:");
-    addKeyFrameRedLabel = new JLabel("Red:");
-    addKeyFrameGreenLabel = new JLabel("Green:");
-    addKeyFrameBlueLabel = new JLabel("Blue:");
+    JLabel addKeyFrameShapeNameLabel = new JLabel("Shape Name:");
+    JLabel addKeyFrameTimeLabel = new JLabel("Time:");
+    JLabel addKeyFramePosXLabel = new JLabel("X Position:");
+    JLabel addKeyFramePosYLabel = new JLabel("Y Position:");
+    JLabel addKeyFrameWidthLabel = new JLabel("Width:");
+    JLabel addKeyFrameHeightLabel = new JLabel("Height:");
+    JLabel addKeyFrameRedLabel = new JLabel("Red:");
+    JLabel addKeyFrameGreenLabel = new JLabel("Green:");
+    JLabel addKeyFrameBlueLabel = new JLabel("Blue:");
 
-    deleteKeyFrameNameLabel = new JLabel("Shape Name:");
-    deleteKeyFrameTimeLabel = new JLabel("Time:");
+    JLabel deleteKeyFrameNameLabel = new JLabel("Shape Name:");
+    JLabel deleteKeyFrameTimeLabel = new JLabel("Time:");
 
     /* MESSAGE BOX */
     message = new JLabel();
@@ -233,6 +213,11 @@ public class EditorPanel extends JPanel implements ActionListener {
     this.add(message);
   }
 
+  /**
+   * Get the list of fields for adding a shape.
+   *
+   * @return list of parameters for a shape.
+   */
   public String[] getAddShapeFields() {
     String[] result = new String[9];
     result[0] = addShapeTypeField.getText();
@@ -252,6 +237,11 @@ public class EditorPanel extends JPanel implements ActionListener {
     }
   }
 
+  /**
+   * Get the list of fields for adding a Keyframe.
+   *
+   * @return list of parameters for a keyframe.
+   */
   public String[] getAddKeyFrameFields() {
     String[] result = new String[9];
     result[0] = addKeyFrameShapeNameField.getText();
@@ -271,6 +261,11 @@ public class EditorPanel extends JPanel implements ActionListener {
     }
   }
 
+  /**
+   * Get the name for deleting a shape.
+   *
+   * @return name of a shape.
+   */
   public String getDeleteShapeField() {
     String res = deleteShapeNameField.getText();
     if (res.isEmpty()) {
@@ -281,6 +276,11 @@ public class EditorPanel extends JPanel implements ActionListener {
     }
   }
 
+  /**
+   * Get the list of fields for deleting a Keyframe.
+   *
+   * @return list of parameters for a keyframe.
+   */
   public String[] getDeleteKeyFrameFields() {
     String[] result = new String[2];
     result[0] = deleteKeyFrameShapeNameField.getText();
@@ -295,7 +295,8 @@ public class EditorPanel extends JPanel implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    // When a button is pressed, send that command to the controller which will pass it to the model.
+    // When a button is pressed, send that command to the controller
+    // which will pass it to the model.
   }
 
   /**

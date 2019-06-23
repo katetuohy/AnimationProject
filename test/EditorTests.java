@@ -3,16 +3,13 @@ import org.junit.Test;
 import java.awt.event.ActionEvent;
 
 import cs3500.animator.view.EditorView;
-import cs3500.controller.Controller;
 import cs3500.controller.IController;
-import cs3500.model.AnimationModel;
-import cs3500.model.AnimationModelImpl;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * Tests the use of the editor view in the controller by making a mock controller that notifies us
- * when the commands are called
+ * when the commands are called.
  */
 public class EditorTests {
   private EditorView editorView = new EditorView();

@@ -2,7 +2,6 @@ package cs3500.model;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
 
 /**
  * Represents a geometrical shape for the animation.
@@ -108,12 +107,13 @@ public interface Shape {
   void drawShape(Graphics g);
 
   /**
+   * Returns the XML for the position of a shape.
    *
-   * @param startTime
-   * @param endTime
-   * @param from
-   * @param to
-   * @return
+   * @param startTime the start time of the shape.
+   * @param endTime the end time of the shape.
+   * @param from the from position of the shape.
+   * @param to the to position of the shape.
+   * @return the XML format.
    */
   String getPositionXML(int startTime, int endTime, Position2D from, Position2D to);
 }

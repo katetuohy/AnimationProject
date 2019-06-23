@@ -1,10 +1,14 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
@@ -12,12 +16,11 @@ import cs3500.model.Shape;
 /**
  * Represents an Animation View where the user may add and delete shapes, add and delete keyframes
  * to any point in the animation. The user may also replay the animation by clicking the "replay"
- * button.
+ * button. The user can also increase, decrease speed, pause and play animation from a starting
+ * point. The view will display helpful feedback to the user if say, they give bad inputs.
  */
 public class EditorView extends JFrame implements IView {
-  private final JPanel mainPanel;
   private final EditorPanel editorPanel;
-  private final JScrollPane scrollAnimationPane;
   private DrawingPanel animationPanel;
   private Appendable out;
   private int speed;
@@ -34,7 +37,7 @@ public class EditorView extends JFrame implements IView {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocation(0, 0);
 
-    mainPanel = new JPanel();
+    JPanel mainPanel = new JPanel();
     mainPanel.setMinimumSize(new Dimension(1500, 800));
     mainPanel.setPreferredSize(new Dimension(1500, 2000));
     mainPanel.setLayout(new FlowLayout());
@@ -49,7 +52,7 @@ public class EditorView extends JFrame implements IView {
     animationPanel.setPreferredSize(new Dimension(800, 800));
     animationPanel.setBackground(Color.WHITE);
 
-    scrollAnimationPane = new JScrollPane(animationPanel);
+    JScrollPane scrollAnimationPane = new JScrollPane(animationPanel);
 
     mainPanel.add(scrollAnimationPane);
     mainPanel.add(editorPanel);

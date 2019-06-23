@@ -1,37 +1,38 @@
 package cs3500.model;
 
 import java.awt.Color;
-import java.util.ArrayList;
 
 /**
  * Represents a geometrical shape.
  */
 public abstract class AShape implements Shape {
 
+  protected final String name;
   protected Color c;
   protected int width;
   protected int height;
   protected Position2D pos;
-  protected final String name;
   protected boolean show;
 
   /**
    * Construct a shape with name.
+   *
    * @param name the name of the shape.
    */
   public AShape(String name) {
     this.c = Color.BLACK;
     this.width = 100;
     this.height = 100;
-    this.pos = new Position2D(0,0);
+    this.pos = new Position2D(0, 0);
     this.name = name;
     this.show = true;
   }
 
   /**
    * Construct a shape with name, width and height.
-   * @param name the name of the shape.
-   * @param width the width of the shape.
+   *
+   * @param name   the name of the shape.
+   * @param width  the width of the shape.
    * @param height the height of the shape.
    */
   public AShape(String name, int width, int height) {
@@ -44,15 +45,16 @@ public abstract class AShape implements Shape {
     this.c = Color.BLACK;
     this.width = width;
     this.height = height;
-    this.pos = new Position2D(0,0);
+    this.pos = new Position2D(0, 0);
     this.name = name;
     this.show = true;
   }
 
   /**
    * Construct a shape with name and color.
+   *
    * @param name the name of the shape.
-   * @param c the color of the shape.
+   * @param c    the color of the shape.
    */
   public AShape(String name, Color c) {
     if (name == null || name.equals("")) {
@@ -61,18 +63,19 @@ public abstract class AShape implements Shape {
     this.c = c;
     this.width = 100;
     this.height = 100;
-    this.pos = new Position2D(0,0);
+    this.pos = new Position2D(0, 0);
     this.name = name;
   }
 
   /**
    * Construct a shape with every parameter.
-   * @param name the name of the shape.
-   * @param c the color of the shape.
-   * @param width the width of the shape.
+   *
+   * @param name   the name of the shape.
+   * @param c      the color of the shape.
+   * @param width  the width of the shape.
    * @param height the height of the shape.
-   * @param pos the position of the shape.
-   * @param show whether the shape is showing or not.
+   * @param pos    the position of the shape.
+   * @param show   whether the shape is showing or not.
    */
   public AShape(String name, Color c, int width, int height,
                 Position2D pos, boolean show) {

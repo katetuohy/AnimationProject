@@ -13,6 +13,7 @@ public class Oval extends AShape {
 
   /**
    * Construct an oval with name.
+   *
    * @param name the name of the Oval.
    */
   public Oval(String name) {
@@ -21,8 +22,9 @@ public class Oval extends AShape {
 
   /**
    * Construct an oval with name, width, height.
-   * @param name the name of the oval.
-   * @param width the width of the oval.
+   *
+   * @param name   the name of the oval.
+   * @param width  the width of the oval.
    * @param height the height of the oval.
    */
   public Oval(String name, int width, int height) {
@@ -31,8 +33,9 @@ public class Oval extends AShape {
 
   /**
    * Construct an oval with name, color.
-   * @param name  the name of the oval
-   * @param c     the color of the oval
+   *
+   * @param name the name of the oval
+   * @param c    the color of the oval
    */
   public Oval(String name, Color c) {
     super(name, c);
@@ -40,6 +43,7 @@ public class Oval extends AShape {
 
   /**
    * Constructs an oval with given height, width, and position.
+   *
    * @param name   the name of the oval
    * @param c      the color of the oval
    * @param width  the width of the oval
@@ -52,6 +56,7 @@ public class Oval extends AShape {
 
   /**
    * Gives the radius of the oval across.
+   *
    * @return the xRadius
    */
   private int getXRadius() {
@@ -60,6 +65,7 @@ public class Oval extends AShape {
 
   /**
    * Gives the radius of the oval vertically.
+   *
    * @return the yRadius
    */
   private int getYRadius() {
@@ -87,7 +93,7 @@ public class Oval extends AShape {
   public String getXML() {
     return "<ellipse id=\"" + name + "\" cx=\"" + pos.getX() + "\" cy=\"" + pos.getY() + "\" rx=\""
             + xRadius + "\" ry=\"" + yRadius
-            + "\" fill=\"rgb(" + c.getRed() + "," + c.getGreen() + ","  + c.getBlue()
+            + "\" fill=\"rgb(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue()
             + ")\" visibility=\"visible\" >\n";
   }
 

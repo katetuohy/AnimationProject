@@ -21,8 +21,6 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Test the {@link AnimationModel} class.
- * Todo:
- * Create tests for deleteFrames(), removeShape(), and insertFrames()
  */
 public class AnimationModelImplTest {
 
@@ -146,6 +144,7 @@ public class AnimationModelImplTest {
       e.printStackTrace();
     }
     AnimationModel model = AnimationReader.parseFile(rn, builder);
+    assertEquals(rn, null);
   }
 
   @Test
@@ -168,11 +167,11 @@ public class AnimationModelImplTest {
     m.addFrame(new KeyFrame("rect1", 0, 0, 0, 50, 25, 0, 0,
             0));
     m.addFrame(new KeyFrame("rect1", 10, 100, 100, 100, 25, 250,
-            0,0));
+            0, 0));
     m.addFrame(new KeyFrame("ellipse", 0, 50, 0, 25, 100, 0, 250,
             250));
     m.addFrame(new KeyFrame("ellipse", 10, 0, 100, 75, 50, 0,
-            0,250));
+            0, 250));
     m.setTime(5);
     List<Shape> shapes = m.moveShapes();
     assertEquals(shapes.get(0).getPosition(), new Position2D(50, 50));

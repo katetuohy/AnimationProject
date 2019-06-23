@@ -129,7 +129,7 @@ public class TextualViewTest {
                     + "1 45 175\n"
                     + "motion disk3 153 445 240 110 30 11 45 175       161 445 240 110 3"
                     + "0 0 255 0\nmotion disk3 161 445 240 110 30 0 255 0       302 445 240 110 3"
-                    +"0 0 255 0\n\n",
+                    + "0 0 255 0\n\n",
             v.getOut().toString());
   }
 

@@ -20,18 +20,18 @@ public interface AnimationModel {
   int getTime();
 
   /**
-   * gets the canvas size and start point as an int[].
-   *
-   * @return the canvas array.
-   */
-  int[] getCanvas();
-
-  /**
    * Setter for the time field.
    *
    * @param currTime the current time.
    */
   void setTime(int currTime);
+
+  /**
+   * gets the canvas size and start point as an int[].
+   *
+   * @return the canvas array.
+   */
+  int[] getCanvas();
 
   /**
    * Get the list of shapes for the animation.
@@ -63,12 +63,14 @@ public interface AnimationModel {
 
   /**
    * Inserts the given key into the list of frames at the appropriate location.
+   *
    * @param key the frame to insert.
    */
   void insertFrame(KeyFrame key);
 
   /**
    * Removes the given frame from the list of frames.
+   *
    * @param name the frame to remove
    * @param time the frame to remove
    */
@@ -76,6 +78,7 @@ public interface AnimationModel {
 
   /**
    * Removes the given shape from the list of shapes for the animation.
+   *
    * @param shapeName the shape to remove
    */
   void removeShape(String shapeName);

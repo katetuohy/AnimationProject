@@ -1,11 +1,11 @@
 package cs3500.controller;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.Timer;
 
 import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IView;
@@ -109,6 +109,11 @@ public class Controller implements IController, ActionListener {
     }
   }
 
+  /**
+   * Event handler for the editor view. Listens for events from the view such as
+   * adding, deleting shapes, adding, deleting keyframes.
+   * @param e ActionEvent
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {

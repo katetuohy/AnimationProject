@@ -110,6 +110,12 @@ public class TextualAnimationView implements IView {
     return toReturn;
   }
 
+  /**
+   * Print the text for two joint keyframes.
+   * @param first first keyframe.
+   * @param second second keyframe.
+   * @return text description of the motion.
+   */
   public String printSingleMotion(KeyFrame first, KeyFrame second) {
     return "motion " + first.getName() + " " + first.getTime() + " " + first.getX()
             + " " + first.getY() + " " + first.getW() + " " + first.getH() + " "

@@ -11,22 +11,6 @@ public final class Position2D {
   private final double y;
 
   /**
-   * Returns the x value of the position.
-   * @return x
-   */
-  public double getX() {
-    return x;
-  }
-
-  /**
-   * Returns the  y value of the position.
-   * @return y
-   */
-  public double getY() {
-    return y;
-  }
-
-  /**
    * Initialize this object to the specified position.
    */
   public Position2D(double x, double y) {
@@ -39,6 +23,24 @@ public final class Position2D {
    */
   public Position2D(Position2D v) {
     this(v.x, v.y);
+  }
+
+  /**
+   * Returns the x value of the position.
+   *
+   * @return x
+   */
+  public double getX() {
+    return x;
+  }
+
+  /**
+   * Returns the  y value of the position.
+   *
+   * @return y
+   */
+  public double getY() {
+    return y;
   }
 
   @Override

@@ -11,6 +11,7 @@ public interface IDrawingPanel {
 
   /**
    * Draws the shape for the visual view class.
+   *
    * @param shapes the shapes to draw
    */
   void draw(List<Shape> shapes);

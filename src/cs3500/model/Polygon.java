@@ -17,17 +17,19 @@ public class Polygon extends AShape {
 
   /**
    * Creates a new Polygon with the given name and color.
+   *
    * @param name  polygon name
    * @param color polygon color
    */
   public Polygon(String name, Color color) {
-    super(name, color,100, 100, new Position2D(0, 0), true);
+    super(name, color, 100, 100, new Position2D(0, 0), true);
     this.numSides = 4;
   }
 
   /**
    * Construct a polygon with name, number of sides.
-   * @param name the name of the polygon.
+   *
+   * @param name     the name of the polygon.
    * @param numSides the number of sides of the polygon.
    */
   public Polygon(String name, int numSides) {
@@ -40,10 +42,11 @@ public class Polygon extends AShape {
 
   /**
    * Construct a polygon with name, number of sides, width, height.
-   * @param name the name of the polygon.
+   *
+   * @param name     the name of the polygon.
    * @param numSides the number of sides of the polygon.
-   * @param width the width of the polygon.
-   * @param height the height of the polygon.
+   * @param width    the width of the polygon.
+   * @param height   the height of the polygon.
    */
   public Polygon(String name, int numSides, int width, int height) {
     super(name, width, height);
@@ -55,13 +58,14 @@ public class Polygon extends AShape {
 
   /**
    * Construct a polygon with name, number of sides, color, width, height, and showing.
-   * @param name the name of the polygon.
+   *
+   * @param name     the name of the polygon.
    * @param numSides the number of sides of the polygon.
-   * @param c the color of the polygon.
-   * @param width the width of the polygon.
-   * @param height the height of the polygon.
-   * @param pos the position of the polygon.
-   * @param show whether or not the polygon is visible.
+   * @param c        the color of the polygon.
+   * @param width    the width of the polygon.
+   * @param height   the height of the polygon.
+   * @param pos      the position of the polygon.
+   * @param show     whether or not the polygon is visible.
    */
   public Polygon(String name, int numSides, Color c, int width, int height,
                  Position2D pos, boolean show) {
@@ -91,6 +95,7 @@ public class Polygon extends AShape {
 
   /**
    * Returns the number of sides that this shape has.
+   *
    * @return number of sides.
    */
   public int getNumSides() {

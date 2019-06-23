@@ -1,6 +1,6 @@
 package cs3500.model;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Creates a shape based on the given string type.
@@ -27,6 +27,17 @@ public class ShapeFactory {
     return null;
   }
 
+  /**
+   * Returns a new shape of the given type and all inputs possible.
+   *
+   * @param name   the name of the shape.
+   * @param type   the type of the shape.
+   * @param width  the width of the shape.
+   * @param height the height of the shape.
+   * @param pos    the position of the shape.
+   * @param c      the color of the shape.
+   * @return a new shape.
+   */
   public Shape getShapeFull(String name, String type, int width,
                             int height, Position2D pos, Color c) {
     if (type == null) {
