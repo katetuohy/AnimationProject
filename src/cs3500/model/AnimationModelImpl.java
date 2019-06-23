@@ -295,7 +295,7 @@ public final class AnimationModelImpl implements AnimationModel {
     }
 
     /**
-     *
+     *Adds the Key Frame to the accumulating list that will be added to the model.
      */
     @Override
     public AnimationBuilder<AnimationModelImpl> addKeyframe(String name, int t, int x, int y, int w,
