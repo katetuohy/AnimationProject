@@ -11,6 +11,10 @@ import cs3500.model.Shape;
  * This view does not support:
  *  - displayVisual()
  *  - displayTextualView()
+ *  - getAddShapeFields()
+ *  - getDeleteShapeField()
+ *  - getDeleteKeyFrameFields()
+ *  - getAddKeyFrameFields()
  */
 public class SVGAnimationView implements IView {
   private Appendable out;

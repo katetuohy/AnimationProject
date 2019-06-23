@@ -7,10 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
- * A panel containing the components for an animation editor.
- * Create or delete shapes. Create, delete, or modify keyframes of existing shapes.
- * Can add a keyframe before the first or after the last existing keyframe
- * and add the very first keyframe to a shape that has none.
+ * A panel containing the components for an animation editor. Create or delete shapes. Create,
+ * delete, or modify keyframes of existing shapes. Can add a keyframe before the first or after the
+ * last existing keyframe and add the very first keyframe to a shape that has none.
  */
 public class EditorPanel extends JPanel implements ActionListener {
 

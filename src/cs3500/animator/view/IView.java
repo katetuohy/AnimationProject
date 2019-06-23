@@ -7,7 +7,8 @@ import cs3500.model.Shape;
 
 /**
  * Represents a view for an animation. Supports setting the output of the animation view eg. a text
- * file or svg file to render.
+ * file or svg file to render. Supports setting speed of the animation, adding shapes, adding
+ * keyframes.
  */
 public interface IView {
 

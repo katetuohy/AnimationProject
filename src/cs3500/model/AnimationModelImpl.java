@@ -257,7 +257,6 @@ public final class AnimationModelImpl implements AnimationModel {
     }
 
 
-
     // Sorts list of frames in same order of the given list of shapes.
     //This does not take into account the times
     private void sortFrames() {

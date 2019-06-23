@@ -4,10 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.BoxLayout;
+import javax.swing.*;
 
 import cs3500.model.KeyFrame;
 import cs3500.model.Shape;
@@ -19,18 +16,21 @@ import cs3500.model.Shape;
  */
 public class EditorView extends JFrame implements IView {
   private final JPanel mainPanel;
-  private DrawingPanel animationPanel;
   private final EditorPanel editorPanel;
   private final JScrollPane scrollAnimationPane;
+  private DrawingPanel animationPanel;
   private Appendable out;
   private int speed;
 
+  /**
+   * Default constructor. Sets the three panels and adds them to the Frame.
+   */
   public EditorView() {
     super();
     this.out = System.out;
     this.speed = 1;
 
-    setSize(1500,800);
+    setSize(1500, 800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocation(0, 0);
 
@@ -105,18 +105,22 @@ public class EditorView extends JFrame implements IView {
     editorPanel.setListener(listener);
   }
 
+  @Override
   public String[] getAddShapeFields() {
     return editorPanel.getAddShapeFields();
   }
 
+  @Override
   public String[] getAddKeyFrameFields() {
     return editorPanel.getAddKeyFrameFields();
   }
 
+  @Override
   public String getDeleteShapeField() {
     return editorPanel.getDeleteShapeField();
   }
 
+  @Override
   public String[] getDeleteKeyFrameFields() {
     return editorPanel.getDeleteKeyFrameFields();
   }

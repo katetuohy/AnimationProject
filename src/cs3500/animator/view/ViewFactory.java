@@ -7,6 +7,7 @@ public class ViewFactory {
 
   /**
    * Returns a new view corresponding to the given type.
+   *
    * @param type the view type
    * @return a view instance
    */

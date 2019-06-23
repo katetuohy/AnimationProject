@@ -20,7 +20,9 @@ import cs3500.model.ShapeFactory;
 
 /**
  * The controller for the animation, acting in between the model and the view to control the
- * animation.
+ * animation. The controller can act as an ActionListener for views using user interaction with
+ * event commands. The controller can also be used to set the output for SVG and textual views.
+ * The animation can be replayed for certain views.
  */
 public class Controller implements IController, ActionListener {
   private Timer timer;
@@ -134,35 +136,35 @@ public class Controller implements IController, ActionListener {
         String deleteShapeFields = view.getDeleteShapeField();
         try {
           model.removeShape(deleteShapeFields);
-        } catch (IllegalArgumentException ex){
+        } catch (IllegalArgumentException ex) {
           view.setMessage(ex.getMessage());
-      }
+        }
         break;
       case "Add Shape":
         String[] addShapeFields = view.getAddShapeFields();
         String name = addShapeFields[1];
-        String type =  addShapeFields[0];
+        String type = addShapeFields[0];
         int w = Integer.parseInt(addShapeFields[2]);
         int h = Integer.parseInt(addShapeFields[3]);
         double x = Double.parseDouble(addShapeFields[4]);
         double y = Double.parseDouble(addShapeFields[5]);
-          try {
-            Shape shape = new ShapeFactory().getShapeFull(type, name, w, h,
-                    new Position2D(x, y),
-                    new Color(Integer.parseInt(addShapeFields[6]),
-                            Integer.parseInt(addShapeFields[7]),
-                            Integer.parseInt(addShapeFields[8])));
-            model.addShape(shape);
-            model.addFrame(new KeyFrame(shape.getName(), 1,
-                    shape.getWidth(), shape.getHeight(),
-                    (int) shape.getPosition().getX(),
-                    (int) shape.getPosition().getY(),
-                    shape.getColor().getRed(),
-                    shape.getColor().getGreen(),
-                    shape.getColor().getBlue()));
-          } catch (NumberFormatException ex) {
-            view.setMessage("Illegal argument for Add Shape.");
-          }
+        try {
+          Shape shape = new ShapeFactory().getShapeFull(type, name, w, h,
+                  new Position2D(x, y),
+                  new Color(Integer.parseInt(addShapeFields[6]),
+                          Integer.parseInt(addShapeFields[7]),
+                          Integer.parseInt(addShapeFields[8])));
+          model.addShape(shape);
+          model.addFrame(new KeyFrame(shape.getName(), 1,
+                  shape.getWidth(), shape.getHeight(),
+                  (int) shape.getPosition().getX(),
+                  (int) shape.getPosition().getY(),
+                  shape.getColor().getRed(),
+                  shape.getColor().getGreen(),
+                  shape.getColor().getBlue()));
+        } catch (NumberFormatException ex) {
+          view.setMessage("Illegal argument for Add Shape.");
+        }
         break;
       case "Replay":
         replay();

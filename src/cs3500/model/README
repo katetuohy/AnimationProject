@@ -57,24 +57,40 @@ Assignment 7:
 For the Model:
 The first thing we did was create a KeyFrame class to replace our motions class (which had been
 called Command). From there, we had to rearrange all of our methods so that the functionality
-would remain the same. Additionally, we moved our setAnimation() method down into the builder
-so that the model would be created with the correct Frames and shapes list, without setAnimation()
+would remain the same with the addition of the KeyFrame object.
+Additionally, we moved our setAnimation() method into the Animation Builder so it would be called
+on initialization of the model and so that the model would be created with the correct
+Frames and shapes list, without setAnimation()
 having to be called additionally after the model was created. The KeyFrame class was in charge of
 storing information for the change for the shape at that one instant (the time given to the
 keyFrame). We decided to remove our Motion class altogether because we felt that it would be
 repetitive and unnecessary to implement if we could represent the same functionality with the new
-KeyFrame class. We also added the methods for removing, adding, and inserting keyFrames that we
-then had called by the controller when that was implemented.
+KeyFrame class. We also removed the HashMap of motions to shapes and the arraylist of motions.
+ We also added the methods for removing, adding, and inserting keyFrames that we
+then called in the controller when that was implemented. We also changed the way our moveShapes()
+method works (the one that sends the updated shapes to the model). We had to change it because
+it relied on motions and expected that every shape would have a motion for every time.
+We also decided to change the way we initialize keyframes. No longer do we need to check for
+overlaps or time gaps. We also didn't force shapes to have keyframes at any given point. Our model
+won't add a shape to be rendered if there is no keyframe associated with the given time.
 
 For the Editor:
-We created a new view class called editorView that implements the IView interface that the other
-views also did. We added this option to the factory so that it can be created in the same way as
-the others too. Then, we created an EditorPanel class that implements the functionality needed to
-edit the model when the animation is displayed visually.
+We created a new view class called EditorView that implements the IView (our preexisting interface)
+and extended JFrame. We added an "editor" option to the view factory so that it can be created in the same way as
+the others are. Then, we created an EditorPanel class that extended JPanel and contained all of
+the JButtons, JTextfields and JLabels needed to display options for editing the model. EditorView
+took in an IDrawingPanel (the animation displayer) and an EditorPanel and placed them on a mainPanel which was added to
+the EditorView. The view gives the user the ability to pause and play the animation, restart the
+animation, add shapes. delete shapes, insert keyframes, and delete keyframes. The user can also
+increase and decrease the speed of the animation. The view also has a way to display helpful feedback
+to the user.
 
 For the Controller:
 We changed the controller to now include the functionality needed to run the editor in addition
-to the existing code that ran the other views for the last assignment. We created a seperate class
-for Animation Performed that lets the model know how to change based on the input from the user
-on the views side.
+to the existing code that ran the other views for the last assignment. Our controller implemented
+ActionListener and overrided ActionPerformed to take in action commands for all of the different
+buttons of the view. We added a replay method that restarts the animation ticker. We also added
+ability to increase and decrease the speed as well as pause and play the animation. For pausing and
+playing, we used a private field isPlaying to hold the state of whether or not the animation
+is playing.
 

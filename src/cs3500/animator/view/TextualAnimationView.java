@@ -21,6 +21,7 @@ public class TextualAnimationView implements IView {
 
   /**
    * Displays the text view by appending all of the shapes and their commands to the output.
+   *
    * @param frames list of frames.
    * @param shapes list of shapes.
    * @param canvas four bounds on the animation frame.
@@ -59,6 +60,11 @@ public class TextualAnimationView implements IView {
   }
 
   @Override
+  public void setSpeed(int num) {
+    // Do nothing.
+  }
+
+  @Override
   public String[] getAddShapeFields() {
     throw new UnsupportedOperationException("Can't add shape in textual view.");
   }
@@ -88,6 +94,7 @@ public class TextualAnimationView implements IView {
 
   /**
    * Returns the motions in string form for the shape.
+   *
    * @param s      the shape for which the commands should be printed
    * @param frames the list of frames
    * @return the next string representing the commands for the given shape
@@ -112,17 +119,13 @@ public class TextualAnimationView implements IView {
   }
 
   @Override
-  public void setSpeed(int num) {
-    // Do nothing.
-  }
-
-  @Override
   public void setOutput(Appendable output) {
     this.out = output;
   }
 
   /**
    * Try to append the String to the appendable.
+   *
    * @param s1 the Appendable
    * @param s2 the string
    */
