@@ -84,10 +84,15 @@ public final class AnimationModelImpl implements AnimationModel {
 
   @Override
   public void removeShape(String shapeName) {
+    boolean exists = false;
     for (Shape s : shapes) {
       if (shapeName.equals(s.getName())) {
+        exists = true;
         shapes.remove(s);
       }
+    }
+    if (!exists) {
+      throw new IllegalArgumentException("Shape to delete: \"" + shapeName + "\" doesn't exist.");
     }
     for (KeyFrame frame : frames) {
       if (frame.getName().equals(shapeName)) {
@@ -135,14 +140,18 @@ public final class AnimationModelImpl implements AnimationModel {
             // If current time is between two of the keyframes' times -> tween!
             if (frames.get(i).getTime() <= this.time
                     && this.time <= frames.get(i + 1).getTime()) {
-              System.out.println("Added: " + s.getName());
-              shapesToRender.add(shapeToRender);
+              System.out.println("if!!");
               int startTime = frames.get(i).getTime();
               int endTime = frames.get(i + 1).getTime();
               shapeToRender.setPosition(this.time, startTime, endTime, current, next);
               shapeToRender.setSize(this.time, startTime, endTime, current, next);
               shapeToRender.setColor(this.time, startTime, endTime, current, next);
+              System.out.println("Added: " + s.getName());
+              shapesToRender.add(shapeToRender);
               break;
+            } else if (frames.get(i).getTime() > this.time) {
+              // If current time is before first keyframe.
+              // Don't add to list of shapes.
             }
           } else {
             System.out.println("else!!");
@@ -150,9 +159,12 @@ public final class AnimationModelImpl implements AnimationModel {
             shapeToRender.setPosition(this.time, this.time, this.time + 1, current, current);
             shapeToRender.setColor(this.time, this.time, this.time + 1, current, current);
             shapeToRender.setPosition(this.time, this.time, this.time + 1, current, current);
+            System.out.println("Added: " + s.getName());
+            //shapesToRender.add(shapeToRender);
           }
         }
       }
+
     }
     return shapesToRender;
   }
@@ -230,6 +242,27 @@ public final class AnimationModelImpl implements AnimationModel {
         throw new IllegalStateException("Motions or commands must not be null or empty!");
       }
     }
+
+    private void removeDuplicates() {
+      ArrayList<KeyFrame> newList = new ArrayList<KeyFrame>();
+      boolean dup = false;
+      for (KeyFrame frame : frames) {
+        for (KeyFrame f : newList) {
+          if (frame.getName().equals(f.getName()) && frame.getTime() == (f.getTime())) {
+            dup = true;
+            break;
+          }
+        }
+        if (!dup) {
+          newList.add(frame);
+        } else {
+          dup = false;
+        }
+      }
+      this.frames = newList;
+    }
+
+
 
     // Sorts list of frames in same order of the given list of shapes.
     //This does not take into account the times
