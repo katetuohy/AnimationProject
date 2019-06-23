@@ -19,4 +19,5 @@ drawn between (200,70) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="0ms" dur="1250ms" attributeName="height" from="10" to="15"
  />
+</rect>
 </svg>

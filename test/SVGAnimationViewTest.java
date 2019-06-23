@@ -106,7 +106,7 @@ public class SVGAnimationViewTest {
                     + "idth\" from=\"10\" to=\"10\"\n" +
                     " />\n" + "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"5000ms\" attri"
                     + "buteName=\"height\" from=\"10\" to=\"10\"\n />\n" +
-                    "</svg>",
+                    "</rect>\n</svg>",
             v.getOut().toString());
   }
 
@@ -150,7 +150,7 @@ public class SVGAnimationViewTest {
             + "0,0)\" to=\"rgb(0,255,255)\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"5"
             + "000ms\" attributeName=\"width\" from=\"10\" to=\"10\" /><animate attributeType=\"x"
             + "ml\" begin=\"0ms\" dur=\"5000ms\" attributeName=\"height\" from=\"10\" to=\"10\" /"
-            + "></svg>", result);
+            + "></rect></svg>", result);
   }
 
   /**
@@ -205,7 +205,7 @@ public class SVGAnimationViewTest {
             + "=\"fill\" from=\"rgb(255,255,0)\" to=\"rgb(255,255,0)\" /><animate attributeType"
             + "=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName=\"width\" from=\"15\" to=\"1"
             + "5\" /><animate attributeType=\"xml\" begin=\"0ms\" dur=\"1250ms\" attributeName"
-            + "=\"height\" from=\"10\" to=\"15\" /></svg>", result);
+            + "=\"height\" from=\"10\" to=\"15\" /></rect></svg>", result);
   }
 
   /**

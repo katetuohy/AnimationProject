@@ -3,7 +3,7 @@ package cs3500.model;
 import java.awt.Color;
 
 /**
- * A KeyFrame is an instance of a Shape's state at the time.
+ * A KeyFrame is an instance of a Shape's state at the time of the Key Frame.
  */
 public class KeyFrame {
 
