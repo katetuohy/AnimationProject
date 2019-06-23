@@ -235,7 +235,7 @@ public class EditorPanel extends JPanel implements ActionListener {
   }
 
   public String[] getAddShapeFields() {
-    String[] result = new String[7];
+    String[] result = new String[9];
     result[0] = addShapeTypeField.getText();
     result[1] = addShapeNameField.getText();
     result[2] = addShapeWidthField.getText();

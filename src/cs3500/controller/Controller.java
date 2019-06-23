@@ -27,7 +27,7 @@ public class Controller implements IController, ActionListener {
   private int speed;
   private AnimationModel model;
   private IView view;
-  private int tick = 0;
+  private int tick = 1;
   private boolean isPlaying;
 
   /**
@@ -112,8 +112,7 @@ public class Controller implements IController, ActionListener {
         break;
       case "Add Shape":
         String[] addShapeFields = view.getAddShapeFields();
-        Shape shape = new ShapeFactory()
-                .getShapeFull(addShapeFields[0], addShapeFields[1],
+        Shape shape = new ShapeFactory().getShapeFull(addShapeFields[1], addShapeFields[0],
                         Integer.parseInt(addShapeFields[2]),
                         Integer.parseInt(addShapeFields[3]),
                         new Position2D(Double.parseDouble(addShapeFields[4]),
@@ -122,7 +121,7 @@ public class Controller implements IController, ActionListener {
                                 Integer.parseInt(addShapeFields[7]),
                                 Integer.parseInt(addShapeFields[8])));
         model.addShape(shape);
-        model.addFrame(new KeyFrame(shape.getName(), 0,
+        model.addFrame(new KeyFrame(shape.getName(), 1,
                 shape.getWidth(), shape.getHeight(),
                 (int) shape.getPosition().getX(),
                 (int) shape.getPosition().getY(),
@@ -159,11 +158,7 @@ public class Controller implements IController, ActionListener {
         List<Shape> shapesToRender = model.moveShapes();
         if (isPlaying) {
           model.setTime(tick++);
-          /**
-           * TODO:
-           * Delete!
-           */
-          System.out.println(model.getTime());
+          //System.out.println(model.getTime());
         }
         view.displayVisual(shapesToRender);
         break;
