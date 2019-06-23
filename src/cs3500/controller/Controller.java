@@ -183,7 +183,6 @@ public class Controller implements IController, ActionListener {
         List<Shape> shapesToRender = model.moveShapes();
         if (isPlaying) {
           model.setTime(tick++);
-          //System.out.println(model.getTime());
         }
         view.displayVisual(shapesToRender);
         break;

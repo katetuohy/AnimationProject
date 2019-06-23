@@ -1,10 +1,9 @@
 package cs3500.animator.view;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.List;
 
-
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import cs3500.model.Shape;
 
@@ -21,11 +20,8 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
 
   @Override
   public void paintComponent(Graphics g) {
-    /**
-     * ToDO: should this go after the if statement? >>
-     */
     super.paintComponent(g);
-    if (shapes != null ) {
+    if (shapes != null) {
       for (Shape shape : shapes) {
         g.setColor(shape.getColor());
         shape.drawShape(g);
@@ -35,6 +31,7 @@ public class DrawingPanel extends JPanel implements IDrawingPanel {
 
   /**
    * Updates the Shape objects to draw on a given tick.
+   *
    * @param shapes the shapes to draw
    */
   @Override

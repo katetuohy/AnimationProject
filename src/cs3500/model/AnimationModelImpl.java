@@ -140,13 +140,11 @@ public final class AnimationModelImpl implements AnimationModel {
             // If current time is between two of the keyframes' times -> tween!
             if (frames.get(i).getTime() <= this.time
                     && this.time <= frames.get(i + 1).getTime()) {
-              System.out.println("if!!");
               int startTime = frames.get(i).getTime();
               int endTime = frames.get(i + 1).getTime();
               shapeToRender.setPosition(this.time, startTime, endTime, current, next);
               shapeToRender.setSize(this.time, startTime, endTime, current, next);
               shapeToRender.setColor(this.time, startTime, endTime, current, next);
-              System.out.println("Added: " + s.getName());
               shapesToRender.add(shapeToRender);
               break;
             } else if (frames.get(i).getTime() > this.time) {
@@ -154,13 +152,10 @@ public final class AnimationModelImpl implements AnimationModel {
               // Don't add to list of shapes.
             }
           } else {
-            System.out.println("else!!");
             // If at last keyframe for this shape, Keep shape in the current state.
             shapeToRender.setPosition(this.time, this.time, this.time + 1, current, current);
             shapeToRender.setColor(this.time, this.time, this.time + 1, current, current);
             shapeToRender.setPosition(this.time, this.time, this.time + 1, current, current);
-            System.out.println("Added: " + s.getName());
-            //shapesToRender.add(shapeToRender);
           }
         }
       }
@@ -279,23 +274,7 @@ public final class AnimationModelImpl implements AnimationModel {
         }
       }
       this.frames = sorted;
-      for (KeyFrame k : sorted) {
-        System.out.println("Name : " + k.getName() + " Time: "
-                + k.getTime() + "Width: " + k.getW() + "Height: " + k.getH());
-      }
     }
-
-    /*
-    private void validateMotionsNotOverlapping() {
-      for (int i = 0; i < frames.size() - 1; i++) {
-        KeyFrame first = frames.get(i);
-        KeyFrame second = frames.get(i + 1);
-        if (first.getTime() > second.getTime()) {
-          frames.set(i, second);
-          frames.set(i + 1, first);
-        }
-      }
-    }*/
 
     @Override
     public AnimationBuilder<AnimationModelImpl> setBounds(int x, int y, int width, int height) {
