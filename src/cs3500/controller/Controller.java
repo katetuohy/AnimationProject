@@ -79,12 +79,32 @@ public class Controller implements IController, ActionListener {
     timer.restart();
   }
 
-  private void setPlaying() {
+  @Override
+  public void setPlaying() {
     isPlaying = true;
   }
 
+  @Override
   public void setPaused() {
     isPlaying = false;
+  }
+
+  @Override
+  public void increaseSpeed() {
+    view.setSpeed(this.speed + 1);
+    speed = view.getSpeed() / 1000;
+    view.setMessage("Speed set to: " + speed);
+  }
+
+  @Override
+  public void decreaseSpeed() {
+    if (speed > 1) {
+      view.setSpeed(this.speed - 1);
+      speed = view.getSpeed() / 1000;
+      view.setMessage("Speed set to: " + speed);
+    } else {
+      view.setMessage("Speed cannot be lowered past 1 tick per second");
+    }
   }
 
   @Override
@@ -140,20 +160,10 @@ public class Controller implements IController, ActionListener {
         setPaused();
         break;
       case "Increase Speed":
-        speed++;
-        view.setSpeed(this.speed);
-        view.setMessage("Speed set to: " + speed);
-
+        this.increaseSpeed();
         break;
       case "Decrease Speed":
-        if (speed > 1) {
-          speed--;
-          view.setSpeed(this.speed);
-          view.setMessage("Speed set to: " + speed);
-        } else {
-          view.setMessage("Speed cannot be lowered past 1 tick per second");
-        }
-
+        this.decreaseSpeed();
         break;
       case "timer listener":
         List<Shape> shapesToRender = model.moveShapes();
