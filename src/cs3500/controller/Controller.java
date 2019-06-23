@@ -75,7 +75,7 @@ public class Controller implements IController, ActionListener {
 
   @Override
   public void replay() {
-    tick = 0;
+    tick = 1;
     timer.restart();
   }
 
@@ -116,38 +116,53 @@ public class Controller implements IController, ActionListener {
         break;
       case "Add KeyFrame":
         String[] addKeyFrameFields = view.getAddKeyFrameFields();
-        model.insertFrame(new KeyFrame(addKeyFrameFields[0],
-                Integer.parseInt(addKeyFrameFields[1]),
-                Integer.parseInt(addKeyFrameFields[2]),
-                Integer.parseInt(addKeyFrameFields[3]),
-                Integer.parseInt(addKeyFrameFields[4]),
-                Integer.parseInt(addKeyFrameFields[5]),
-                Integer.parseInt(addKeyFrameFields[6]),
-                Integer.parseInt(addKeyFrameFields[7]),
-                Integer.parseInt(addKeyFrameFields[8])));
+        try {
+          model.insertFrame(new KeyFrame(addKeyFrameFields[0],
+                  Integer.parseInt(addKeyFrameFields[1]),
+                  Integer.parseInt(addKeyFrameFields[2]),
+                  Integer.parseInt(addKeyFrameFields[3]),
+                  Integer.parseInt(addKeyFrameFields[4]),
+                  Integer.parseInt(addKeyFrameFields[5]),
+                  Integer.parseInt(addKeyFrameFields[6]),
+                  Integer.parseInt(addKeyFrameFields[7]),
+                  Integer.parseInt(addKeyFrameFields[8])));
+        } catch (NumberFormatException ex) {
+          view.setMessage("Illegal Argument for Add Keyframe.");
+        }
         break;
       case "Delete Shape":
         String deleteShapeFields = view.getDeleteShapeField();
-        model.removeShape(deleteShapeFields);
+        try {
+          model.removeShape(deleteShapeFields);
+        } catch (IllegalArgumentException ex){
+          view.setMessage(ex.getMessage());
+      }
         break;
       case "Add Shape":
         String[] addShapeFields = view.getAddShapeFields();
-        Shape shape = new ShapeFactory().getShapeFull(addShapeFields[1], addShapeFields[0],
-                        Integer.parseInt(addShapeFields[2]),
-                        Integer.parseInt(addShapeFields[3]),
-                        new Position2D(Double.parseDouble(addShapeFields[4]),
-                                Double.parseDouble(addShapeFields[5])),
-                        new Color(Integer.parseInt(addShapeFields[6]),
-                                Integer.parseInt(addShapeFields[7]),
-                                Integer.parseInt(addShapeFields[8])));
-        model.addShape(shape);
-        model.addFrame(new KeyFrame(shape.getName(), 1,
-                shape.getWidth(), shape.getHeight(),
-                (int) shape.getPosition().getX(),
-                (int) shape.getPosition().getY(),
-                shape.getColor().getRed(),
-                shape.getColor().getGreen(),
-                shape.getColor().getBlue()));
+        String name = addShapeFields[1];
+        String type =  addShapeFields[0];
+        int w = Integer.parseInt(addShapeFields[2]);
+        int h = Integer.parseInt(addShapeFields[3]);
+        double x = Double.parseDouble(addShapeFields[4]);
+        double y = Double.parseDouble(addShapeFields[5]);
+          try {
+            Shape shape = new ShapeFactory().getShapeFull(type, name, w, h,
+                    new Position2D(x, y),
+                    new Color(Integer.parseInt(addShapeFields[6]),
+                            Integer.parseInt(addShapeFields[7]),
+                            Integer.parseInt(addShapeFields[8])));
+            model.addShape(shape);
+            model.addFrame(new KeyFrame(shape.getName(), 1,
+                    shape.getWidth(), shape.getHeight(),
+                    (int) shape.getPosition().getX(),
+                    (int) shape.getPosition().getY(),
+                    shape.getColor().getRed(),
+                    shape.getColor().getGreen(),
+                    shape.getColor().getBlue()));
+          } catch (NumberFormatException ex) {
+            view.setMessage("Illegal argument for Add Shape.");
+          }
         break;
       case "Replay":
         replay();

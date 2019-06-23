@@ -32,7 +32,11 @@ public class KeyFrame {
   public KeyFrame(String shapeName, int time, int x, int y, int w,
                   int h, int r, int g, int b) {
     this.time = time;
-    this.shapeName = shapeName;
+    if (shapeName != null) {
+      this.shapeName = shapeName;
+    } else {
+      throw new IllegalArgumentException("Shape name cannot be null.");
+    }
     this.x = x;
     this.y = y;
     this.w = w;
