@@ -37,7 +37,6 @@ public class TextualViewTest {
     v.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
     assertEquals("canvas 145 50 410 220\n" +
             "shape disk1\n" +
-            "motion disk1 0 0.0 0.0 100 100 0 0 0       1 0.0 0.0 100 100 0 0 0\n" +
             "motion disk1 1 190.0 180.0 20 30 0 49 90       1 190.0 180.0 20 30 0 49 90\n" +
             "motion disk1 1 190.0 180.0 20 30 0 49 90       25 190.0 180.0 20 30 0 49 90\n" +
             "motion disk1 25 190.0 180.0 20 30 0 49 90       35 190.0 50.0 20 30 0 49 90\n" +
@@ -67,7 +66,6 @@ public class TextualViewTest {
             "motion disk1 257 490.0 180.0 20 30 0 255 0       302 490.0 180.0 20 30 0 255 0\n" +
             "\n" +
             "shape disk2\n" +
-            "motion disk2 0 0.0 0.0 100 100 0 0 0       1 0.0 0.0 100 100 0 0 0\n" +
             "motion disk2 1 167.0 210.0 65 30 6 247 41       1 167.0 210.0 65 30 6 247 41\n" +
             "motion disk2 1 167.0 210.0 65 30 6 247 41       57 167.0 210.0 65 30 6 247 41\n" +
             "motion disk2 57 167.0 210.0 65 30 6 247 41       67 167.0 50.0 65 30 6 247 41\n" +
@@ -85,7 +83,6 @@ public class TextualViewTest {
             "motion disk2 225 467.0 210.0 65 30 0 255 0       302 467.0 210.0 65 30 0 255 0\n" +
             "\n" +
             "shape disk3\n" +
-            "motion disk3 0 0.0 0.0 100 100 0 0 0       1 0.0 0.0 100 100 0 0 0\n" +
             "motion disk3 1 145.0 240.0 110 30 11 45 175       1 145.0 240.0 110 30 11 45 175\n" +
             "motion disk3 1 145.0 240.0 110 30 11 45 175       121 145.0 240.0 110 30 11 45 175\n" +
             "motion disk3 121 145.0 240.0 110 30 11 45 175       131 145.0 50.0 110 30 11 45 175\n"

@@ -56,7 +56,7 @@ public class SVGAnimationView implements IView {
       }
       // If i = last index OR if the current motion is the LAST
       // for the current shape, add the end tag XML.
-      if (!first.getName().equals(second.getName())) {
+      if (!first.getName().equals(second.getName()) || i == frames.size() - 2) {
         for (Shape s : shapes) {
           if (first.getName().equals(s.getName())) {
             currentShape = s;

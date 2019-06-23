@@ -91,16 +91,16 @@ public class Controller implements IController, ActionListener {
 
   @Override
   public void increaseSpeed() {
-    view.setSpeed(this.speed + 1);
-    speed = view.getSpeed() / 1000;
+    speed++;
+    view.setSpeed(this.speed);
     view.setMessage("Speed set to: " + speed);
   }
 
   @Override
   public void decreaseSpeed() {
     if (speed > 1) {
-      view.setSpeed(this.speed - 1);
-      speed = view.getSpeed() / 1000;
+      speed--;
+      view.setSpeed(speed);
       view.setMessage("Speed set to: " + speed);
     } else {
       view.setMessage("Speed cannot be lowered past 1 tick per second");

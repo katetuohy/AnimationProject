@@ -1,10 +1,8 @@
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

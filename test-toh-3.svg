@@ -3,33 +3,12 @@ drawn between (145,50) and (width,height) will be visible -->
 <svg width="555" height="270" version="1.1"
      xmlns="http://www.w3.org/2000/svg">
 <rect id="disk1" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="y" from="180.0" to="180.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="y" from="180.0" to="180.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="250ms" dur="6000ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="250ms" dur="6000ms" attributeName="y" from="180.0" to="180.0" />
 <animate attributeType="xml" begin="250ms" dur="6000ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="250ms" dur="6000ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="250ms" dur="6000ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="6250ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="6250ms" dur="0ms" attributeName="y" from="180.0" to="180.0" />
-<animate attributeType="xml" begin="6250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="6250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="6250ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="6250ms" dur="2500ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="6250ms" dur="2500ms" attributeName="y" from="180.0" to="50.0" />
@@ -38,26 +17,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="6250ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="8750ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="8750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="8750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="8750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="8750ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="8750ms" dur="250ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="8750ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="8750ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="8750ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="8750ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="9000ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="9000ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="9000ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="9000ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="9000ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="9000ms" dur="2500ms" attributeName="x" from="190.0" to="490.0" />
 <animate attributeType="xml" begin="9000ms" dur="2500ms" attributeName="y" from="50.0" to="50.0" />
@@ -66,26 +31,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="9000ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="11500ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="11500ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="11500ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="11500ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="11500ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="11500ms" dur="250ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="11500ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="11500ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="11500ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="11500ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="11750ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="11750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="11750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="11750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="11750ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="11750ms" dur="2500ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="11750ms" dur="2500ms" attributeName="y" from="50.0" to="240.0" />
@@ -94,26 +45,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="11750ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="14250ms" dur="8000ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="14250ms" dur="8000ms" attributeName="y" from="240.0" to="240.0" />
 <animate attributeType="xml" begin="14250ms" dur="8000ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="14250ms" dur="8000ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="14250ms" dur="8000ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="22250ms" dur="2500ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="22250ms" dur="2500ms" attributeName="y" from="240.0" to="50.0" />
@@ -122,26 +59,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="22250ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="24750ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="24750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="24750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="24750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="24750ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="24750ms" dur="250ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="24750ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="24750ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="24750ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="24750ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="25000ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="25000ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="25000ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="25000ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="25000ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="25000ms" dur="2500ms" attributeName="x" from="490.0" to="340.0" />
 <animate attributeType="xml" begin="25000ms" dur="2500ms" attributeName="y" from="50.0" to="50.0" />
@@ -150,26 +73,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="25000ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="27500ms" dur="0ms" attributeName="x" from="340.0" to="340.0" />
-<animate attributeType="xml" begin="27500ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="27500ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="27500ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="27500ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="27500ms" dur="250ms" attributeName="x" from="340.0" to="340.0" />
 <animate attributeType="xml" begin="27500ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="27500ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="27500ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="27500ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="27750ms" dur="0ms" attributeName="x" from="340.0" to="340.0" />
-<animate attributeType="xml" begin="27750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="27750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="27750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="27750ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="27750ms" dur="2500ms" attributeName="x" from="340.0" to="340.0" />
 <animate attributeType="xml" begin="27750ms" dur="2500ms" attributeName="y" from="50.0" to="210.0" />
@@ -178,26 +87,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="27750ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="x" from="340.0" to="340.0" />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="30250ms" dur="8000ms" attributeName="x" from="340.0" to="340.0" />
 <animate attributeType="xml" begin="30250ms" dur="8000ms" attributeName="y" from="210.0" to="210.0" />
 <animate attributeType="xml" begin="30250ms" dur="8000ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="30250ms" dur="8000ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="30250ms" dur="8000ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="x" from="340.0" to="340.0" />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="38250ms" dur="2500ms" attributeName="x" from="340.0" to="340.0" />
 <animate attributeType="xml" begin="38250ms" dur="2500ms" attributeName="y" from="210.0" to="50.0" />
@@ -206,26 +101,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="38250ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="40750ms" dur="0ms" attributeName="x" from="340.0" to="340.0" />
-<animate attributeType="xml" begin="40750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="40750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="40750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="40750ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="40750ms" dur="250ms" attributeName="x" from="340.0" to="340.0" />
 <animate attributeType="xml" begin="40750ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="40750ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="40750ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="40750ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="41000ms" dur="0ms" attributeName="x" from="340.0" to="340.0" />
-<animate attributeType="xml" begin="41000ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="41000ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="41000ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="41000ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="41000ms" dur="2500ms" attributeName="x" from="340.0" to="190.0" />
 <animate attributeType="xml" begin="41000ms" dur="2500ms" attributeName="y" from="50.0" to="50.0" />
@@ -234,26 +115,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="41000ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="43500ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="43500ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="43500ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="43500ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="43500ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="43500ms" dur="250ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="43500ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="43500ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="43500ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="43500ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="43750ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="43750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="43750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="43750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="43750ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="43750ms" dur="2500ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="43750ms" dur="2500ms" attributeName="y" from="50.0" to="240.0" />
@@ -262,26 +129,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="43750ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="46250ms" dur="8000ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="46250ms" dur="8000ms" attributeName="y" from="240.0" to="240.0" />
 <animate attributeType="xml" begin="46250ms" dur="8000ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="46250ms" dur="8000ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="46250ms" dur="8000ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="54250ms" dur="2500ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="54250ms" dur="2500ms" attributeName="y" from="240.0" to="50.0" />
@@ -290,26 +143,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="54250ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="56750ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="56750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="56750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="56750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="56750ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="56750ms" dur="250ms" attributeName="x" from="190.0" to="190.0" />
 <animate attributeType="xml" begin="56750ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="56750ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="56750ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="56750ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="57000ms" dur="0ms" attributeName="x" from="190.0" to="190.0" />
-<animate attributeType="xml" begin="57000ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="57000ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="57000ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="57000ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="57000ms" dur="2500ms" attributeName="x" from="190.0" to="490.0" />
 <animate attributeType="xml" begin="57000ms" dur="2500ms" attributeName="y" from="50.0" to="50.0" />
@@ -318,26 +157,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="57000ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="59500ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="59500ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="59500ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="59500ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="59500ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="59500ms" dur="250ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="59500ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="59500ms" dur="250ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
 <animate attributeType="xml" begin="59500ms" dur="250ms" attributeName="width" from="20" to="20"
  />
 <animate attributeType="xml" begin="59500ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="59750ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="59750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="59750ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="59750ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="59750ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="59750ms" dur="2500ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="59750ms" dur="2500ms" attributeName="y" from="50.0" to="180.0" />
@@ -346,13 +171,6 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="59750ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="62250ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="62250ms" dur="0ms" attributeName="y" from="180.0" to="180.0" />
-<animate attributeType="xml" begin="62250ms" dur="0ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,49,90)" />
-<animate attributeType="xml" begin="62250ms" dur="0ms" attributeName="width" from="20" to="20"
- />
-<animate attributeType="xml" begin="62250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="62250ms" dur="2000ms" attributeName="x" from="490.0" to="490.0" />
 <animate attributeType="xml" begin="62250ms" dur="2000ms" attributeName="y" from="180.0" to="180.0" />
 <animate attributeType="xml" begin="62250ms" dur="2000ms" attributeName="fill" from="rgb(0,49,90)" to="rgb(0,255,0)" />
@@ -360,42 +178,21 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="62250ms" dur="2000ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="64250ms" dur="0ms" attributeName="x" from="490.0" to="490.0" />
-<animate attributeType="xml" begin="64250ms" dur="0ms" attributeName="y" from="180.0" to="180.0" />
-<animate attributeType="xml" begin="64250ms" dur="0ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
-<animate attributeType="xml" begin="64250ms" dur="0ms" attributeName="width" from="20" to="20"
+<animate attributeType="xml" begin="64250ms" dur="11250ms" attributeName="x" from="490.0" to="490.0" />
+<animate attributeType="xml" begin="64250ms" dur="11250ms" attributeName="y" from="180.0" to="180.0" />
+<animate attributeType="xml" begin="64250ms" dur="11250ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="64250ms" dur="11250ms" attributeName="width" from="20" to="20"
  />
-<animate attributeType="xml" begin="64250ms" dur="0ms" attributeName="height" from="30" to="30"
+<animate attributeType="xml" begin="64250ms" dur="11250ms" attributeName="height" from="30" to="30"
  />
 </rect>
 <rect id="disk2" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="x" from="167.0" to="167.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="x" from="167.0" to="167.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="250ms" dur="14000ms" attributeName="x" from="167.0" to="167.0" />
 <animate attributeType="xml" begin="250ms" dur="14000ms" attributeName="y" from="210.0" to="210.0" />
 <animate attributeType="xml" begin="250ms" dur="14000ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
 <animate attributeType="xml" begin="250ms" dur="14000ms" attributeName="width" from="65" to="65"
  />
 <animate attributeType="xml" begin="250ms" dur="14000ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="x" from="167.0" to="167.0" />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="14250ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="14250ms" dur="2500ms" attributeName="x" from="167.0" to="167.0" />
 <animate attributeType="xml" begin="14250ms" dur="2500ms" attributeName="y" from="210.0" to="50.0" />
@@ -404,26 +201,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="14250ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="16750ms" dur="0ms" attributeName="x" from="167.0" to="167.0" />
-<animate attributeType="xml" begin="16750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="16750ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="16750ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="16750ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="16750ms" dur="250ms" attributeName="x" from="167.0" to="167.0" />
 <animate attributeType="xml" begin="16750ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="16750ms" dur="250ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
 <animate attributeType="xml" begin="16750ms" dur="250ms" attributeName="width" from="65" to="65"
  />
 <animate attributeType="xml" begin="16750ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="17000ms" dur="0ms" attributeName="x" from="167.0" to="167.0" />
-<animate attributeType="xml" begin="17000ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="17000ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="17000ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="17000ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="17000ms" dur="2500ms" attributeName="x" from="167.0" to="317.0" />
 <animate attributeType="xml" begin="17000ms" dur="2500ms" attributeName="y" from="50.0" to="50.0" />
@@ -432,26 +215,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="17000ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="19500ms" dur="0ms" attributeName="x" from="317.0" to="317.0" />
-<animate attributeType="xml" begin="19500ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="19500ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="19500ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="19500ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="19500ms" dur="250ms" attributeName="x" from="317.0" to="317.0" />
 <animate attributeType="xml" begin="19500ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="19500ms" dur="250ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
 <animate attributeType="xml" begin="19500ms" dur="250ms" attributeName="width" from="65" to="65"
  />
 <animate attributeType="xml" begin="19500ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="19750ms" dur="0ms" attributeName="x" from="317.0" to="317.0" />
-<animate attributeType="xml" begin="19750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="19750ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="19750ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="19750ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="19750ms" dur="2500ms" attributeName="x" from="317.0" to="317.0" />
 <animate attributeType="xml" begin="19750ms" dur="2500ms" attributeName="y" from="50.0" to="240.0" />
@@ -460,26 +229,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="19750ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="x" from="317.0" to="317.0" />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="22250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="22250ms" dur="24000ms" attributeName="x" from="317.0" to="317.0" />
 <animate attributeType="xml" begin="22250ms" dur="24000ms" attributeName="y" from="240.0" to="240.0" />
 <animate attributeType="xml" begin="22250ms" dur="24000ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
 <animate attributeType="xml" begin="22250ms" dur="24000ms" attributeName="width" from="65" to="65"
  />
 <animate attributeType="xml" begin="22250ms" dur="24000ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="x" from="317.0" to="317.0" />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="46250ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="46250ms" dur="2500ms" attributeName="x" from="317.0" to="317.0" />
 <animate attributeType="xml" begin="46250ms" dur="2500ms" attributeName="y" from="240.0" to="50.0" />
@@ -488,26 +243,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="46250ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="48750ms" dur="0ms" attributeName="x" from="317.0" to="317.0" />
-<animate attributeType="xml" begin="48750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="48750ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="48750ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="48750ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="48750ms" dur="250ms" attributeName="x" from="317.0" to="317.0" />
 <animate attributeType="xml" begin="48750ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="48750ms" dur="250ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
 <animate attributeType="xml" begin="48750ms" dur="250ms" attributeName="width" from="65" to="65"
  />
 <animate attributeType="xml" begin="48750ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="49000ms" dur="0ms" attributeName="x" from="317.0" to="317.0" />
-<animate attributeType="xml" begin="49000ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="49000ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="49000ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="49000ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="49000ms" dur="2500ms" attributeName="x" from="317.0" to="467.0" />
 <animate attributeType="xml" begin="49000ms" dur="2500ms" attributeName="y" from="50.0" to="50.0" />
@@ -516,26 +257,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="49000ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="51500ms" dur="0ms" attributeName="x" from="467.0" to="467.0" />
-<animate attributeType="xml" begin="51500ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="51500ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="51500ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="51500ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="51500ms" dur="250ms" attributeName="x" from="467.0" to="467.0" />
 <animate attributeType="xml" begin="51500ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="51500ms" dur="250ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
 <animate attributeType="xml" begin="51500ms" dur="250ms" attributeName="width" from="65" to="65"
  />
 <animate attributeType="xml" begin="51500ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="51750ms" dur="0ms" attributeName="x" from="467.0" to="467.0" />
-<animate attributeType="xml" begin="51750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="51750ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="51750ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="51750ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="51750ms" dur="2500ms" attributeName="x" from="467.0" to="467.0" />
 <animate attributeType="xml" begin="51750ms" dur="2500ms" attributeName="y" from="50.0" to="210.0" />
@@ -544,13 +271,6 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="51750ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="x" from="467.0" to="467.0" />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(6,247,41)" />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="width" from="65" to="65"
- />
-<animate attributeType="xml" begin="54250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="54250ms" dur="2000ms" attributeName="x" from="467.0" to="467.0" />
 <animate attributeType="xml" begin="54250ms" dur="2000ms" attributeName="y" from="210.0" to="210.0" />
 <animate attributeType="xml" begin="54250ms" dur="2000ms" attributeName="fill" from="rgb(6,247,41)" to="rgb(0,255,0)" />
@@ -558,43 +278,21 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="54250ms" dur="2000ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="56250ms" dur="0ms" attributeName="x" from="467.0" to="467.0" />
-<animate attributeType="xml" begin="56250ms" dur="0ms" attributeName="y" from="210.0" to="210.0" />
-<animate attributeType="xml" begin="56250ms" dur="0ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
-<animate attributeType="xml" begin="56250ms" dur="0ms" attributeName="width" from="65" to="65"
+<animate attributeType="xml" begin="56250ms" dur="19250ms" attributeName="x" from="467.0" to="467.0" />
+<animate attributeType="xml" begin="56250ms" dur="19250ms" attributeName="y" from="210.0" to="210.0" />
+<animate attributeType="xml" begin="56250ms" dur="19250ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="56250ms" dur="19250ms" attributeName="width" from="65" to="65"
  />
-<animate attributeType="xml" begin="56250ms" dur="0ms" attributeName="height" from="30" to="30"
+<animate attributeType="xml" begin="56250ms" dur="19250ms" attributeName="height" from="30" to="30"
  />
-</rect>
 </rect>
 <rect id="disk3" x="0.0" y="0.0" width="100" height="100" fill="rgb(0,0,0)" visibility="visible" >
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="x" from="145.0" to="145.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="x" from="145.0" to="145.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="250ms" dur="30000ms" attributeName="x" from="145.0" to="145.0" />
 <animate attributeType="xml" begin="250ms" dur="30000ms" attributeName="y" from="240.0" to="240.0" />
 <animate attributeType="xml" begin="250ms" dur="30000ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
 <animate attributeType="xml" begin="250ms" dur="30000ms" attributeName="width" from="110" to="110"
  />
 <animate attributeType="xml" begin="250ms" dur="30000ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="x" from="145.0" to="145.0" />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="30250ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="30250ms" dur="2500ms" attributeName="x" from="145.0" to="145.0" />
 <animate attributeType="xml" begin="30250ms" dur="2500ms" attributeName="y" from="240.0" to="50.0" />
@@ -603,26 +301,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="30250ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="32750ms" dur="0ms" attributeName="x" from="145.0" to="145.0" />
-<animate attributeType="xml" begin="32750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="32750ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="32750ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="32750ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="32750ms" dur="250ms" attributeName="x" from="145.0" to="145.0" />
 <animate attributeType="xml" begin="32750ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="32750ms" dur="250ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
 <animate attributeType="xml" begin="32750ms" dur="250ms" attributeName="width" from="110" to="110"
  />
 <animate attributeType="xml" begin="32750ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="33000ms" dur="0ms" attributeName="x" from="145.0" to="145.0" />
-<animate attributeType="xml" begin="33000ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="33000ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="33000ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="33000ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="33000ms" dur="2500ms" attributeName="x" from="145.0" to="445.0" />
 <animate attributeType="xml" begin="33000ms" dur="2500ms" attributeName="y" from="50.0" to="50.0" />
@@ -631,26 +315,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="33000ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="35500ms" dur="0ms" attributeName="x" from="445.0" to="445.0" />
-<animate attributeType="xml" begin="35500ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="35500ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="35500ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="35500ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="35500ms" dur="250ms" attributeName="x" from="445.0" to="445.0" />
 <animate attributeType="xml" begin="35500ms" dur="250ms" attributeName="y" from="50.0" to="50.0" />
 <animate attributeType="xml" begin="35500ms" dur="250ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
 <animate attributeType="xml" begin="35500ms" dur="250ms" attributeName="width" from="110" to="110"
  />
 <animate attributeType="xml" begin="35500ms" dur="250ms" attributeName="height" from="30" to="30"
- />
-<animate attributeType="xml" begin="35750ms" dur="0ms" attributeName="x" from="445.0" to="445.0" />
-<animate attributeType="xml" begin="35750ms" dur="0ms" attributeName="y" from="50.0" to="50.0" />
-<animate attributeType="xml" begin="35750ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="35750ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="35750ms" dur="0ms" attributeName="height" from="30" to="30"
  />
 <animate attributeType="xml" begin="35750ms" dur="2500ms" attributeName="x" from="445.0" to="445.0" />
 <animate attributeType="xml" begin="35750ms" dur="2500ms" attributeName="y" from="50.0" to="240.0" />
@@ -659,13 +329,6 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="35750ms" dur="2500ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="x" from="445.0" to="445.0" />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(11,45,175)" />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="width" from="110" to="110"
- />
-<animate attributeType="xml" begin="38250ms" dur="0ms" attributeName="height" from="30" to="30"
- />
 <animate attributeType="xml" begin="38250ms" dur="2000ms" attributeName="x" from="445.0" to="445.0" />
 <animate attributeType="xml" begin="38250ms" dur="2000ms" attributeName="y" from="240.0" to="240.0" />
 <animate attributeType="xml" begin="38250ms" dur="2000ms" attributeName="fill" from="rgb(11,45,175)" to="rgb(0,255,0)" />
@@ -673,13 +336,12 @@ drawn between (145,50) and (width,height) will be visible -->
  />
 <animate attributeType="xml" begin="38250ms" dur="2000ms" attributeName="height" from="30" to="30"
  />
-<animate attributeType="xml" begin="40250ms" dur="0ms" attributeName="x" from="445.0" to="445.0" />
-<animate attributeType="xml" begin="40250ms" dur="0ms" attributeName="y" from="240.0" to="240.0" />
-<animate attributeType="xml" begin="40250ms" dur="0ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
-<animate attributeType="xml" begin="40250ms" dur="0ms" attributeName="width" from="110" to="110"
+<animate attributeType="xml" begin="40250ms" dur="35250ms" attributeName="x" from="445.0" to="445.0" />
+<animate attributeType="xml" begin="40250ms" dur="35250ms" attributeName="y" from="240.0" to="240.0" />
+<animate attributeType="xml" begin="40250ms" dur="35250ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,255,0)" />
+<animate attributeType="xml" begin="40250ms" dur="35250ms" attributeName="width" from="110" to="110"
  />
-<animate attributeType="xml" begin="40250ms" dur="0ms" attributeName="height" from="30" to="30"
+<animate attributeType="xml" begin="40250ms" dur="35250ms" attributeName="height" from="30" to="30"
  />
-</rect>
 </rect>
 </svg>

@@ -159,7 +159,6 @@ public final class AnimationModelImpl implements AnimationModel {
           }
         }
       }
-
     }
     return shapesToRender;
   }
@@ -177,8 +176,7 @@ public final class AnimationModelImpl implements AnimationModel {
   @Override
   public void addFrame(KeyFrame k) {
     for (KeyFrame keyframe : frames) {
-      if (keyframe.getTime() == k.getTime()
-              && keyframe.getName().equalsIgnoreCase(k.getName())) {
+      if (keyframe.equals(k)) {
         throw new IllegalArgumentException("Can't have duplicate keyframe for a shape.");
       }
     }
@@ -232,8 +230,6 @@ public final class AnimationModelImpl implements AnimationModel {
 
     public void setAnimation() {
       if (frames != null && shapes != null && frames.size() > 0 && shapes.size() > 0) {
-        //Removes duplicate frames added when parsing file
-        this.removeDuplicates();
         // Sort the frames by shape
         this.sortFrames();
       } else {
