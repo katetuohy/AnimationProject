@@ -242,27 +242,6 @@ public final class AnimationModelImpl implements AnimationModel {
       }
     }
 
-    private void removeDuplicates() {
-      ArrayList<KeyFrame> newList = new ArrayList<KeyFrame>();
-      boolean dup = false;
-      for (KeyFrame frame : frames) {
-        for (KeyFrame f : newList) {
-          if (frame.getName().equals(f.getName()) && frame.getTime() == (f.getTime())) {
-            dup = true;
-            break;
-          }
-        }
-        if (!dup) {
-          newList.add(frame);
-        } else {
-          dup = false;
-        }
-      }
-      this.frames = newList;
-    }
-
-
-
     // Sorts list of frames in same order of the given list of shapes.
     //This does not take into account the times
     private void sortFrames() {
@@ -305,7 +284,7 @@ public final class AnimationModelImpl implements AnimationModel {
     }
 
     /**
-     *
+     *Adds the Key Frame to the accumulating list that will be added to the model.
      */
     @Override
     public AnimationBuilder<AnimationModelImpl> addKeyframe(String name, int t, int x, int y, int w,
