@@ -30,18 +30,18 @@ public class EditorView extends JFrame implements IView {
     this.out = System.out;
     this.speed = 1;
 
-    setSize(800, 800);
+    setSize(1500,800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setLocation(200, 200);
+    setLocation(0, 0);
 
     mainPanel = new JPanel();
-    mainPanel.setMinimumSize(new Dimension(1500, 1500));
-    mainPanel.setPreferredSize(new Dimension(4000, 2000));
+    mainPanel.setMinimumSize(new Dimension(1500, 800));
+    mainPanel.setPreferredSize(new Dimension(1500, 2000));
     mainPanel.setLayout(new FlowLayout());
 
     editorPanel = new EditorPanel();
     editorPanel.setMinimumSize(new Dimension(500, 500));
-    editorPanel.setPreferredSize(new Dimension(1000, 1000));
+    editorPanel.setPreferredSize(new Dimension(400, 800));
     editorPanel.setBackground(Color.WHITE);
 
     animationPanel = new DrawingPanel();
@@ -77,8 +77,6 @@ public class EditorView extends JFrame implements IView {
 
   @Override
   public void displayVisual(List<Shape> shapes) {
-    /** TODO: finish this
-     **/
     animationPanel.draw(shapes);
     repaint();
   }

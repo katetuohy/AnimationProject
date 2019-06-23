@@ -27,7 +27,8 @@ public class Controller implements IController, ActionListener {
   private int speed;
   private AnimationModel model;
   private IView view;
-  private int tick = -1;
+  private int tick = 0;
+  private boolean isPlaying;
 
   /**
    * Constructs the controller and calls the display methods on the different views given the model
@@ -40,6 +41,7 @@ public class Controller implements IController, ActionListener {
     this.model = model;
     this.view = view;
     this.speed = 1000 / view.getSpeed();
+    this.isPlaying = true;
 
     if (view instanceof TextualAnimationView) {
       view.displayTextualView(model.getFrames(), model.getShapes(), model.getCanvas());
@@ -77,6 +79,14 @@ public class Controller implements IController, ActionListener {
     timer.restart();
   }
 
+  private void setPlaying() {
+    isPlaying = true;
+  }
+
+  public void setPaused() {
+    isPlaying = false;
+  }
+
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -102,16 +112,32 @@ public class Controller implements IController, ActionListener {
         break;
       case "Add Shape":
         String[] addShapeFields = view.getAddShapeFields();
-        model.addShape(new ShapeFactory()
+        Shape shape = new ShapeFactory()
                 .getShapeFull(addShapeFields[0], addShapeFields[1],
-                Integer.parseInt(addShapeFields[2]), Integer.parseInt(addShapeFields[3]),
-                new Position2D(Double.parseDouble(addShapeFields[4]),
-                        Double.parseDouble(addShapeFields[5])),
-                new Color(Integer.parseInt(addShapeFields[6]), Integer.parseInt(addShapeFields[7]),
-                        Integer.parseInt(addShapeFields[8]))));
+                        Integer.parseInt(addShapeFields[2]),
+                        Integer.parseInt(addShapeFields[3]),
+                        new Position2D(Double.parseDouble(addShapeFields[4]),
+                                Double.parseDouble(addShapeFields[5])),
+                        new Color(Integer.parseInt(addShapeFields[6]),
+                                Integer.parseInt(addShapeFields[7]),
+                                Integer.parseInt(addShapeFields[8])));
+        model.addShape(shape);
+        model.addFrame(new KeyFrame(shape.getName(), 0,
+                shape.getWidth(), shape.getHeight(),
+                (int) shape.getPosition().getX(),
+                (int) shape.getPosition().getY(),
+                shape.getColor().getRed(),
+                shape.getColor().getGreen(),
+                shape.getColor().getBlue()));
         break;
       case "Replay":
         replay();
+        break;
+      case "Play":
+        setPlaying();
+        break;
+      case "Pause":
+        setPaused();
         break;
       case "Increase Speed":
         speed++;
@@ -130,9 +156,15 @@ public class Controller implements IController, ActionListener {
 
         break;
       case "timer listener":
-        model.setTime(tick++);
-        System.out.println(model.getTime());
         List<Shape> shapesToRender = model.moveShapes();
+        if (isPlaying) {
+          model.setTime(tick++);
+          /**
+           * TODO:
+           * Delete!
+           */
+          System.out.println(model.getTime());
+        }
         view.displayVisual(shapesToRender);
         break;
       default:

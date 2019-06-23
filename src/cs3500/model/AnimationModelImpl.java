@@ -1,5 +1,7 @@
 package cs3500.model;
 
+import java.awt.*;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +27,6 @@ public final class AnimationModelImpl implements AnimationModel {
    */
   public AnimationModelImpl() {
     this.time = 0;
-    //this.commands = new LinkedHashMap<Command, Shape>();
-    //this.motions = new ArrayList<Command>();
     this.shapes = new ArrayList<Shape>();
     this.canvas = new int[4];
     for (int i = 0; i < canvas.length; i++) {
@@ -111,7 +111,39 @@ public final class AnimationModelImpl implements AnimationModel {
   @Override
   public List<Shape> moveShapes() {
     List<Shape> shapesToRender = new ArrayList<Shape>();
-    for (int i = 0; i < frames.size() - 1; i++) {
+    for (Shape s : shapes) {
+      Shape shapeToRender = s;
+      for (int i = 0; i < frames.size(); i++) {
+        KeyFrame current = frames.get(i);
+        if (current.getName().equalsIgnoreCase(s.getName())) {
+          // If the next frame is also for the current shape.
+          if (i < frames.size() - 1 && frames.get(i + 1).getName().equalsIgnoreCase(s.getName())) {
+            KeyFrame next = frames.get(i + 1);
+            // If current time is between two of the keyframes' times -> tween!
+            if (frames.get(i).getTime() <= this.time
+                    && this.time <= frames.get(i + 1).getTime()) {
+              System.out.println("if!!");
+              System.out.println(s.getName());
+              int startTime = frames.get(i).getTime();
+              int endTime = frames.get(i + 1).getTime();
+              shapeToRender.setPosition(this.time, startTime, endTime, current, next);
+              shapeToRender.setSize(this.time, startTime, endTime, current, next);
+              shapeToRender.setColor(this.time, startTime, endTime, current, next);
+            }
+          } else if (i < frames.size() - 1 && !frames.get(i + 1).getName().equalsIgnoreCase(s.getName())) {
+            System.out.println("else!!");
+            // If at last keyframe for this shape, Keep shape in the current state.
+            shapeToRender.setPosition(this.time, this.time, this.time + 1, current, current);
+            shapeToRender.setColor(this.time, this.time, this.time + 1, current, current);
+            shapeToRender.setPosition(this.time, this.time, this.time + 1, current, current);
+          }
+        }
+      }
+      shapesToRender.add(shapeToRender);
+    }
+    return shapesToRender;
+  }
+   /* for (int i = 0; i < frames.size() - 1; i++) {
       KeyFrame first = frames.get(i);
       KeyFrame second = frames.get(i + 1);
       if (first.getName().equals(second.getName()) && this.time >= first.getTime()
@@ -130,24 +162,38 @@ public final class AnimationModelImpl implements AnimationModel {
             index++;
           }
         }
-        shape.setPosition(this.time, startTime, endTime, first, second);
-        shape.setSize(this.time, startTime, endTime, first, second);
-        shape.setColor(this.time, startTime, endTime, first, second);
-        shapes.add(index, shape);
-        shapesToRender.add(shape);
-      }
-    }
-    return shapesToRender;
-  }
+    shape.setPosition(this.time, startTime, endTime, first, second);
+    shape.setSize(this.time, startTime, endTime, first, second);
+    shape.setColor(this.time, startTime, endTime, first, second);
+    shapes.add(index, shape);
+    shapesToRender.add(shape);
 
+    return shapesToRender;
+  }*/
 
   @Override
   public void addShape(Shape s) {
+    for (Shape shape : shapes) {
+      if (shape.getName().equals(s.getName())) {
+       throw new IllegalArgumentException("Can't have duplicate shape name.");
+      }
+    }
     this.shapes.add(s);
   }
 
   @Override
   public void addFrame(KeyFrame k) {
+    for (KeyFrame keyframe: frames) {
+      if (keyframe.getTime() == k.getTime()
+              && keyframe.getName().equalsIgnoreCase(k.getName())) {
+        throw new IllegalArgumentException("Can't have duplicate keyframe for a shape.");
+      }
+    }
+    /**
+     * TODO: remove
+     */
+    //System.out.println("adding keyframe: Name : " + k.getName() + " Time: "
+     //       + k.getTime() + "Width: " + k.getW() + "Height: " + k.getH());
     this.frames.add(k);
     if (k.getTime() > longestTime) {
       longestTime = k.getTime();
@@ -181,7 +227,7 @@ public final class AnimationModelImpl implements AnimationModel {
     int[] canvas = {0, 0, 0, 0};
     ArrayList<Shape> shapes = new ArrayList<Shape>();
     ArrayList<KeyFrame> frames = new ArrayList<KeyFrame>();
-   int longestTime;
+    int longestTime;
 
     @Override
     public AnimationModelImpl build() {
@@ -189,10 +235,18 @@ public final class AnimationModelImpl implements AnimationModel {
       this.model = new AnimationModelImpl();
       model.setCanvas(canvas[0], canvas[1], canvas[2], canvas[3]);
       for (int i = 0; i < shapes.size(); i++) {
-        model.addShape(shapes.get(i));
+        try {
+          model.addShape(shapes.get(i));
+        } catch (IllegalArgumentException e) {
+          // Skip this duplicate shape.
+        }
       }
       for (KeyFrame k : frames) {
-        model.addFrame(k);
+        try {
+          model.addFrame(k);
+        } catch (IllegalArgumentException e) {
+          // Skip this duplicate frame.
+        }
       }
       model.setLongestTime(longestTime);
       return this.model;
@@ -205,14 +259,15 @@ public final class AnimationModelImpl implements AnimationModel {
         // Sort the frames by shape
         this.sortFrames();
         // Make sure frames have no overlapping time intervals.
-        this.validateMotionsNotOverlapping();
+        //this.validateMotionsNotOverlapping();
         // Fill in time gaps in motions.
-        this.fixRemainingTimeGaps();
+        //this.fixRemainingTimeGaps();
       } else {
         throw new IllegalStateException("Motions or commands must not be null or empty!");
       }
     }
 
+    /*
     public void fixRemainingTimeGaps() {
       int longestTime = 0;
       //Get end time of animation.
@@ -227,7 +282,7 @@ public final class AnimationModelImpl implements AnimationModel {
       for (int i = 1; i < frames.size() - 1; i++) {
         KeyFrame current = frames.get(i);
         newFrames.add(current);
-        // If the next is a different shape and this doesn't extend until the end
+        // If the next is a different shape and current keyframe is not for the longest time.
         if (!current.getName().equalsIgnoreCase(frames.get(i + 1).getName())) {
           if (current.getTime() != longestTime) {
             newFrames.add(new KeyFrame(current.getName(), longestTime,
@@ -247,7 +302,7 @@ public final class AnimationModelImpl implements AnimationModel {
       }
       frames =  newFrames;
     }
-
+*/
     private void removeDuplicates() {
       ArrayList<KeyFrame> newList = new ArrayList<KeyFrame>();
       for (KeyFrame frame : frames) {
@@ -270,8 +325,13 @@ public final class AnimationModelImpl implements AnimationModel {
         }
       }
       this.frames = sorted;
+      for (KeyFrame k : sorted) {
+        System.out.println( "Name : " + k.getName() + " Time: "
+                + k.getTime() + "Width: " + k.getW() + "Height: " + k.getH());
+      }
     }
 
+    /*
     private void validateMotionsNotOverlapping() {
       for (int i = 0; i < frames.size() - 1; i++) {
         KeyFrame first = frames.get(i);
@@ -281,7 +341,7 @@ public final class AnimationModelImpl implements AnimationModel {
           frames.set(i + 1, first);
         }
       }
-    }
+    }*/
 
     @Override
     public AnimationBuilder<AnimationModelImpl> setBounds(int x, int y, int width, int height) {

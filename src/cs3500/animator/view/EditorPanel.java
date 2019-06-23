@@ -46,6 +46,8 @@ public class EditorPanel extends JPanel implements ActionListener {
   private final JButton replayButton;
   private final JButton incrementSpeed;
   private final JButton decrementSpeed;
+  private final JButton pauseButton;
+  private final JButton playButton;
 
   private final JTextField addShapeTypeField;
   private final JTextField addShapeNameField;
@@ -88,6 +90,8 @@ public class EditorPanel extends JPanel implements ActionListener {
     this.replayButton = new JButton("Replay Animation");
     this.incrementSpeed = new JButton("+ Speed");
     this.decrementSpeed = new JButton("- Speed");
+    pauseButton = new JButton("||");
+    playButton = new JButton("|>");
 
     /* TEXT FIELDS */
     addShapeTypeField = new JTextField(4);
@@ -179,7 +183,7 @@ public class EditorPanel extends JPanel implements ActionListener {
     deleteShapePanel.setMaximumSize(new Dimension(700, 80));
     deleteShapePanel.setLayout(new FlowLayout());
     deleteShapePanel.add(deleteShapeButton);
-    this.add(deleteShapeNameLabel);
+    deleteShapePanel.add(deleteShapeNameLabel);
     deleteShapePanel.add(deleteShapeNameField);
 
     /*Panel for adding keyframes */
@@ -223,6 +227,8 @@ public class EditorPanel extends JPanel implements ActionListener {
     this.add(addKeyFramePanel);
     this.add(deleteKeyFramePanel);
     this.add(replayButton);
+    this.add(playButton);
+    this.add(pauseButton);
     this.add(incrementSpeed);
     this.add(decrementSpeed);
     this.add(message);
@@ -313,6 +319,10 @@ public class EditorPanel extends JPanel implements ActionListener {
     incrementSpeed.addActionListener(listener);
     decrementSpeed.setActionCommand("Decrease Speed");
     decrementSpeed.addActionListener(listener);
+    playButton.setActionCommand("Play");
+    playButton.addActionListener(listener);
+    pauseButton.setActionCommand("Pause");
+    pauseButton.addActionListener(listener);
   }
 
   private boolean isValidFieldsList(String[] fields) {
