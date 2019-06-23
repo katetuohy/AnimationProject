@@ -1,5 +1,7 @@
 package cs3500.controller;
 
+import java.awt.event.ActionEvent;
+
 /**
  * Interface for the controller of the animation.
  */
@@ -15,5 +17,13 @@ public interface IController {
    */
   void replay();
 
+  void setPlaying();
 
+  void setPaused();
+
+  void increaseSpeed();
+
+  void decreaseSpeed();
+
+  void actionPerformed(ActionEvent e);
 }
