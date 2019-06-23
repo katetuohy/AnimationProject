@@ -52,3 +52,29 @@ For setAnimationMap, we are assuming that the commands are sent in through the a
 sorted by shape. While we may have lapses in time, our method for updating the shapes state keeps
 everything the same unless it finds a command to execute.
 
+
+Assignment 7:
+For the Model:
+The first thing we did was create a KeyFrame class to replace our motions class (which had been
+called Command). From there, we had to rearrange all of our methods so that the functionality
+would remain the same. Additionally, we moved our setAnimation() method down into the builder
+so that the model would be created with the correct Frames and shapes list, without setAnimation()
+having to be called additionally after the model was created. The KeyFrame class was in charge of
+storing information for the change for the shape at that one instant (the time given to the
+keyFrame). We decided to remove our Motion class altogether because we felt that it would be
+repetitive and unnecessary to implement if we could represent the same functionality with the new
+KeyFrame class. We also added the methods for removing, adding, and inserting keyFrames that we
+then had called by the controller when that was implemented.
+
+For the Editor:
+We created a new view class called editorView that implements the IView interface that the other
+views also did. We added this option to the factory so that it can be created in the same way as
+the others too. Then, we created an EditorPanel class that implements the functionality needed to
+edit the model when the animation is displayed visually.
+
+For the Controller:
+We changed the controller to now include the functionality needed to run the editor in addition
+to the existing code that ran the other views for the last assignment. We created a seperate class
+for Animation Performed that lets the model know how to change based on the input from the user
+on the views side.
+
